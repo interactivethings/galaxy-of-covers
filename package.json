@@ -1,0 +1,17 @@
+{
+  "name": "project-blue-sky",
+  "version": "0.0.1",
+  "description": "Blue sky vis project prototype",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "p5": "^0.3.12",
+    "traceur": "0.0.79",
+    "webpack": "^1.4.13"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
