@@ -1,0 +1,96 @@
+{
+  "totalResults": 25,
+  "resultPage": [{
+    "entityType": "performance",
+    "uri": "http:\/\/www.secondhandsongs.com\/performance\/1110",
+    "title": "Lilac Wine",
+    "performer": {
+      "uri": "http:\/\/www.secondhandsongs.com\/artist\/22119",
+      "name": "Hope Foye"
+    },
+    "isOriginal": true
+  }, {
+    "entityType": "recording",
+    "uri": "http:\/\/www.secondhandsongs.com\/performance\/1111",
+    "title": "Lilac Wine",
+    "performer": {
+      "uri": "http:\/\/www.secondhandsongs.com\/artist\/600",
+      "name": "Jeff Buckley"
+    },
+    "isOriginal": false
+  }, {
+    "entityType": "recording",
+    "uri": "http:\/\/www.secondhandsongs.com\/performance\/31586",
+    "title": "Lilac Wine",
+    "performer": {
+      "uri": "http:\/\/www.secondhandsongs.com\/artist\/16969",
+      "name": "Katie Melua"
+    },
+    "isOriginal": false
+  }, {
+    "entityType": "recording",
+    "uri": "http:\/\/www.secondhandsongs.com\/performance\/40649",
+    "title": "Lilac Wine",
+    "performer": {
+      "uri": "http:\/\/www.secondhandsongs.com\/artist\/19865",
+      "name": "Helen Merrill"
+    },
+    "isOriginal": false
+  }, {
+    "entityType": "recording",
+    "uri": "http:\/\/www.secondhandsongs.com\/performance\/47899",
+    "title": "Lilac Wine",
+    "performer": {
+      "uri": "http:\/\/www.secondhandsongs.com\/artist\/29",
+      "name": "Nina Simone"
+    },
+    "isOriginal": false
+  }, {
+    "entityType": "recording",
+    "uri": "http:\/\/www.secondhandsongs.com\/performance\/79929",
+    "title": "Lilac Wine",
+    "performer": {
+      "uri": "http:\/\/www.secondhandsongs.com\/artist\/22606",
+      "name": "Laura Fedele"
+    },
+    "isOriginal": false
+  }, {
+    "entityType": "recording",
+    "uri": "http:\/\/www.secondhandsongs.com\/performance\/105998",
+    "title": "Lilac Wine",
+    "performer": {
+      "uri": "http:\/\/www.secondhandsongs.com\/artist\/358",
+      "name": "Elkie Brooks"
+    },
+    "isOriginal": false
+  }, {
+    "entityType": "recording",
+    "uri": "http:\/\/www.secondhandsongs.com\/performance\/127864",
+    "title": "Lilac Wine",
+    "performer": {
+      "uri": "http:\/\/www.secondhandsongs.com\/artist\/6938",
+      "name": "Barb Jungr"
+    },
+    "isOriginal": false
+  }, {
+    "entityType": "recording",
+    "uri": "http:\/\/www.secondhandsongs.com\/performance\/155425",
+    "title": "Lilac Wine",
+    "performer": {
+      "uri": "http:\/\/www.secondhandsongs.com\/artist\/49993",
+      "name": "Judy Henske"
+    },
+    "isOriginal": false
+  }, {
+    "entityType": "recording",
+    "uri": "http:\/\/www.secondhandsongs.com\/performance\/176256",
+    "title": "Lilac Wine",
+    "performer": {
+      "uri": "http:\/\/www.secondhandsongs.com\/artist\/40574",
+      "name": "Susan Boyle"
+    },
+    "isOriginal": false
+  }],
+  "skippedResults": 0,
+  "next": "http:\/\/www.secondhandsongs.com\/search\/performance?title=lilac+wine&page=1"
+}
