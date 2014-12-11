@@ -1,11 +1,11 @@
 {
+ "skippedResults": 0,
+ "totalResults": 1,
  "resultPage": [
   {
    "title": "Summertime",
-   "entityType": "song",
-   "uri": "http://www.secondhandsongs.com/work/4681"
+   "uri": "http://www.secondhandsongs.com/work/4681",
+   "entityType": "song"
   }
- ],
- "totalResults": 1,
- "skippedResults": 0
+ ]
 }

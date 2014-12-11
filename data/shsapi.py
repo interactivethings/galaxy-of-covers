@@ -12,7 +12,10 @@ MAX_PAGE_SIZE = 100
 def requestOrNull(url, headers=STD_HEADERS, payload={}):
   gotten = requests.get(url, headers=headers, params=payload)
   if gotten.status_code == requests.codes.ok:
-    return gotten.json()
+    try:
+      return gotten.json()
+    except:
+      return gotten.text
   else:
     try:
       respString = json.dumps(gotten.json())
