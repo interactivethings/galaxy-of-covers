@@ -22,5 +22,12 @@ node_modules: package.json
 	npm install
 	touch $@
 
-data:
-	python3 data/pullData.py
+data: data-song-list data-spotify
+	python data/pullData.py
+
+data-song-list:
+	wget -O data/out/songs.csv https://docs.google.com/spreadsheets/d/1EqO6oF0o8oL0XLcNXNkdOA4wbcKJBiTb24rBphubgrA/export?format=csv
+
+data-spotify:
+	node data/spotify-popularity.js
+
