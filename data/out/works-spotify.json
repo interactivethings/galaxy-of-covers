@@ -1,0 +1,76 @@
+[
+  [
+    {
+      "title": "Summertime",
+      "date": "October 10, 1935 (performance date)",
+      "performer": "Abbie Mitchell",
+      "spotify": {
+        "id": "18vlwz8PjzwDLnxtEfcRr7",
+        "name": "Introduction - Summertime (feat. Abbie Mitchell)",
+        "artists": [
+          "George Gershwin - Abbie Mitchell (Soprano)"
+        ],
+        "duration": 249826,
+        "popularity": 5,
+        "preview": "https://p.scdn.co/mp3-preview/241df556f8d1a1bc4a3053b912b6d5610856e839",
+        "albumArtwork": "https://i.scdn.co/image/886c7181d3c1362835f0b6b1edd59ef0c73950f1"
+      }
+    },
+    {
+      "title": "Summertime",
+      "date": "1935",
+      "performer": "Helen Jepson",
+      "spotify": {
+        "id": "24NXD13hABEOs9gvFMDcmv",
+        "name": "Summertime - Music from \"Porgy & Bess\"",
+        "artists": [
+          "Lawrence Tibbett",
+          "Helen Jepson",
+          "The Original Porgy & Bess Orchestra"
+        ],
+        "duration": 160000,
+        "popularity": 14,
+        "preview": "https://p.scdn.co/mp3-preview/6343f2bf2816b98776e955e148df116891db7be7",
+        "albumArtwork": "https://i.scdn.co/image/121f2b4756f6fac82d1ca6e3a1ab3543d8b80e9f"
+      }
+    },
+    {
+      "title": "Summertime",
+      "date": "1936",
+      "performer": "Casper Reardon, His Harp and His Orchestra",
+      "spotify": null
+    },
+    {
+      "title": "Summertime",
+      "date": "1936",
+      "performer": "Billie Holiday and Her Orchestra",
+      "spotify": {
+        "id": "6nwJdkQS6SUbJIvPVxDf6z",
+        "name": "Summertime (feat. Billie Holiday And Her Orchestra)",
+        "artists": [
+          "George Gershwin - Billie Holiday And Her Orchestra"
+        ],
+        "duration": 174800,
+        "popularity": 1,
+        "preview": "https://p.scdn.co/mp3-preview/6ec678c564c09a9def40006af7a018415d71e122",
+        "albumArtwork": "https://i.scdn.co/image/4c35c840c499195bf4393b905dbffac274fe6479"
+      }
+    },
+    {
+      "title": "Summertime",
+      "date": "1937",
+      "performer": "Guy Lombardo and His Royal Canadians",
+      "spotify": {
+        "id": "400CKjLotn5s0NXa9qSbvw",
+        "name": "Summertime in Venice - Fox Trot",
+        "artists": [
+          "Guy Lombardo And His Royal Canadians"
+        ],
+        "duration": 165067,
+        "popularity": 0,
+        "preview": "https://p.scdn.co/mp3-preview/f0e915add790c68bb41ff0d8337d1bd1559230e5",
+        "albumArtwork": "https://i.scdn.co/image/c43fa78924f9195de1dbead2e6d321ffbb1be380"
+      }
+    }
+  ]
+]
