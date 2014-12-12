@@ -114,6 +114,7 @@ function getTrack(title, artist) {
 
 
 var works = JSON.parse(rw.readFileSync(INPUT_WORKS, 'utf8'));
+
 if (LIMIT_WORKS) {
   works = _.take(works, LIMIT_WORKS);
 }
