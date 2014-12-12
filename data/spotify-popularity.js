@@ -37,11 +37,11 @@ function getTrack(title, artist) {
           }
 
           resolve({
+            id: track.id,
+            name: track.name,
             artists: track.artists.map(function(d) { return d.name; }),
             duration: track.duration_ms,
-            name: track.name,
             popularity: track.popularity,
-            href: track.href,
             preview: track.preview_url,
             albumArtwork: _.max(track.album.images, function(d) { return d.width; }).url
           });
