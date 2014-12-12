@@ -9,7 +9,7 @@ var fs = require('fs');
 var sleep = require('sleep');
 
 
-var LIMIT_WORKS = 1;
+var LIMIT_WORKS = undefined;
 var LIMIT_VERSIONS = undefined;
 var REQUEST_DELAY = 100;
 var INPUT_WORKS = 'data/out/songinfo.json';
@@ -163,6 +163,13 @@ var worksRequests = works.map(function(work) {
 Promise
   .all(worksRequests)
   .then(function(data) {
+
+    console.log('Total works:', data.length);
+    data.forEach(function(d) {
+      var counts = _.countBy(d.versions, function(d) { return d.spotify ? true : false; });
+      console.log('Spotified '+ counts.true + ' of ' + d.versions.length +' versions of "'+ d.title + '"');
+    });
+
     console.log('Writing to', OUTPUT_FILE);
     rw.writeFileSync(OUTPUT_FILE, JSON.stringify(data, undefined, 2), 'utf8')
   });
