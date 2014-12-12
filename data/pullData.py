@@ -1,53 +1,65 @@
+import csv
 import json
-import re
 
-from bs4 import BeautifulSoup, UnicodeDammit
+from bs4 import BeautifulSoup
 
 from constants import *
-import shsapi
-import shshtmlapi
+import shsJsonApi
+import shsHtmlApi
 
-# test for getting info about a specific cover
-dest = open(DEST_DIR + "test.json", "w+")
+def writeLine(file, *messages):
+  n = "\n"
+  file.write(n.join(messages) + n)
 
-resp = shsapi.searchWork("Summertime", ["Gershwin"])
-print(json.dumps(resp, indent = 1))
+# run a search for a work on secondhandsongs, and pull the versions down too
+def searchSongVersions(songName, authorCredits=[]):
+  worksResponse = shsJsonApi.searchWork(songName, authorCredits)
 
-songList = []
-for workInfo in resp["resultPage"]:
-  songPage = shshtmlapi.makeRequest(workInfo["uri"])
-  soup = BeautifulSoup(songPage)
+  if worksResponse is None:
+    print ("Search failed")
+    writeLine(FILE_DEBUG_SEARCH, "Failed search:", songName, authorCredits, "")
+    return None
+  elif len(worksResponse["resultPage"]) < 1:
+    print("Search returned no results")
+    writeLine(FILE_DEBUG_SEARCH, "No Results:", songName, authorCredits, "")
+    return None
+  elif len(worksResponse["resultPage"]) > 1:
+    print("Search returned more than one result")
+    writeLine(FILE_DEBUG_SEARCH, "Too many results:", songName, authorCredits)
+    writeLine(FILE_DEBUG_SEARCH, json.dumps(worksResponse, indent=1), "")
+
+  workInfo = worksResponse["resultPage"][0]
+  songPage = shsHtmlApi.makeRequest(workInfo["uri"] + "/versions")
+  if not songPage:
+    print("Song versions page request returned None")
+    writeLine(FILE_DEBUG_SEARCH, "No versions page:", workInfo["uri"])
+    return None
+
+  soupObj = BeautifulSoup(songPage)
+
   songData = workInfo.copy()
+  songData.update(shsHtmlApi.parseMetaData(soupObj))
+  songData.update(shsHtmlApi.parseWorkData(soupObj))
+  songData["versions"] = shsHtmlApi.parseWorkVersions(soupObj)
 
-  for metaTag in soup.find_all("meta"):
-    if metaTag.has_attr("name"):
-      if metaTag["name"] == "description":
-        songData["description"] = metaTag["content"]
-      if metaTag["name"] == "keywords":
-        songData["keywords"] = metaTag["content"]
+  return songData
 
-  infoEl = soup.find(id="main").find(id="content").find(id="entity-info").div.dl
-  for termDef in infoEl.find_all("dt"):
-    defName = str(termDef.string)
-    defValue = str("".join([s for s in termDef.find_next_sibling("dd").stripped_strings]))
-    songData[defName] = defValue
+sourceList = csv.DictReader(FILE_SONG_SOURCE)
+songInfoList = []
 
-  songData["versions"] = []
+for sourceItem in sourceList:
+  title = sourceItem["TITLE (original)"]
+  credits = sourceItem["ORIGINAL"]
+  print(title, credits)
 
-  songVersions = shshtmlapi.makeRequest(workInfo["uri"] + "/versions")
-  soup = BeautifulSoup(songVersions)
-  versionsList = soup.find(id="main").find(id="entity-section").table.tbody.find_all("tr")
-  for versionEl in versionsList:
-    versionData = {}
-    for fieldEl in versionEl.find_all("td", class_=re.compile(".*-title|.*-performer|.*-date")):
-      fieldName = re.compile("field-").sub("", fieldEl["class"][0])
-      fieldValue = str("".join([s for s in fieldEl.stripped_strings]))
-      versionData[fieldName] = fieldValue
-    songData["versions"].append(versionData)
+  if title == "" or credits == "":
+    continue
 
-  songList.append(songData)
+  searchResults = searchSongVersions(title, credits)
+  if searchResults is not None:
+    songInfoList.append(searchResults)
 
-json.dump(songList, dest, indent=1)
+json.dump(songInfoList, FILE_SONG_OUTPUT, indent=1)
 
 
 # tests for querying object uris
@@ -64,7 +76,7 @@ json.dump(songList, dest, indent=1)
 
 # results = []
 # for objUri in objUriTests:
-#   resp = shsapi.getObject(objUri)
+#   resp = shsJsonApi.getObject(objUri)
 #   results.append(resp)
 
 # json.dump(results, dest, indent=1)
