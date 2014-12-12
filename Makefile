@@ -42,3 +42,11 @@ data-spotify:
 
 data-shs-versions:
 	$(PYTHON) data/pullData.py
+
+clean-shs-cache: clean-shs-search-cache clean-shs-scrape-cache
+
+clean-shs-search-cache:
+	rm data/shs-search-cache/*
+
+clean-shs-scrape-cache:
+	rm data/shs-scrape-cache/*

@@ -1,3 +1,5 @@
+import os
+import hashlib
 import csv
 import json
 
@@ -11,9 +13,52 @@ def writeLine(file, *messages):
   n = "\n"
   file.write(n.join(messages) + n)
 
+def hashString(toBeHashed):
+  return hashlib.md5(bytes(toBeHashed, "utf-8")).hexdigest()
+
+stringNone = str(None)
+
+def fetchFileContents(fileName):
+  with open(fileName, 'r') as file:
+    contents = file.read()
+  if contents == '' or contents == stringNone:
+    return None
+  else:
+    return contents
+
+def writeFileContents(fileName, contents):
+  with open(fileName, 'w') as file:
+    file.write(str(contents))
+
+def requestSearch(songName, authorCredits=[]):
+  fileName = SHS_SEARCH_CACHE_DIR + hashString(songName + "+++" + "+++".join(authorCredits))
+
+  if os.path.isfile(fileName):
+    contents = fetchFileContents(fileName)
+    return json.loads(contents) if contents is not None else None
+  else:
+    response = shsJsonApi.searchWork(songName, authorCredits)
+    writeValue = json.dumps(response) if response is not None else stringNone
+    writeFileContents(fileName, writeValue)
+    return response
+
+def requestVersions(url):
+  fileName = SHS_SCRAPE_CACHE_DIR + hashString(url)
+
+  if os.path.isfile(fileName):
+    contents = fetchFileContents(fileName)
+    return contents if contents is not None else None
+  else:
+    response = shsHtmlApi.makeRequest(url)
+    writeValue = response if response is not None else stringNone
+    writeFileContents(fileName, writeValue)
+    return response
+
 # run a search for a work on secondhandsongs, and pull the versions down too
 def searchSongVersions(songName, authorCredits=[]):
-  worksResponse = shsJsonApi.searchWork(songName, authorCredits)
+  worksResponse = requestSearch(songName, authorCredits)
+
+  ### BREAK: Working on how to handle error reporting from cache vs from API server
 
   if worksResponse is None:
     print ("Search failed")
@@ -29,8 +74,8 @@ def searchSongVersions(songName, authorCredits=[]):
     writeLine(FILE_DEBUG_SEARCH, json.dumps(worksResponse, indent=1), "")
 
   workInfo = worksResponse["resultPage"][0]
-  songPage = shsHtmlApi.makeRequest(workInfo["uri"] + "/versions")
-  if not songPage:
+  songPage = requestVersions(workInfo["uri"] + "/versions")
+  if songPage is None:
     print("Song versions page request returned None")
     writeLine(FILE_DEBUG_SEARCH, "No versions page:", workInfo["uri"])
     return None

@@ -2,3 +2,5 @@
 *build-tmp*
 *__pycache__*
 data/cached
+data/shs-scrape-cache
+data/shs-search-cache
