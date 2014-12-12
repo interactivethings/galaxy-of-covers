@@ -1,7 +1,11 @@
 SHELL := /bin/bash
 PATH := node_modules/.bin:$(PATH)
 
-.PHONY: all server build clean install data
+# python3 and pip3 are required
+PYTHON := python3
+PIP := pip3
+
+.PHONY: all server build clean install data data-song-list data-spotify data-shs-versions
 
 all: server
 
@@ -22,8 +26,13 @@ node_modules: package.json
 	npm install
 	touch $@
 
-data: data-song-list data-spotify
-	python data/pullData.py
+# Data
+
+pythonsetup:
+	$(PIP) install requests
+	$(PIP) install beautifulsoup4
+
+data: data-song-list data-spotify data-shs-versions
 
 data-song-list:
 	wget -O data/out/songs.csv https://docs.google.com/spreadsheets/d/1EqO6oF0o8oL0XLcNXNkdOA4wbcKJBiTb24rBphubgrA/export?format=csv
@@ -31,3 +40,5 @@ data-song-list:
 data-spotify:
 	node data/spotify-popularity.js
 
+data-shs-versions:
+	$(PYTHON) data/pullData.py
