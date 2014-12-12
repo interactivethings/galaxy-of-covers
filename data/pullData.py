@@ -97,9 +97,6 @@ for sourceItem in sourceList:
   credits = sourceItem["ORIGINAL"]
   print(title, credits)
 
-  if title == "" or credits == "":
-    continue
-
   searchResults = searchSongVersions(title, credits)
   if searchResults is not None:
     songInfoList.append(searchResults)
