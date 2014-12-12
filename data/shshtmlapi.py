@@ -57,3 +57,13 @@ def parseWorkVersions(soupObj):
       versionData[fieldName] = fieldValue
     versionsList.append(versionData)
   return versionsList
+
+def parsePerformanceData(soupObj):
+  performanceData = {}
+  infoEl = soupObj.find(id="main").find(id="content").find(id="entity-info")
+  for termDef in infoEl.find_all("dt"):
+    defName = bsNavStringToUnicode(termDef.string)
+    defValue = grabParsedSubstrings(termDef.find_next_sibling("dd"))
+    performanceData[defName] = defValue
+  return performanceData
+
