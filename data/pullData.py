@@ -30,7 +30,7 @@ def writeFileContents(fileName, contents):
   with open(fileName, 'w') as file:
     file.write(str(contents))
 
-def requestSearch(songName, authorCredits=[]):
+def requestSearch(songName, authorCredits=""):
   fileName = SHS_SEARCH_CACHE_DIR + hashString(songName + "+++" + "+++".join(authorCredits))
 
   if os.path.isfile(fileName):
@@ -55,7 +55,7 @@ def requestVersions(url):
     return response
 
 # run a search for a work on secondhandsongs, and pull the versions down too
-def searchSongVersions(songName, authorCredits=[]):
+def searchSongVersions(songName, authorCredits=""):
   worksResponse = requestSearch(songName, authorCredits)
 
   ### BREAK: Working on how to handle error reporting from cache vs from API server

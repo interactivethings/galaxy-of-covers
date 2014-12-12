@@ -53,7 +53,7 @@ def searchPerformance(title, performer="", date="", pageNum=0):
   }
   return requestOrNull(url, payload=payload)
 
-def searchWork(title, credits=[], pageNum=0):
+def searchWork(title, credits="", pageNum=0):
   url = API_SEARCH + "work"
   payload = {
     "title": title,
