@@ -167,7 +167,9 @@ Promise
     console.log('Total works:', data.length);
     data.forEach(function(d) {
       var counts = _.countBy(d.versions, function(d) { return d.spotify ? true : false; });
-      console.log('Spotified '+ counts.true + ' of ' + d.versions.length +' versions of "'+ d.title + '"');
+      var maxPop = d3.max(d.versions, function(d) { return d.spotify ? d.spotify.popularity : 0; });
+      console.log('Spotified '+ counts.true + ' of ' + d.versions.length +' versions of "'+ d.title + '" ' +
+                  '(popMax='+maxPop+')');
     });
 
     console.log('Writing to', OUTPUT_FILE);
