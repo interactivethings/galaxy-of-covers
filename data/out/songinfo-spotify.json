@@ -1,0 +1,910 @@
+[
+  {
+    "description": "The song All Along the Watchtower was written by Bob Dylan and was first recorded and released by Bob Dylan in 1967. It was covered by The Jimi Hendrix Experience, Affinity, P.O.S. and 44 others. ",
+    "Language": "English",
+    "keywords": "All Along the Watchtower, Bob Dylan, Covers, Cover Songs, Samples, Tributes, Music",
+    "versions": [
+      {
+        "date": "December 27, 1967",
+        "performer": "Bob Dylan",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "0Fnb2pfBfu0ka33d6Yki17",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Bob Dylan"
+          ],
+          "duration": 151093,
+          "popularity": 56,
+          "preview": "https://p.scdn.co/mp3-preview/16da692aae1e476c53a3b41f90365ee562d3f34d",
+          "albumArtwork": "https://i.scdn.co/image/2cca853ffface35298450a62ddbd8f36e7c6d517"
+        }
+      },
+      {
+        "date": "September 4, 1968",
+        "performer": "The Jimi Hendrix Experience",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "2aoo2jlRnM3A0NyLQqMN2f",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Jimi Hendrix"
+          ],
+          "duration": 240800,
+          "popularity": 72,
+          "preview": "https://p.scdn.co/mp3-preview/f8c2e56b84eb61f92a13d34e7d801fbf24d0cc3f",
+          "albumArtwork": "https://i.scdn.co/image/d82a5f8cae828822c86944960e23a5bee8658d37"
+        }
+      },
+      {
+        "date": "1968",
+        "performer": "The Nashville Teens",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "35DARULSoAIBKtzG9NPhEw",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "The Nashville Teens"
+          ],
+          "duration": 158982,
+          "popularity": 7,
+          "preview": "https://p.scdn.co/mp3-preview/04e2f23bb3f457edece1f1e54d753dc8e1956e52",
+          "albumArtwork": "https://i.scdn.co/image/44b638a1f99fe0b35dbbd472952f052ad5966fad"
+        }
+      },
+      {
+        "date": "1969",
+        "performer": "The Brothers and Sisters of Los Angeles",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "1969",
+        "performer": "Brewer & Shipley",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "6sev5iVSDla0WVY40xRTbo",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Brewer & Shipley"
+          ],
+          "duration": 195837,
+          "popularity": 19,
+          "preview": "https://p.scdn.co/mp3-preview/24aa495de3d20cc28d4b9d8fedc2b317d373f776",
+          "albumArtwork": "https://i.scdn.co/image/646df3abddbec625c64f6b3bab0292e1db965933"
+        }
+      },
+      {
+        "date": "1970",
+        "performer": "Affinity",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "0hbs7JoTT3F0479We90Mps",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Affinity"
+          ],
+          "duration": 700253,
+          "popularity": 11,
+          "preview": "https://p.scdn.co/mp3-preview/54f0ab0f90485e9480e26dda8a8d2dcc8a96270b",
+          "albumArtwork": "https://i.scdn.co/image/66db97163271e4245be73e3b42f67a9363401752"
+        }
+      },
+      {
+        "date": "1970",
+        "performer": "Träd, gräs och stenar",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "7wMXGs4tdjzyUAClE2D1vo",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Träd Gräs Och Stenar"
+          ],
+          "duration": 496306,
+          "popularity": 19,
+          "preview": "https://p.scdn.co/mp3-preview/2ea1babc5278bdec2e77432e9f2171d6460cd5dc",
+          "albumArtwork": "https://i.scdn.co/image/887eba90d364a30b9a02fc4828f180bb8c909ddf"
+        }
+      },
+      {
+        "date": "1970",
+        "performer": "Savage Grace",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "1972",
+        "performer": "Barbara Keith",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "6htQYhSt0OhRL1XSlu8sKN",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Barbara Keith"
+          ],
+          "duration": 193813,
+          "popularity": 31,
+          "preview": "https://p.scdn.co/mp3-preview/4581d36f2ba59fd85190a42c517809c76fc19d5f",
+          "albumArtwork": "https://i.scdn.co/image/0d593b56a71491ca5fdb06e99cb10b5585ab39a0"
+        }
+      },
+      {
+        "date": "June 8, 1973",
+        "performer": "Bobby Womack",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "2Z8AuiDPq1hrdu2PZ475Du",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Bobby Womack"
+          ],
+          "duration": 200000,
+          "popularity": 24,
+          "preview": "https://p.scdn.co/mp3-preview/d5753239cdaf46f7b1a4ebd605279ee55406dcd5",
+          "albumArtwork": "https://i.scdn.co/image/3da4c63d803d9425cdd50eb4b40d5970b895e82e"
+        }
+      },
+      {
+        "date": "October 1974",
+        "performer": "Dave Mason",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "4LhoGywwJasfwo7IRzBT5T",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Dave Mason"
+          ],
+          "duration": 243293,
+          "popularity": 27,
+          "preview": "https://p.scdn.co/mp3-preview/f79ca0ccd07eb8ab60dabda34f053c8920813dc7",
+          "albumArtwork": "https://i.scdn.co/image/cb3026850084bba46c565bc1f7b78043f8e01526"
+        }
+      },
+      {
+        "date": "1977",
+        "performer": "Spirit",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "3D1o8AX6mmiW7AB3qQR6du",
+          "name": "All Along the Watchtower (Live) [Encore]",
+          "artists": [
+            "Spirit"
+          ],
+          "duration": 514263,
+          "popularity": 6,
+          "preview": "https://p.scdn.co/mp3-preview/c663607c3ef1c4fd2d3ccbf0176eedfab7027a46",
+          "albumArtwork": "https://i.scdn.co/image/77ca6db0f3a1ba52d3d26fc74fa00a28354dbec2"
+        }
+      },
+      {
+        "date": "January 20, 1978",
+        "performer": "XTC",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "0YdvOi1wtAInrJe2cWiPMv",
+          "name": "All Along The Watchtower - 2001 - Remaster",
+          "artists": [
+            "XTC"
+          ],
+          "duration": 343026,
+          "popularity": 21,
+          "preview": "https://p.scdn.co/mp3-preview/40bd4c4cd6b93af006589728df4b73b73d03caac",
+          "albumArtwork": "https://i.scdn.co/image/d1ab07a15c14a14287bc8420cf5c841da54063b1"
+        }
+      },
+      {
+        "date": "1979",
+        "performer": "Frank Marino & Mahogany Rush",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "1979",
+        "performer": "Buffalo",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "2pA7OMnofTHDHYRHSctIsS",
+          "name": "Mr. Tambourine Man (version with orchestra): No. 5. All Along The Watchtower",
+          "artists": [
+            "John Corigliano",
+            "Hila Plitmann",
+            "Buffalo Philharmonic Orchestra",
+            "Joann Falletta"
+          ],
+          "duration": 200866,
+          "popularity": 3,
+          "preview": "https://p.scdn.co/mp3-preview/c1d87693be8e5cbe9b8a09099744d009b70e421d",
+          "albumArtwork": "https://i.scdn.co/image/a56db522d8b3b26d3bb7d06449c592168ca486c4"
+        }
+      },
+      {
+        "date": "1985",
+        "performer": "Michael Hedges",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "6wNeiylbvGTJqqV7blh67f",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Michael Hedges"
+          ],
+          "duration": 179333,
+          "popularity": 24,
+          "preview": "https://p.scdn.co/mp3-preview/b9c49e87bf7b3b5e222b3119ecbb1035ecab6538",
+          "albumArtwork": "https://i.scdn.co/image/e79c9c9dac4a093444015015ed3eab8b7c0aa062"
+        }
+      },
+      {
+        "date": "1986",
+        "performer": "Giant Sand",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "0mHgsaVhgRZFx1aE8TFX06",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Giant Sand"
+          ],
+          "duration": 262188,
+          "popularity": 9,
+          "preview": "https://p.scdn.co/mp3-preview/47232b9c0e2a9e900611456ef422b6a7525bb369",
+          "albumArtwork": "https://i.scdn.co/image/1626d644bd185a13c31e419c30a92a36884be72f"
+        }
+      },
+      {
+        "date": "1986",
+        "performer": "Randy California & Spirit",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "1987",
+        "performer": "Richie Havens",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "2q76RLABRi82ccgztiED7Y",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Richie Havens"
+          ],
+          "duration": 226160,
+          "popularity": 25,
+          "preview": "https://p.scdn.co/mp3-preview/d1bffc311e6eadebd9a864cbe0f7256e0420c9c9",
+          "albumArtwork": "https://i.scdn.co/image/7c50cf19fcfe381f8da5793b24dd22f9568ad21f"
+        }
+      },
+      {
+        "date": "January 18, 1988",
+        "performer": "Bob Dylan and the Grateful Dead",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "1z56u8TDvHTB6rA9aQSQvM",
+          "name": "All Along the Watchtower - Live",
+          "artists": [
+            "Bob Dylan",
+            "Grateful Dead"
+          ],
+          "duration": 386306,
+          "popularity": 34,
+          "preview": "https://p.scdn.co/mp3-preview/d625d101cac92dc5461038c7361d804b3d82c6a8",
+          "albumArtwork": "https://i.scdn.co/image/51cba9b889fd3c01d5858ead4daf2eb0d9d333fa"
+        }
+      },
+      {
+        "date": "October 1988",
+        "performer": "U2",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "4PP2NeJHWXHpYq9zkXgrYE",
+          "name": "All Along The Watchtower - Live - Rattle & Hum Version",
+          "artists": [
+            "U2"
+          ],
+          "duration": 264133,
+          "popularity": 42,
+          "preview": "https://p.scdn.co/mp3-preview/2faee534a4b64e9f70b3f55d9b62354902a022e0",
+          "albumArtwork": "https://i.scdn.co/image/8f81ee8a152754e0ec6e11d1c61dcdc16caea4ae"
+        }
+      },
+      {
+        "date": "June 4, 1991",
+        "performer": "Indigo Girls",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "0V2R2LC8dR7S0REieXRaGt",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Indigo Girls"
+          ],
+          "duration": 383773,
+          "popularity": 18,
+          "preview": "https://p.scdn.co/mp3-preview/991854fd63ca951e197fa92eadb7bacb2977e3d7",
+          "albumArtwork": "https://i.scdn.co/image/54f21ead5e53bf6f178c3465204dd126a9c88038"
+        }
+      },
+      {
+        "date": "1992",
+        "performer": "TSOL",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "6SVuFtsvyGuOTLbKsvqvE6",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "T.S.O.L."
+          ],
+          "duration": 180506,
+          "popularity": 13,
+          "preview": "https://p.scdn.co/mp3-preview/4521fa3f5430a9719842c8c8cfb7e56282b048b1",
+          "albumArtwork": "https://i.scdn.co/image/3d6c24ceaa3221e60aaf295642a4c68314e0eb51"
+        }
+      },
+      {
+        "date": "1993",
+        "performer": "Spin 1ne 2wo",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "0tUQyxUE5bPV6YFMPifEAb",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Spin 1ne 2wo"
+          ],
+          "duration": 191000,
+          "popularity": 10,
+          "preview": "https://p.scdn.co/mp3-preview/d0ca39c7bdc262f99f6cb19239e62691f003f68f",
+          "albumArtwork": "https://i.scdn.co/image/f731f2c658e3082a30905a2487c7a601775d9398"
+        }
+      },
+      {
+        "date": "1993",
+        "performer": "Neil Young",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "1HipTbE3pVedq6OGGjxhWj",
+          "name": "All Along the Watchtower - Remastered",
+          "artists": [
+            "Neil Young"
+          ],
+          "duration": 374760,
+          "popularity": 33,
+          "preview": "https://p.scdn.co/mp3-preview/427993b191b9311aced83dc1c191f4d96a585286",
+          "albumArtwork": "https://i.scdn.co/image/5211638dd177a7a1266b32c896dc8b42c2b1df42"
+        }
+      },
+      {
+        "date": "1994",
+        "performer": "Buddy Miles Express",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "7Befk2b6lcL0M0LtFtI7Pj",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Buddy Miles Express"
+          ],
+          "duration": 307710,
+          "popularity": 9,
+          "preview": "https://p.scdn.co/mp3-preview/c5e60614c4d37438994a946cca00f71e5116d72b",
+          "albumArtwork": "https://i.scdn.co/image/ec5e896b26971906b6522aacf93f703aa9ecbd56"
+        }
+      },
+      {
+        "date": "1994",
+        "performer": "Ellis Paul",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "1995",
+        "performer": "Big Fat Snake",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "July 11, 1996",
+        "performer": "Hiram Bullock",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "October 1996",
+        "performer": "Grateful Dead",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "1z56u8TDvHTB6rA9aQSQvM",
+          "name": "All Along the Watchtower - Live",
+          "artists": [
+            "Bob Dylan",
+            "Grateful Dead"
+          ],
+          "duration": 386306,
+          "popularity": 34,
+          "preview": "https://p.scdn.co/mp3-preview/d625d101cac92dc5461038c7361d804b3d82c6a8",
+          "albumArtwork": "https://i.scdn.co/image/51cba9b889fd3c01d5858ead4daf2eb0d9d333fa"
+        }
+      },
+      {
+        "date": "1996",
+        "performer": "The Hamsters",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "October 28, 1997",
+        "performer": "Dave Matthews Band",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "76xbigvdKraJlrw0IupYWC",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Dave Matthews Band"
+          ],
+          "duration": 471400,
+          "popularity": 40,
+          "preview": "https://p.scdn.co/mp3-preview/31bea94782534dabbe9879c8ec2d467995f9995b",
+          "albumArtwork": "https://i.scdn.co/image/d5a9408efcdd114b0fa1191d28efd3645bdfb0d8"
+        }
+      },
+      {
+        "date": "1998",
+        "performer": "June Tabor",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "1999",
+        "performer": "Aynsley Lister",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "1999",
+        "performer": "Tolo Marton",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "2iV2vk5iWB835v3DkxiSm9",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Tolo Marton"
+          ],
+          "duration": 219933,
+          "popularity": 3,
+          "preview": "https://p.scdn.co/mp3-preview/9f6def7399b9f5fa42e21fb74d878a9fba9531ac",
+          "albumArtwork": "https://i.scdn.co/image/d41f6e3d70883ecc388235f465ed543dc590b151"
+        }
+      },
+      {
+        "date": "1999",
+        "performer": "Larry McCray",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "76foQC9lBIEu0KDbCAE8zf",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Larry McCray"
+          ],
+          "duration": 268306,
+          "popularity": 16,
+          "preview": "https://p.scdn.co/mp3-preview/bcdbb2dd51ac1259e66f506046f4d4b5c2064053",
+          "albumArtwork": "https://i.scdn.co/image/6daad0c4304bd07999a6e5ee87e346ad1589e109"
+        }
+      },
+      {
+        "date": "November 21, 2000",
+        "performer": "Neil Young & Chrissie Hynde",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "December 2000",
+        "performer": "The Dames",
+        "title": "All Along the Watch Tower",
+        "spotify": null
+      },
+      {
+        "date": "2000",
+        "performer": "Funkstar De Luxe",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "May 8, 2001",
+        "performer": "Tom Landa & The Paperboys",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "November 27, 2001",
+        "performer": "The Watchtower Four",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "2dsTaa0xt3zlTTBqveoskM",
+          "name": "All Along The Watchtower [Live, July 4, 1989]",
+          "artists": [
+            "Grateful Dead"
+          ],
+          "duration": 344360,
+          "popularity": 26,
+          "preview": "https://p.scdn.co/mp3-preview/fa11a29820d089f31c0c743812233895674a5a72",
+          "albumArtwork": "https://i.scdn.co/image/e746db6b7d8d2762bb010bc6b0ac957bdc5b6f59"
+        }
+      },
+      {
+        "date": "2001",
+        "performer": "Roy Mette",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "0sTnAYChEJJRdN4UkWh8lh",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Roy Metté"
+          ],
+          "duration": 237480,
+          "popularity": 1,
+          "preview": "https://p.scdn.co/mp3-preview/041555b0e10ad6bdd9cd19d5b8e3ab96f129141f",
+          "albumArtwork": "https://i.scdn.co/image/3ea2a0992181cde465151f6490414f225c576e16"
+        }
+      },
+      {
+        "date": "2001",
+        "performer": "Taj Mahal & The Hula Blues",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "5rlmXDWHCMTzc1KAZisaEI",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Taj Mahal & The Hula Blues Band"
+          ],
+          "duration": 210453,
+          "popularity": 10,
+          "preview": "https://p.scdn.co/mp3-preview/327f49f069f3e5c98aa795ebb278999b6f9e0431",
+          "albumArtwork": "https://i.scdn.co/image/15536480eb738fe5df9ca479cf3208a55d625ca2"
+        }
+      },
+      {
+        "date": "August 27, 2002",
+        "performer": "Yul Anderson",
+        "title": "Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "April 8, 2003",
+        "performer": "The String Quartet",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "September 13, 2004",
+        "performer": "Paul Weller",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "2enBuYotQZTkiElgHdjIh4",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Paul Weller"
+          ],
+          "duration": 354106,
+          "popularity": 25,
+          "preview": "https://p.scdn.co/mp3-preview/99befe7a2ef8356410827596d92012bd00d90613",
+          "albumArtwork": "https://i.scdn.co/image/2f76c2013af13b8aa52a673f739de09d0da4a98f"
+        }
+      },
+      {
+        "date": "2004",
+        "performer": "The Jazz Crusaders featuring Wayne Henderson",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "2004",
+        "performer": "George Lynch",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "January 25, 2005",
+        "performer": "Merrell Fankhauser",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "May 2, 2005",
+        "performer": "Mike Rutherford & Paul Carrack",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "June 28, 2005",
+        "performer": "Antoine Rocks",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "6QNoUtm2UCyx05hWg6hUMC",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Antoine Rocks"
+          ],
+          "duration": 237626,
+          "popularity": 0,
+          "preview": "https://p.scdn.co/mp3-preview/2f34a3197d17826726fa7f4aaeced90ac70b3dab",
+          "albumArtwork": "https://i.scdn.co/image/ce7d9522d48d586345a767ef0cf5f23eec1f5b12"
+        }
+      },
+      {
+        "date": "May 9, 2006",
+        "performer": "P.O.S.",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "1yfgMwpQ30ZaJTQwxYvg2B",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "P.O.S"
+          ],
+          "duration": 187960,
+          "popularity": 27,
+          "preview": "https://p.scdn.co/mp3-preview/c0bafa0dd098ce4c55f789d4465a29e4e4566490",
+          "albumArtwork": "https://i.scdn.co/image/702ee98865370f116707c04b3295659d45ae5756"
+        }
+      },
+      {
+        "date": "2006",
+        "performer": "Kimo Watanabe",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "March 5, 2007",
+        "performer": "Bryan Ferry",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "0dVeDRYHkHvHnYPzveA7IK",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Bryan Ferry"
+          ],
+          "duration": 226093,
+          "popularity": 38,
+          "preview": "https://p.scdn.co/mp3-preview/696986b288a542fb2b7ef00206b542df735029a2",
+          "albumArtwork": "https://i.scdn.co/image/9c0dca92c93b48b0e75d905f54731557ad21532f"
+        }
+      },
+      {
+        "date": "May 8, 2007",
+        "performer": "Kevin Purcell & The Nightburners",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "October 1, 2007",
+        "performer": "The Fratellis",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "5jFHY91fjkgcwH9Wigx0IH",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "The Fratellis"
+          ],
+          "duration": 236613,
+          "popularity": 0,
+          "preview": "https://p.scdn.co/mp3-preview/47e21aa0f89cfef551b02ac9b3ae9c07efd2cc73",
+          "albumArtwork": "https://i.scdn.co/image/a75c49e9e822089e179db0052dd54087441ac3d0"
+        }
+      },
+      {
+        "date": "October 26, 2007",
+        "performer": "Slowfeet",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "October 30, 2007",
+        "performer": "Eddie Vedder and The Million Dollar Bashers",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "5ErkTzTNppov36yPDng8zW",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Eddie Vedder & The Million Dollar Bashers",
+            "The Million Dollar Bashers"
+          ],
+          "duration": 268680,
+          "popularity": 39,
+          "preview": "https://p.scdn.co/mp3-preview/b13503bb7908c665ac935cd9bc460ed97d21909f",
+          "albumArtwork": "https://i.scdn.co/image/809baf42a24fa7aa3f9b4ae0b52bc84fd6827fc4"
+        }
+      },
+      {
+        "date": "2007",
+        "performer": "Bear McCreary Featuring BT4",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "2007",
+        "performer": "Redwing",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "7ywRzgEeXRl2n9peaY3T0M",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Redwing"
+          ],
+          "duration": 239733,
+          "popularity": 0,
+          "preview": "https://p.scdn.co/mp3-preview/0e0d49de744504b7c4f6a9866099e7bca3abb64b",
+          "albumArtwork": "https://i.scdn.co/image/34b60b978c99d2b5f5c813a6eb03cc99721352a7"
+        }
+      },
+      {
+        "date": "July 11, 2008",
+        "performer": "Windy City Revups",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "2008",
+        "performer": "Chris de Burgh",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "2bXDiHJDcyPTkcYsoqacu1",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Chris De Burgh"
+          ],
+          "duration": 197640,
+          "popularity": 6,
+          "preview": "https://p.scdn.co/mp3-preview/167b87183ff9bdb74496b2485cb774f7c9dfabcc",
+          "albumArtwork": "https://i.scdn.co/image/48c32774efd5c7bb0c962a596d8431e92525ed9a"
+        }
+      },
+      {
+        "date": "March 17, 2010",
+        "performer": "Les Fradkin",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "4VUWaLcHxw3GqWKzmM8d9Y",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Les Fradkin"
+          ],
+          "duration": 239480,
+          "popularity": 0,
+          "preview": "https://p.scdn.co/mp3-preview/623b58c98efcfc82d86921742f6467ce9412e104",
+          "albumArtwork": "https://i.scdn.co/image/a150f3b8b63756d036a3b230819003baa16a8fb4"
+        }
+      },
+      {
+        "date": "April 27, 2010",
+        "performer": "Envy on the Coast",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "5OdASXpa3UvbwDXFshJETQ",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Envy On The Coast"
+          ],
+          "duration": 231800,
+          "popularity": 35,
+          "preview": "https://p.scdn.co/mp3-preview/dbaccd058e665d60c626acdac477ba84d1da0acc",
+          "albumArtwork": "https://i.scdn.co/image/363550a108da3254e37fb4f6b81642850b855adb"
+        }
+      },
+      {
+        "date": "August 2, 2010",
+        "performer": "Bjørn Fjæstad, Claus Hempler, Ole Thestrup, Ulla Henningsen",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "6goMcaRTKEWi1XIQ2hYA9X",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Bjørn Fjæstad",
+            "Claus Hempler",
+            "Ole Thestrup",
+            "Ulla Henningsen"
+          ],
+          "duration": 184600,
+          "popularity": 10,
+          "preview": "https://p.scdn.co/mp3-preview/f6bbdbf6c9b9ce420cb24974617a51f0b4aa6a76",
+          "albumArtwork": "https://i.scdn.co/image/40b7bc681f87b3d2368dc27dae7d67da187855e0"
+        }
+      },
+      {
+        "date": "August 24, 2010",
+        "performer": "Turtle Island String Quartet",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "November 9, 2010",
+        "performer": "The Persuasions",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "6Ri3c8ZdzcAVgkYvkvZhXG",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "The Persuasions"
+          ],
+          "duration": 178560,
+          "popularity": 7,
+          "preview": "https://p.scdn.co/mp3-preview/c3afd8d744c5d00be88b82c1695fec3ac44512f3",
+          "albumArtwork": "https://i.scdn.co/image/08bbb6f7c54e76f34e2ba65d8910fa713dfe2816"
+        }
+      },
+      {
+        "date": "December 18, 2010",
+        "performer": "Candlemass",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "2010",
+        "performer": "Josh Charles",
+        "title": "All Along the Watchtower",
+        "spotify": null
+      },
+      {
+        "date": "2010",
+        "performer": "Blug",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "3Eh5OiAh6FJIDZth7tZHij",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Thomas Blug"
+          ],
+          "duration": 477306,
+          "popularity": 10,
+          "preview": "https://p.scdn.co/mp3-preview/a2df8729ce8491ffc1159d610861588fa5fa0917",
+          "albumArtwork": "https://i.scdn.co/image/abac9fd6e09fcdbe1faa5d8a6672be4b29704fea"
+        }
+      },
+      {
+        "date": "May 23, 2011",
+        "performer": "Thea Gilmore",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "7BV9sxEgwJAD38a8lp0gYb",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "Thea Gilmore"
+          ],
+          "duration": 189172,
+          "popularity": 19,
+          "preview": "https://p.scdn.co/mp3-preview/055f8b36abc880ace0ac16d75190d1a35a1ec7cd",
+          "albumArtwork": "https://i.scdn.co/image/3c7971efc561833b0be212613392e5fb4c9d2d99"
+        }
+      },
+      {
+        "date": "May 24, 2011",
+        "performer": "The Jeff Healey Band",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "1JuioOiu0OZCuTgSCx0PgU",
+          "name": "All Along the Watchtower",
+          "artists": [
+            "The Jeff Healey Band"
+          ],
+          "duration": 674826,
+          "popularity": 21,
+          "preview": "https://p.scdn.co/mp3-preview/f376f850d4863bbd6e0e074f73dd0b01a8cf88c9",
+          "albumArtwork": "https://i.scdn.co/image/cb6fc7a97c1015e9cfb403cb8092d243c075081a"
+        }
+      },
+      {
+        "date": "2011",
+        "performer": "Richard Cowdrey",
+        "title": "All Along the Watchtower",
+        "spotify": {
+          "id": "7jHgcBbJ2apigcymFjKpwV",
+          "name": "All Along The Watchtower",
+          "artists": [
+            "Richard Cowdrey"
+          ],
+          "duration": 297333,
+          "popularity": 0,
+          "preview": "https://p.scdn.co/mp3-preview/f75455d25f6651da2587f2736ce9053e3e8cfd40",
+          "albumArtwork": "https://i.scdn.co/image/ebbb3f74670bb40ca67035065cc2a761837e5c64"
+        }
+      }
+    ],
+    "entityType": "song",
+    "title": "All Along the Watchtower",
+    "uri": "http://www.secondhandsongs.com/work/401",
+    "Written by": "Bob Dylan"
+  }
+]

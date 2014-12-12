@@ -6,13 +6,18 @@ var rw = require('rw');
 var md5 = require('crypto');
 var mkdirp = require('mkdirp');
 var fs = require('fs');
+var sleep = require('sleep');
 
 
-var INPUT_WORKS = 'data/json/test.json';
-var OUTPUT_FILE = 'data/out/works-spotify.json';
+var LIMIT_WORKS = 1;
+var LIMIT_VERSIONS = undefined;
+var REQUEST_DELAY = 100;
+var INPUT_WORKS = 'data/out/songinfo.json';
+var OUTPUT_FILE = 'data/out/songinfo-spotify.json';
 var CACHE_PATH = 'data/cached';
 
 mkdirp.sync(CACHE_PATH);
+
 
 function md5sum(str) {
   return md5.createHash('md5').update(str).digest('hex');
@@ -29,14 +34,45 @@ function request(url) {
       resolve(rw.readFileSync(fname, 'utf8'));
     } else {
       console.log(' - cache miss for', hash);
-      RequestPromise(url).then(function(d) {
-        rw.writeFileSync(fname, d, 'utf8');
-        resolve(d);
-      }, reject);
+      sleep.usleep(REQUEST_DELAY * 1000);
+      RequestPromise(url)
+        .then(function(d) {
+          rw.writeFileSync(fname, d, 'utf8');
+          resolve(d);
+        })
+        .catch(function(err) {
+          console.log('Received '+err.statusCode+ ' for request "' + url + '".');
+          reject(err);
+        });
     }
   });
 }
 
+
+/**
+* Has genres in the result.
+*/
+function getArtist(name) {
+  return new Promise(function (resolve, reject) {
+    request('https://api.spotify.com/v1/search?q='+name+'&type=artist')
+      .then(
+        function (body) {
+          var data = JSON.parse(body);
+          var artist = _.first(data.artists.items);
+          if (!artist) {
+            return reject('No artist found by name "' + name + '"');
+          }
+
+          resolve({
+            genres: artist.genres,
+            name: artist.name,
+            image: _.max(artist.images, function(d) { return d.width; }).url
+          });
+        },
+        function(err) { return reject(err); }
+      );
+  });
+}
 
 
 
@@ -46,7 +82,8 @@ function request(url) {
 function getTrack(title, artist) {
   console.log(' - requesting track "'+ title +'" by "' + artist + '"');
   return new Promise(function (resolve, reject) {
-    request('https://api.spotify.com/v1/search?q=' + title + ' artist:' + artist + '&type=track')
+    request('https://api.spotify.com/v1/search?q=' + encodeURIComponent(title) +
+                 ' artist:' + encodeURIComponent(artist) + '&type=track')
       .then(
         function (body) {
           var data = JSON.parse(body);
@@ -77,31 +114,42 @@ function getTrack(title, artist) {
 
 
 var works = JSON.parse(rw.readFileSync(INPUT_WORKS, 'utf8'));
+if (LIMIT_WORKS) {
+  works = _.take(works, LIMIT_WORKS);
+}
 
 
 
 var worksRequests = works.map(function(work) {
 
   console.log('Processing work "' + work.title + '". Found ' + work.versions.length + ' versions');
-  return new Promise(function (resolve, reject) {
+  return new Promise(function (resolveWork, rejectWork) {
 
-    var versions = _.take(work.versions, 5);
+    var versions = work.versions;
+    if (LIMIT_VERSIONS) {
+      versions = _.take(versions, LIMIT_VERSIONS);
+    }
 
     var versionsRequests = versions.map(function(version) {
-      return getTrack(version.title, version.performer)
-        .then(function(d) {
-          version.spotify = d.notFound ? null : d;
-          return version;
-        });
+      return new Promise(function(resolveVersion, reject) {
+        getTrack(version.title, version.performer)
+          .then(function(d) {
+            version.spotify = d.notFound ? null : d;
+            resolveVersion(version);
+          })
+          .catch(function(err) {
+            reject(err);
+          });
+      });
     });
 
     Promise.all(versionsRequests)
       .then(function(versions) {
-        resolve(versions);
+        resolveWork(work);
       })
       .catch(function(err) {
-        console.log('Error', err);
-        reject(err);
+        console.log('Error', ""+err);
+        rejectWork(err);
       });
 
 
@@ -119,41 +167,3 @@ Promise
     rw.writeFileSync(OUTPUT_FILE, JSON.stringify(data, undefined, 2), 'utf8')
   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * Has genres in the result.
- */
-//function getArtist(name) {
-//  return new Promise(function (resolve, reject) {
-//    request('https://api.spotify.com/v1/search?q='+name+'&type=artist')
-//      .then(
-//        function (body) {
-//          var data = JSON.parse(body);
-//          var artist = _.first(data.artists.items);
-//          if (!artist) {
-//            return reject('No artist found by name "' + name + '"');
-//          }
-//
-//          resolve({
-//            genres: artist.genres,
-//            name: artist.name,
-//            image: _.max(artist.images, function(d) { return d.width; }).url
-//          });
-//        },
-//        function(err) { return reject(err); }
-//      );
-//  });
-//}
