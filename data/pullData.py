@@ -30,14 +30,26 @@ def writeFileContents(fileName, contents):
   with open(fileName, 'w') as file:
     file.write(str(contents))
 
-def requestSearch(songName, authorCredits=""):
-  fileName = SHS_SEARCH_CACHE_DIR + hashString(songName + "+++" + "+++".join(authorCredits))
+def requestWorkSearch(songName, authorCredits=""):
+  fileName = SHS_SEARCH_CACHE_DIR + hashString("work+++" + songName + "+++" + authorCredits)
 
   if os.path.isfile(fileName):
     contents = fetchFileContents(fileName)
     return json.loads(contents) if contents is not None else None
   else:
     response = shsJsonApi.searchWork(songName, authorCredits)
+    writeValue = json.dumps(response) if response is not None else stringNone
+    writeFileContents(fileName, writeValue)
+    return response
+
+def requestPerformanceSearch(songName, performer=""):
+  fileName = SHS_SEARCH_CACHE_DIR + hashString("performance+++" + songName + "+++" + performer)
+
+  if os.path.isfile(fileName):
+    contents = fetchFileContents(fileName)
+    return json.loads(contents) if contents is not None else None
+  else:
+    response = shsJsonApi.searchPerformance(songName, performer)
     writeValue = json.dumps(response) if response is not None else stringNone
     writeFileContents(fileName, writeValue)
     return response
@@ -55,22 +67,22 @@ def requestVersions(url):
     return response
 
 # run a search for a work on secondhandsongs, and pull the versions down too
-def searchSongVersions(songName, authorCredits=""):
-  worksResponse = requestSearch(songName, authorCredits)
+def searchSongVersions(songName, artistCredits=""):
+  worksResponse = requestPerformanceSearch(songName, artistCredits)
 
   ### BREAK: Working on how to handle error reporting from cache vs from API server
 
   if worksResponse is None:
     print ("Search failed")
-    writeLine(FILE_DEBUG_SEARCH, "Failed search:", songName, authorCredits, "")
+    writeLine(FILE_DEBUG_SEARCH, "Failed search:", songName, artistCredits, "")
     return None
   elif len(worksResponse["resultPage"]) < 1:
     print("Search returned no results")
-    writeLine(FILE_DEBUG_SEARCH, "No Results:", songName, authorCredits, "")
+    writeLine(FILE_DEBUG_SEARCH, "No Results:", songName, artistCredits, "")
     return None
   elif len(worksResponse["resultPage"]) > 1:
     print("Search returned more than one result")
-    writeLine(FILE_DEBUG_SEARCH, "Too many results:", songName, authorCredits)
+    writeLine(FILE_DEBUG_SEARCH, "Too many results:", songName, artistCredits)
     writeLine(FILE_DEBUG_SEARCH, json.dumps(worksResponse, indent=1), "")
 
   workInfo = worksResponse["resultPage"][0]
@@ -84,7 +96,7 @@ def searchSongVersions(songName, authorCredits=""):
 
   songData = workInfo.copy()
   songData.update(shsHtmlApi.parseMetaData(soupObj))
-  songData.update(shsHtmlApi.parseWorkData(soupObj))
+  songData.update(shsHtmlApi.parsePerformanceData(soupObj))
   songData["versions"] = shsHtmlApi.parseWorkVersions(soupObj)
 
   return songData
