@@ -1,16 +1,29 @@
 <html>
 <head>
   <script src="../node_modules/d3/d3.js" charset="utf-8"></script>
+  <script src="../node_modules/underscore/underscore.js" charset="utf-8"></script>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
   <style>
-    .song-line {
+    body {
+      font-family: roboto;
+    }
+    .work-title {
+      font-size: 20pt;
+    }
+    .work-line {
       fill: none;
       stroke-width: 7px;
       stroke-opacity: 0.95;
       stroke-linecap: round;
     }
-    .song-line-path-circle {
+    .version-circle {
       fill: white;
       stroke-width: 2px;
+    }
+    .version-text {
+      font-size: 6pt;
+      text-anchor: middle;
+      text-shadow: #fff 0px 0px 1px;
     }
   </style>
 </head>
@@ -21,7 +34,7 @@
 <script type="text/javascript">
 
   var margin = {top: 20, right: 10, bottom: 20, left: 10};
-  var width = 1500 - margin.left - margin.right,
+  var width = 1100 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
   var vis = d3.select('body').append('svg')
@@ -33,14 +46,18 @@
 
 
   var colorScale = d3.scale.category20b();
-//  var colorScale = function(d) { return 'steelblue'; };
 
 
-  d3.json('../data/out/songinfo-spotify.json', function(err, worksData) {
+  d3.json('../data/out/songinfo-spotify.json', function(err, data) {
 
-    worksData = worksData.splice(0,100);
+    var worksData =
+//        data;
+//        [_.find(data, function(d) { return d.title.indexOf('Watchtower')>=0; })];
+//        [_.find(data, function(d) { return d.title.indexOf('Tambourine')>=0; })];
+//        [_.find(data, function(d) { return d.title.indexOf('Hallelujah')>=0; })];
+        [_.find(data, function(d) { return d.title.indexOf('Man Who Sold')>=0; })];
 
-    console.log(worksData);
+
 
     worksData.forEach(function(work) {
       var versions = work.versions.filter(function(d) { return d.spotify; });
@@ -52,6 +69,8 @@
       });
       versions.sort(function(a,b) { return d3.ascending(a.date, b.date); });
     });
+
+
 
 
     var x = d3.time.scale()
@@ -67,27 +86,44 @@
         .y(function(d) { return y(d.spotify.popularity); })
         .interpolate('monotone');
 
-    var songs = vis.selectAll('.song-line')
+    var works = vis.selectAll('.work-line')
         .data(worksData);
 
-    var songsEnter = songs.enter()
-      .append('g')
-        .attr('class', 'song-line');
 
-    songsEnter.append('path')
-      .attr('class', 'song-line-path')
+    var worksEnter = works.enter()
+      .append('g')
+        .attr('class', 'work-line');
+
+    worksEnter.append('text')
+        .attr('class', 'work-title')
+        .attr('x', 5)
+        .attr('y', 15)
+        .attr('fill', function(d) { return colorScale(d.title); })
+        .text(function(d) { return d.title; });
+
+    worksEnter.append('path')
+      .attr('class', 'work-line-path')
       .attr('stroke', function(d) { return colorScale(d.title); })
       .attr('d', function(d) { return line(d.versions); });
 
-    songsEnter.selectAll('song-line-path-circle')
+
+    var versionEnter = worksEnter.selectAll('version')
         .data(function(d) { return d.versions; })
       .enter()
-        .append('circle')
-          .attr('class', 'song-line-path-circle')
-          .attr('stroke', function(d) { return colorScale(d3.select(this.parentNode).datum().title); })
-          .attr('cx', line.x())
-          .attr('cy', line.y())
-          .attr('r', 3.5);
+        .append('g')
+          .attr('class', 'version')
+          .attr('transform', function(d, i) { return 'translate('+[line.x()(d), line.y()(d)]+')'; });
+
+    versionEnter.append('circle')
+        .attr('class', 'version-circle')
+        .attr('stroke', function(d) { return colorScale(d3.select(this.parentNode).datum().title); })
+        .attr('r', 3.5);
+
+    versionEnter.append('text')
+        .attr('class', 'version-text')
+        .attr('y', -7)
+        .attr('fill', function(d) { return colorScale(d3.select(this.parentNode).datum().title); })
+        .text(function(d) { return d.performer; })
 
 
 
@@ -98,6 +134,14 @@
 
 
   });
+
+
+  function toString(work) {
+    return 'performer,popularity,date\n' + work.versions.map(function(d) {
+      return d.performer+','+d.spotify.popularity+','+ d.date.getFullYear();
+    }).join('\n');
+  }
+
 </script>
 </body>
 </html>
