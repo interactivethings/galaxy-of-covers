@@ -43,6 +43,9 @@ data-whosampled:
 data-spotify:
 	node data/js/spotify.js
 
+data-echonest:
+	node data/js/echonest.js
+
 data-shs-versions: data-song-list
 	$(PYTHON) data/py/pullData.py
 
