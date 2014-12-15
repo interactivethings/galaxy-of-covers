@@ -136,6 +136,9 @@ def searchSongVersions(songName, artistCredits=""):
 sourceList = csv.DictReader(FILE_SONG_SOURCE)
 songInfoList = []
 
+clearOpenFile(FILE_DEBUG_SEARCH)
+clearOpenFile(FILE_SONG_OUTPUT)
+
 for sourceItem in sourceList:
   title = sourceItem["TITLE (original)"]
   credits = sourceItem["ORIGINAL"]

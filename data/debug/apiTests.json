@@ -1,0 +1,471 @@
+[
+ {
+  "uri": "http://www.secondhandsongs.com/artist/123",
+  "deathDate": "1964-12-11",
+  "picture": "http://www.secondhandsongs.com/picture/54885",
+  "comments": "R&B, pop, and early soul singer.  Cooke was also a songwriter.  His death by gunshot in 1964 was ruled a justifiable homicide, but this conclusion has been questioned by many.",
+  "creditedWorks": "http://www.secondhandsongs.com/artist/123/work",
+  "releases": "http://www.secondhandsongs.com/artist/123/release",
+  "homeCountry": "United States",
+  "entityType": "artist",
+  "relations": [
+   {
+    "artist": {
+     "uri": "http://www.secondhandsongs.com/artist/30816",
+     "commonName": "The Soul Stirrers",
+     "entityType": "artist"
+    },
+    "comments": null,
+    "relationName": "is member of"
+   },
+   {
+    "artist": {
+     "uri": "http://www.secondhandsongs.com/artist/778",
+     "commonName": "R.B. Greaves",
+     "entityType": "artist"
+    },
+    "comments": "Nephew",
+    "relationName": "is family of"
+   },
+   {
+    "artist": {
+     "uri": "http://www.secondhandsongs.com/artist/12880",
+     "commonName": "Linda Womack",
+     "entityType": "artist"
+    },
+    "comments": "Daughter",
+    "relationName": "is family of"
+   }
+  ],
+  "birthDate": "1931-01-22",
+  "commonName": "Sam Cooke",
+  "performances": "http://www.secondhandsongs.com/artist/123/performance"
+ },
+ {
+  "uri": "http://www.secondhandsongs.com/performance/123",
+  "originals": [
+   {
+    "uri": "http://www.secondhandsongs.com/work/122",
+    "isRootWork": true,
+    "title": "I'm Waiting for the Man",
+    "entityType": "song",
+    "original": {
+     "uri": "http://www.secondhandsongs.com/performance/122",
+     "performer": {
+      "uri": "http://www.secondhandsongs.com/artist/90+7984",
+      "name": "The Velvet Underground & Nico"
+     },
+     "isOriginal": true,
+     "title": "I'm Waiting for the Man",
+     "entityType": "recording"
+    }
+   }
+  ],
+  "works": [
+   {
+    "uri": "http://www.secondhandsongs.com/work/122",
+    "title": "I'm Waiting for the Man",
+    "entityType": "song"
+   }
+  ],
+  "title": "I'm Waiting for the Man",
+  "performer": {
+   "uri": "http://www.secondhandsongs.com/artist/91",
+   "artist": {
+    "uri": "http://www.secondhandsongs.com/artist/91",
+    "commonName": "Fiction",
+    "entityType": "artist"
+   },
+   "name": "Fiction"
+  },
+  "sampledBy": [],
+  "releases": [
+   {
+    "uri": "http://www.secondhandsongs.com/release/85",
+    "title": "Neverending Party - A Tribute to the Velvet Underground",
+    "entityType": "release"
+   }
+  ],
+  "isOriginal": false,
+  "usesSamplesFrom": [],
+  "entityType": "recording",
+  "external_uri": []
+ },
+ {
+  "uri": "http://www.secondhandsongs.com/work/122",
+  "basedOn": [],
+  "credits": [
+   {
+    "uri": "http://www.secondhandsongs.com/artist/88",
+    "commonName": "Lou Reed",
+    "entityType": "artist"
+   }
+  ],
+  "original": {
+   "uri": "http://www.secondhandsongs.com/performance/122",
+   "performer": {
+    "uri": "http://www.secondhandsongs.com/artist/90+7984",
+    "name": "The Velvet Underground & Nico"
+   },
+   "isOriginal": true,
+   "title": "I'm Waiting for the Man",
+   "entityType": "recording"
+  },
+  "title": "I'm Waiting for the Man",
+  "language": "English",
+  "originalCredits": [],
+  "derivedWorks": [],
+  "versions": [
+   {
+    "uri": "http://www.secondhandsongs.com/performance/346956",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/83920",
+     "name": "Space March"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/292551",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/75110",
+     "name": "Zoobombs"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/262579",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/70021",
+     "name": "Warm Soda"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/267895",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/70872",
+     "name": "The Imperial Dogs"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/225180",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/31339",
+     "name": "Kepi Ghoulie"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/123",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/91",
+     "name": "Fiction"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/4791",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/194",
+     "name": "David Bowie"
+    },
+    "isOriginal": false,
+    "title": "Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/72388",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/30753",
+     "name": "The Swayback"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/103632",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/5001",
+     "name": "Moe Tucker"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/23703",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/7196",
+     "name": "Orchestral Manoeuvres in the Dark"
+    },
+    "isOriginal": false,
+    "title": "Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/39037",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/19362",
+     "name": "Vanessa Paradis"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/122",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/90+7984",
+     "name": "The Velvet Underground & Nico"
+    },
+    "isOriginal": true,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/29416",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/16125",
+     "name": "Eater"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/794",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/88",
+     "name": "Lou Reed"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/52941",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/5882",
+     "name": "U.K. Subs"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/11954",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/7984",
+     "name": "Nico"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/43019",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/835",
+     "name": "Bauhaus"
+    },
+    "isOriginal": false,
+    "title": "Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/78206",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/32606",
+     "name": "Slaughter & The Dogs"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/85048",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/34608",
+     "name": "Bored"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/85544",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/34706",
+     "name": "Pink Fairies"
+    },
+    "isOriginal": false,
+    "title": "Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/86182",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/23883",
+     "name": "Belle and Sebastian"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/142",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/92",
+     "name": "The Plastic People of the Universe"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/150813",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/49113",
+     "name": "Fake"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/173904",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/53768",
+     "name": "The Wasps"
+    },
+    "isOriginal": false,
+    "title": "Waiting for My Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/196716",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/26267",
+     "name": "Rodolphe Burger"
+    },
+    "isOriginal": false,
+    "title": "Waiting for the Man",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/193578",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/16308",
+     "name": "Georgia Satellites"
+    },
+    "isOriginal": false,
+    "title": "I'm Waiting for the Man",
+    "entityType": "recording"
+   }
+  ],
+  "entityType": "song"
+ },
+ {
+  "uri": "http://www.secondhandsongs.com/release/123",
+  "tributes": [],
+  "title": "Fifth Dimension",
+  "picture": "http://www.secondhandsongs.com/picture/1518",
+  "label": {
+   "uri": "http://www.secondhandsongs.com/label/656",
+   "entityType": "label",
+   "name": "Columbia"
+  },
+  "performances": [
+   {
+    "uri": "http://www.secondhandsongs.com/performance/192",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/35",
+     "name": "The Byrds"
+    },
+    "isOriginal": true,
+    "title": "Mr. Spaceman",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/1278",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/35",
+     "name": "The Byrds"
+    },
+    "isOriginal": true,
+    "title": "Eight Miles High",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/3676",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/35",
+     "name": "The Byrds"
+    },
+    "isOriginal": true,
+    "title": "5D (Fifth Dimension)",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/5877",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/35",
+     "name": "The Byrds"
+    },
+    "isOriginal": true,
+    "title": "I See You",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/12406",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/35",
+     "name": "The Byrds"
+    },
+    "isOriginal": false,
+    "title": "Hey Joe (Where You Gonna Go)",
+    "entityType": "recording"
+   },
+   {
+    "uri": "http://www.secondhandsongs.com/performance/12408",
+    "performer": {
+     "uri": "http://www.secondhandsongs.com/artist/35",
+     "name": "The Byrds"
+    },
+    "isOriginal": false,
+    "title": "Wild Mountain Thyme",
+    "entityType": "recording"
+   }
+  ],
+  "type": "Audio album - Vinyl",
+  "ean": null,
+  "entityType": "release",
+  "external_uri": [],
+  "catalogNr": "CS 9349",
+  "performer": {
+   "uri": "http://www.secondhandsongs.com/artist/35",
+   "artist": {
+    "uri": "http://www.secondhandsongs.com/artist/35",
+    "commonName": "The Byrds",
+    "entityType": "artist"
+   },
+   "name": "The Byrds"
+  },
+  "date": "1966-07-08"
+ },
+ null
+]

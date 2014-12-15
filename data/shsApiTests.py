@@ -3,6 +3,8 @@ import shsJsonApi
 
 from constants import *
 
+clearOpenFile(FILE_API_TESTS)
+
 # tests for querying object uris
 objUriTests = [
   "http://www.secondhandsongs.com/artist/123",
