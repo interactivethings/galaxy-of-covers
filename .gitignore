@@ -5,3 +5,4 @@ data/cached
 data/shs-scrape-cache
 data/shs-search-cache
 .idea
+.DS_Store

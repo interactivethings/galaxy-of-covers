@@ -34,7 +34,7 @@
 <script type="text/javascript">
 
   var margin = {top: 20, right: 10, bottom: 20, left: 10};
-  var width = 1100 - margin.left - margin.right,
+  var width = 2100 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
   var vis = d3.select('body').append('svg')
@@ -52,10 +52,11 @@
 
     var worksData =
 //        data;
+        [_.find(data, function(d) { return d.title.indexOf('Summertime')>=0; })];
 //        [_.find(data, function(d) { return d.title.indexOf('Watchtower')>=0; })];
 //        [_.find(data, function(d) { return d.title.indexOf('Tambourine')>=0; })];
 //        [_.find(data, function(d) { return d.title.indexOf('Hallelujah')>=0; })];
-        [_.find(data, function(d) { return d.title.indexOf('Man Who Sold')>=0; })];
+//        [_.find(data, function(d) { return d.title.indexOf('Man Who Sold')>=0; })];
 
 
 
@@ -75,7 +76,7 @@
 
     var x = d3.time.scale()
         .range([0, width])
-        .domain([new Date("01.01.1960"), new Date()]);
+        .domain([new Date("01.01.1934"), new Date("01.01.2016")]);
 
     var y = d3.scale.linear()
         .range([height, 0])

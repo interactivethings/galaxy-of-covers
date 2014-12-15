@@ -11,7 +11,7 @@ var sleep = require('sleep');
 
 var LIMIT_WORKS = undefined;
 var LIMIT_VERSIONS = undefined;
-var REQUEST_DELAY = 100;
+var REQUEST_DELAY = 200;
 var INPUT_WORKS = 'data/out/songinfo.json';
 var OUTPUT_FILE = 'data/out/songinfo-spotify.json';
 var CACHE_PATH = 'data/cached';
@@ -41,7 +41,13 @@ function request(url) {
           resolve(d);
         })
         .catch(function(err) {
-          console.log('Received '+err.statusCode+ ' for request "' + url + '".');
+          var status;
+          switch (err.statusCode) {
+            case 429: status = '"Too many requests"'; break;
+            default: status = err.statusCode;
+          }
+
+          console.log('Received HTTP status '+status+ ' for request "' + url + '".');
           reject(err);
         });
     }
@@ -97,7 +103,7 @@ function getTrack(title, artist) {
           resolve({
             id: track.id,
             name: track.name,
-            artists: track.artists.map(function(d) { return d.name; }),
+            artists: track.artists.map(function(d) { return { id: d.id, name: d.name }; }),
             duration: track.duration_ms,
             popularity: track.popularity,
             preview: track.preview_url,
