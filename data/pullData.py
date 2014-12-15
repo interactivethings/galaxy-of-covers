@@ -120,23 +120,3 @@ for sourceItem in sourceList:
     songInfoList.append(searchResults)
 
 json.dump(songInfoList, FILE_SONG_OUTPUT, indent=1)
-
-
-# tests for querying object uris
-# objUriTests = [
-#   "http://www.secondhandsongs.com/artist/123",
-#   "http://www.secondhandsongs.com/performance/123",
-#   "http://www.secondhandsongs.com/work/123",
-#   "http://www.secondhandsongs.com/release/123",
-#   "http://www.secondhandsongs.com/label/123"
-#   "http://www.secondhandsongs.com/badformat/123"
-# ]
-
-# dest = open(DEST_DIR + "testResult.json", "w+")
-
-# results = []
-# for objUri in objUriTests:
-#   resp = shsJsonApi.getObject(objUri)
-#   results.append(resp)
-
-# json.dump(results, dest, indent=1)

@@ -5,7 +5,7 @@ PATH := node_modules/.bin:$(PATH)
 PYTHON := python3
 PIP := pip3
 
-.PHONY: all server build clean install data data-song-list data-spotify data-shs-versions
+.PHONY: all server build clean install data data-song-list data-spotify data-shs-versions clean-shs-cache clean-shs-search-cache clean-shs-scrape-cache
 
 all: server
 
@@ -50,3 +50,6 @@ clean-shs-search-cache:
 
 clean-shs-scrape-cache:
 	rm data/shs-scrape-cache/*
+
+test-shs-api:
+	$(PYTHON) data/shsApiTests.py
