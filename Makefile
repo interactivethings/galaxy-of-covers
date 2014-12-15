@@ -40,7 +40,7 @@ data-song-list:
 data-spotify:
 	node data/spotify.js
 
-data-shs-versions:
+data-shs-versions: data-song-list
 	$(PYTHON) data/pullData.py
 
 clean-shs-cache: clean-shs-search-cache clean-shs-scrape-cache

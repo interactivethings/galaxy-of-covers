@@ -35,65 +35,91 @@ def requestWorkSearch(songName, authorCredits=""):
 
   if os.path.isfile(fileName):
     contents = fetchFileContents(fileName)
-    return json.loads(contents) if contents is not None else None
+    response = json.loads(contents) if contents is not None else None
   else:
     response = shsJsonApi.searchWork(songName, authorCredits)
     writeValue = json.dumps(response) if response is not None else stringNone
     writeFileContents(fileName, writeValue)
-    return response
+
+  if response is None:
+    return (None, SearchStatus.FAIL)
+  elif len(response["resultPage"]) < 1:
+    return (response, SearchStatus.EMPTY)
+  elif len(response["resultPage"]) > 1:
+    return (response, SearchStatus.MANY)
+  else:
+    return (response, SearchStatus.SUCCESS)
 
 def requestPerformanceSearch(songName, performer=""):
   fileName = SHS_SEARCH_CACHE_DIR + hashString("performance+++" + songName + "+++" + performer)
 
   if os.path.isfile(fileName):
     contents = fetchFileContents(fileName)
-    return json.loads(contents) if contents is not None else None
+    response = json.loads(contents) if contents is not None else None
   else:
     response = shsJsonApi.searchPerformance(songName, performer)
     writeValue = json.dumps(response) if response is not None else stringNone
     writeFileContents(fileName, writeValue)
-    return response
+
+  if response is None:
+    return (None, SearchStatus.FAIL)
+  elif len(response["resultPage"]) < 1:
+    return (response, SearchStatus.EMPTY)
+  elif len(response["resultPage"]) > 1:
+    originalPerformances = [p for p in response["resultPage"] if p["isOriginal"]]
+    if len(originalPerformances) > 0:
+      response["resultPage"] = originalPerformances[:1]
+      return (response, SearchStatus.SUCCESS)
+    else:
+      return (response, SearchStatus.MANY)
+  else:
+    return (response, SearchStatus.SUCCESS)
 
 def requestVersions(url):
   fileName = SHS_SCRAPE_CACHE_DIR + hashString(url)
 
   if os.path.isfile(fileName):
     contents = fetchFileContents(fileName)
-    return contents if contents is not None else None
+    response = contents if contents is not None else None
   else:
     response = shsHtmlApi.makeRequest(url)
     writeValue = response if response is not None else stringNone
     writeFileContents(fileName, writeValue)
-    return response
+
+  if response is None:
+    return (response, SearchStatus.FAIL)
+  else:
+    return (response, SearchStatus.SUCCESS)
 
 # run a search for a work on secondhandsongs, and pull the versions down too
 def searchSongVersions(songName, artistCredits=""):
   # default uses the work search
-  worksResponse = requestWorkSearch(songName, artistCredits)
   isPerfSearch = False
+  searchResponse, status = requestWorkSearch(songName, artistCredits)
 
-  if worksResponse is None or len(worksResponse["resultPage"]) < 1:
+  if status is SearchStatus.FAIL or status is SearchStatus.EMPTY:
     # if work search doesn't pan out, use the performance search
-    worksResponse = requestPerformanceSearch(songName, artistCredits)
     isPerfSearch = True
+    searchResponse, status = requestPerformanceSearch(songName, artistCredits)
 
-  if worksResponse is None:
+  if status is SearchStatus.FAIL:
     print ("Search failed")
     writeLine(FILE_DEBUG_SEARCH, "Failed search:", songName, artistCredits, "")
     return None
-  elif len(worksResponse["resultPage"]) < 1:
+  elif status is SearchStatus.EMPTY:
     print("Search returned no results")
     writeLine(FILE_DEBUG_SEARCH, "No Results:", songName, artistCredits, "")
     return None
-  elif len(worksResponse["resultPage"]) > 1:
+
+  if status is SearchStatus.MANY:
     print("Search returned more than one result")
     writeLine(FILE_DEBUG_SEARCH, "Too many results:", songName, artistCredits)
-    writeLine(FILE_DEBUG_SEARCH, json.dumps(worksResponse, indent=1), "")
+    writeLine(FILE_DEBUG_SEARCH, json.dumps(searchResponse, indent=1), "")
 
-  workInfo = worksResponse["resultPage"][0]
-  songPage = requestVersions(workInfo["uri"] + "/versions")
-  if songPage is None:
-    print("Song versions page request returned None")
+  workInfo = searchResponse["resultPage"][0]
+  songPage, status = requestVersions(workInfo["uri"] + "/versions")
+  if status is SearchStatus.FAIL:
+    print("Song versions page request failed")
     writeLine(FILE_DEBUG_SEARCH, "No versions page:", workInfo["uri"])
     return None
 

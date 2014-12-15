@@ -1,4 +1,5 @@
 import os
+from enum import Enum
 
 ROOT_DIR = os.path.dirname(os.path.realpath(__file__)) + "/"
 
@@ -12,3 +13,10 @@ FILE_API_TESTS = open(DEBUG_DIR + "apiTests.json", "w")
 FILE_DEBUG_SEARCH = open(DEBUG_DIR + "searchdebug.txt", "w")
 FILE_SONG_SOURCE = open(OUT_DIR + "songs.csv", "r")
 FILE_SONG_OUTPUT = open(OUT_DIR + "songinfo.json", "w")
+
+class SearchStatus(Enum):
+  SUCCESS = 1
+  FAIL = 2
+  EMPTY = 3
+  MANY = 4
+

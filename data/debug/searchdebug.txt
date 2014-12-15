@@ -1,8 +1,4 @@
 No Results:
-Nothing Compares 2 U
-Prince/The Family
-
-No Results:
 It’s My Life
 Talk Talk
 
@@ -25,46 +21,6 @@ Jeff Beck
 No Results:
 Hound Dog
 Big Mama Thorton
-
-Too many results:
-I Fought The Law
-The Crickets
-{
- "resultPage": [
-  {
-   "entityType": "recording",
-   "performer": {
-    "uri": "http://www.secondhandsongs.com/artist/1938",
-    "name": "The Crickets"
-   },
-   "isOriginal": true,
-   "title": "I Fought the Law",
-   "uri": "http://www.secondhandsongs.com/performance/3932"
-  },
-  {
-   "entityType": "recording",
-   "performer": {
-    "uri": "http://www.secondhandsongs.com/artist/1938+9184",
-    "name": "The Crickets & Vince Neil"
-   },
-   "isOriginal": false,
-   "title": "I Fought the Law",
-   "uri": "http://www.secondhandsongs.com/performance/27189"
-  },
-  {
-   "entityType": "recording",
-   "performer": {
-    "uri": "http://www.secondhandsongs.com/artist/1938+3304+10714",
-    "name": "The Crickets, Albert Lee & Brian May"
-   },
-   "isOriginal": false,
-   "title": "I Fought the Law",
-   "uri": "http://www.secondhandsongs.com/performance/238770"
-  }
- ],
- "totalResults": 3,
- "skippedResults": 0
-}
 
 No Results:
 There She Goes
