@@ -17,9 +17,13 @@ var definePlugin = new webpack.DefinePlugin({
   __DEV__: !BUILD
 });
 
+var providePlugin = new webpack.ProvidePlugin({
+  reqwest: "reqwest"
+});
+
 module.exports = {
   entry: {
-    app: resolvePath('src/index.js')
+    constellation: resolvePath('src/constellation.js')
   },
   output: {
     path: resolvePath('build'),
@@ -38,7 +42,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'p5': 'p5/lib/p5.min'
+      'p5': 'p5/lib/p5'
     },
     modulesDirectories: moduleDirectories,
     extensions: ['', '.js', '.json', '.css', '.scss']
