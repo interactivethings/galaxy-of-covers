@@ -7,6 +7,8 @@ var cheerio = require('cheerio');
 
 var BASE_URL = 'http://www.whosampled.com';
 var COVERS_PER_PAGE = 15;
+var OUTPUT_FILE = 'data/out/whosampled.json';
+
 
 
 function getYear(text) {
@@ -72,7 +74,8 @@ Promise.all([
   getWork('/The-Leaves/Hey-Joe/covered/')
 ])
   .then(function(data) {
-    console.log(data);
+    console.log('Writing to', OUTPUT_FILE);
+    rw.writeFileSync(OUTPUT_FILE, JSON.stringify(data, undefined, 2), 'utf8')
   })
   .catch(function(err) {
     console.log('Error', err, err.stack);
