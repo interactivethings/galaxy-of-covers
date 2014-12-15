@@ -2,8 +2,8 @@ SHELL := /bin/bash
 PATH := node_modules/.bin:$(PATH)
 
 # python3 and pip3 are required
-PYTHON := python3
-PIP := pip3
+PYTHON = python3
+PIP = pip3
 
 .PHONY: all server build clean install data data-song-list data-spotify data-shs-versions clean-shs-cache clean-shs-search-cache clean-shs-scrape-cache
 
