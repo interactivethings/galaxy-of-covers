@@ -37,6 +37,9 @@ data: data-song-list data-spotify data-shs-versions
 data-song-list:
 	wget -O data/out/songs.csv https://docs.google.com/spreadsheets/d/1EqO6oF0o8oL0XLcNXNkdOA4wbcKJBiTb24rBphubgrA/export?format=csv
 
+data-whosampled:
+	node data/whosampled.js
+
 data-spotify:
 	node data/spotify.js
 

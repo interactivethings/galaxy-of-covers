@@ -25,7 +25,8 @@
     "request-promise": "^0.3.2",
     "crypto": "0.0.3",
     "mkdirp": "^0.5.0",
-    "sleep": "^1.2.0"
+    "sleep": "^1.2.0",
+    "cheerio": "^0.18.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
