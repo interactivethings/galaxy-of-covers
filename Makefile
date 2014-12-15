@@ -38,7 +38,7 @@ data-song-list:
 	wget -O data/out/songs.csv https://docs.google.com/spreadsheets/d/1EqO6oF0o8oL0XLcNXNkdOA4wbcKJBiTb24rBphubgrA/export?format=csv
 
 data-spotify:
-	node data/spotify-popularity.js
+	node data/spotify.js
 
 data-shs-versions:
 	$(PYTHON) data/pullData.py
