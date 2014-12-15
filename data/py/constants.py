@@ -1,7 +1,7 @@
 import os
 from enum import Enum
 
-ROOT_DIR = os.path.dirname(os.path.realpath(__file__)) + "/"
+ROOT_DIR = os.path.dirname(os.path.realpath(__file__)) + "/../"
 
 DEBUG_DIR = ROOT_DIR  + "debug/"
 OUT_DIR = ROOT_DIR + "out/"
