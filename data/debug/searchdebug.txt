@@ -1,14 +1,6 @@
 No Results:
-Easy
-Commodores
-
-No Results:
 Nothing Compares 2 U
 Prince/The Family
-
-No Results:
-Tainted Love
-Gloria Jones 
 
 No Results:
 It’s My Life
@@ -19,44 +11,12 @@ Whatta Man
 Linda Lyndell
 
 No Results:
-Valerie
-The Zutons
-
-No Results:
-Emotion
-Samantha Sang
-
-No Results:
-Torn
-Ednaswap
-
-No Results:
-Time Is On My Side
-Irma Thomas
-
-No Results:
 Ray Of Light
 Curtiss Maldoon
 
 No Results:
-Hey Joe
-The Leaves
-
-No Results:
 original german: Und Jetzt Ist Es Still 
 Horst Winter
-
-No Results:
-Girls Just Wanna Have Fun
-Robert Hazard
-
-No Results:
-The First Cut Is The Deepest
-P.P. Arnold
-
-No Results:
-Cum On Feel The Noize
-Slade
 
 No Results:
 Superstition
@@ -66,17 +26,49 @@ No Results:
 Hound Dog
 Big Mama Thorton
 
-No Results:
+Too many results:
 I Fought The Law
 The Crickets
+{
+ "resultPage": [
+  {
+   "entityType": "recording",
+   "performer": {
+    "uri": "http://www.secondhandsongs.com/artist/1938",
+    "name": "The Crickets"
+   },
+   "isOriginal": true,
+   "title": "I Fought the Law",
+   "uri": "http://www.secondhandsongs.com/performance/3932"
+  },
+  {
+   "entityType": "recording",
+   "performer": {
+    "uri": "http://www.secondhandsongs.com/artist/1938+9184",
+    "name": "The Crickets & Vince Neil"
+   },
+   "isOriginal": false,
+   "title": "I Fought the Law",
+   "uri": "http://www.secondhandsongs.com/performance/27189"
+  },
+  {
+   "entityType": "recording",
+   "performer": {
+    "uri": "http://www.secondhandsongs.com/artist/1938+3304+10714",
+    "name": "The Crickets, Albert Lee & Brian May"
+   },
+   "isOriginal": false,
+   "title": "I Fought the Law",
+   "uri": "http://www.secondhandsongs.com/performance/238770"
+  }
+ ],
+ "totalResults": 3,
+ "skippedResults": 0
+}
 
 No Results:
 There She Goes
 The Las
-
-No Results:
-Istanbul (Not Constantinople)
-The Four Lads
 
 No Results:
 I've Got You Under My Skin
@@ -91,40 +83,12 @@ It’s Oh So Quiet
 Betty Hutton
 
 No Results:
-Manic Monday
-Apollonia 6
-
-No Results:
-I Want Candy
-The Strangeloves
-
-No Results:
 I Think We’re Alone Now
 Tommy James and the Shondells
 
 No Results:
-When the Levee Breaks
-Led Zeppelin
-
-No Results:
-I Swear
-John Michael Montgomery
-
-No Results:
 Don’t Cha
 Tori Alamaze
-
-No Results:
-The Tide is High
-The Paragons
-
-No Results:
-Black and White
-Greyhound
-
-No Results:
-Black Betty
-Lead Belly
 
 No Results:
 God Gave Rock ‘n’ Roll To You
@@ -135,25 +99,13 @@ You’ve Got a Friend
 Carole King
 
 No Results:
-Saving All My Love for You
-Marilyn McCoo and Billy Davis Jr.
-
-No Results:
 I’m Going Down
 Rose Royce
-
-No Results:
-I Turn to You
-All-4-One
 
 No Results:
 Mambo No. 5
 All-4-One
 
-No Results:
-Killing Me Softly with His Song
-Lori Lieberman
-
 Failed search:
 
 
@@ -161,24 +113,4 @@ Failed search:
 Failed search:
 
 
-
-No Results:
-Bizarre Love Triangle
-New Order
-
-No Results:
-California Sun
-Joe Jones
-
-No Results:
-Rock & Roll
-The Velvet Underground
-
-No Results:
-With Arms Wide Open
-Creed
-
-No Results:
-Love Buzz
-Shocking Blue
 

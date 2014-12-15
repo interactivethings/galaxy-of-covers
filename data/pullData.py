@@ -68,9 +68,14 @@ def requestVersions(url):
 
 # run a search for a work on secondhandsongs, and pull the versions down too
 def searchSongVersions(songName, artistCredits=""):
-  worksResponse = requestPerformanceSearch(songName, artistCredits)
+  # default uses the work search
+  worksResponse = requestWorkSearch(songName, artistCredits)
+  isPerfSearch = False
 
-  ### BREAK: Working on how to handle error reporting from cache vs from API server
+  if worksResponse is None or len(worksResponse["resultPage"]) < 1:
+    # if work search doesn't pan out, use the performance search
+    worksResponse = requestPerformanceSearch(songName, artistCredits)
+    isPerfSearch = True
 
   if worksResponse is None:
     print ("Search failed")
@@ -96,7 +101,8 @@ def searchSongVersions(songName, artistCredits=""):
 
   songData = workInfo.copy()
   songData.update(shsHtmlApi.parseMetaData(soupObj))
-  songData.update(shsHtmlApi.parsePerformanceData(soupObj))
+  itemData = shsHtmlApi.parseWorkData(soupObj) if not isPerfSearch else shsHtmlApi.parsePerformanceData(soupObj)
+  songData.update(itemData)
   songData["versions"] = shsHtmlApi.parseWorkVersions(soupObj)
 
   return songData
