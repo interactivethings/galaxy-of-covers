@@ -27,7 +27,6 @@
     "sleep": "^1.2.0",
     "style-loader": "^0.8.2",
     "underscore": "^1.7.0",
-    "d3": "^3.5.2",
     "rw": "^0.1.4",
     "promise": "^6.0.1",
     "request-promise": "^0.3.2",
