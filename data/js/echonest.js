@@ -8,8 +8,8 @@ var queue = require('queue-async');
 var sleep = require('sleep');
 
 
-var LIMIT_WORKS = undefined;
-var LIMIT_VERSIONS = undefined;
+var LIMIT_WORKS = 1;
+var LIMIT_VERSIONS = 10;
 var INPUT_WORKS = 'data/out/songinfo-spotify.json';
 var OUTPUT_FILE = 'data/out/songinfo-spotify-echonest.json';
 var API_KEY = 'DY3KQCS3HF8JQBDV5';
@@ -24,75 +24,100 @@ function getLocation(locationText) {
   );
 }
 
-function getTrackProfile(spotifyId, bucket) {
+function getTrackProfile(spotifyId, buckets) {
+  if (!buckets) buckets = [];
   console.log(' - requesting track by spotify id "'+ spotifyId +'"');
   return request(
     'http://developer.echonest.com/api/v4/track/profile?api_key='+API_KEY+
-        '&format=json&id=spotify:track:'+spotifyId+'&bucket='+bucket
+        '&format=json&id=spotify:track:'+spotifyId+
+        buckets.map(function(b) { return '&bucket='+b; }).join('')
   );
 }
 
-function getArtistProfile(spotifyId, bucket) {
+function getArtistProfile(spotifyId, buckets) {
   console.log(' - requesting artist by spotify id "'+ spotifyId +'"');
   return request(
     'http://developer.echonest.com/api/v4/artist/profile?api_key='+API_KEY+
-        '&format=json&id=spotify:artist:'+spotifyId+'&bucket='+bucket
+        '&format=json&id=spotify:artist:'+spotifyId+
+        buckets.map(function(b) { return '&bucket='+b; }).join('')
   );
 }
+function getSongProfile(songId, buckets) {
+  console.log(' - requesting song by id "'+ songId +'"');
+  return request(
+    'http://developer.echonest.com/api/v4/song/profile?api_key='+API_KEY+
+        '&format=json&id='+songId+
+        buckets.map(function(b) { return '&bucket='+b; }).join('')
+  );
+}
+
+//function getWhoSampledTrackId(artist, title) {
+//  return request(
+//    'http://developer.echonest.com/api/v4/song/search?api_key='+API_KEY+
+//    '&format=json&results=1&artist='+encodeURI(artist)+
+//    '&title='+encodeURI(title)+'&bucket=id:whosampled&limit=true&bucket=tracks'
+//  )
+//}
 
 
 function extendWithEchonest(version, callback) {
   if (!version.spotify) {
     return callback(null, version);
   }
-  Promise.all([
-    getTrackProfile(version.spotify.id, 'audio_summary'),
-    getArtistProfile(version.spotify.artists[0].id, 'artist_location')
-  ])
-    .then(function(data) {
-      var audioSummary = utils.getIn(JSON.parse(data[0]), ['response','track']),
-          location = utils.getIn(JSON.parse(data[1]), ['response','artist','artist_location']);
+  getTrackProfile(version.spotify.id)
+    .then(function(trackResponse) {
+      var trackData = JSON.parse(trackResponse);
 
-      var echonest = {};
-      if (audioSummary) {
-        echonest = _.extend(
-          {id: audioSummary.song_id },
-          audioSummary.audio_summary
-        );
-        delete echonest['analysis_url'];
-      }
-      if (location) {
-        getLocation(location.location)
-          .then(function(body) {
-            var locationData = JSON.parse(body);
-            var loc;
-            if (locationData.results && locationData.results.length > 0) {
-              var res = _.first(locationData.results);
-              loc = {
-                address: res.formatted_address,
-                coords: res.geometry.location,
-                location: location
-              };
-            } else {
-              loc = {
-                location: location
-              };
-            }
-            echonest = _.extend(echonest, {artistLocation: loc});
-            callback(null, _.extend(version, {echonest: echonest}));
-          })
-          .catch(function(err) {
-            callback(err);
-          });
+      getSongProfile(trackData.response.track.song_id,
+        ['audio_summary', 'artist_location', 'id:whosampled', 'song_type']
+      ).then(function(songDataStr) {
+          var songData = _.first(utils.getIn(JSON.parse(songDataStr), ['response', 'songs']));
+          var audioSummary = songData.audio_summary,
+              location = songData.artist_location;
 
-      } else {
-        callback(null, _.extend(version, {echonest: echonest}));
-      }
+          var echonest = { songId: songData.id };
+          if (audioSummary) {
+            _.extend(echonest, _.omit(audioSummary, 'analysis_url', 'key', 'audio_md5'));
+          }
+          if (location) {
+            _.extend(echonest, location);
+          }
+          _.extend(version, { echonest: echonest });
+          callback(null, version);
+
+          //if (location) {
+          //  getLocation(location.location)
+          //    .then(function(body) {
+          //      var locationData = JSON.parse(body);
+          //      var loc;
+          //      if (locationData.results && locationData.results.length > 0) {
+          //        var res = _.first(locationData.results);
+          //        loc = {
+          //          address: res.formatted_address,
+          //          coords: res.geometry.location,
+          //          location: location
+          //        };
+          //      } else {
+          //        loc = {
+          //          location: location
+          //        };
+          //      }
+          //      _.extend(echonest, {artistLocation: loc});
+          //      callback(null, _.extend(version, {echonest: echonest}));
+          //    })
+          //    .catch(callback);
+          //
+          //} else {
+          //  callback(null, _.extend(version, {echonest: echonest}));
+          //}
+        })
+        .catch(callback);
+
     })
-    .catch(function(err) {
-      callback(err);
-    });
-}
+    .catch(callback);
+
+
+  }
 
 
 
@@ -168,7 +193,7 @@ Promise
     rw.writeFileSync(OUTPUT_FILE, JSON.stringify(data, undefined, 2), 'utf8')
   })
   .catch(function(err) {
-     console.log('Error', err, err.stack);
+     console.error('Error', err, err.stack);
    });
 
 
