@@ -8,8 +8,8 @@ var queue = require('queue-async');
 var sleep = require('sleep');
 
 
-var LIMIT_WORKS = 1;
-var LIMIT_VERSIONS = 10;
+var LIMIT_WORKS = undefined;
+var LIMIT_VERSIONS = undefined;
 var INPUT_WORKS = 'data/out/songinfo-spotify.json';
 var OUTPUT_FILE = 'data/out/songinfo-spotify-echonest.json';
 var API_KEY = 'DY3KQCS3HF8JQBDV5';
@@ -51,13 +51,13 @@ function getSongProfile(songId, buckets) {
   );
 }
 
-//function getWhoSampledTrackId(artist, title) {
-//  return request(
-//    'http://developer.echonest.com/api/v4/song/search?api_key='+API_KEY+
-//    '&format=json&results=1&artist='+encodeURI(artist)+
-//    '&title='+encodeURI(title)+'&bucket=id:whosampled&limit=true&bucket=tracks'
-//  )
-//}
+function getWhoSampledTrackId(artist, title) {
+  return request(
+    'http://developer.echonest.com/api/v4/song/search?api_key='+API_KEY+
+    '&format=json&results=1&artist='+encodeURIComponent(artist)+
+    '&title='+encodeURIComponent(title)+'&bucket=id:whosampled&limit=true&bucket=tracks'
+  )
+}
 
 
 function extendWithEchonest(version, callback) {
@@ -67,10 +67,14 @@ function extendWithEchonest(version, callback) {
   getTrackProfile(version.spotify.id)
     .then(function(trackResponse) {
       var trackData = JSON.parse(trackResponse);
+      var songId = utils.getIn(trackData, ['response','track','song_id']);
 
-      getSongProfile(trackData.response.track.song_id,
-        ['audio_summary', 'artist_location', 'id:whosampled', 'song_type']
-      ).then(function(songDataStr) {
+      if (!songId) {
+        return callback(null, version);
+      }
+
+      getSongProfile(songId, ['audio_summary', 'artist_location', 'id:whosampled', 'song_type'])
+        .then(function(songDataStr) {
           var songData = _.first(utils.getIn(JSON.parse(songDataStr), ['response', 'songs']));
           var audioSummary = songData.audio_summary,
               location = songData.artist_location;
@@ -82,8 +86,27 @@ function extendWithEchonest(version, callback) {
           if (location) {
             _.extend(echonest, location);
           }
-          _.extend(version, { echonest: echonest });
-          callback(null, version);
+
+          getWhoSampledTrackId(songData.artist_name, songData.title)
+            .then(function(whosampledDataStr) {
+              var whosampledData = JSON.parse(whosampledDataStr);
+
+              var song = _.first(utils.getIn(whosampledData, ['response', 'songs']));
+              if (song) {
+                var track = _.first(utils.getIn(song, ['tracks']));
+                var matches = utils.getIn(track, ['foreign_id']).match(/^whosampled:track:(\d*)/);
+                if (matches) {
+                  var whosampledId = matches[1];
+                  _.extend(echonest, { whosampledId: whosampledId });
+                }
+              }
+
+              _.extend(version, { echonest: echonest });
+              callback(null, version);
+            })
+            .catch(callback);
+
+
 
           //if (location) {
           //  getLocation(location.location)
@@ -175,8 +198,8 @@ var worksRequests = works.map(function(work) {
     versions.forEach(function(version) {
       q.defer(extendWithEchonest, version);
     });
-    q.awaitAll(function(err, results) {
-      if (err) rejectWork(err); else resolveWork(results);
+    q.await(function(err, results) {
+      if (err) rejectWork(err); else { resolveWork(results); }
     });
 
 
