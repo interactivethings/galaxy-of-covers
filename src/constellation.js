@@ -99,6 +99,8 @@ window.draw = function() {
   stroke(255, 255, 255, 255)
   strokeWeight(1.5)
 
+  textLeading(5)
+
   allSongs.forEach(function(covers, i) {
     push()
     translate(sXScale[i], sYScale[i])
@@ -106,6 +108,10 @@ window.draw = function() {
     drawStar(covers, 0)
     pop()
   })
+
+  strokeWeight(1)
+
+  drawLegend(gRange)
 }
 
 function drawStar(list, index) {
@@ -131,4 +137,20 @@ function nextStarPoint(genre, date) {
   var t = gScale[genre]
   var r = map(date, dRange[0], dRange[1], 4, starGap)
   return polarToEuclid(t, r)
+}
+
+function drawLegend(legendList) {
+  push()
+  translate(150, height - 110)
+  legendList.forEach(function(genre) {
+    var a = gScale[genre]
+    var pos = polarToEuclid(a, 40)
+    line(0, 0, pos.x, pos.y)
+    push()
+    rotate(a)
+    translate(46, 4.5)
+    text(genre.toUpperCase(), 0, 0)
+    pop()
+  })
+  pop()
 }
