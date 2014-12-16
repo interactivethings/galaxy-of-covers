@@ -9,7 +9,7 @@ var rw = require('rw');
 var HTTP_STATUS_CODES = {
   429: 'Too many requests'
 };
-var REQUEST_DELAY = 200;
+var REQUEST_DELAY = 300;
 
 var CACHE_PATH = 'data/cached';
 

@@ -16,11 +16,27 @@ var API_KEY = 'DY3KQCS3HF8JQBDV5';
 
 
 
-function getTrack(spotifyId) {
+function getLocation(locationText) {
+  console.log(' - resolving geo location "'+ locationText +'"');
+  return request(
+    'http://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=en&components=types' +
+    '&address='+encodeURI(locationText)
+  );
+}
+
+function getTrackProfile(spotifyId, bucket) {
   console.log(' - requesting track by spotify id "'+ spotifyId +'"');
   return request(
     'http://developer.echonest.com/api/v4/track/profile?api_key='+API_KEY+
-        '&format=json&id=spotify:track:'+spotifyId+'&bucket=audio_summary'
+        '&format=json&id=spotify:track:'+spotifyId+'&bucket='+bucket
+  );
+}
+
+function getArtistProfile(spotifyId, bucket) {
+  console.log(' - requesting artist by spotify id "'+ spotifyId +'"');
+  return request(
+    'http://developer.echonest.com/api/v4/artist/profile?api_key='+API_KEY+
+        '&format=json&id=spotify:artist:'+spotifyId+'&bucket='+bucket
   );
 }
 
@@ -29,14 +45,49 @@ function extendWithEchonest(version, callback) {
   if (!version.spotify) {
     return callback(null, version);
   }
-  getTrack(version.spotify.id)
-    .then(function(d) {
-      var track = utils.getIn(JSON.parse(d), ['response','track']);
-      if (track) {
-        version.echonest = _.extend({id: track.song_id}, track.audio_summary);
-        delete version.echonest['analysis_url'];
+  Promise.all([
+    getTrackProfile(version.spotify.id, 'audio_summary'),
+    getArtistProfile(version.spotify.artists[0].id, 'artist_location')
+  ])
+    .then(function(data) {
+      var audioSummary = utils.getIn(JSON.parse(data[0]), ['response','track']),
+          location = utils.getIn(JSON.parse(data[1]), ['response','artist','artist_location']);
+
+      var echonest = {};
+      if (audioSummary) {
+        echonest = _.extend(
+          {id: audioSummary.song_id },
+          audioSummary.audio_summary
+        );
+        delete echonest['analysis_url'];
       }
-      callback(null, version);
+      if (location) {
+        getLocation(location.location)
+          .then(function(body) {
+            var locationData = JSON.parse(body);
+            var loc;
+            if (locationData.results && locationData.results.length > 0) {
+              var res = _.first(locationData.results);
+              loc = {
+                address: res.formatted_address,
+                coords: res.geometry.location,
+                location: location
+              };
+            } else {
+              loc = {
+                location: location
+              };
+            }
+            echonest = _.extend(echonest, {artistLocation: loc});
+            callback(null, _.extend(version, {echonest: echonest}));
+          })
+          .catch(function(err) {
+            callback(err);
+          });
+
+      } else {
+        callback(null, _.extend(version, {echonest: echonest}));
+      }
     })
     .catch(function(err) {
       callback(err);
