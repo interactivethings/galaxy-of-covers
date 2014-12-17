@@ -144,10 +144,9 @@ function drawLegend(legendList) {
   translate(150, height - 110)
   legendList.forEach(function(genre) {
     var a = gScale[genre]
-    var pos = polarToEuclid(a, 40)
-    line(0, 0, pos.x, pos.y)
     push()
     rotate(a)
+    line(4, 0, 40, 0)
     translate(46, 4.5)
     text(genre.toUpperCase(), 0, 0)
     pop()
