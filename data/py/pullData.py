@@ -140,8 +140,9 @@ clearOpenFile(FILE_DEBUG_SEARCH)
 clearOpenFile(FILE_SONG_OUTPUT)
 
 for sourceItem in sourceList:
-  title = sourceItem["TITLE (original)"]
-  credits = sourceItem["ORIGINAL"]
+  title = sourceItem["title"]
+  originalArtist = sourceItem["original_artist"]
+  credits = originalArtist if originalArtist != '' else sourceItem["artist"]
   print(title, credits)
 
   searchResults = searchSongVersions(title, credits)

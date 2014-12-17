@@ -37,8 +37,8 @@ data: data-song-list data-spotify data-shs-versions
 data-song-list:
 	wget -O data/out/songs.csv https://docs.google.com/spreadsheets/d/1EqO6oF0o8oL0XLcNXNkdOA4wbcKJBiTb24rBphubgrA/export?format=csv
 
-data-whosampled:
-	node data/js/whosampled.js
+data-guardian-covers:
+	wget -O data/out/guardian_songs.csv https://docs.google.com/spreadsheets/d/1vIkPwZaE58TbgoPpCQvMLvSvPfs068m1pIetNvElCr4/export?format=csv
 
 data-spotify:
 	node data/js/spotify.js
@@ -46,7 +46,10 @@ data-spotify:
 data-echonest:
 	node data/js/echonest.js
 
-data-shs-versions: data-song-list
+data-whosampled:
+	node data/js/whosampled.js
+
+data-shs-versions:
 	$(PYTHON) data/py/pullData.py
 
 clean-shs-cache: clean-shs-search-cache clean-shs-scrape-cache

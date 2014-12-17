@@ -59,7 +59,6 @@ function getWhoSampledTrackId(artist, title) {
   )
 }
 
-
 function extendWithEchonest(version, callback) {
   if (!version.spotify) {
     return callback(null, version);
@@ -198,8 +197,12 @@ var worksRequests = works.map(function(work) {
     versions.forEach(function(version) {
       q.defer(extendWithEchonest, version);
     });
-    q.await(function(err, results) {
-      if (err) rejectWork(err); else { resolveWork(results); }
+    q.awaitAll(function(err, results) {
+      if (err) {
+        rejectWork(err);
+      } else {
+        resolveWork(work);
+      }
     });
 
 
