@@ -1,0 +1,123 @@
+<html>
+<head>
+  <script src="../node_modules/d3/d3.js" charset="utf-8"></script>
+  <script src="../node_modules/underscore/underscore.js" charset="utf-8"></script>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
+  <style>
+    .segment {
+      stroke: rgb(57, 59, 121);
+      stroke-width: 2px;
+    }
+    .version-line {
+      stroke: rgb(57, 59, 121);
+      fill: none;
+    }
+  </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+  var margin = {top: 20, right: 10, bottom: 20, left: 10};
+  var width = 1800 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+
+  var svg = d3.select('body').append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .style('border', '1px solid #ccc')
+      .append('g')
+       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+
+  var colorScale = d3.scale.category20b();
+
+  function expandLoudnessData(segmentsData) {
+    var data = [];
+    segmentsData.forEach(function(d) {
+      data.push({
+        time: d.start,
+        loudness: d.loudness_start
+      });
+      if (d.loudness_max_time > 0) {
+        data.push({
+          time: d.start + d.loudness_max_time,
+          loudness: d.loudness_max
+        });
+      }
+    });
+    return data;
+  }
+
+
+  function renderSegments(versionsData, container) {
+
+    var attr = 'loudness';
+    versionsData.forEach(function(version) {
+      version.loudness = expandLoudnessData(version.segments);
+    });
+
+    var maxLength = d3.max(versionsData,
+      function(version) { var last = _.last(version.segments); return last.start + last.duration; });
+
+    var valueExtent = [
+      d3.min(versionsData, function(v) { return d3.min(v.loudness, function(d) { return d[attr]; }); }),
+      d3.max(versionsData, function(v) { return d3.max(v.loudness, function(d) { return d[attr]; }); })
+    ];
+
+
+    var timeScale = d3.scale.linear()
+        .domain([0, maxLength])
+        .range([0, width]);
+
+    var valueScale = d3.scale.linear()
+        .domain(valueExtent)
+        .range([height, 0]);
+
+
+
+    var line = d3.svg.line()
+        .x(function(d) { return timeScale(d.time); })
+        .y(function(d) { return valueScale(d[attr]); })
+        .interpolate('basis');
+
+
+    var vis = container.selectAll('.vis').data([0]);
+    vis.enter().append('g')
+        .attr('class', 'vis');
+
+
+//    var segment = segmentsVis.selectAll('.segment').data(data);
+//    segment.enter()
+//      .append('line')
+//        .attr('class', 'segment')
+//        .attr('x1', function(d) { return timeScale(d.start); })
+//        .attr('x2', function(d) { return timeScale(d.start + d.duration); })
+//        .attr('y1', function(d) { return valueScale(d[attr]); })
+//        .attr('y2', function(d) { return valueScale(d[attr]); });
+//
+
+    var version = vis.selectAll('.version')
+        .data(versionsData);
+
+    version.enter().append('g')
+        .attr('class', 'version');
+
+    version.append('path')
+      .attr('class', 'version-line')
+      .attr('d', function(d) { return line(d.loudness); });
+
+  }
+
+
+
+  d3.json('../data/out/audio_analysis-watchtower.json', function(err, data) {
+    console.log(data);
+
+    renderSegments([data], svg);
+  });
+
+
+</script>
+</body>
+</html>
