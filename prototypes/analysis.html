@@ -5,6 +5,9 @@
   <script src="../node_modules/underscore/underscore.js" charset="utf-8"></script>
   <link href='http://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
   <style>
+    body {
+      font-family: Roboto;
+    }
     .segment {
       stroke: rgb(57, 59, 121);
       stroke-width: 2px;
@@ -13,8 +16,12 @@
       stroke: rgb(57, 59, 121);
       fill: none;
     }
+    .song-title {
+      fill: rgb(57, 59, 121);
+      font-size: 20pt;
+      text-anchor: middle;
+    }
     .version-name {
-      font-family: Roboto;
       fill: rgb(57, 59, 121);
       text-anchor: end;
       text-shadow: -1px 0px 0px #fff,
@@ -50,7 +57,9 @@
   }
 
 
-  function renderSegments(versionsData, container, width, height) {
+  function renderSegments(songData, container, width, height) {
+
+    var versionsData = songData.versions;
 
     var attr = 'loudness';
     var color = d3.scale.category20b();
@@ -83,9 +92,15 @@
         .interpolate('linear');
 
 
-    var vis = container.selectAll('.vis').data([0]);
+    var vis = container.selectAll('.vis').data([songData]);
     vis.enter().append('g')
         .attr('class', 'vis');
+
+    vis.append('text')
+        .attr('class', 'song-title')
+        .attr('x', width / 2)
+        .attr('y', -10)
+        .text(function(d) { return d.title; });
 
 
 //    var segment = segmentsVis.selectAll('.segment').data(data);
@@ -122,7 +137,7 @@
   function renderAll(songData) {
     console.log(songData);
 
-    var margin = {top: 20, right: 10, bottom: 20, left: 10};
+    var margin = {top: 50, right: 10, bottom: 20, left: 10};
     var versionHeight = 150,
         width = 800 - margin.left - margin.right,
         height = versionHeight * songData.versions.length - margin.top - margin.bottom;
@@ -134,7 +149,7 @@
         .append('g')
          .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-    renderSegments(songData.versions, svg, width, versionHeight);
+    renderSegments(songData, svg, width, versionHeight);
   }
 
 
