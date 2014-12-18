@@ -6,13 +6,19 @@ var request = require('./request-cache');
 var utils = require('./utils');
 var queue = require('queue-async');
 var sleep = require('sleep');
+var mkdirp = require('mkdirp');
 
 
 var LIMIT_WORKS = undefined;
 var LIMIT_VERSIONS = undefined;
+var WITH_ANALYSIS = false;
+
 var INPUT_WORKS = 'data/out/songinfo-spotify.json';
 var OUTPUT_FILE = 'data/out/songinfo-spotify-echonest.json';
+var ANALYSIS_OUT = 'data/out/analysis/';
 var API_KEY = 'DY3KQCS3HF8JQBDV5';
+
+mkdirp.sync(ANALYSIS_OUT);
 
 
 
@@ -32,6 +38,17 @@ function getTrackProfile(spotifyId, buckets) {
         '&format=json&id=spotify:track:'+spotifyId+
         buckets.map(function(b) { return '&bucket='+b; }).join('')
   );
+}
+
+function getTrackAnalysis(url, spotifyId) {
+  console.log(' - requesting track analysis data');
+  if (WITH_ANALYSIS) {
+    return request(url, 'track-analysis-data:'+spotifyId);
+  } else {
+    return new Promise(function(resolve, reject) {
+      resolve(null);
+    });
+  }
 }
 
 function getArtistProfile(spotifyId, buckets) {
@@ -73,11 +90,12 @@ function extendWithEchonest(version, callback) {
         return callback(null, version);
       }
 
-      getSongProfile(songId, ['audio_summary', 'artist_location', 'id:whosampled', 'song_type'])
+      getSongProfile(songId, ['audio_summary', 'artist_location', 'id:whosampled', 'song_type', 'artist_familiarity'])
         .then(function(songDataStr) {
           var songData = _.first(utils.getIn(JSON.parse(songDataStr), ['response', 'songs']));
           var audioSummary = songData.audio_summary,
               location = songData.artist_location;
+
 
           var echonest = { songId: songData.id };
           if (audioSummary) {
@@ -87,9 +105,13 @@ function extendWithEchonest(version, callback) {
             _.extend(echonest, location);
           }
 
-          getWhoSampledTrackId(songData.artist_name, songData.title)
-            .then(function(whosampledDataStr) {
-              var whosampledData = JSON.parse(whosampledDataStr);
+          Promise.all([
+            getWhoSampledTrackId(songData.artist_name, songData.title),
+            getTrackAnalysis(audioSummary.analysis_url, version.spotify.id)
+          ])
+            .then(function(responseData) {
+              var whosampledData = JSON.parse(responseData[0]);
+              var analysisData = JSON.parse(responseData[1]);
 
               var song = _.first(utils.getIn(whosampledData, ['response', 'songs']));
               if (song) {
@@ -99,6 +121,13 @@ function extendWithEchonest(version, callback) {
                   var whosampledId = matches[1];
                   _.extend(echonest, { whosampledId: whosampledId });
                 }
+              }
+
+              if (analysisData) {
+                //_.extend(echonest, { analysis: analysisData.segments });
+                var fname = ANALYSIS_OUT + '/' + version.spotify.id + '.json';
+                console.log('Writing to', fname);
+                rw.writeFileSync(fname, JSON.stringify(analysisData), 'utf8')
               }
 
               _.extend(version, { echonest: echonest });

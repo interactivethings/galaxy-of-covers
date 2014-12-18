@@ -35,9 +35,15 @@ function makeRequest(url, fname, resolve, reject) {
     });
 }
 
-function request(url) {
+/**
+ * @param url
+ * @param keyForHash Optional string to calculate the hash from
+ *                   (intended for use when URLs are changing for same requests).
+ * @returns {Promise}
+ */
+function request(url, keyForHash) {
   console.log('Requesting',url);
-  var hash = md5sum(url);
+  hash = md5sum(keyForHash === undefined ? url : keyForHash);
   var fname = CACHE_PATH + '/' + hash;
 
   return new Promise(function(resolve, reject) {

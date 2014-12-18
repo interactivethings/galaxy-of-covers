@@ -1,6 +1,7 @@
 <html>
 <head>
   <script src="../node_modules/d3/d3.js" charset="utf-8"></script>
+  <script src="../node_modules/queue-async/queue.js" charset="utf-8"></script>
   <script src="../node_modules/underscore/underscore.js" charset="utf-8"></script>
   <link href='http://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
   <style>
@@ -12,22 +13,21 @@
       stroke: rgb(57, 59, 121);
       fill: none;
     }
+    .version-name {
+      font-family: Roboto;
+      fill: rgb(57, 59, 121);
+      text-anchor: end;
+      text-shadow: -1px 0px 0px #fff,
+                   1px 0px 0px #fff,
+                   0px 1px 0px #fff,
+                   0px -1px 0px #fff;
+    }
   </style>
 </head>
 <body>
 
 <script type="text/javascript">
 
-  var margin = {top: 20, right: 10, bottom: 20, left: 10};
-  var width = 1800 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
-
-  var svg = d3.select('body').append('svg')
-        .attr('width', width + margin.left + margin.right)
-        .attr('height', height + margin.top + margin.bottom)
-        .style('border', '1px solid #ccc')
-      .append('g')
-       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 
   var colorScale = d3.scale.category20b();
@@ -50,15 +50,16 @@
   }
 
 
-  function renderSegments(versionsData, container) {
+  function renderSegments(versionsData, container, width, height) {
 
     var attr = 'loudness';
+    var color = d3.scale.category20b();
     versionsData.forEach(function(version) {
-      version.loudness = expandLoudnessData(version.segments);
+      version.loudness = expandLoudnessData(version.analysis.segments);
     });
 
     var maxLength = d3.max(versionsData,
-      function(version) { var last = _.last(version.segments); return last.start + last.duration; });
+      function(version) { var last = _.last(version.analysis.segments); return last.start + last.duration; });
 
     var valueExtent = [
       d3.min(versionsData, function(v) { return d3.min(v.loudness, function(d) { return d[attr]; }); }),
@@ -79,7 +80,7 @@
     var line = d3.svg.line()
         .x(function(d) { return timeScale(d.time); })
         .y(function(d) { return valueScale(d[attr]); })
-        .interpolate('basis');
+        .interpolate('linear');
 
 
     var vis = container.selectAll('.vis').data([0]);
@@ -100,21 +101,64 @@
     var version = vis.selectAll('.version')
         .data(versionsData);
 
-    version.enter().append('g')
-        .attr('class', 'version');
+    var versionEnter = version.enter().append('g')
+        .attr('class', 'version')
+        .attr('transform', function(d, i) { return 'translate('+[0, i*height]+')'; });
 
-    version.append('path')
+    versionEnter.append('path')
       .attr('class', 'version-line')
-      .attr('d', function(d) { return line(d.loudness); });
+      .attr('d', function(d) { return line(d.loudness); })
+      .attr('stroke', function(d) { return color(d.spotify.id); })
+
+    versionEnter.append('text')
+        .attr('class', 'version-name')
+        .attr('x', width)
+        .attr('y', height/2)
+        .text(function(d) { return d.performer + ' (' + d.date + ')'; });
 
   }
 
 
+  function renderAll(songData) {
+    console.log(songData);
 
-  d3.json('../data/out/audio_analysis-watchtower.json', function(err, data) {
-    console.log(data);
+    var margin = {top: 20, right: 10, bottom: 20, left: 10};
+    var versionHeight = 150,
+        width = 800 - margin.left - margin.right,
+        height = versionHeight * songData.versions.length - margin.top - margin.bottom;
 
-    renderSegments([data], svg);
+    var svg = d3.select('body').append('svg')
+          .attr('width', width + margin.left + margin.right)
+          .attr('height', height + margin.top + margin.bottom)
+          .style('border', '1px solid #ccc')
+        .append('g')
+         .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+    renderSegments(songData.versions, svg, width, versionHeight);
+  }
+
+
+
+  d3.json('../data/out/songinfo-spotify-echonest.json', function(err, songsData) {
+    var songData = _.first(songsData);
+    songData.versions = songData.versions.filter(function(d) { return d.spotify; });
+
+    var q = queue(1);
+    songData.versions.forEach(function(v) {
+        q.defer(d3.json, '../data/out/analysis/'+v.spotify.id+'.json');
+    });
+
+    q.awaitAll(function(err, analysisData) {
+      songData.versions.forEach(function(v, i) {
+        if (!analysisData[i]) console.warn('No analysis data for', i, v);
+
+        v.analysis = analysisData[i];
+      });
+
+      if (!err) {
+        renderAll(songData);
+      }
+    });
   });
 
 
