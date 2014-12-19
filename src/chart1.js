@@ -127,36 +127,6 @@
       }
     });
 
-  function avg(arr, fn) {
-    var len = arr.length;
-    var sum = arr.reduce(function(m, v) {
-      var val = fn(v)
-      if (val != null) m += val;
-      else len--;
-      return m;
-    }, 0);
-    return roundPrecision(sum / len, 3);
-  }
-
-  function getIn(o, keys) {
-    var k = keys[0],
-        ks = keys.slice(1);
-    if (!o || !o.hasOwnProperty(k)) return null;
-    return ks.length ? getIn(o[k], ks) : o[k];
-  }
-
-  function inGetter(stringOfKeys) {
-    var keys = stringOfKeys.split('.');
-    return function(o) {
-      return getIn(o, keys);
-    };
-  }
-
-  function roundPrecision(n, p) {
-    var pow10 = Math.pow(10, p)
-    return Math.round(n * pow10) / pow10;
-  }
-
   function render(state) {
     var bounds = sszvis.bounds({ top: 100, bottom: 10, left: 30, right: 10, width: 1000, height: 900 })
 
