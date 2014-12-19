@@ -14,9 +14,13 @@
       font-family: roboto;
       margin: 0;
       padding: 0;
+      padding-left: 30px;
     }
     h3 {
       margin-bottom: 0.25em;
+    }
+    .chart-container {
+      margin-bottom: 5em;
     }
   </style>
 
@@ -55,7 +59,7 @@ function roundPrecision(n, p) {
 </script>
 
 <h3>All songs in dataset, summary of versions</h3>
-<div id='chart1'></div>
+<div class='chart-container' id='chart1'></div>
 <script type="text/javascript" src='../src/chart1.js'></script>
 
 <h3>Scatterplot for comparing songs</h3>
@@ -65,7 +69,7 @@ function roundPrecision(n, p) {
 <label>Dimension 2 (y-axis):
   <select class='chart2-changeDim' id="song-dimension2"></select>
 </label>
-<div id='chart2'></div>
+<div class='chart-container' id='chart2'></div>
 <script type="text/javascript" src='../src/chart2.js'></script>
 
 <h3>Scatterplot for comparing across versions</h3>
@@ -75,7 +79,7 @@ function roundPrecision(n, p) {
 <label>Dimension 2 (y-axis):
   <select id="versions-dimension2"></select>
 </label>
-<div id='chart3'></div>
+<div class='chart-container' id='chart3'></div>
 <script type="text/javascript" src='../src/chart3.js'></script>
 
 </body>
