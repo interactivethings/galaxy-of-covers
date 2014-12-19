@@ -1,0 +1,2221 @@
+[
+  {
+    "versions": [
+      {
+        "performer": "Gwen McCrae",
+        "date": "March 1972",
+        "title": "You Were Always on My Mind",
+        "spotify": {
+          "id": "4zPhsJgq9JpZBKxyeyIqJ1",
+          "name": "You Were Always On My Mind",
+          "artists": [
+            {
+              "id": "742YR9ZgF0tCO5juBfvPAU",
+              "name": "Gwen McCrae"
+            }
+          ],
+          "duration": 224973,
+          "popularity": 17,
+          "preview": "https://p.scdn.co/mp3-preview/ab9dcdcb480cd5de4c43760e10e25ada70ed3bc5",
+          "albumArtwork": "https://i.scdn.co/image/e48edff00d8fe3eef256f72064a3a1a2a2afb7c6"
+        },
+        "echonest": {
+          "songId": "SORTMRF130516E084F",
+          "energy": 0.304326,
+          "liveness": 0.234871,
+          "tempo": 71.7,
+          "speechiness": 0.02713,
+          "acousticness": 0.29344,
+          "instrumentalness": 0.014012,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 224.86159,
+          "loudness": -12.766,
+          "valence": 0.232491,
+          "danceability": 0.497108,
+          "latitude": 30.4208,
+          "location": "Pensacola, FL, US",
+          "longitude": -87.2172,
+          "whosampledId": "93527"
+        }
+      },
+      {
+        "performer": "Brenda Lee",
+        "date": "June 12, 1972",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "2G4izYMDmLX2zVuvCJQDW4",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "4cPHsZM98sKzmV26wlwD2W",
+              "name": "Brenda Lee"
+            }
+          ],
+          "duration": 169773,
+          "popularity": 12,
+          "preview": "https://p.scdn.co/mp3-preview/d3631ce4da712acb30f2e47982be9761f385e8be",
+          "albumArtwork": "https://i.scdn.co/image/7aedea1235a29259fd0fa7cef3562514d19926d6"
+        },
+        "echonest": {
+          "songId": "SOKUKPQ12A8C141521",
+          "energy": 0.303232,
+          "liveness": 0.133226,
+          "tempo": 83.483,
+          "speechiness": 0.0265,
+          "acousticness": 0.819659,
+          "instrumentalness": 0.000088,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 169.77288,
+          "loudness": -11.758,
+          "valence": 0.308308,
+          "danceability": 0.402887,
+          "latitude": 33.844371,
+          "location": "Atlanta, GA",
+          "longitude": -84.47405,
+          "whosampledId": "11671"
+        }
+      },
+      {
+        "performer": "Elvis Presley",
+        "date": "November 1972",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "0AmAZBnbXW7Dq1ykCamvRl",
+          "name": "Always on My Mind - Remastered",
+          "artists": [
+            {
+              "id": "43ZHCT0cAZBISjO8DG9PnE",
+              "name": "Elvis Presley"
+            }
+          ],
+          "duration": 217466,
+          "popularity": 66,
+          "preview": "https://p.scdn.co/mp3-preview/93778849bcbeef71b7e0a4e3565cb48c60f583de",
+          "albumArtwork": "https://i.scdn.co/image/98128f5c15aee1d481fb7722dbe71e8268ffbdcd"
+        },
+        "echonest": {
+          "songId": "SONPPBD144C48E8951",
+          "energy": 0.72821,
+          "liveness": 0.155662,
+          "tempo": 90.59,
+          "speechiness": 0.03274,
+          "acousticness": 0.479687,
+          "instrumentalness": 0.00038,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 217.89333,
+          "loudness": -8.158,
+          "valence": 0.456121,
+          "danceability": 0.527015,
+          "latitude": 35.169255,
+          "location": "Memphis, TN",
+          "longitude": -89.990415,
+          "whosampledId": "8586"
+        }
+      },
+      {
+        "performer": "Ben Cash",
+        "date": "1976",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "John Wesley Ryles",
+        "date": "1979",
+        "title": "You Are Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Willie Nelson",
+        "date": "February 1982",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "2xYQTU2bbg6WVAmpY1eae4",
+          "name": "Always on My Mind",
+          "artists": [
+            {
+              "id": "5W5bDNCqJ1jbCgTxDD0Cb3",
+              "name": "Willie Nelson"
+            }
+          ],
+          "duration": 212666,
+          "popularity": 63,
+          "preview": "https://p.scdn.co/mp3-preview/7a78d404a80e45968f9eae2b64d137b8865d6bf2",
+          "albumArtwork": "https://i.scdn.co/image/0ae1bdb0a351cbc2bf30ec74ced990a15e4488a8"
+        },
+        "echonest": {
+          "songId": "SOUGMBH144B01AAF82",
+          "energy": 0.318565,
+          "liveness": 0.128758,
+          "tempo": 147.137,
+          "speechiness": 0.0287,
+          "acousticness": 0.861354,
+          "instrumentalness": 0.003729,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 210.66667,
+          "loudness": -12.201,
+          "valence": 0.21162,
+          "danceability": 0.41675,
+          "latitude": 31.8846,
+          "location": "Abbott, TX, US",
+          "longitude": -97.0757,
+          "whosampledId": "8587"
+        }
+      },
+      {
+        "performer": "Faron Young",
+        "date": "1982",
+        "title": "You Were Always on My Mind",
+        "spotify": {
+          "id": "7MTlbiPo9GnafPiCzCKgyb",
+          "name": "You Were Always on My Mind",
+          "artists": [
+            {
+              "id": "6uvq6FeVsmhOWfJHxVNeBL",
+              "name": "Faron Young"
+            }
+          ],
+          "duration": 221158,
+          "popularity": 9,
+          "preview": "https://p.scdn.co/mp3-preview/98ea631f8a76e0b8147af6a82859955745c8e61e",
+          "albumArtwork": "https://i.scdn.co/image/d45137bb27a70fb059caa85b3d2dc5573aa631a8"
+        },
+        "echonest": {
+          "songId": "SOASTLT1311AFDF7D5",
+          "energy": 0.309353,
+          "liveness": 0.19373,
+          "tempo": 140.359,
+          "speechiness": 0.028996,
+          "acousticness": 0.62512,
+          "instrumentalness": 0.000011,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 221.15859,
+          "loudness": -12.128,
+          "valence": 0.214086,
+          "danceability": 0.437945,
+          "latitude": 32.5146,
+          "location": "Shreveport, LA, US",
+          "longitude": -93.7473
+        }
+      },
+      {
+        "performer": "Bob Long",
+        "date": "1982",
+        "title": "You Were Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Big Daddy",
+        "date": "1985",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "2nNt6BGan18SwJ4pV84975",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "2UcJVTNX3AAs64CAUgFXKY",
+              "name": "Big Daddy"
+            }
+          ],
+          "duration": 165106,
+          "popularity": 3,
+          "preview": "https://p.scdn.co/mp3-preview/dd84fa794e2758e9b56d41163dec76b7f8ca02c6",
+          "albumArtwork": "https://i.scdn.co/image/0b0185f6bf0af1b05d082ba6ad6f033ce1ffbb64"
+        },
+        "echonest": {
+          "songId": "SOZNTFL132C02C266C",
+          "energy": 0.690627,
+          "liveness": 0.045843,
+          "tempo": 182.486,
+          "speechiness": 0.348199,
+          "acousticness": 0.320517,
+          "instrumentalness": 0,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 165.10621,
+          "loudness": -13.283,
+          "valence": 0.861456,
+          "danceability": 0.462619,
+          "latitude": 37.2719,
+          "location": "California, US",
+          "longitude": -119.27,
+          "whosampledId": "92861"
+        }
+      },
+      {
+        "performer": "Eugene Chadbourne",
+        "date": "1985",
+        "title": "Medley In C: Always on My Mind / Whiter Shade of Pale  / San Francisco Nights / Ain't Misbehavin' / Imagine / TV Party / Dang Me / England Swings / I Started a Joke / To Sir With Love / Some Guys Have All the Luck / Waltz Across Texas / The Shah Sleeps in Lee Harvey's Grave",
+        "spotify": null
+      },
+      {
+        "performer": "Pet Shop Boys",
+        "date": "November 30, 1987",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "07ABETRdek3ACMpRPvQuaT",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "2ycnb8Er79LoH2AsR5ldjh",
+              "name": "Pet Shop Boys"
+            }
+          ],
+          "duration": 234906,
+          "popularity": 64,
+          "preview": "https://p.scdn.co/mp3-preview/008d38dabfa8c0995d177a41b5f3c174e779bf74",
+          "albumArtwork": "https://i.scdn.co/image/29fc13c4a9e2e376ccea1380b3c45351a5f54fa5"
+        },
+        "echonest": {
+          "songId": "SOSRHZA131677150A7",
+          "energy": 0.889405,
+          "liveness": 0.338163,
+          "tempo": 124.768,
+          "speechiness": 0.036205,
+          "acousticness": 0.003659,
+          "instrumentalness": 0.059343,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 237.65333,
+          "loudness": -4.566,
+          "valence": 0.580755,
+          "danceability": 0.533079,
+          "latitude": 51.5063,
+          "location": "London, England, GB",
+          "longitude": -0.12714
+        }
+      },
+      {
+        "performer": "Wojciech Gąssowski‎",
+        "date": "1988",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "4h2h5LjyrUhlVfElXJKkwY",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "1MWjFnOKhkFoiNBmwiatjL",
+              "name": "Wojciech Gassowski"
+            }
+          ],
+          "duration": 209640,
+          "popularity": 0,
+          "preview": "https://p.scdn.co/mp3-preview/09a6a79087a1bd9b396eddc8a0749132c5ae3d50",
+          "albumArtwork": "https://i.scdn.co/image/e2265fba0783e7341c4dab7abe0231d6001b9578"
+        },
+        "echonest": {
+          "songId": "SOPHMRH13CF4D2B531",
+          "energy": 0.308132,
+          "liveness": 0.077187,
+          "tempo": 76.566,
+          "speechiness": 0.026218,
+          "acousticness": 0.181959,
+          "instrumentalness": 0.00222,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 209.68444,
+          "loudness": -15.708,
+          "valence": 0.276342,
+          "danceability": 0.580476
+        }
+      },
+      {
+        "performer": "The Chipmunks and the Chipettes",
+        "date": "1988",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Dorwood Crouch and The Deadwood Playboys",
+        "date": "1990",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Grant & Forsyth",
+        "date": "1990",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "6dDxbZRJmPpTMepSZYezKT",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "3cjlbEWAUXwyHOwIpYgkNK",
+              "name": "Grant & Forsyth"
+            }
+          ],
+          "duration": 220481,
+          "popularity": 8,
+          "preview": "https://p.scdn.co/mp3-preview/9caaa008e9ee02b16a6b92dcd626face22eb79b8",
+          "albumArtwork": "https://i.scdn.co/image/033b1d0aa0681195b3ab6809da51eb4639a74096"
+        },
+        "echonest": {
+          "songId": "SOXRLIF137571B4BD8",
+          "energy": 0.346844,
+          "liveness": 0.126669,
+          "tempo": 144.086,
+          "speechiness": 0.028731,
+          "acousticness": 0.750728,
+          "instrumentalness": 0.000113,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 220.51329,
+          "loudness": -9.842,
+          "valence": 0.170798,
+          "danceability": 0.380382,
+          "latitude": 54.3141,
+          "location": "United Kingdom",
+          "longitude": -2.23001
+        }
+      },
+      {
+        "performer": "The Jordanaires",
+        "date": "1991",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "7jODj0FxUMqETlRuoq42b4",
+          "name": "Always on My Mind",
+          "artists": [
+            {
+              "id": "6CXezToiGS8K6jr9kr8Muv",
+              "name": "The Jordanaires"
+            }
+          ],
+          "duration": 169806,
+          "popularity": 6,
+          "preview": "https://p.scdn.co/mp3-preview/9f1fa5f09ff965cabb5e37ca430ef26c769f6242",
+          "albumArtwork": "https://i.scdn.co/image/bc2f5a1a0ec6284c3b8264dbe43cfe42af421e96"
+        },
+        "echonest": {
+          "songId": "SOQBUJM12AB0187C42",
+          "energy": 0.242937,
+          "liveness": 0.126627,
+          "tempo": 79.881,
+          "speechiness": 0.024066,
+          "acousticness": 0.326938,
+          "instrumentalness": 0,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 169.80562,
+          "loudness": -15.44,
+          "valence": 0.382165,
+          "danceability": 0.565759,
+          "latitude": 37.209,
+          "location": "Springfield, MO, US",
+          "longitude": -93.2916
+        }
+      },
+      {
+        "performer": "Cissy Houston",
+        "date": "September 15, 1992",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "5za2oHncCBuSZbHZNOAnce",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "7hjIF77h9hTcrOCuo3YA5I",
+              "name": "Chuck Jackson And Cissy Houston"
+            }
+          ],
+          "duration": 270866,
+          "popularity": 1,
+          "preview": "https://p.scdn.co/mp3-preview/aed23b0ce6c58b4f1b25806ea3df263dcc50ab58",
+          "albumArtwork": "https://i.scdn.co/image/eec5b76096b7ec1d95557be7ec9f51b204126b70"
+        },
+        "echonest": {
+          "songId": "SOIULCV12A8C1327BA",
+          "energy": 0.279204,
+          "liveness": 0.138564,
+          "tempo": 123.123,
+          "speechiness": 0.035791,
+          "acousticness": 0.852717,
+          "instrumentalness": 0.001158,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 270.86621,
+          "loudness": -12.023,
+          "valence": 0.137991,
+          "danceability": 0.494829
+        }
+      },
+      {
+        "performer": "Michael Ball",
+        "date": "December 1992",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "4tQbBhcPkFzVUKUqCfZf9o",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "2MISUlPFrBMRlIcazbEOUI",
+              "name": "Michael Ball"
+            }
+          ],
+          "duration": 243000,
+          "popularity": 10,
+          "preview": "https://p.scdn.co/mp3-preview/ff8af64a6da7bd7f45bd8afd61bed51845edbad5",
+          "albumArtwork": "https://i.scdn.co/image/907ec36a129f3b23e76f2faaf396aa56a7c75e9a"
+        },
+        "echonest": {
+          "songId": "SOGLMOD12A6310E47F",
+          "energy": 0.504991,
+          "liveness": 0.12335,
+          "tempo": 80.302,
+          "speechiness": 0.03169,
+          "acousticness": 0.411025,
+          "instrumentalness": 0.00037,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 242.99955,
+          "loudness": -11.168,
+          "valence": 0.249849,
+          "danceability": 0.42452,
+          "latitude": 52.3353816,
+          "location": "Bromsgrove, England",
+          "longitude": -2.0597449
+        }
+      },
+      {
+        "performer": "The Starsound Orchestra",
+        "date": "1992",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "5iQIhJugXBbKxNo0YOJyYM",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "6BmqUaZDaTI41XJT1uLmCE",
+              "name": "The Starsound Orchestra"
+            }
+          ],
+          "duration": 171200,
+          "popularity": 0,
+          "preview": "https://p.scdn.co/mp3-preview/5fe30811e33a06a36b37869b62c67ba91b6c8075",
+          "albumArtwork": "https://i.scdn.co/image/97bff30d8906d6a70a50fb6a2aca80abe69434cc"
+        },
+        "echonest": {
+          "songId": "SOCSYYG1311AFD6B29",
+          "energy": 0.341329,
+          "liveness": 0.058675,
+          "tempo": 124.226,
+          "speechiness": 0.032571,
+          "acousticness": 0.261574,
+          "instrumentalness": 0.742841,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 171.19955,
+          "loudness": -13.445,
+          "valence": 0.321526,
+          "danceability": 0.401008
+        }
+      },
+      {
+        "performer": "Piet Veerman",
+        "date": "1992",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "James Galway",
+        "date": "September 13, 1994",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "4I3VzN0bQMmEDsmkeDgoCh",
+          "name": "Always on My Mind",
+          "artists": [
+            {
+              "id": "774mHr909NkDVeyyXQBQfZ",
+              "name": "James Galway"
+            }
+          ],
+          "duration": 191533,
+          "popularity": 1,
+          "preview": "https://p.scdn.co/mp3-preview/cf5284dd50190d075fb691ff8186b5d50e889aac",
+          "albumArtwork": "https://i.scdn.co/image/895a989c0989e74d21fa432992a46d29e749ac1a"
+        },
+        "echonest": {
+          "songId": "SOGNHEH12A8C13BB25",
+          "energy": 0.239881,
+          "liveness": 0.059678,
+          "tempo": 79.625,
+          "speechiness": 0.030454,
+          "acousticness": 0.68863,
+          "instrumentalness": 0.946333,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 191.53333,
+          "loudness": -16.29,
+          "valence": 0.274641,
+          "danceability": 0.377577,
+          "latitude": 54.5953,
+          "location": "Belfast, Northern Ireland, GB",
+          "longitude": -5.93452
+        }
+      },
+      {
+        "performer": "Hubbas",
+        "date": "1995",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Chris de Burgh",
+        "date": "1995",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "5yMxEXoO47OlDdLoS2pwLa",
+          "name": "Always On My Mind - Re-Recorded Version",
+          "artists": [
+            {
+              "id": "2RpHsROrX075xfIwHn6B2U",
+              "name": "Chris De Burgh"
+            }
+          ],
+          "duration": 204240,
+          "popularity": 25,
+          "preview": "https://p.scdn.co/mp3-preview/0cdca5d2f7778cf9f59f9c45e00962b8d28e8269",
+          "albumArtwork": "https://i.scdn.co/image/029fc4c6279d93752662f293cc4b65fed4e6a52f"
+        },
+        "echonest": {
+          "songId": "SOINNIC12A6D4F978F",
+          "energy": 0.25728,
+          "liveness": 0.119557,
+          "tempo": 79.055,
+          "speechiness": 0.029942,
+          "acousticness": 0.876271,
+          "instrumentalness": 0.028211,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 203.02621,
+          "loudness": -13.46,
+          "valence": 0.19822,
+          "danceability": 0.278624,
+          "latitude": 52.3341667,
+          "location": "County Wexford, Ireland",
+          "longitude": -6.4575
+        }
+      },
+      {
+        "performer": "David Axelrod",
+        "date": "1995",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Ricky Norton",
+        "date": "1996",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Carpe Wade",
+        "date": "1997",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Caroline Henderson",
+        "date": "1997",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "15NsIL6wT4YzumVfu5oRax",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "3xIrRi4oP84o7Jr8OZCnpv",
+              "name": "Caroline Henderson"
+            }
+          ],
+          "duration": 223693,
+          "popularity": 5,
+          "preview": "https://p.scdn.co/mp3-preview/3fa84d6844f29c8e3a691e36b22d597aa10e00ed",
+          "albumArtwork": "https://i.scdn.co/image/b493a680ce7652cabc4fcfdc6f022004c33c564b"
+        },
+        "echonest": {
+          "songId": "SONHKBO13740867159",
+          "energy": 0.202443,
+          "liveness": 0.103212,
+          "tempo": 169.498,
+          "speechiness": 0.038025,
+          "acousticness": 0.742937,
+          "instrumentalness": 0.000002,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 223.69288,
+          "loudness": -9.119,
+          "valence": 0.123014,
+          "danceability": 0.224312,
+          "latitude": 59.3322,
+          "location": "Stockholm, Stockholm, SE",
+          "longitude": 18.0624
+        }
+      },
+      {
+        "performer": "David Osborne",
+        "date": "August 4, 1998",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "James Last",
+        "date": "September 30, 1998",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "0oZAFNVcD3oUuidvh9LeDI",
+          "name": "Always On My Mind - Live in Germany",
+          "artists": [
+            {
+              "id": "5UyJW2eCOuXtyYftgbMxZG",
+              "name": "James Last"
+            }
+          ],
+          "duration": 221066,
+          "popularity": 25,
+          "preview": "https://p.scdn.co/mp3-preview/1b5d682bb6a58bd4f4d9fd7acbf2999b6a41beae",
+          "albumArtwork": "https://i.scdn.co/image/2fa0a63863e27fa33d218dfa8c6e1b5d2c6a91b9"
+        },
+        "echonest": {
+          "songId": "SOGVZJL1312A8AC08B",
+          "energy": 0.388259,
+          "liveness": 0.959537,
+          "tempo": 71.068,
+          "speechiness": 0.028302,
+          "acousticness": 0.849046,
+          "instrumentalness": 0.826996,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 223.83955,
+          "loudness": -10.916,
+          "valence": 0.263819,
+          "danceability": 0.356331,
+          "latitude": 53.0751,
+          "location": "Bremen, Bremen, DE",
+          "longitude": 8.8047
+        }
+      },
+      {
+        "performer": "Johnny Cash / Willie Nelson",
+        "date": "1998",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "7nqDbELFvn4E87bjriOHMo",
+          "name": "Always On My Mind - Live",
+          "artists": [
+            {
+              "id": "6kACVPfCOnqzgfEF5ryl0x",
+              "name": "Johnny Cash"
+            },
+            {
+              "id": "5W5bDNCqJ1jbCgTxDD0Cb3",
+              "name": "Willie Nelson"
+            }
+          ],
+          "duration": 245760,
+          "popularity": 24,
+          "preview": "https://p.scdn.co/mp3-preview/a79fba6a0890d5a644e131fa92e63237c624799e",
+          "albumArtwork": "https://i.scdn.co/image/fa3406ba14ba0fa6c428453c0b82568df8b14308"
+        },
+        "echonest": {
+          "songId": "SOMWARY12A6D4FB383",
+          "energy": 0.48901,
+          "liveness": 0.370156,
+          "tempo": 76.122,
+          "speechiness": 0.411101,
+          "acousticness": 0.926803,
+          "instrumentalness": 0.000115,
+          "mode": 1,
+          "time_signature": 5,
+          "duration": 245.71311,
+          "loudness": -11.69,
+          "valence": 0.606638,
+          "danceability": 0.515325,
+          "latitude": 33.866338,
+          "location": "Kingsland, AR",
+          "longitude": -92.276397
+        }
+      },
+      {
+        "performer": "El Viz",
+        "date": "June 22, 1999",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "The Beegie Adair Trio",
+        "date": "2000",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Ricardo Caliente",
+        "date": "2000",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "4w7HC9dcKvt1GAYJMoVhbG",
+          "name": "Always on My Mind",
+          "artists": [
+            {
+              "id": "3mHX757X1ukOqoGrxw4qH2",
+              "name": "Ricardo Caliente"
+            }
+          ],
+          "duration": 208693,
+          "popularity": 0,
+          "preview": "https://p.scdn.co/mp3-preview/e646950a1c221b56bb98ecbb50f06b9fd6c59940",
+          "albumArtwork": "https://i.scdn.co/image/8c199be0441468508df5dcccdb668cf8ab586d64"
+        },
+        "echonest": {
+          "songId": "SOYITIB14394FD672A",
+          "energy": 0.354367,
+          "liveness": 0.098022,
+          "tempo": 83.041,
+          "speechiness": 0.0312,
+          "acousticness": 0.493364,
+          "instrumentalness": 0.95621,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 208.69288,
+          "loudness": -11.275,
+          "valence": 0.233654,
+          "danceability": 0.565018
+        }
+      },
+      {
+        "performer": "Flemming Bamse Jørgensen",
+        "date": "2001",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Base Unique",
+        "date": "May 27, 2002",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "6OusgZpJs0vWKKN1ptMh1g",
+          "name": "Always On My Mind - DJ Quicksilver Mix",
+          "artists": [
+            {
+              "id": "59T6S98jx4Nlmy6uMaMUmn",
+              "name": "Base Unique"
+            }
+          ],
+          "duration": 419909,
+          "popularity": 1,
+          "preview": "https://p.scdn.co/mp3-preview/9e2cb47945a2302936a38eada6896f594e23690e"
+        },
+        "echonest": {
+          "songId": "SODIOAC146EBB675E4",
+          "energy": 0.946696,
+          "liveness": 0.222029,
+          "tempo": 138.012,
+          "speechiness": 0.053723,
+          "acousticness": 0.002985,
+          "instrumentalness": 0.438443,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 420.85288,
+          "loudness": -6.497,
+          "valence": 0.392363,
+          "danceability": 0.719122,
+          "latitude": 51.1642,
+          "location": "Germany",
+          "longitude": 10.4542
+        }
+      },
+      {
+        "performer": "Anton Walgrave",
+        "date": "June 2002",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "2Nd9pBHJ17mzSx6MBudnbS",
+          "name": "Always on My Mind",
+          "artists": [
+            {
+              "id": "3LKSXUgaKhJaIDO6piFVi0",
+              "name": "Anton Walgrave"
+            }
+          ],
+          "duration": 267133,
+          "popularity": 4,
+          "preview": "https://p.scdn.co/mp3-preview/07e63e78659f494e5b4389fac2314d6b18f0e799",
+          "albumArtwork": "https://i.scdn.co/image/43b43558130644be503e7a29c0918b6fb53cda99"
+        },
+        "echonest": {
+          "songId": "SOHYBZX147C5F916E5",
+          "energy": 0.762884,
+          "liveness": 0.486006,
+          "tempo": 81.369,
+          "speechiness": 0.1103,
+          "acousticness": 0.882869,
+          "instrumentalness": 0.006718,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 267.13288,
+          "loudness": -14.532,
+          "valence": 0.568691,
+          "danceability": 0.552168,
+          "latitude": 50.8794,
+          "location": "Leuven, Vlaams Brabant, BE",
+          "longitude": 4.70367
+        }
+      },
+      {
+        "performer": "Anne Murray",
+        "date": "2002",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "65CG2x3xn1OqAVS7ULlQkz",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "7d7q5Y1p2QWS4QRAhTQR5E",
+              "name": "Anne Murray"
+            }
+          ],
+          "duration": 236773,
+          "popularity": 20,
+          "preview": "https://p.scdn.co/mp3-preview/25d08b93a5d4c3a72311a6e2eaa45497cff6403a",
+          "albumArtwork": "https://i.scdn.co/image/486f475d0a7a411b9e4d6baba2f529e6298bd045"
+        },
+        "echonest": {
+          "songId": "SOIYRZX1316771532D",
+          "energy": 0.363455,
+          "liveness": 0.118575,
+          "tempo": 135.421,
+          "speechiness": 0.027714,
+          "acousticness": 0.585408,
+          "instrumentalness": 0.000351,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 236.77288,
+          "loudness": -9.881,
+          "valence": 0.326844,
+          "danceability": 0.522908,
+          "latitude": 45.633333,
+          "location": "Springhill, Canada",
+          "longitude": -64.05
+        }
+      },
+      {
+        "performer": "Sigue Sigue Sputnik",
+        "date": "2002",
+        "title": "Always on My Mindwarp",
+        "spotify": null
+      },
+      {
+        "performer": "Crazy Crackers",
+        "date": "2003",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "P.J. Proby",
+        "date": "2003",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Big Fat Snake with TCB Band & Sweet Inspirations",
+        "date": "2003",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Barbados",
+        "date": "2003",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "35lmSRSLjbPYMSxSWhJ3GN",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "5MbYu9M8ksD8u0CGqswZoX",
+              "name": "Barbados"
+            }
+          ],
+          "duration": 164506,
+          "popularity": 20,
+          "preview": "https://p.scdn.co/mp3-preview/85ac5feea217797e1759245538ece3232bf9de95",
+          "albumArtwork": "https://i.scdn.co/image/7d97129df3281723e2276942dc3aa4f517c651c1"
+        },
+        "echonest": {
+          "songId": "SOKCVKQ12A8C13A920",
+          "energy": 0.653705,
+          "liveness": 0.118564,
+          "tempo": 84.977,
+          "speechiness": 0.023777,
+          "acousticness": 0.014366,
+          "instrumentalness": 0.000036,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 164.50621,
+          "loudness": -5.894,
+          "valence": 0.43747,
+          "danceability": 0.549208,
+          "latitude": 57.7013,
+          "location": "Gothenburg, Vastra Gotaland, SE",
+          "longitude": 11.9669
+        }
+      },
+      {
+        "performer": "Mike Andersen",
+        "date": "2003",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Me First and The Gimme Gimmes",
+        "date": "October 5, 2004",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "64ftARyBecFe8itpArVNhP",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "0cOVRC8EOwDwXrs3JTrRN5",
+              "name": "Me First and the Gimme Gimmes"
+            }
+          ],
+          "duration": 155453,
+          "popularity": 28,
+          "preview": "https://p.scdn.co/mp3-preview/e647b847b15279004c7a2b6b46fe28a81bccd967",
+          "albumArtwork": "https://i.scdn.co/image/ace9ec697e4c8f8faae1dda3a4b953ab4c04dd25"
+        },
+        "echonest": {
+          "songId": "SOOUSGH1313439C8BF",
+          "energy": 0.885701,
+          "liveness": 0.343275,
+          "tempo": 145.484,
+          "speechiness": 0.111594,
+          "acousticness": 0.001952,
+          "instrumentalness": 0.00079,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 155.45288,
+          "loudness": -7.455,
+          "valence": 0.458477,
+          "danceability": 0.361896,
+          "latitude": 37.2719,
+          "location": "California, US",
+          "longitude": -119.27
+        }
+      },
+      {
+        "performer": "Jan Keizer",
+        "date": "October 29, 2004",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "6bTrKgSoZKVHkecoa3t8LO",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "1pADHrgtnPgv0TO0j8V8S6",
+              "name": "Jan Keizer"
+            }
+          ],
+          "duration": 213613,
+          "popularity": 12,
+          "preview": "https://p.scdn.co/mp3-preview/440e9912f171e0d5418ce867d3b2fceada9c66e8",
+          "albumArtwork": "https://i.scdn.co/image/224ca48863eade411bd75cc6458a5010e9b75bcd"
+        },
+        "echonest": {
+          "songId": "SOYMGSC1377A64043D",
+          "energy": 0.291473,
+          "liveness": 0.102775,
+          "tempo": 146.185,
+          "speechiness": 0.034086,
+          "acousticness": 0.838828,
+          "instrumentalness": 0.014491,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 213.61288,
+          "loudness": -12.19,
+          "valence": 0.271431,
+          "danceability": 0.468743,
+          "latitude": 52.1082,
+          "location": "Netherlands",
+          "longitude": 5.32986
+        }
+      },
+      {
+        "performer": "Fantasia",
+        "date": "November 23, 2004",
+        "title": "You Were Always on My Mind",
+        "spotify": {
+          "id": "0EbIVd9AY1SvZsgCh6xz0D",
+          "name": "You Were Always On My Mind",
+          "artists": [
+            {
+              "id": "7xAcVHPiirnUqfdqo0USb1",
+              "name": "Fantasia"
+            }
+          ],
+          "duration": 223066,
+          "popularity": 37,
+          "preview": "https://p.scdn.co/mp3-preview/7db9c19b7d27dde7c9234722f8829b4309084d34",
+          "albumArtwork": "https://i.scdn.co/image/72a4c9c7c2882714eeb6318a5779448dfb87828f"
+        },
+        "echonest": {
+          "songId": "SOJZPZW1311AFED3DD",
+          "energy": 0.413184,
+          "liveness": 0.119238,
+          "tempo": 134.871,
+          "speechiness": 0.031665,
+          "acousticness": 0.310898,
+          "instrumentalness": 0,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 223.06621,
+          "loudness": -9.558,
+          "valence": 0.149635,
+          "danceability": 0.51786,
+          "latitude": 35.9555556,
+          "location": "High Point, NC",
+          "longitude": -80.0055556
+        }
+      },
+      {
+        "performer": "Peter Williams",
+        "date": "2004",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "4WYYHglCkwOnhyYlnspHKC",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "2nRbM6vhQi8bHT2vQpJMLV",
+              "name": "Peter Wiliiams"
+            }
+          ],
+          "duration": 225626,
+          "popularity": 0,
+          "preview": "https://p.scdn.co/mp3-preview/27273e704d6343fdc823ae4e214bb1ddded0736d",
+          "albumArtwork": "https://i.scdn.co/image/9efee301e14b4c16bcf68ec758bf5bd234b7e175"
+        },
+        "echonest": {
+          "songId": "SOPXCAT130516E4003",
+          "energy": 0.343334,
+          "liveness": 0.277371,
+          "tempo": 135.987,
+          "speechiness": 0.0304,
+          "acousticness": 0.445304,
+          "instrumentalness": 0.858607,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 225.62621,
+          "loudness": -8.756,
+          "valence": 0.202992,
+          "danceability": 0.592839
+        }
+      },
+      {
+        "performer": "Inger Marie Gundersen",
+        "date": "2004",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "0vvkyt5u2L1tbV6Jj9SCkz",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "1J2TFd0Li2fs50iJBS5MOq",
+              "name": "Inger Marie Gundersen"
+            }
+          ],
+          "duration": 314827,
+          "popularity": 12,
+          "preview": "https://p.scdn.co/mp3-preview/f51e8b109c1622af42cd7778018e467b4be486dd",
+          "albumArtwork": "https://i.scdn.co/image/6ad90b5188bcb148dca597e0b284eda65ab2fce1"
+        },
+        "echonest": {
+          "songId": "SOCTUTR12AB0188188",
+          "energy": 0.127127,
+          "liveness": 0.065769,
+          "tempo": 127.469,
+          "speechiness": 0.044948,
+          "acousticness": 0.881487,
+          "instrumentalness": 0.000472,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 314.8273,
+          "loudness": -17.177,
+          "valence": 0.136565,
+          "danceability": 0.479484,
+          "latitude": 64.5565,
+          "location": "Norway",
+          "longitude": 12.6662
+        }
+      },
+      {
+        "performer": "Barb Jungr",
+        "date": "March 7, 2005",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "1LNWjXO9fOhgJuq4H68Gay",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "0pKCBLG3eavJSrSoiNMqNN",
+              "name": "Barb Jungr"
+            }
+          ],
+          "duration": 305386,
+          "popularity": 5,
+          "preview": "https://p.scdn.co/mp3-preview/2a5fe5a0ca5a84fdfe6173cf464f7cf17df43a9f",
+          "albumArtwork": "https://i.scdn.co/image/cd2328f954cf61552a3aa02202f2f9b088e49a0b"
+        },
+        "echonest": {
+          "songId": "SOMZCTK1313439EA61",
+          "energy": 0.108182,
+          "liveness": 0.141114,
+          "tempo": 75.619,
+          "speechiness": 0.034359,
+          "acousticness": 0.978489,
+          "instrumentalness": 0.002898,
+          "mode": 1,
+          "time_signature": 1,
+          "duration": 305.38621,
+          "loudness": -15.966,
+          "valence": 0.28272,
+          "danceability": 0.443139,
+          "latitude": 53.611,
+          "location": "Rochdale, England, GB",
+          "longitude": -2.16696
+        }
+      },
+      {
+        "performer": "Wenche",
+        "date": "August 29, 2005",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "31SFFgf9CwIhP45uodF2dT",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "4cYvWQgqxfwhUf8EtQD0hP",
+              "name": "Wenche"
+            }
+          ],
+          "duration": 239360,
+          "popularity": 4,
+          "preview": "https://p.scdn.co/mp3-preview/6e6f8c6132ebdc98ff2398f8d2254caba7f87022",
+          "albumArtwork": "https://i.scdn.co/image/b4db34a2e77ef969c432f5f935b04989b91c8b50"
+        },
+        "echonest": {
+          "songId": "SOUKSFJ13C1B40994F",
+          "energy": 0.30797,
+          "liveness": 0.221074,
+          "tempo": 69.979,
+          "speechiness": 0.026043,
+          "acousticness": 0.413248,
+          "instrumentalness": 0.000071,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 239.35955,
+          "loudness": -8.3,
+          "valence": 0.200224,
+          "danceability": 0.577777,
+          "latitude": 33.8703,
+          "location": "Fullerton, CA, US",
+          "longitude": -117.929
+        }
+      },
+      {
+        "performer": "Matt Lewis",
+        "date": "September 21, 2005",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Orange feat. Kent Wennman & Afro Choir",
+        "date": "2005",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Christer Sjögren",
+        "date": "2005",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "5IMLo7isyDYuMck9tDYCi9",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "3zxcIxs8CwOEJaPYDKDtTE",
+              "name": "Christer Sjögren"
+            }
+          ],
+          "duration": 234093,
+          "popularity": 25,
+          "preview": "https://p.scdn.co/mp3-preview/cddbec51a5a66494349f00669b6185240ad18a75",
+          "albumArtwork": "https://i.scdn.co/image/9b413794fc6dd17906ac1e50a05658e9085bc279"
+        },
+        "echonest": {
+          "songId": "SOLRTOR12AC3923BCE",
+          "energy": 0.511627,
+          "liveness": 0.149958,
+          "tempo": 90.354,
+          "speechiness": 0.023224,
+          "acousticness": 0.389543,
+          "instrumentalness": 0.014839,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 234.17288,
+          "loudness": -10.876,
+          "valence": 0.362018,
+          "danceability": 0.523166,
+          "latitude": 62.1984,
+          "location": "Sweden",
+          "longitude": 17.5514
+        }
+      },
+      {
+        "performer": "Kina Jaarnek",
+        "date": "2005",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "7tWKNeaVjwyg7B9De4Pwrm",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "5BJqA201bSWRjhnEvonb6s",
+              "name": "Kina Carina Jaarnek & Elvis Presleys Band TCB"
+            }
+          ],
+          "duration": 260000,
+          "popularity": 14,
+          "preview": "https://p.scdn.co/mp3-preview/32ab7a6841a0bba4633c255f60ca26caad38e28d",
+          "albumArtwork": "https://i.scdn.co/image/d04005e11d167a7e835829b85b7dc1e9dbb4526c"
+        },
+        "echonest": {
+          "songId": "SOGFVYH1313439642B",
+          "energy": 0.334353,
+          "liveness": 0.095276,
+          "tempo": 146.867,
+          "speechiness": 0.029478,
+          "acousticness": 0.815736,
+          "instrumentalness": 0.00009,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 259.99955,
+          "loudness": -8.749,
+          "valence": 0.256856,
+          "danceability": 0.524462
+        }
+      },
+      {
+        "performer": "Denzal Sinclaire",
+        "date": "February 7, 2006",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "5ur2BwnsLBmM9uwVX7q1tn",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "0AZZi9vCwmuufN2bE394Ee",
+              "name": "Denzal Sinclaire"
+            }
+          ],
+          "duration": 348386,
+          "popularity": 5,
+          "preview": "https://p.scdn.co/mp3-preview/0c0bbe8ae88756dbcb8fdba453550f1854b29b9e",
+          "albumArtwork": "https://i.scdn.co/image/7485bf22bb01c5521890efdb7a619d89e20de958"
+        },
+        "echonest": {
+          "songId": "SOWBMWW12A6D4FB0B5",
+          "energy": 0.198184,
+          "liveness": 0.121162,
+          "tempo": 103.464,
+          "speechiness": 0.031351,
+          "acousticness": 0.920469,
+          "instrumentalness": 0.000053,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 348.38621,
+          "loudness": -14.407,
+          "valence": 0.203749,
+          "danceability": 0.508278,
+          "latitude": 56.9547,
+          "location": "Canada",
+          "longitude": -98.309
+        }
+      },
+      {
+        "performer": "Julio Iglesias",
+        "date": "September 18, 2006",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "788NGFUpIAMBOowWswSaeZ",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "4etuCZVdP8yiNPn4xf0ie5",
+              "name": "Julio Iglesias"
+            }
+          ],
+          "duration": 223360,
+          "popularity": 34,
+          "preview": "https://p.scdn.co/mp3-preview/da9502e60ab495309ae176b994db051eefbaabce",
+          "albumArtwork": "https://i.scdn.co/image/00b22c090f61d1720a383bf09a5e1a1fb9fb0b65"
+        },
+        "echonest": {
+          "songId": "SOPHLIJ145B04A7F80",
+          "energy": 0.19832,
+          "liveness": 0.0961,
+          "tempo": 71.001,
+          "speechiness": 0.038327,
+          "acousticness": 0.914013,
+          "instrumentalness": 0.018579,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 223.43946,
+          "loudness": -14.309,
+          "valence": 0.137597,
+          "danceability": 0.346295,
+          "latitude": 40.4,
+          "location": "Madrid, Spain",
+          "longitude": -3.6833333,
+          "whosampledId": "43462"
+        }
+      },
+      {
+        "performer": "DNX vs. The Voice",
+        "date": "2006",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Aristakes",
+        "date": "2006",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "3BQ0M9S82KcN56I9uen3DE",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "7mfQGxjXbRoFmWDyLrib7X",
+              "name": "Aristakes"
+            }
+          ],
+          "duration": 274840,
+          "popularity": 3,
+          "preview": "https://p.scdn.co/mp3-preview/3fae1fe4fd11ffa1282a196942f0c416a11457ae",
+          "albumArtwork": "https://i.scdn.co/image/9c0c60dc201fdc6ebe2a47bd0e5745b524e5feeb"
+        },
+        "echonest": {
+          "songId": "SOMYORZ1468CEF0070",
+          "energy": 0.259908,
+          "liveness": 0.09192,
+          "tempo": 77.042,
+          "speechiness": 0.028901,
+          "acousticness": 0.900287,
+          "instrumentalness": 0.000566,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 274.83955,
+          "loudness": -12.341,
+          "valence": 0.242852,
+          "danceability": 0.619762
+        }
+      },
+      {
+        "performer": "Michael Bublé",
+        "date": "May 1, 2007",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "4zKbPdCC2o8726tHh5sEJw",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "1GxkXlMwML1oSg5eLPiAz3",
+              "name": "Michael Bublé"
+            }
+          ],
+          "duration": 269800,
+          "popularity": 58,
+          "preview": "https://p.scdn.co/mp3-preview/0fd08ae58ab3675206c12bbbc67c49eb98ea3b5b",
+          "albumArtwork": "https://i.scdn.co/image/9cc7d9f7ffc6358fbf70a3344f9614b9b3859b47"
+        },
+        "echonest": {
+          "songId": "SOOWSEV12A6D4F659C",
+          "energy": 0.160309,
+          "liveness": 0.099976,
+          "tempo": 66.08,
+          "speechiness": 0.03509,
+          "acousticness": 0.88991,
+          "instrumentalness": 0.025197,
+          "mode": 1,
+          "time_signature": 3,
+          "duration": 269.79955,
+          "loudness": -15.543,
+          "valence": 0.133859,
+          "danceability": 0.366445,
+          "latitude": 49.2445,
+          "location": "Burnaby, British Columbia, CA",
+          "longitude": -122.973,
+          "whosampledId": "31208"
+        }
+      },
+      {
+        "performer": "Karsten Holm",
+        "date": "2007",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "3mbC1gdu9JN1YVvyHWaZwC",
+          "name": "Always on My Mind",
+          "artists": [
+            {
+              "id": "43fJ1q4XnW8a68isfM3fwY",
+              "name": "Karsten Holm"
+            }
+          ],
+          "duration": 227710,
+          "popularity": 0,
+          "preview": "https://p.scdn.co/mp3-preview/78db50f23a13c8291f6fe654c0dc40fbc3b1d693",
+          "albumArtwork": "https://i.scdn.co/image/cc9f4b225d18734291c80933ad6ed55ff1367f1e"
+        },
+        "echonest": {
+          "songId": "SOQUSXR1313438D0DB",
+          "energy": 0.536328,
+          "liveness": 0.127154,
+          "tempo": 86.956,
+          "speechiness": 0.025829,
+          "acousticness": 0.311637,
+          "instrumentalness": 0.000032,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 227.71002,
+          "loudness": -6.714,
+          "valence": 0.239862,
+          "danceability": 0.499146
+        }
+      },
+      {
+        "performer": "DJ Graceland feat. Las Vegas",
+        "date": "2007",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Maximilian Hecker",
+        "date": "2007",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Rein Alexander",
+        "date": "2007",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "45d8EcIMeqzanZWgHXcHe7",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "3C3lXCQIV1vG5SHt8pB5lj",
+              "name": "Rein Alexander"
+            }
+          ],
+          "duration": 209253,
+          "popularity": 14,
+          "preview": "https://p.scdn.co/mp3-preview/a1dc1e58b229fa912cfc8163b93dc4c764e72175",
+          "albumArtwork": "https://i.scdn.co/image/d69bf01db8388353f22e3a15b8a2e3991ffaa6a7"
+        },
+        "echonest": {
+          "songId": "SOCCTJU12AB0184D2E",
+          "energy": 0.301952,
+          "liveness": 0.109942,
+          "tempo": 82.167,
+          "speechiness": 0.031498,
+          "acousticness": 0.627513,
+          "instrumentalness": 0.010493,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 209.25288,
+          "loudness": -8.332,
+          "valence": 0.097728,
+          "danceability": 0.250703,
+          "latitude": 64.5565,
+          "location": "Norway",
+          "longitude": 12.6662
+        }
+      },
+      {
+        "performer": "Roch Voisine",
+        "date": "August 16, 2008",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "5JmJzSybZogdDAV2NRdt5G",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "77xlFule9mFzOWT9Uk80xY",
+              "name": "Roch Voisine"
+            }
+          ],
+          "duration": 247440,
+          "popularity": 12,
+          "preview": "https://p.scdn.co/mp3-preview/99d328e96a6351e1643392e099c109f512e20bd9",
+          "albumArtwork": "https://i.scdn.co/image/03a862ddf55f8f687d2f8d6b76a9248e66de622f"
+        },
+        "echonest": {
+          "songId": "SOGCWNT12AAF3B3771",
+          "energy": 0.313786,
+          "liveness": 0.096006,
+          "tempo": 127.864,
+          "speechiness": 0.02772,
+          "acousticness": 0.51716,
+          "instrumentalness": 0.000285,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 247.43955,
+          "loudness": -8.512,
+          "valence": 0.229251,
+          "danceability": 0.591478,
+          "latitude": 46.4964,
+          "location": "New Brunswick, CA",
+          "longitude": -66.4094
+        }
+      },
+      {
+        "performer": "Nicholis Louw",
+        "date": "2008",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "0wwSx06aqZo3VlHVHLnbpR",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "7bia2GuWoBGpV5eV4gizJI",
+              "name": "Nicholis Louw"
+            }
+          ],
+          "duration": 216426,
+          "popularity": 4,
+          "preview": "https://p.scdn.co/mp3-preview/2b3d2dad1227449557237652740ee4af1658a26e",
+          "albumArtwork": "https://i.scdn.co/image/91ece49d550dcfc5cd1ee7ab0f36dbbc5ffe00a9"
+        },
+        "echonest": {
+          "songId": "SOGXYOD131343931AB",
+          "energy": 0.662906,
+          "liveness": 0.162288,
+          "tempo": 179.824,
+          "speechiness": 0.030803,
+          "acousticness": 0.023037,
+          "instrumentalness": 0.000151,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 216.42667,
+          "loudness": -5.18,
+          "valence": 0.397149,
+          "danceability": 0.242759,
+          "latitude": -28.4793,
+          "location": "South Africa",
+          "longitude": 24.6799
+        }
+      },
+      {
+        "performer": "Amanda Lear",
+        "date": "October 16, 2009",
+        "title": "Always on My Mind (Radio Edit)",
+        "spotify": {
+          "id": "26UaPHoehp8r8zJUqYFuqF",
+          "name": "Always On My Mind - Radio Edit",
+          "artists": [
+            {
+              "id": "0Xkd9GsWwOYETVF0kPXZIG",
+              "name": "Amanda Lear"
+            }
+          ],
+          "duration": 217933,
+          "popularity": 2,
+          "preview": "https://p.scdn.co/mp3-preview/b0e22d5fbcf207ad3466496280543c7461ff2c72",
+          "albumArtwork": "https://i.scdn.co/image/b73b5c63b296eca79eee3ed8eb1ffbee9f0d243a"
+        },
+        "echonest": {
+          "songId": "SOBFXBZ1311AFE31C4",
+          "energy": 0.706214,
+          "liveness": 0.102483,
+          "tempo": 125.03,
+          "speechiness": 0.040218,
+          "acousticness": 0.047837,
+          "instrumentalness": 0.000509,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 217.93288,
+          "loudness": -8.271,
+          "valence": 0.514643,
+          "danceability": 0.741544,
+          "latitude": 10.7592,
+          "location": "Ho Chi Minh City, Ho Chi Minh, VN",
+          "longitude": 106.662
+        }
+      },
+      {
+        "performer": "Elvis Lounge feat Andrea Canta",
+        "date": "2009",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "1RfDbvbbBjVKzQgYQRrnmF",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "4ch8vHuT6FLtgjsfgRp0v2",
+              "name": "Elvis Lounge feat. Andrea Canta"
+            }
+          ],
+          "duration": 263493,
+          "popularity": 2,
+          "preview": "https://p.scdn.co/mp3-preview/f6f8f9bc7682bc9f0bcec90c0446f430a7cbb026",
+          "albumArtwork": "https://i.scdn.co/image/af4b7aa4e63da435880ee43327bd74525e8a8a54"
+        },
+        "echonest": {
+          "songId": "SORFFFW131343873D3",
+          "energy": 0.475881,
+          "liveness": 0.10528,
+          "tempo": 88.994,
+          "speechiness": 0.025551,
+          "acousticness": 0.80575,
+          "instrumentalness": 0.006891,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 263.49288,
+          "loudness": -10.613,
+          "valence": 0.56351,
+          "danceability": 0.633121
+        }
+      },
+      {
+        "performer": "The Acoustic Guitar Troubadours",
+        "date": "2009",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "6OuiRNPXRjGNBJ9SF2mlZN",
+          "name": "Always On My Mind (Acoustic Instrumental Version)",
+          "artists": [
+            {
+              "id": "3Sx5gmdg12vr1nRhcuGDT1",
+              "name": "The Acoustic Guitar Troubadours"
+            }
+          ],
+          "duration": 188600,
+          "popularity": 29,
+          "preview": "https://p.scdn.co/mp3-preview/02e6e01ccfa65cf7550040053edc5e0b613f1b4e"
+        },
+        "echonest": {
+          "songId": "SOCZXQT1312A8A6648",
+          "energy": 0.272303,
+          "liveness": 0.126836,
+          "tempo": 91.658,
+          "speechiness": 0.030005,
+          "acousticness": 0.811378,
+          "instrumentalness": 0.933765,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 188.59955,
+          "loudness": -16.081,
+          "valence": 0.434375,
+          "danceability": 0.420978
+        }
+      },
+      {
+        "performer": "Svenne Hedlund",
+        "date": "March 2010",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "5TlL2RpFYdJQfWU6bW639B",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "5hoHwH0iGYGcqLOhp4RhEy",
+              "name": "Svenne Hedlund"
+            }
+          ],
+          "duration": 231546,
+          "popularity": 9,
+          "preview": "https://p.scdn.co/mp3-preview/ec7e1660994c84a5d304e43058f1465107cce14a",
+          "albumArtwork": "https://i.scdn.co/image/bf5870b9559ca5e6664c61335908be915ad80b18"
+        },
+        "echonest": {
+          "songId": "SOTDBLQ144C813CFD9",
+          "energy": 0.530161,
+          "liveness": 0.165169,
+          "tempo": 82.658,
+          "speechiness": 0.025655,
+          "acousticness": 0.449831,
+          "instrumentalness": 0.000187,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 231.54621,
+          "loudness": -6.765,
+          "valence": 0.3434,
+          "danceability": 0.495393
+        }
+      },
+      {
+        "performer": "Peter Viskinde",
+        "date": "September 2010",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "2MDsPJEDAqtZJwUoB8KY4D",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "31Ha3z41Zi8fk2tmj6QAei",
+              "name": "Peter Viskinde"
+            }
+          ],
+          "duration": 219613,
+          "popularity": 0,
+          "preview": "https://p.scdn.co/mp3-preview/982d6df31a4eccca1fdcdb2fcaeca0ef2e125d22",
+          "albumArtwork": "https://i.scdn.co/image/3016858292a44225ab64ef1ce84b73cb8803766c"
+        },
+        "echonest": {
+          "songId": "SODIEUH12B5527974B",
+          "energy": 0.255222,
+          "liveness": 0.160436,
+          "tempo": 136.129,
+          "speechiness": 0.027681,
+          "acousticness": 0.781271,
+          "instrumentalness": 0.000026,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 219.61288,
+          "loudness": -9.162,
+          "valence": 0.491259,
+          "danceability": 0.625668,
+          "latitude": 55.6763,
+          "location": "Copenhagen, Hovedstaden, DK",
+          "longitude": 12.5694
+        }
+      },
+      {
+        "performer": "Friðrik Ómar",
+        "date": "October 1, 2010",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "00HqqYWAkqSUSq6Ut3DKqw",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "20LOJ2qK7UtYtszvwm8J9d",
+              "name": "Friðrik Ómar Hjörleifsson"
+            }
+          ],
+          "duration": 222240,
+          "popularity": 5,
+          "preview": "https://p.scdn.co/mp3-preview/ba89d8b181ed4ad7765010067f8b4c006cdef9ea",
+          "albumArtwork": "https://i.scdn.co/image/51c6b8b326b6b3297020fcc62901ec40ff04b9ec"
+        },
+        "echonest": {
+          "songId": "SOFOHTV147BDDCBECA",
+          "energy": 0.37944,
+          "liveness": 0.70865,
+          "tempo": 75.31,
+          "speechiness": 0.024992,
+          "acousticness": 0.705367,
+          "instrumentalness": 0.000011,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 222.23955,
+          "loudness": -9.666,
+          "valence": 0.171083,
+          "danceability": 0.374115,
+          "latitude": 65,
+          "location": "Iceland",
+          "longitude": -18
+        }
+      },
+      {
+        "performer": "ortoPilot",
+        "date": "December 1, 2010",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "0aqxViT9Cyq6ofVqRYeQCd",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "3CckGnXzzJ9GARII95dDek",
+              "name": "ortoPilot"
+            }
+          ],
+          "duration": 195919,
+          "popularity": 24,
+          "preview": "https://p.scdn.co/mp3-preview/31e157f03ecaa6e3f6cb3a5a60eba9a85fc00b64",
+          "albumArtwork": "https://i.scdn.co/image/b2069f16bc9c709206563ce4bd903301e523e547"
+        },
+        "echonest": {
+          "songId": "SOLODLF1338A5E658F",
+          "energy": 0.034764,
+          "liveness": 0.068427,
+          "tempo": 73.301,
+          "speechiness": 0.041213,
+          "acousticness": 0.982166,
+          "instrumentalness": 0.000132,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 195.919,
+          "loudness": -19.619,
+          "valence": 0.172829,
+          "danceability": 0.416612,
+          "latitude": 53.4796,
+          "location": "Manchester, England, GB",
+          "longitude": -2.24881
+        }
+      },
+      {
+        "performer": "BJ Blue with Brittany Allyn",
+        "date": "2010",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Eddie Spaghetti",
+        "date": "February 15, 2011",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "6bmWHbCPo6TqUazkWelU6J",
+          "name": "Always on My Mind",
+          "artists": [
+            {
+              "id": "0fmsESGrY47TjwoBkBVs8i",
+              "name": "Eddie Spaghetti"
+            }
+          ],
+          "duration": 189880,
+          "popularity": 13,
+          "preview": "https://p.scdn.co/mp3-preview/0a05270e93f7fc2281a792aad7b95d2b7e7432cf",
+          "albumArtwork": "https://i.scdn.co/image/7e83b5548b0f19aadc3d3180e8cacc997a1d11d5"
+        },
+        "echonest": {
+          "songId": "SODVLOP130516E2DED",
+          "energy": 0.363855,
+          "liveness": 0.17299,
+          "tempo": 78.04,
+          "speechiness": 0.035984,
+          "acousticness": 0.711375,
+          "instrumentalness": 0.000008,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 189.87955,
+          "loudness": -11.028,
+          "valence": 0.256249,
+          "danceability": 0.620583,
+          "latitude": 37.1679,
+          "location": "United States",
+          "longitude": -95.845
+        }
+      },
+      {
+        "performer": "Carola",
+        "date": "March 23, 2011",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "1wY2gZb4aKhx05mUrg8x2d",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "3uFum0NCM1PtmCO0MwsOAt",
+              "name": "Carola"
+            }
+          ],
+          "duration": 254160,
+          "popularity": 37,
+          "preview": "https://p.scdn.co/mp3-preview/8dd44a8183add6ceb65ddd72d4c8e80fd724c2b8",
+          "albumArtwork": "https://i.scdn.co/image/eb37ae5eed2c1fa0416eeaac79c82f37f45cb709"
+        },
+        "echonest": {
+          "songId": "SOLCMYD130516E3681",
+          "energy": 0.252955,
+          "liveness": 0.129907,
+          "tempo": 84.116,
+          "speechiness": 0.031408,
+          "acousticness": 0.805094,
+          "instrumentalness": 0.000004,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 254.15955,
+          "loudness": -9.497,
+          "valence": 0.240291,
+          "danceability": 0.459947,
+          "latitude": 59.3322,
+          "location": "Stockholm, Stockholm, SE",
+          "longitude": 18.0624
+        }
+      },
+      {
+        "performer": "Mary Byrne",
+        "date": "March 28, 2011",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "1fbWOWEIlyILGyZttzZwOG",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "5Rr8kFp0Fi6imDA6o4krCS",
+              "name": "Mary Byrne"
+            }
+          ],
+          "duration": 217453,
+          "popularity": 11,
+          "preview": "https://p.scdn.co/mp3-preview/6e6e5c689e2a4a2a107b6639d80791adf4418d4b",
+          "albumArtwork": "https://i.scdn.co/image/163bc7392767b86f7369b037e515ef9411008f52"
+        },
+        "echonest": {
+          "songId": "SOXLHOT13167711AFC",
+          "energy": 0.489942,
+          "liveness": 0.134367,
+          "tempo": 136.437,
+          "speechiness": 0.032254,
+          "acousticness": 0.557242,
+          "instrumentalness": 0.000065,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 217.45288,
+          "loudness": -6.582,
+          "valence": 0.217338,
+          "danceability": 0.391951,
+          "latitude": 53.3438,
+          "location": "Dublin, Dublin, IE",
+          "longitude": -6.24953
+        }
+      },
+      {
+        "performer": "Dick Brave & The Backbeats",
+        "date": "2011",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "José Feliciano",
+        "date": "June 12, 2012",
+        "title": "You Are Always on My Mind",
+        "spotify": {
+          "id": "4ysYJCsAHa7aSzQCvktD8W",
+          "name": "You Are Always on My Mind",
+          "artists": [
+            {
+              "id": "7K78lVZ8XzkjfRSI7570FF",
+              "name": "Jose Feliciano"
+            }
+          ],
+          "duration": 221720,
+          "popularity": 26,
+          "preview": "https://p.scdn.co/mp3-preview/acb502ed32c45dc19968d1c8778a1e4ea4ad89ad",
+          "albumArtwork": "https://i.scdn.co/image/ab32b1629a8815df657c17426fab71da4b3e4dbd"
+        },
+        "echonest": {
+          "songId": "SOUKMAC13C1B004D2C",
+          "energy": 0.467871,
+          "liveness": 0.242359,
+          "tempo": 150.057,
+          "speechiness": 0.035775,
+          "acousticness": 0.611617,
+          "instrumentalness": 0.000705,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 221.72,
+          "loudness": -12.389,
+          "valence": 0.504128,
+          "danceability": 0.572151,
+          "latitude": 18.25,
+          "location": "Lares, Puerto Rico",
+          "longitude": -66.5
+        }
+      },
+      {
+        "performer": "Vesna Pisarović mit Clayton Thomas, Gerhard Gschlössl, Steve Heather",
+        "date": "June 2012",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Chris Mann",
+        "date": "October 30, 2012",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "18PticKHxKOD0FCegKP4YW",
+          "name": "Always On My Mind - En Vivo Desde Auditorio Nacional / 2013",
+          "artists": [
+            {
+              "id": "7K9rdoOJSiKXoVXPlSkGKT",
+              "name": "Paty Cantú"
+            },
+            {
+              "id": "7rPpyefeTtPZB40uiXMxgS",
+              "name": "Chris Mann"
+            }
+          ],
+          "duration": 217133,
+          "popularity": 35,
+          "preview": "https://p.scdn.co/mp3-preview/f32a0c2d8f2beda7d68c2aea2742833747bb94c9",
+          "albumArtwork": "https://i.scdn.co/image/307f94e7570ccd938e72ae778f8332c54a24a071"
+        },
+        "echonest": {
+          "songId": "SORWNFY144AF84B2B5",
+          "energy": 0.304921,
+          "liveness": 0.970649,
+          "tempo": 115.45,
+          "speechiness": 0.036419,
+          "acousticness": 0.755878,
+          "instrumentalness": 0.000291,
+          "mode": 1,
+          "time_signature": 1,
+          "duration": 217.13288,
+          "loudness": -10.435,
+          "valence": 0.186843,
+          "danceability": 0.238926,
+          "latitude": 20.666667,
+          "location": "Guadalajara, Mexico",
+          "longitude": -103.333333
+        }
+      },
+      {
+        "performer": "Merrill Osmond",
+        "date": "2012",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Chris Mann featuring Martina McBride",
+        "date": "May 7, 2013",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Willie Nelson with Carrie Underwood",
+        "date": "October 11, 2013",
+        "title": "Always on My Mind",
+        "spotify": null
+      },
+      {
+        "performer": "Glenn Toussaint",
+        "date": "2013",
+        "title": "You Were Always on My Mind",
+        "spotify": {
+          "id": "5CRnP3wuSA0IRE3LSyJEf8",
+          "name": "You Were Always On My Mind",
+          "artists": [
+            {
+              "id": "3dcZuJq180Paae7QhI2bhE",
+              "name": "Glenn Toussaint"
+            }
+          ],
+          "duration": 680026,
+          "popularity": 1,
+          "preview": "https://p.scdn.co/mp3-preview/e5891ccd04ff661284418ef3672273a51e4c3c95",
+          "albumArtwork": "https://i.scdn.co/image/b0595480c3a318eb9bcf5feb7412ebc0d68dab1d"
+        },
+        "echonest": {
+          "songId": "SOPJWVW144F5A09143",
+          "energy": 0.195147,
+          "liveness": 0.116556,
+          "tempo": 77.398,
+          "speechiness": 0.040828,
+          "acousticness": 0.987196,
+          "instrumentalness": 0.884507,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 680.02621,
+          "loudness": -17.65,
+          "valence": 0.115312,
+          "danceability": 0.289975
+        }
+      },
+      {
+        "performer": "Bahamas",
+        "date": "February 4, 2014",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "036pGlJwc9ZVFJNLmniSbF",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "4C50EbCS11M0VbGyH3OfLt",
+              "name": "Bahamas"
+            }
+          ],
+          "duration": 255760,
+          "popularity": 35,
+          "preview": "https://p.scdn.co/mp3-preview/3b7ce15b4c08506321c272c2584558e26ce47ae1",
+          "albumArtwork": "https://i.scdn.co/image/39a7f6fec6457685b878d8055f083b0dac17a0ba"
+        },
+        "echonest": {
+          "songId": "SOBTYIF143CA759C1F",
+          "energy": 0.078747,
+          "liveness": 0.117235,
+          "tempo": 79.801,
+          "speechiness": 0.031888,
+          "acousticness": 0.971278,
+          "instrumentalness": 0.007542,
+          "mode": 1,
+          "time_signature": 3,
+          "duration": 255.75955,
+          "loudness": -19.173,
+          "valence": 0.104663,
+          "danceability": 0.353367,
+          "latitude": 43.6486,
+          "location": "Toronto, Ontario, CA",
+          "longitude": -79.3853
+        }
+      },
+      {
+        "performer": "Eleanor McCain",
+        "date": "2014",
+        "title": "Always on My Mind",
+        "spotify": {
+          "id": "5dLVwVbsGOCHksLl5bDZJd",
+          "name": "Always On My Mind",
+          "artists": [
+            {
+              "id": "0cOAHF3ZdUUgVwCi8AQEN5",
+              "name": "Eleanor McCain"
+            }
+          ],
+          "duration": 296813,
+          "popularity": 1,
+          "preview": "https://p.scdn.co/mp3-preview/3ed8d1a4357015897b9c8e7f7a8d0d3cdb7e5e4d",
+          "albumArtwork": "https://i.scdn.co/image/abf50724670129aa94742d99a846235aa1bd78e2"
+        },
+        "echonest": {
+          "songId": "SOKXXJR144F8830797",
+          "energy": 0.230067,
+          "liveness": 0.120407,
+          "tempo": 125.373,
+          "speechiness": 0.034067,
+          "acousticness": 0.857198,
+          "instrumentalness": 0.004029,
+          "mode": 1,
+          "time_signature": 4,
+          "duration": 296.81288,
+          "loudness": -13.432,
+          "valence": 0.095751,
+          "danceability": 0.276635,
+          "latitude": 49.3843,
+          "location": "Ontario, CA",
+          "longitude": -84.7563
+        }
+      }
+    ],
+    "keywords": "Always on My Mind, Pet Shop Boys, John L. Christopher,Mark James,Wayne Carson, Covers, Cover Songs, Samples, Tributes, Music",
+    "title": "Always on My Mind",
+    "performer": {
+      "uri": "http://www.secondhandsongs.com/artist/153",
+      "name": "Pet Shop Boys"
+    },
+    "Buy": "",
+    "isOriginal": false,
+    "Language": "English",
+    "Other release": "IntrospectiveAudio albumOctober 10, 1988",
+    "Rating": "",
+    "description": "Always on My Mind by Pet Shop Boys was written by John L. Christopher, Mark James, Wayne Carson and was first recorded by Brenda Lee in 1971. It was first released by Gwen McCrae in 1972. Pet Shop Boys released it on the audio single Always on My Mind in 1987. It was also covered by Elvis Presley, Willie Nelson, El Viz and 35 others. ",
+    "Released on": "Always on My MindAudio singleNovember 30, 1987",
+    "uri": "http://www.secondhandsongs.com/performance/242",
+    "entityType": "recording",
+    "Written by": "John L. Christopher,Mark James,Wayne Carson",
+    "Comments": "Nr 1 UK / Nr 4 US."
+  }
+]
