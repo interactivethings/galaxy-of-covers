@@ -40,10 +40,11 @@
 <script type="text/javascript">
 
 
+  var WIDTH = 5000;
   var LIMIT_VERSIONS = 15;
-  var colorScale = d3.scale.category20b();
-  var MIN_CONFIDENCE = 0;
-  var MODE = 'loudness';  // one of ['pitch', 'timbre', 'loudness']
+  var MIN_CONFIDENCE = 0.3;
+  var MIN_PITCH_VALUE = 0.9;
+  var MODE = 'pitch';  // one of ['pitch', 'timbre', 'loudness']
 
   function prepareLoudnessData(segmentsData) {
     var data = [];
@@ -179,7 +180,7 @@
           .data(function(d) {
             return d.pitches
                 .map(function(d,i) { return {pitch:i,value:d}; })
-                .filter(function(d) { return d.value >= 0.8; })
+                .filter(function(d) { return d.value >= MIN_PITCH_VALUE; })
           });
 
       pitch.enter()
@@ -255,7 +256,7 @@
 
     var margin = {top: 50, right: 10, bottom: 20, left: 10};
     var versionHeight = 150,
-        width = 2500 - margin.left - margin.right,
+        width = WIDTH - margin.left - margin.right,
         height = versionHeight * songData.versions.length;
 
     var svg = d3.select('body').append('svg')
