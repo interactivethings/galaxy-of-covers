@@ -43,7 +43,20 @@ function getTrackProfile(spotifyId, buckets) {
 function getTrackAnalysis(url, spotifyId) {
   console.log(' - requesting track analysis data');
   if (WITH_ANALYSIS) {
-    return request(url, 'track-analysis-data:'+spotifyId);
+    return new Promise(function(resolve, reject) {
+      return request(url, 'track-analysis-data:'+spotifyId)
+        .then(function(data) {
+          resolve(data)
+        })
+        .catch(function(err) {
+          if (err.statusCode === 404) {
+            console.log('warning: 404 error for: ', url);
+            resolve([]);
+          } else {
+            reject(err);
+          }
+        });
+    });
   } else {
     return new Promise(function(resolve, reject) {
       resolve(null);
