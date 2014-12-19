@@ -13,7 +13,7 @@
     .loudness-line {
       stroke: rgb(57, 59, 121);
       fill: none;
-      opacity: 0.5;
+      opacity: 1;
     }
     .pitch-line {
       stroke: steelblue;
@@ -40,11 +40,12 @@
 <script type="text/javascript">
 
 
-  var WIDTH = 5000;
-  var LIMIT_VERSIONS = 15;
-  var MIN_CONFIDENCE = 0.3;
-  var MIN_PITCH_VALUE = 0.9;
-  var MODE = 'pitch';  // one of ['pitch', 'timbre', 'loudness']
+  var WIDTH = 1500;
+  var LIMIT_VERSIONS = undefined;
+  var MIN_CONFIDENCE = 0;
+  var MIN_PITCH_VALUE = 0;
+  var MODE = 'loudness';  // one of ['pitch', 'timbre', 'loudness']
+  var SHOW_KEY = true;
 
   function prepareLoudnessData(segmentsData) {
     var data = [];
@@ -143,6 +144,8 @@
         .range(['steelblue', 'white','crimson'])
         .interpolate(d3.interpolateHcl);
 
+    var keyColorScale = d3.scale.category20c();
+
 
 
     var vis = container.selectAll('.vis').data([songData]);
@@ -166,6 +169,7 @@
         .attr('transform', function(d, i) { return 'translate('+[0, i*height]+')'; });
 
 
+
     var segment = versionEnter.selectAll('.segment')
         .data(function(d) {
           return d.analysis.segments.filter(function(d) { return d.confidence >= MIN_CONFIDENCE; });
@@ -173,6 +177,25 @@
     var segmentEnter = segment.enter()
       .append('g')
         .attr('class', 'segment');
+
+
+    if (SHOW_KEY) {
+      var section = versionEnter.selectAll('.section')
+          .data(function(d) { return d.analysis.sections; });
+      var sectionEnter = section.enter()
+        .append('g')
+          .attr('class', 'section');
+
+      sectionEnter.append('rect')
+          .attr('x', function(d) { return timeScale(d.start); })
+          .attr('y', 10)
+          .attr('width', function(d) { return timeScale(d.duration); })
+          .attr('fill', function(d) { return keyColorScale(d.key + d.mode); })
+          .attr('height', height * 0.8 );
+    }
+
+
+
 
 
     if (MODE === 'pitch') {
@@ -239,6 +262,16 @@
             return timbreColorScale(d.value);
           });
     }
+
+
+
+
+
+
+
+
+
+
 
 
     versionEnter.append('text')
