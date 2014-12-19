@@ -10,7 +10,7 @@ var allSongs
   , ySpace
 
 window.preload = function() {
-  allSongs = loadJSON("../data/out/whosampled.json")
+  allSongs = loadJSON("../data/old_out/whosampled.json")
 };
 
 function processData(songData) {
