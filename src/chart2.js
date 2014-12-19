@@ -147,13 +147,7 @@ dimOptEls.enter()
   .attr('value', titleAcc)
   .attr('label', titleAcc)
 
-
-var count = 0;
 function render(state) {
-  var filteredData = state.filteredCurData = sszvis.fn.derivedSet(state.filteredCurData, function(d) {
-    return d.value1 + '__' + d.value2;
-  })
-
   var bounds = sszvis.bounds({ width: 1000, height: 900, top: 10, bottom: 10, left: 30, right: 10 })
 
   var xScale = d3.scale.linear()
@@ -210,7 +204,7 @@ function render(state) {
     })
 
   var chartLayer = sszvis.createSvgLayer('#chart2', bounds, {})
-    .datum(filteredData)
+    .datum(state.filteredCurData)
 
   var dotGroup = chartLayer.selectGroup('dotgroup')
     .call(dotGen)
@@ -227,7 +221,7 @@ function render(state) {
       .on('out', actions.deselect)
 
     chartLayer.selectGroup('voronoiMouse')
-      .datum(filteredData)
+      .datum(state.filteredCurData)
       .call(mouseOverlay)
   }
 
