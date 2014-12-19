@@ -43,6 +43,7 @@
   var LIMIT_VERSIONS = 15;
   var colorScale = d3.scale.category20b();
   var MIN_CONFIDENCE = 0;
+  var MODE = 'loudness';  // one of ['pitch', 'timbre', 'loudness']
 
   function prepareLoudnessData(segmentsData) {
     var data = [];
@@ -85,7 +86,7 @@
 
     var versionsData = songData.versions;
 
-//    var color = d3.scale.category20b();
+    var color = d3.scale.category20b();
     versionsData.forEach(function(version) {
       version.loudness = prepareLoudnessData(version.analysis.segments);
       version.maxPitch = preparePitchData(version.analysis.segments);
@@ -154,15 +155,7 @@
         .text(function(d) { return d.title; });
 
 
-//    var segment = segmentsVis.selectAll('.segment').data(data);
-//    segment.enter()
-//      .append('line')
-//        .attr('class', 'segment')
-//        .attr('x1', function(d) { return timeScale(d.start); })
-//        .attr('x2', function(d) { return timeScale(d.start + d.duration); })
-//        .attr('y1', function(d) { return valueScale(d[attr]); })
-//        .attr('y2', function(d) { return valueScale(d[attr]); });
-//
+
 
     var version = vis.selectAll('.version')
         .data(versionsData);
@@ -180,65 +173,72 @@
       .append('g')
         .attr('class', 'segment');
 
-//
-//
-//    var pitch = segmentEnter.selectAll('.pitch')
-//        .data(function(d) {
-//          return d.pitches
-//              .map(function(d,i) { return {pitch:i,value:d}; })
-//              .filter(function(d) { return d.value >= 0.8; })
-//        });
-//
-//    pitch.enter()
-//        .append('rect')
-//        .attr('class', 'pitch')
-//        .attr('x', function(d) {
-//          var pd = d3.select(this.parentNode).datum();
-//          return timeScale(pd.start);
-//        })
-//        .attr('width', function(d) {
-//          var pd = d3.select(this.parentNode).datum();
-//          return timeScale(pd.duration);
-//        })
-//        .attr('y', function(d) { return pitchScale(d.pitch); })
-//        .attr('height', pitchScale.rangeBand())
-//        .attr('fill', function(d) { return pitchColorScale(d.value); });
+
+    if (MODE === 'pitch') {
+      var pitch = segmentEnter.selectAll('.pitch')
+          .data(function(d) {
+            return d.pitches
+                .map(function(d,i) { return {pitch:i,value:d}; })
+                .filter(function(d) { return d.value >= 0.8; })
+          });
+
+      pitch.enter()
+          .append('rect')
+          .attr('class', 'pitch')
+          .attr('x', function(d) {
+            var pd = d3.select(this.parentNode).datum();
+            return timeScale(pd.start);
+          })
+          .attr('width', function(d) {
+            var pd = d3.select(this.parentNode).datum();
+            return timeScale(pd.duration);
+          })
+          .attr('y', function(d) { return pitchScale(d.pitch); })
+          .attr('height', pitchScale.rangeBand())
+          .attr('fill', function(d) { return pitchColorScale(d.value); });
+
+      versionEnter.append('path')
+        .attr('class', 'pitch-line')
+        .attr('d', function(d) { return pitchLine(d.maxPitch); });
+    }
 
 
-
-//    versionEnter.append('path')
-//      .attr('class', 'loudness-line')
-//      .attr('d', function(d) { return loudnessLine(d.loudness); })
-//      .attr('stroke', function(d) { return color(d.spotify.id); });
-
-//    versionEnter.append('path')
-//      .attr('class', 'pitch-line')
-//      .attr('d', function(d) { return pitchLine(d.maxPitch); });
-
-                  
+    if (MODE === 'loudness') {
+      versionEnter.append('path')
+        .attr('class', 'loudness-line')
+        .attr('d', function(d) { return loudnessLine(d.loudness); })
+        .attr('stroke', function(d) { return color(d.spotify.id); });
+    }
     
     
-    var timbre = segmentEnter.selectAll('.timbre')
-        .data(function(d) {
-          return d.timbre.map(function(d,i) { return {timbre:i,value:d}; })
-        });
+    if (MODE === 'timbre') {
+      var timbre = segmentEnter.selectAll('.timbre')
+          .data(function (d) {
+            return d.timbre.map(function (d, i) {
+              return {timbre: i, value: d};
+            })
+          });
 
-    timbre.enter()
-        .append('rect')
-        .attr('class', 'timbre')
-        .attr('x', function(d) {
-          var pd = d3.select(this.parentNode).datum();
-          return timeScale(pd.start);
-        })
-        .attr('width', function(d) {
-          var pd = d3.select(this.parentNode).datum();
-          return timeScale(pd.duration);
-        })
-        .attr('y', function(d) { return timbreScale(d.timbre); })
-        .attr('height', timbreScale.rangeBand())
-        .attr('fill', function(d) { return timbreColorScale(d.value); });
+      timbre.enter()
+          .append('rect')
+          .attr('class', 'timbre')
+          .attr('x', function (d) {
+            var pd = d3.select(this.parentNode).datum();
+            return timeScale(pd.start);
+          })
+          .attr('width', function (d) {
+            var pd = d3.select(this.parentNode).datum();
+            return timeScale(pd.duration);
+          })
+          .attr('y', function (d) {
+            return timbreScale(d.timbre);
+          })
+          .attr('height', timbreScale.rangeBand())
+          .attr('fill', function (d) {
+            return timbreColorScale(d.value);
+          });
+    }
 
-    
 
     versionEnter.append('text')
         .attr('class', 'version-name')
