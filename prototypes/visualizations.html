@@ -73,11 +73,14 @@ function roundPrecision(n, p) {
 <script type="text/javascript" src='../src/chart2.js'></script>
 
 <h3>Scatterplot for comparing across versions</h3>
+<label>Song:
+  <select class='chart3-changeSong' id="changeSong"></select>
+</label>
 <label>Dimension 1 (x-axis):
-  <select id="versions-dimension1"></select>
+  <select class='chart3-changeDim' id="versions-dimension1"></select>
 </label>
 <label>Dimension 2 (y-axis):
-  <select id="versions-dimension2"></select>
+  <select class='chart3-changeDim' id="versions-dimension2"></select>
 </label>
 <div class='chart-container' id='chart3'></div>
 <script type="text/javascript" src='../src/chart3.js'></script>
