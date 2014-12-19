@@ -13,11 +13,12 @@
     .loudness-line {
       stroke: rgb(57, 59, 121);
       fill: none;
-      opacity: 0.1;
+      opacity: 0.5;
     }
     .pitch-line {
-      stroke: red;
+      stroke: steelblue;
       fill: none;
+      opacity: 0.3;
     }
     .song-title {
       fill: rgb(57, 59, 121);
@@ -39,12 +40,14 @@
 <script type="text/javascript">
 
 
-  var LIMIT_VERSIONS = 5;
+  var LIMIT_VERSIONS = 25;
   var colorScale = d3.scale.category20b();
+  var MIN_CONFIDENCE = 0.3;
 
   function prepareLoudnessData(segmentsData) {
     var data = [];
     segmentsData.forEach(function(d) {
+      if (d.confidence < MIN_CONFIDENCE) return;
       data.push({
         time: d.start,
         loudness: d.loudness_start
@@ -61,12 +64,20 @@
 
   function preparePitchData(segmentsData) {
     var pitches = d3.range(12);
-    return segmentsData.map(function(d) {
-      return {
+    var data = [];
+    segmentsData.forEach(function(d) {
+      if (d.confidence < MIN_CONFIDENCE) return;
+      var pitch =  _.max(pitches, function(i) { return d.pitches[i]; });
+      data.push({
         time: d.start,
-        maxPitch: _.max(pitches, function(i) { return d.pitches[i]; })
-      }
+        maxPitch: pitch
+      });
+      data.push({
+        time: d.start + d.duration,
+        maxPitch: pitch
+      });
     });
+    return data;
   }
 
 
@@ -112,7 +123,7 @@
 
     var pitchLine = d3.svg.line()
         .x(function(d) { return timeScale(d.time); })
-        .y(function(d) { return pitchScale(d.maxPitch); })
+        .y(function(d) { return pitchScale(d.maxPitch) + pitchScale.rangeBand()/2; })
         .interpolate('linear');
 
 
@@ -153,7 +164,9 @@
 
 
     var segment = versionEnter.selectAll('.segment')
-        .data(function(d) { return d.analysis.segments; });
+        .data(function(d) {
+          return d.analysis.segments.filter(function(d) { return d.confidence >= MIN_CONFIDENCE; });
+        });
     var segmentEnter = segment.enter()
       .append('g')
         .attr('class', 'segment');
@@ -164,7 +177,7 @@
         .data(function(d) {
           return d.pitches
               .map(function(d,i) { return {pitch:i,value:d}; })
-              .filter(function(d) { return d.pitch >= 1; })
+              .filter(function(d) { return d.value >= 0.8; })
         });
 
     pitch.enter()
@@ -184,21 +197,21 @@
 
 
 
-    versionEnter.append('path')
-      .attr('class', 'loudness-line')
-      .attr('d', function(d) { return loudnessLine(d.loudness); })
-      .attr('stroke', function(d) { return color(d.spotify.id); });
-//
 //    versionEnter.append('path')
-//      .attr('class', 'pitch-line')
-//      .attr('d', function(d) { return pitchLine(d.maxPitch); });
+//      .attr('class', 'loudness-line')
+//      .attr('d', function(d) { return loudnessLine(d.loudness); })
+//      .attr('stroke', function(d) { return color(d.spotify.id); });
+
+    versionEnter.append('path')
+      .attr('class', 'pitch-line')
+      .attr('d', function(d) { return pitchLine(d.maxPitch); });
 
 
 
     versionEnter.append('text')
         .attr('class', 'version-name')
-        .attr('x', 10)
-        .attr('y', height/2)
+        .attr('x', 0)
+        .attr('y', 5)
         .text(function(d) { return d.performer + ' (' + d.date + ')'; });
 
 
