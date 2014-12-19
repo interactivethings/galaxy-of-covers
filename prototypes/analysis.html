@@ -12,8 +12,12 @@
       stroke: rgb(57, 59, 121);
       stroke-width: 2px;
     }
-    .version-line {
+    .loudness-line {
       stroke: rgb(57, 59, 121);
+      fill: none;
+    }
+    .pitch-line {
+      stroke: red;
       fill: none;
     }
     .song-title {
@@ -39,7 +43,7 @@
 
   var colorScale = d3.scale.category20b();
 
-  function expandLoudnessData(segmentsData) {
+  function prepareLoudnessData(segmentsData) {
     var data = [];
     segmentsData.forEach(function(d) {
       data.push({
@@ -56,23 +60,33 @@
     return data;
   }
 
+  function preparePitchData(segmentsData) {
+    var pitches = d3.range(12);
+    return segmentsData.map(function(d) {
+      return {
+        time: d.start,
+        maxPitch: _.max(pitches, function(i) { return d.pitches[i]; })
+      }
+    });
+  }
+
 
   function renderSegments(songData, container, width, height) {
 
     var versionsData = songData.versions;
 
-    var attr = 'loudness';
     var color = d3.scale.category20b();
     versionsData.forEach(function(version) {
-      version.loudness = expandLoudnessData(version.analysis.segments);
+      version.loudness = prepareLoudnessData(version.analysis.segments);
+      version.maxPitch = preparePitchData(version.analysis.segments);
     });
 
     var maxLength = d3.max(versionsData,
       function(version) { var last = _.last(version.analysis.segments); return last.start + last.duration; });
 
     var valueExtent = [
-      d3.min(versionsData, function(v) { return d3.min(v.loudness, function(d) { return d[attr]; }); }),
-      d3.max(versionsData, function(v) { return d3.max(v.loudness, function(d) { return d[attr]; }); })
+      d3.min(versionsData, function(v) { return d3.min(v.loudness, function(d) { return d.loudness; }); }),
+      d3.max(versionsData, function(v) { return d3.max(v.loudness, function(d) { return d.loudness; }); })
     ];
 
 
@@ -80,15 +94,24 @@
         .domain([0, maxLength])
         .range([0, width]);
 
-    var valueScale = d3.scale.linear()
+    var loudnessValueScale = d3.scale.linear()
         .domain(valueExtent)
         .range([height, 0]);
 
+    var pitchValueScale = d3.scale.linear()
+        .domain([0,12])
+        .range([3*height/4, height/4]);
 
 
-    var line = d3.svg.line()
+
+    var loudnessLine = d3.svg.line()
         .x(function(d) { return timeScale(d.time); })
-        .y(function(d) { return valueScale(d[attr]); })
+        .y(function(d) { return loudnessValueScale(d.loudness); })
+        .interpolate('linear');
+
+    var pitchLine = d3.svg.line()
+        .x(function(d) { return timeScale(d.time); })
+        .y(function(d) { return pitchValueScale(d.maxPitch); })
         .interpolate('linear');
 
 
@@ -121,9 +144,13 @@
         .attr('transform', function(d, i) { return 'translate('+[0, i*height]+')'; });
 
     versionEnter.append('path')
-      .attr('class', 'version-line')
-      .attr('d', function(d) { return line(d.loudness); })
-      .attr('stroke', function(d) { return color(d.spotify.id); })
+      .attr('class', 'loudness-line')
+      .attr('d', function(d) { return loudnessLine(d.loudness); })
+      .attr('stroke', function(d) { return color(d.spotify.id); });
+
+    versionEnter.append('path')
+      .attr('class', 'pitch-line')
+      .attr('d', function(d) { return pitchLine(d.maxPitch); });
 
     versionEnter.append('text')
         .attr('class', 'version-name')
@@ -139,7 +166,7 @@
 
     var margin = {top: 50, right: 10, bottom: 20, left: 10};
     var versionHeight = 150,
-        width = 800 - margin.left - margin.right,
+        width = 5800 - margin.left - margin.right,
         height = versionHeight * songData.versions.length - margin.top - margin.bottom;
 
     var svg = d3.select('body').append('svg')
