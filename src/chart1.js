@@ -158,22 +158,29 @@
   }
 
   function render(state) {
-    var bounds = sszvis.bounds({ top: 10, bottom: 10, left: 30, right: 10, width: 1000, height: 800 })
+    var bounds = sszvis.bounds({ top: 100, bottom: 10, left: 30, right: 10, width: 1000, height: 900 })
 
     var chartLayer = sszvis.createSvgLayer('#chart1', bounds, {})
       .datum(state.currentData);
 
     var htmlLayer = sszvis.createHtmlLayer('#chart1');
 
-    var selects = htmlLayer.selectDiv('selectelement')
-      .style('top', -20+'px')
-      .selectAll('select')
+    var selectContainer = htmlLayer.selectDiv('selectelement');
+
+    var labels = selectContainer
+      .selectAll('label')
       .data([0, 1])
 
-    var tooltips = htmlLayer.selectDiv('tooltipelement')
-      .datum(state.selected);
+    var enteredLabels = labels.enter()
+      .append('label')
+      .text(function(d, i) {
+        switch (d) {
+          case 0: return "size value:";
+          case 1: return "sort value:";
+        }
+      })
 
-    selects.enter()
+    var selects = enteredLabels
       .append('select');
 
     var optionEls = selects.selectAll('option')
@@ -206,6 +213,9 @@
       }
     });
 
+    var tooltips = htmlLayer.selectDiv('tooltipelement')
+      .datum(state.selected);
+
     var xScale = d3.scale.ordinal()
       .domain(state.titles)
       .rangeBands([0, bounds.innerWidth], 0.08);
@@ -233,12 +243,12 @@
       .call(barsGen)
 
     var tooltip = sszvis.annotation.tooltip()
-      .renderInto(htmlLayer)
+      .renderInto(tooltips)
       .body(function(d) {
         return [
                 ['song title: ', d.title],
-                ["size value: ", d.value],
-                ["sort value: ", d.sortValue]
+                ['size value (' + state.currentVis + '): ', d.value],
+                ['sort value (' + state.currentSort + '): ', d.sortValue]
                ]
       })
       .visible(function(d) {
