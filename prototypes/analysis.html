@@ -40,9 +40,9 @@
 <script type="text/javascript">
 
 
-  var LIMIT_VERSIONS = 25;
+  var LIMIT_VERSIONS = 15;
   var colorScale = d3.scale.category20b();
-  var MIN_CONFIDENCE = 0.3;
+  var MIN_CONFIDENCE = 0;
 
   function prepareLoudnessData(segmentsData) {
     var data = [];
@@ -85,7 +85,7 @@
 
     var versionsData = songData.versions;
 
-    var color = d3.scale.category20b();
+//    var color = d3.scale.category20b();
     versionsData.forEach(function(version) {
       version.loudness = prepareLoudnessData(version.analysis.segments);
       version.maxPitch = preparePitchData(version.analysis.segments);
@@ -114,6 +114,10 @@
         .domain(d3.range(12))
         .rangeBands(yRange);
 
+    var timbreScale = d3.scale.ordinal()
+        .domain(d3.range(12))
+        .rangeBands(yRange);
+
 
 
     var loudnessLine = d3.svg.line()
@@ -130,6 +134,11 @@
     var pitchColorScale =  d3.scale.linear()
         .domain([0, 1])
         .range(['white','steelblue'])
+        .interpolate(d3.interpolateHcl);
+
+    var timbreColorScale =  d3.scale.linear()
+        .domain([-300, 0, 300])
+        .range(['steelblue', 'white','crimson'])
         .interpolate(d3.interpolateHcl);
 
 
@@ -171,29 +180,29 @@
       .append('g')
         .attr('class', 'segment');
 
-
-
-    var pitch = segmentEnter.selectAll('.pitch')
-        .data(function(d) {
-          return d.pitches
-              .map(function(d,i) { return {pitch:i,value:d}; })
-              .filter(function(d) { return d.value >= 0.8; })
-        });
-
-    pitch.enter()
-        .append('rect')
-        .attr('class', 'pitch')
-        .attr('x', function(d) {
-          var pd = d3.select(this.parentNode).datum();
-          return timeScale(pd.start);
-        })
-        .attr('width', function(d) {
-          var pd = d3.select(this.parentNode).datum();
-          return timeScale(pd.duration);
-        })
-        .attr('y', function(d) { return pitchScale(d.pitch); })
-        .attr('height', pitchScale.rangeBand())
-        .attr('fill', function(d) { return pitchColorScale(d.value); });
+//
+//
+//    var pitch = segmentEnter.selectAll('.pitch')
+//        .data(function(d) {
+//          return d.pitches
+//              .map(function(d,i) { return {pitch:i,value:d}; })
+//              .filter(function(d) { return d.value >= 0.8; })
+//        });
+//
+//    pitch.enter()
+//        .append('rect')
+//        .attr('class', 'pitch')
+//        .attr('x', function(d) {
+//          var pd = d3.select(this.parentNode).datum();
+//          return timeScale(pd.start);
+//        })
+//        .attr('width', function(d) {
+//          var pd = d3.select(this.parentNode).datum();
+//          return timeScale(pd.duration);
+//        })
+//        .attr('y', function(d) { return pitchScale(d.pitch); })
+//        .attr('height', pitchScale.rangeBand())
+//        .attr('fill', function(d) { return pitchColorScale(d.value); });
 
 
 
@@ -202,11 +211,34 @@
 //      .attr('d', function(d) { return loudnessLine(d.loudness); })
 //      .attr('stroke', function(d) { return color(d.spotify.id); });
 
-    versionEnter.append('path')
-      .attr('class', 'pitch-line')
-      .attr('d', function(d) { return pitchLine(d.maxPitch); });
+//    versionEnter.append('path')
+//      .attr('class', 'pitch-line')
+//      .attr('d', function(d) { return pitchLine(d.maxPitch); });
 
+                  
+    
+    
+    var timbre = segmentEnter.selectAll('.timbre')
+        .data(function(d) {
+          return d.timbre.map(function(d,i) { return {timbre:i,value:d}; })
+        });
 
+    timbre.enter()
+        .append('rect')
+        .attr('class', 'timbre')
+        .attr('x', function(d) {
+          var pd = d3.select(this.parentNode).datum();
+          return timeScale(pd.start);
+        })
+        .attr('width', function(d) {
+          var pd = d3.select(this.parentNode).datum();
+          return timeScale(pd.duration);
+        })
+        .attr('y', function(d) { return timbreScale(d.timbre); })
+        .attr('height', timbreScale.rangeBand())
+        .attr('fill', function(d) { return timbreColorScale(d.value); });
+
+    
 
     versionEnter.append('text')
         .attr('class', 'version-name')
