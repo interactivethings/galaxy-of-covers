@@ -16,6 +16,8 @@
       stroke-opacity: 0.95;
       stroke-linecap: round;
     }
+    .work-line-path {
+    }
     .version-circle {
       fill: white;
       stroke-width: 2px;
@@ -34,26 +36,28 @@
 <script type="text/javascript">
 
   var margin = {top: 20, right: 10, bottom: 20, left: 10};
-  var width = 1100 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
-
-  var vis = d3.select('body').append('svg')
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .style('border', '1px solid #ccc')
-      .append("g")
-       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+  var width = 1100 - margin.left - margin.right, height,
+      workHeight = 100;
 
   var colorScale = d3.scale.category20b();
 
 
   d3.json('../data/out/songinfo-spotify.json', function(err, data) {
 
-    var worksData =
-//        data;
+    var height = workHeight * data.length;
+
+    var vis = d3.select('body').append('svg')
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .style('border', '1px solid #ccc')
+        .append("g")
+         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+
+    var worksData = data;
 //        [_.find(data, function(d) { return d.title.indexOf('Killing Me Softly')>=0; })];
-        [_.find(data, function(d) { return d.title.indexOf('Hey Joe')>=0; })];
+//        [_.find(data, function(d) { return d.title.indexOf('Hey Joe')>=0; })];
 //        [_.find(data, function(d) { return d.title.indexOf('Summertime')>=0; })];
 //        [_.find(data, function(d) { return d.title.indexOf('Watchtower')>=0; })];
 //        [_.find(data, function(d) { return d.title.indexOf('Tambourine')>=0; })];
@@ -81,13 +85,13 @@
         .domain([new Date("01.01.1960"), new Date("01.01.2016")]);
 
     var y = d3.scale.linear()
-        .range([height, 0])
+        .range([workHeight, 0])
         .domain([0, 100]);
 
     var line = d3.svg.line()
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.spotify.popularity); })
-        .interpolate('monotone');
+        .interpolate('linear');
 
     var works = vis.selectAll('.work-line')
         .data(worksData);
@@ -95,18 +99,19 @@
 
     var worksEnter = works.enter()
       .append('g')
-        .attr('class', 'work-line');
+        .attr('class', 'work-line')
+        .attr('transform', function(d, i) { return 'translate('+[0, i*workHeight]+')'; });
 
     worksEnter.append('text')
         .attr('class', 'work-title')
         .attr('x', 5)
         .attr('y', 15)
-        .attr('fill', function(d) { return colorScale(d.title); })
+        .attr('fill', function(d) { return colorScale(d); })
         .text(function(d) { return d.title; });
 
     worksEnter.append('path')
       .attr('class', 'work-line-path')
-      .attr('stroke', function(d) { return colorScale(d.title); })
+      .attr('stroke', function(d) { return colorScale(d); })
       .attr('d', function(d) { return line(d.versions); });
 
 
