@@ -9,10 +9,14 @@
     }
     .work-title {
       font-size: 20pt;
+      text-shadow: -1px 0px 0px #fff,
+                   1px 0px 0px #fff,
+                   0px 1px 0px #fff,
+                   0px -1px 0px #fff;
     }
     .work-line {
       fill: none;
-      stroke-width: 7px;
+      stroke-width: 3px;
       stroke-opacity: 0.95;
       stroke-linecap: round;
     }
@@ -23,7 +27,7 @@
       stroke-width: 2px;
     }
     .version-text {
-      font-size: 6pt;
+      font-size: 3pt;
       text-anchor: middle;
       text-shadow: #fff 0px 0px 1px;
     }
@@ -56,18 +60,13 @@
 
 
     var worksData = data;
-//        [_.find(data, function(d) { return d.title.indexOf('Killing Me Softly')>=0; })];
-//        [_.find(data, function(d) { return d.title.indexOf('Hey Joe')>=0; })];
-//        [_.find(data, function(d) { return d.title.indexOf('Summertime')>=0; })];
-//        [_.find(data, function(d) { return d.title.indexOf('Watchtower')>=0; })];
-//        [_.find(data, function(d) { return d.title.indexOf('Tambourine')>=0; })];
-//        [_.find(data, function(d) { return d.title.indexOf('Hallelujah')>=0; })];
-//        [_.find(data, function(d) { return d.title.indexOf('Man Who Sold')>=0; })];
 
 
 
     worksData.forEach(function(work) {
-      var versions = work.versions.filter(function(d) { return d.spotify; });
+      var versions = work.versions.filter(function(d) {
+        return d.spotify && new Date(d.date).getTime() > 0;
+      });
       work.versions_ = work.versions;
       work.versions = versions;
       versions.forEach(function(v) {
@@ -81,7 +80,7 @@
 
 
     var x = d3.time.scale()
-        .range([0, width])
+        .range([200, width])
         .domain([new Date("01.01.1960"), new Date("01.01.2016")]);
 
     var y = d3.scale.linear()
@@ -102,16 +101,10 @@
         .attr('class', 'work-line')
         .attr('transform', function(d, i) { return 'translate('+[0, i*workHeight]+')'; });
 
-    worksEnter.append('text')
-        .attr('class', 'work-title')
-        .attr('x', 5)
-        .attr('y', 15)
-        .attr('fill', function(d) { return colorScale(d); })
-        .text(function(d) { return d.title; });
 
     worksEnter.append('path')
       .attr('class', 'work-line-path')
-      .attr('stroke', function(d) { return colorScale(d); })
+      .attr('stroke', function(d) { return colorScale(d.title); })
       .attr('d', function(d) { return line(d.versions); });
 
 
@@ -124,20 +117,26 @@
 
     versionEnter.append('circle')
         .attr('class', 'version-circle')
-        .attr('stroke', function(d) { return colorScale(d3.select(this.parentNode).datum().title); })
+        .attr('stroke', function(d) { return colorScale(d3.select(this.parentNode.parentNode).datum().title); })
         .attr('r', 3.5);
 
     versionEnter.append('text')
         .attr('class', 'version-text')
-        .attr('y', -7)
-        .attr('fill', function(d) { return colorScale(d3.select(this.parentNode).datum().title); })
-        .text(function(d) { return d.performer; })
+        .attr('y', +7)
+        .attr('fill', function(d) { return colorScale(d3.select(this.parentNode.parentNode).datum().title); })
+        .text(function(d) { return d.performer; });
 
 
 
 
 
 
+    worksEnter.append('text')
+        .attr('class', 'work-title')
+        .attr('x', 5)
+        .attr('y', 50)
+        .attr('fill', function(d) { return colorScale(d.title); })
+        .text(function(d) { return d.title; });
 
 
 
