@@ -41,8 +41,8 @@ function getTrackProfile(spotifyId, buckets) {
 }
 
 function getTrackAnalysis(url, spotifyId) {
-  console.log(' - requesting track analysis data');
   if (WITH_ANALYSIS) {
+    console.log(' - requesting track analysis data');
     return new Promise(function(resolve, reject) {
       return request(url, 'track-analysis-data:'+spotifyId)
         .then(function(data) {
@@ -81,11 +81,11 @@ function getSongProfile(songId, buckets) {
   );
 }
 
-function getWhoSampledTrackId(artist, title) {
+function getMusicXmatchTrackId(artist, title) {
   return request(
     'http://developer.echonest.com/api/v4/song/search?api_key='+API_KEY+
     '&format=json&results=1&artist='+encodeURIComponent(artist)+
-    '&title='+encodeURIComponent(title)+'&bucket=id:whosampled&limit=true&bucket=tracks'
+    '&title='+encodeURIComponent(title)+'&bucket=id:musixmatch-WW&limit=true&bucket=tracks'
   )
 }
 
@@ -119,20 +119,20 @@ function extendWithEchonest(version, callback) {
           }
 
           Promise.all([
-            getWhoSampledTrackId(songData.artist_name, songData.title),
+            getMusicXmatchTrackId(songData.artist_name, songData.title),
             getTrackAnalysis(audioSummary.analysis_url, version.spotify.id)
           ])
             .then(function(responseData) {
-              var whosampledData = JSON.parse(responseData[0]);
+              var musixmatchData = JSON.parse(responseData[0]);
               var analysisData = JSON.parse(responseData[1]);
 
-              var song = _.first(utils.getIn(whosampledData, ['response', 'songs']));
+              var song = _.first(utils.getIn(musixmatchData, ['response', 'songs']));
               if (song) {
                 var track = _.first(utils.getIn(song, ['tracks']));
-                var matches = utils.getIn(track, ['foreign_id']).match(/^whosampled:track:(\d*)/);
+                var matches = utils.getIn(track, ['foreign_id']).match(/^musixmatch-WW:track:(\d*)/);
                 if (matches) {
-                  var whosampledId = matches[1];
-                  _.extend(echonest, { whosampledId: whosampledId });
+                  var musixmatch = matches[1];
+                  _.extend(echonest, { musixmatch: musixmatch });
                 }
               }
 
