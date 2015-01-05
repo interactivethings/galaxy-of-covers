@@ -46,6 +46,9 @@ data-spotify:
 data-echonest:
 	node data/js/echonest.js
 
+data-musixmatch:
+	node data/js/musixmatch.js
+
 data-whosampled:
 	node data/js/whosampled.js
 
