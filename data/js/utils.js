@@ -4,7 +4,7 @@
 function getIn(o, keys) {
   var k = keys[0],
       ks = keys.slice(1);
-  if (!o.hasOwnProperty(k)) return null;
+  if (!o || !o.hasOwnProperty(k)) return null;
   return ks.length ? getIn(o[k], ks) : o[k];
 }
 

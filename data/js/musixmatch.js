@@ -31,6 +31,7 @@ function getTrackProfile(mmId) {
 function extendWithMusiXmatch(version, callback) {
   var mmId = utils.getIn(version, ['echonest','musixmatch']);
   if (!mmId) {
+    version.musiXmatch = null;
     return callback(null, version);
   }
   getTrackProfile(mmId)
@@ -40,7 +41,6 @@ function extendWithMusiXmatch(version, callback) {
         .getIn(trackData, ['message','body','track','primary_genres', 'music_genre_list'])
         .map(function(d) { return utils.getIn(d, ['music_genre', 'music_genre_name']); });
 
-      delete version.echonest.musiXmatch;
       version.musiXmatch = {
         id: mmId,
         genres: genres
@@ -92,9 +92,43 @@ Promise
   .all(worksRequests)
   .then(function(data) {
     console.log('Writing to', OUTPUT_FILE);
+    genreStats(data);
+    spotifyStats(data);
     rw.writeFileSync(OUTPUT_FILE, JSON.stringify(data, undefined, 2), 'utf8')
   })
   .catch(function(err) {
      console.error('Error', err, err.stack);
    });
 
+
+function genreStats(data) {
+  var genreStats = {};
+  data.forEach(function(song) {
+    song.versions.forEach(function(version) {
+      var numGenres = utils.getIn(version, ['musiXmatch','genres','length']) || 0;
+      if (genreStats[numGenres])
+        genreStats[numGenres]++;
+      else
+        genreStats[numGenres] = 1;
+    });
+
+  });
+  console.log(genreStats);
+}
+
+function spotifyStats(data) {
+  var total = 0, spotify = 0, echonest = 0, musixmatch = 0;
+  data.forEach(function(song) {
+    song.versions.forEach(function(version) {
+      total++;
+      if (version.spotify) spotify++;
+      if (version.echonest) echonest++;
+      if (version.musiXmatch) musixmatch++;
+    });
+  });
+  console.log("Total:",total,
+    " spotify:",spotify,
+    " echonest:",echonest,
+    " musixmatch:",musixmatch
+  );
+}
