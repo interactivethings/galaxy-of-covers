@@ -118,12 +118,19 @@ function genreStats(data) {
 
 function spotifyStats(data) {
   var total = 0, spotify = 0, echonest = 0, musixmatch = 0;
+  var spotifyPop = 0, musixmatchPop = 0;
   data.forEach(function(song) {
     song.versions.forEach(function(version) {
       total++;
-      if (version.spotify) spotify++;
+      if (version.spotify) {
+        spotify++;
+        spotifyPop += version.spotify.popularity;
+      }
       if (version.echonest) echonest++;
-      if (version.musiXmatch) musixmatch++;
+      if (version.musiXmatch) {
+        musixmatch++;
+        musixmatchPop += version.spotify.popularity;
+      }
     });
   });
   console.log("Total:",total,
@@ -131,4 +138,5 @@ function spotifyStats(data) {
     " echonest:",echonest,
     " musixmatch:",musixmatch
   );
+  console.log("avg spotifyPop="+(spotifyPop/spotify), "avg musixmatchPop="+(musixmatchPop/musixmatch));
 }
