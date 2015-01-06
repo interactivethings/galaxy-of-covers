@@ -276,6 +276,26 @@ var worksRequests = works.map(function(work) {
 
 
 
+
+function csv4Whosampled(data) {
+  var csv = 'title,performer,date,whosampled-id,echonest-id,spotify-id\n';
+  data.forEach(function(song) {
+    song.versions.forEach(function(version) {
+      if (version.echonest)
+        csv += ['"'+version.title+'"',
+                '"'+version.performer+'"',
+                '"'+version.date+'"',
+                version.echonest.whosampledId,
+                version.echonest.songId,
+                version.spotify.id].join(',')+'\n';
+    });
+  });
+  return csv;
+}
+
+
+
+
 Promise
   .all(worksRequests)
   .then(function(data) {
@@ -296,19 +316,3 @@ Promise
 
 
 
-
-function csv4Whosampled(data) {
-  var csv = 'title,performer,date,whosampled-id,echonest-id,spotify-id\n';
-  data.forEach(function(song) {
-    song.versions.forEach(function(version) {
-      if (version.echonest)
-        csv += ['"'+version.title+'"',
-                '"'+version.performer+'"',
-                '"'+version.date+'"',
-                version.echonest.whosampledId,
-                version.echonest.songId,
-                version.spotify.id].join(',')+'\n';
-    });
-  });
-  return csv;
-}
