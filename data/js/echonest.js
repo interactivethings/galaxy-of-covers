@@ -15,6 +15,7 @@ var WITH_ANALYSIS = false;
 
 var INPUT_WORKS = 'data/out/songinfo-spotify.json';
 var OUTPUT_FILE = 'data/out/songinfo-spotify-echonest.json';
+var OUTPUT_4WHOSAMPLED_FILE = 'data/out/4whosampled.csv';
 var ANALYSIS_OUT = 'data/out/analysis/';
 var API_KEY = 'DY3KQCS3HF8JQBDV5';
 
@@ -280,6 +281,14 @@ Promise
   .then(function(data) {
     console.log('Writing to', OUTPUT_FILE);
     rw.writeFileSync(OUTPUT_FILE, JSON.stringify(data, undefined, 2), 'utf8')
+
+
+
+    console.log('Writing to', OUTPUT_4WHOSAMPLED_FILE);
+    rw.writeFileSync(OUTPUT_4WHOSAMPLED_FILE, csv4Whosampled(data), 'utf8')
+
+
+
   })
   .catch(function(err) {
      console.error('Error', err, err.stack);
@@ -287,3 +296,19 @@ Promise
 
 
 
+
+function csv4Whosampled(data) {
+  var csv = 'title,performer,date,whosampled-id,echonest-id,spotify-id\n';
+  data.forEach(function(song) {
+    song.versions.forEach(function(version) {
+      if (version.echonest)
+        csv += ['"'+version.title+'"',
+                '"'+version.performer+'"',
+                '"'+version.date+'"',
+                version.echonest.whosampledId,
+                version.echonest.songId,
+                version.spotify.id].join(',')+'\n';
+    });
+  });
+  return csv;
+}
