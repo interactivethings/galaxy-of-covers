@@ -104,6 +104,17 @@ Promise
 function genreStats(data) {
   var genreStats = {};
   data.forEach(function(song) {
+
+    song.versions = _.sortBy(song.versions, function(d) {
+      return -(utils.getIn(d, ['spotify', 'popularity']) || 0);
+    });
+
+    var top5pop = _.take(song.versions, 5)
+      .map(function(d) {
+        return utils.getIn(d, ['musiXmatch','genres','length']); });
+
+    console.log(top5pop);
+
     song.versions.forEach(function(version) {
       var numGenres = utils.getIn(version, ['musiXmatch','genres','length']) || 0;
       if (genreStats[numGenres])
@@ -117,7 +128,9 @@ function genreStats(data) {
 }
 
 function spotifyStats(data) {
-  var total = 0, spotify = 0, echonest = 0, musixmatch = 0;
+  var total = 0, spotify = 0, echonest = 0,
+      musixmatch = 0, musiXmatchGenres = 0,
+      whosampled =0;
   var spotifyPop = 0, musixmatchPop = 0;
   data.forEach(function(song) {
     song.versions.forEach(function(version) {
@@ -126,17 +139,25 @@ function spotifyStats(data) {
         spotify++;
         spotifyPop += version.spotify.popularity;
       }
-      if (version.echonest) echonest++;
+      if (version.echonest) {
+        echonest++;
+        if (version.echonest.whosampledId) whosampled++;
+      }
       if (version.musiXmatch) {
         musixmatch++;
         musixmatchPop += version.spotify.popularity;
+        if (version.musiXmatch.genres.length > 0) {
+          musiXmatchGenres++;
+        }
       }
     });
   });
   console.log("Total:",total,
     " spotify:",spotify,
+    " whosampled:",whosampled,
     " echonest:",echonest,
-    " musixmatch:",musixmatch
+    " musixmatch:",musixmatch,
+    " musiXmatchGenres:",musiXmatchGenres
   );
   console.log("avg spotifyPop="+(spotifyPop/spotify), "avg musixmatchPop="+(musixmatchPop/musixmatch));
 }

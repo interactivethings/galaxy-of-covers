@@ -89,6 +89,14 @@ function getMusicXmatchTrackId(artist, title) {
   )
 }
 
+function getWhoSampledTrackId(artist, title) {
+  return request(
+    'http://developer.echonest.com/api/v4/song/search?api_key='+API_KEY+
+    '&format=json&results=1&artist='+encodeURIComponent(artist)+
+    '&title='+encodeURIComponent(title)+'&bucket=id:whosampled&limit=true&bucket=tracks'
+  )
+}
+
 
 function extendWithEchonest(version, callback) {
   if (!version.spotify) {
@@ -119,20 +127,32 @@ function extendWithEchonest(version, callback) {
           }
 
           Promise.all([
+            getWhoSampledTrackId(songData.artist_name, songData.title),
             getMusicXmatchTrackId(songData.artist_name, songData.title),
             getTrackAnalysis(audioSummary.analysis_url, version.spotify.id)
           ])
             .then(function(responseData) {
-              var musixmatchData = JSON.parse(responseData[0]);
-              var analysisData = JSON.parse(responseData[1]);
+              var whosampledData = JSON.parse(responseData[0]);
+              var musixmatchData = JSON.parse(responseData[1]);
+              var analysisData = JSON.parse(responseData[2]);
 
-              var song = _.first(utils.getIn(musixmatchData, ['response', 'songs']));
-              if (song) {
-                var track = _.first(utils.getIn(song, ['tracks']));
-                var matches = utils.getIn(track, ['foreign_id']).match(/^musixmatch-WW:track:(\d*)/);
-                if (matches) {
-                  var musixmatch = matches[1];
-                  _.extend(echonest, { musixmatch: musixmatch });
+              var songWS = _.first(utils.getIn(whosampledData, ['response', 'songs']));
+              if (songWS) {
+                var track = _.first(utils.getIn(songWS, ['tracks']));
+                var matchesWS = utils.getIn(track, ['foreign_id']).match(/^whosampled:track:(\d*)/);
+                if (matchesWS) {
+                  var whosampledId = matchesWS[1];
+                  _.extend(echonest, { whosampledId: whosampledId });
+                }
+              }
+
+              var songMM = _.first(utils.getIn(musixmatchData, ['response', 'songs']));
+              if (songMM) {
+                var track = _.first(utils.getIn(songMM, ['tracks']));
+                var matchesMM = utils.getIn(track, ['foreign_id']).match(/^musixmatch-WW:track:(\d*)/);
+                if (matchesMM) {
+                  var musixmatch = matchesMM[1];
+                  _.extend(echonest, {musixmatch: musixmatch});
                 }
               }
 
