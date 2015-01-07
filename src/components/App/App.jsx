@@ -12,7 +12,8 @@ var LoadActions = require('actions/LoadActions')
 
 function getAppState() {
   return {
-    songs: SongStore.getSongs()
+    songs: SongStore.getSongs(),
+    scales: SongStore.getScales()
   }
 }
 
@@ -53,7 +54,9 @@ var App = React.createClass({
     ,   systemX = systemXPad
     ,   systemY = systemYPad
 
-    dim.height = systemYPad + systemHeight * (Math.floor(songsArray.length / Math.floor((dim.width - systemXPad) / systemWidth)) - 1)
+    dim.height = systemYPad + systemHeight * Math.floor(songsArray.length / Math.floor((dim.width - systemXPad) / systemWidth))
+
+    var galaxyScales = this.state.scales;
 
     return (
       <svg className="SongGalaxy" {...dim} >
@@ -65,11 +68,12 @@ var App = React.createClass({
           var x = systemX
           systemX += systemWidth
 
-          return <SongSystem x={x} y={systemY} w={systemWidth} h={systemHeight} songData={songData} key={songData.title} />
+          return <SongSystem x={x} y={systemY} w={systemWidth} h={systemHeight} songData={songData} scales={galaxyScales} key={songData.title} />
         })}
       </svg>
     )
   }
+
 })
 
 module.exports = App
