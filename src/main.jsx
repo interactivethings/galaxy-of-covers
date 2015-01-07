@@ -14,6 +14,5 @@ React.render(
 )
 
 if (__DEV__) {
-  window.React = React
-  window.Immutable = require('Immutable')
+  window.React = require('react')
 }

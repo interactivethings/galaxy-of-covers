@@ -20,23 +20,21 @@ function getPosition(rx, ry, t, speed) {
 var SongPlanet = React.createClass({
 
   componentDidMount() {
-    var circle = d3.select(this.getDOMNode())
-    ,   t = 0
-    ,   rx = this.props.orbitRadX
-    ,   ry = this.props.orbitRadY
-    ,   speed = this.props.speed
+    this.circle = d3.select(this.getDOMNode())
+    this.t = 0
 
-    function animate() {
-      t += 0.1
-      var pos = getPosition(rx, ry, t, speed)
-      circle.attr({
-        cx: pos[0],
-        cy: pos[1]
-      })
-      requestAnimationFrame(animate)
-    }
+    this.animate()
+  },
 
-    animate()
+  animate() {
+    if (!this.props.shouldAnimate) return requestAnimationFrame(this.animate);
+    this.t += 0.1
+    var pos = getPosition(this.props.orbitRadX, this.props.orbitRadY, this.t, this.props.speed)
+    this.circle.attr({
+      cx: pos[0],
+      cy: pos[1]
+    })
+    requestAnimationFrame(this.animate)
   },
 
   render() {

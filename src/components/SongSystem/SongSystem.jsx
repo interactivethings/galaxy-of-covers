@@ -9,6 +9,7 @@ require('components/SongSystem/SongSystem.scss')
 
 var SongPlanet = require('components/SongPlanet/SongPlanet')
 ,   SongOrbit = require('components/SongPlanet/SongOrbit')
+,   ViewActions = require('actions/ViewActions')
 
 function translateString(x, y) {
   return 'translate(' + x + ',' + y + ')'
@@ -22,14 +23,19 @@ var monthDayYear = d3.time.format('%B %e, %Y')
 ,   monthYear = d3.time.format('%B %Y')
 ,   year = d3.time.format('%Y')
 
-var minDate = new Date()
-var minDatum;
-
 function parseDate(dateString) {
   return monthDayYear.parse(dateString) || monthYear.parse(dateString) || year.parse(dateString)
 }
 
 var SongSystem = React.createClass({
+
+  onMouseOver() {
+    ViewActions.hoverOnSongSystem(this.props.id)
+  },
+
+  onMouseOut() {
+    ViewActions.hoverOffSongSystem(this.props.id)
+  },
 
   render() {
     var orbits = []
@@ -41,13 +47,7 @@ var SongSystem = React.createClass({
     ,   speedScale = this.props.scales.getSpeedScale()
 
     this.props.songData.versions.forEach((versionData, i) => {
-    if (!versionData.echonest || !versionData.spotify) return;
-
-      var d = parseDate(versionData.date)
-      if (d < minDate) {
-        minDate = d
-        minDatum = versionData
-      }
+      if (!versionData.echonest || !versionData.spotify) return;
 
       var ellipseRadius = orbitRadScale(parseDate(versionData.date))
       ,   yMult = 3 / 5
@@ -57,7 +57,8 @@ var SongSystem = React.createClass({
             r: radScale(versionData.spotify.popularity),
             color: colorScale(Math.round(Math.random() * 5)),
             rotation: rotationScale(versionData.echonest.valence),
-            speed: speedScale(versionData.echonest.energy)
+            speed: speedScale(versionData.echonest.energy),
+            shouldAnimate: this.props.animate
           }
 
       var id = versionId(versionData)
@@ -71,10 +72,8 @@ var SongSystem = React.createClass({
       )
     })
 
-    console.log(minDate, minDatum);
-
     return (
-      <g className="SongSystem" transform={translateString(this.props.x, this.props.y)} >
+      <g className="SongSystem" transform={translateString(this.props.x, this.props.y)} onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} >
         {orbits}
         {planets}
         <circle r="5" fill="#fff" />

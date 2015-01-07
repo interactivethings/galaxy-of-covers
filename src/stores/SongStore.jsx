@@ -7,8 +7,11 @@ var LoadActions = require('actions/LoadActions')
 ,   d3 = require('d3')
 
 var state = Immutable.Map()
-state.set('songs', [])
-state.set('scales', {})
+setStateKeys({
+  songs: [],
+  scales: {},
+  hoveredSystemId: null
+})
 
 var SongStore = _.extend({}, EventEmitter.prototype, {
 
@@ -32,6 +35,10 @@ var SongStore = _.extend({}, EventEmitter.prototype, {
     return state.get('scales')
   },
 
+  getState() {
+    return state.toJS()
+  },
+
   dispatcherToken: AppDispatcher.register((payload) => {
     var {action} = payload;
 
@@ -43,6 +50,13 @@ var SongStore = _.extend({}, EventEmitter.prototype, {
         setState('songs', action.data)
         setState('scales', ScaleSet(findBounds(action.data)))
         break
+
+      case 'HOVER_SYSTEM':
+        setState('hoveredSystemId', action.systemId)
+        break
+      case 'HOVER_OFF_SYSTEM':
+        setState('hoveredSystemId', null)
+        break
     }
 
     SongStore.emitChange()
@@ -52,6 +66,12 @@ var SongStore = _.extend({}, EventEmitter.prototype, {
 
 function setState(key, value) {
   state = state.set(key, value)
+}
+
+function setStateKeys(obj) {
+  for (var key in obj) {
+    state = state.set(key, obj[key])
+  }
 }
 
 function loadSongs() {
