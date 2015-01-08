@@ -65,12 +65,8 @@ console.log('songs loaded', action.data);
         break
 
       // action events
-      case 'HOVER_SYSTEM':
-      case 'HOVER_OFF_SYSTEM':
-      case 'CLICK_SYSTEM':
-      case 'END_TRANSITION':
-      case 'SHOW_DETAIL':
-        // intentional switch drop-through
+      // 'HOVER_SYSTEM', 'HOVER_OFF_SYSTEM', 'CLICK_SYSTEM', 'END_TRANSITION', 'SHOW_DETAIL', 'SHOW_GALAXY', etc...
+      default:
         DynamicStateStore.handleAction(action)
         setState('dynamic', DynamicStateStore.getState())
     }
