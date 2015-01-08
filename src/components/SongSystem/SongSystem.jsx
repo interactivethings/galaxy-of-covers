@@ -29,12 +29,8 @@ function parseDate(dateString) {
 
 var SongSystem = React.createClass({
 
-  onMouseOver() {
+  onMouseEnter() {
     ViewActions.hoverOnSongSystem(this.props.id)
-  },
-
-  onMouseOut() {
-    ViewActions.hoverOffSongSystem(this.props.id)
   },
 
   render() {
@@ -55,7 +51,7 @@ var SongSystem = React.createClass({
             orbitRadX: ellipseRadius,
             orbitRadY: ellipseRadius * yMult,
             r: radScale(versionData.spotify.popularity),
-            color: colorScale(Math.round(Math.random() * 5)),
+            color: colorScale(versionData.genre),
             rotation: rotationScale(versionData.echonest.valence),
             speed: speedScale(versionData.echonest.energy),
             shouldAnimate: this.props.animate
@@ -72,8 +68,15 @@ var SongSystem = React.createClass({
       )
     })
 
+    var centerX = this.props.w / 2, centerY = this.props.h / 2
+
     return (
-      <g className="SongSystem" transform={translateString(this.props.x, this.props.y)} onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} >
+      <g
+        className="SongSystem"
+        transform={translateString(this.props.x + centerX, this.props.y + centerY)}
+        onMouseEnter={this.onMouseEnter}
+      >
+        <rect className="SoundSystem-background" x={-centerX} y={-centerY} width={this.props.w} height={this.props.h} fill={"transparent"} stroke="none" />
         {orbits}
         {planets}
         <circle r="5" fill="#fff" />

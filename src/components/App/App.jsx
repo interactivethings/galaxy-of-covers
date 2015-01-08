@@ -9,6 +9,7 @@ require('components/App/App.scss')
 var LoadActions = require('actions/LoadActions')
 ,   SongStore = require('stores/SongStore')
 ,   SongSystem = require('components/SongSystem/SongSystem')
+,   ViewActions = require('actions/ViewActions')
 
 function getAppState() {
   return SongStore.getState()
@@ -43,36 +44,48 @@ var App = React.createClass({
     return {width, height}
   },
 
+  onMouseLeave() {
+    ViewActions.hoverOffSongSystem(this.props.id)
+  },
+
   render() {
     console.log(this.state.songs);
 
     var dim = this.getAppDimensions()
     ,   songsArray = this.state.songs || []
-    ,   systemXPad = 200
-    ,   systemYPad = 200
     ,   systemWidth = 400
     ,   systemHeight = 400
-    ,   systemX = systemXPad
-    ,   systemY = systemYPad
+    ,   systemX = 0
+    ,   systemY = 0
 
-    dim.height = systemYPad + systemHeight * Math.floor(songsArray.length / Math.floor((dim.width - systemXPad) / systemWidth))
+    dim.height = systemHeight * Math.ceil(songsArray.length / Math.floor(dim.width / systemWidth))
 
     var galaxyScales = this.state.scales
     ,   stateRef = this.state
 
     return (
-      <svg className="SongGalaxy" {...dim} >
+      <svg className="SongGalaxy" {...dim} onMouseLeave={this.onMouseLeave} >
         {songsArray.map(function(songData, i) {
-          if (systemX >= dim.width) {
-            systemX = systemXPad
+          if (systemX + systemWidth >= dim.width) {
+            systemX = 0
             systemY += systemHeight
           }
           var x = systemX
           systemX += systemWidth
 
           var systemId = songSystemId(songData)
-          ,   shouldAnimate = systemId !== stateRef.hoveredSystemId
-          return <SongSystem id={systemId} animate={shouldAnimate} x={x} y={systemY} w={systemWidth} h={systemHeight} songData={songData} scales={galaxyScales} key={songData.title} />
+          ,   shouldAnimate = systemId !== stateRef.dynamic.hoveredSystemId
+          return <SongSystem
+                  id={systemId}
+                  animate={shouldAnimate}
+                  x={x}
+                  y={systemY}
+                  w={systemWidth}
+                  h={systemHeight}
+                  songData={songData}
+                  scales={galaxyScales}
+                  key={songData.title}
+                />
         })}
       </svg>
     )

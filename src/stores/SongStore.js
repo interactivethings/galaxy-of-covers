@@ -1,3 +1,5 @@
+'use strict';
+
 var LoadActions = require('actions/LoadActions')
 ,   AppDispatcher = require('dispatcher/AppDispatcher')
 ,   reqwest = require('reqwest')
@@ -6,11 +8,13 @@ var LoadActions = require('actions/LoadActions')
 ,   Immutable = require('Immutable')
 ,   d3 = require('d3')
 
+var DynamicStateStore = require('stores/DynamicStateStore')
+
 var state = Immutable.Map()
 setStateKeys({
   songs: [],
   scales: {},
-  hoveredSystemId: null
+  dynamic: DynamicStateStore
 })
 
 var SongStore = _.extend({}, EventEmitter.prototype, {
@@ -43,19 +47,28 @@ var SongStore = _.extend({}, EventEmitter.prototype, {
     var {action} = payload;
 
     switch (action.type) {
+      // load/network events
       case 'LOAD_SONG_DATA':
         loadSongs()
         break
       case 'SONGS_LOADED':
+        action.data.forEach((songData) => {
+          songData.versions.forEach((versionData) => {
+            versionData.genre = Math.round(Math.random() * 5);
+          })
+        })
         setState('songs', action.data)
         setState('scales', ScaleSet(findBounds(action.data)))
         break
 
+      // action events
       case 'HOVER_SYSTEM':
-        setState('hoveredSystemId', action.systemId)
+        DynamicStateStore.setHoveredSystem(action.systemId)
+        setState('dynamic', DynamicStateStore.getState())
         break
       case 'HOVER_OFF_SYSTEM':
-        setState('hoveredSystemId', null)
+        DynamicStateStore.setHoveredSystem(null)
+        setState('dynamic', DynamicStateStore.getState())
         break
     }
 
@@ -114,8 +127,10 @@ function ScaleSet(bounds) {
   var orbitRadius = d3.time.scale().domain([new Date(1940, 1, 1), new Date()]).range([50, 200])
   ,   radius = d3.scale.linear().domain([0, 100]).range([3, 18])
   ,   color = d3.scale.ordinal().domain(bounds.genres).range(['#E5D166', '#9BC054', '#57BF93', '#5882B4', '#CD6586'])
-//  ,   rotation = d3.scale.linear().domain([0, 1]).range([270, 450])
-  ,   rotation = d3.scale.linear().domain([0, 1]).range([0, 360])
+  // rotation ranges from 270 to 450 degrees
+  ,   rotation = d3.scale.linear().domain([0, 1]).range([270, 450])
+  // rotation ranges from 0 to 360 degrees
+//  ,   rotation = d3.scale.linear().domain([0, 1]).range([0, 360])
   ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5, 2.5])
 
   return {
