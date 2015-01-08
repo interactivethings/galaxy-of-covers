@@ -8,7 +8,7 @@ var React = require('react')
 require('components/SongPlanet/SongPlanet.scss')
 
 var Vec2 = require('util/vec2')
-,   SVGUtil = require('util/svgutil')
+,   SvgUtil = require('util/svgutil')
 
 function getPosition(rx, ry, t, speed) {
   // calculates the planet's position given rx, ry, and t
@@ -34,7 +34,8 @@ var SongPlanet = React.createClass({
     ,   s = this.props.speed
     ,   rx = this.props.orbitRadX
     ,   ry = this.props.orbitRadY
-    ,   circle = this.getDOMNode()
+    ,   rotation = this.props.rotation
+    ,   element = this.getDOMNode()
 
     function animate() {
       if (animationTracker.stop) return true
@@ -43,8 +44,7 @@ var SongPlanet = React.createClass({
       t += 0.1
 
       var pos = getPosition(rx, ry, t, s)
-      circle.setAttribute('cx', pos[0])
-      circle.setAttribute('cy', pos[1])
+      element.setAttribute('transform', SvgUtil.getRotateAndTranslate(rotation, pos[0], pos[1]))
 
       requestAnimationFrame(animate)
     }
@@ -70,9 +70,25 @@ var SongPlanet = React.createClass({
 
     var planetPos = getPosition(this.props.orbitRadX, this.props.orbitRadY, 0, this.props.speed)
 
-    return (
-      <circle cx={planetPos[0]} cy={planetPos[1]} r={this.props.r} fill={this.props.color} transform={SVGUtil.getRotateTransform(this.props.rotation)} />
-    )
+    if (this.props.sides === -1) {
+      return (
+        <circle
+          transform={SvgUtil.getRotateAndTranslate(this.props.rotation, planetPos[0], planetPos[1])}
+          cx={0}
+          cy={0}
+          r={this.props.r}
+          fill={this.props.color}
+        />
+      )
+    } else {
+      return (
+        <polygon
+          transform={SvgUtil.getRotateAndTranslate(this.props.rotation, planetPos[0], planetPos[1])}
+          points={SvgUtil.getPolygonPoints(0, 0, this.props.r, this.props.sides)}
+          fill={this.props.color}
+        />
+      )
+    }
   },
 
   componentWillUnmount() {

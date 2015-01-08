@@ -3,7 +3,6 @@
  */
 
 var React = require('react')
-,   d3 = require('d3')
 
 require('components/SongSystem/SongSystem.scss')
 
@@ -17,14 +16,6 @@ function translateString(x, y) {
 
 function versionId(versionData) {
   return versionData.performer + '-' + versionData.title + '-' + versionData.date
-}
-
-var monthDayYear = d3.time.format('%B %e, %Y')
-,   monthYear = d3.time.format('%B %Y')
-,   year = d3.time.format('%Y')
-
-function parseDate(dateString) {
-  return monthDayYear.parse(dateString) || monthYear.parse(dateString) || year.parse(dateString)
 }
 
 var SongSystem = React.createClass({
@@ -56,11 +47,12 @@ var SongSystem = React.createClass({
     ,   colorScale = this.props.scales.getColorScale()
     ,   rotationScale = this.props.scales.getRotationScale()
     ,   speedScale = this.props.scales.getSpeedScale()
+    ,   sidesScale = this.props.scales.getEdgesScale()
 
     this.props.songData.versions.forEach((versionData, i) => {
       if (!versionData.echonest || !versionData.spotify) return;
 
-      var ellipseRadius = orbitRadScale(parseDate(versionData.date))
+      var ellipseRadius = orbitRadScale(versionData.parsedDate)
       ,   yMult = 3 / 5
       ,   songProps = {
             orbitRadX: ellipseRadius,
@@ -69,15 +61,14 @@ var SongSystem = React.createClass({
             color: colorScale(versionData.genre),
             rotation: rotationScale(versionData.echonest.valence),
             speed: speedScale(versionData.echonest.energy),
+            sides: sidesScale(versionData.echonest.speechiness),
             shouldAnimate: this.props.animate
           }
 
       var id = versionId(versionData)
-      if (versionData.echonest) {
-        orbits.push(
-          <SongOrbit key={'orbit-'+id} {...songProps} />
-        )
-      }
+      orbits.push(
+        <SongOrbit key={'orbit-'+id} {...songProps} />
+      )
       planets.push(
         <SongPlanet key={id} {...songProps} />
       )

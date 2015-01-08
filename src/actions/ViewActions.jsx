@@ -29,6 +29,12 @@ var ViewActions = {
         systemId: id
       })
     })
+
+    TweenMax.delayedCall(2, function() {
+      Dispatcher.handleViewAction({
+        type: 'SHOW_GALAXY'
+      })
+    })
   }
 
 }
