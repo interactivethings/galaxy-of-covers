@@ -20,15 +20,15 @@ function getPosition(rx, ry, t, speed) {
 var SongPlanet = React.createClass({
 
   getInitialState() {
-    this.animationTracker = {}
+    this.animationTracker = {
+      pause: false,
+      stop: false
+    }
     return null
   },
 
   componentDidMount() {
-    var animationTracker = this.animationTracker || {
-      pause: false,
-      stop: false
-    }
+    var animationTracker = this.animationTracker
 
     var t = 0
     ,   s = this.props.speed
@@ -37,10 +37,7 @@ var SongPlanet = React.createClass({
     ,   circle = this.getDOMNode()
 
     function animate() {
-      if (animationTracker.stop) {
-        animationTracker.animationHasStopped = true;
-        return true
-      }
+      if (animationTracker.stop) return true
       if (animationTracker.pause) return requestAnimationFrame(animate)
 
       t += 0.1
@@ -80,11 +77,6 @@ var SongPlanet = React.createClass({
 
   componentWillUnmount() {
     this.animationTracker.stop = true
-    var _ = require('underscore')
-    ,   t = this.animationTracker
-    _.defer(() => {
-      console.log(t.animationHasStopped);
-    })
   }
 
 })
