@@ -33,6 +33,21 @@ var SongSystem = React.createClass({
     ViewActions.hoverOnSongSystem(this.props.id)
   },
 
+  onClick() {
+    ViewActions.clickOnSongSystem(this.props.id)
+  },
+
+  shouldComponentUpdate(newProps, newState) {
+    var curProps = this.props
+    ,   prop
+    for (prop in newProps) {
+      if (newProps[prop] !== curProps[prop]) {
+        return true
+      }
+    }
+    return false
+  },
+
   render() {
     var orbits = []
     ,   planets = []
@@ -75,6 +90,7 @@ var SongSystem = React.createClass({
         className="SongSystem"
         transform={translateString(this.props.x + centerX, this.props.y + centerY)}
         onMouseEnter={this.onMouseEnter}
+        onClick={this.onClick}
       >
         <rect className="SoundSystem-background" x={-centerX} y={-centerY} width={this.props.w} height={this.props.h} fill={"transparent"} stroke="none" />
         {orbits}

@@ -58,7 +58,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-
+      'd3': 'd3/d3',
+      'TweenMax': 'gsap/src/minified/TweenMax.min'
     },
     modulesDirectories: moduleDirectories,
     extensions: ['', '.js', '.jsx', '.json', '.css', '.scss', '.coffee', '.cjsx']

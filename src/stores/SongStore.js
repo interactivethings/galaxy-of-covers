@@ -10,11 +10,13 @@ var LoadActions = require('actions/LoadActions')
 
 var DynamicStateStore = require('stores/DynamicStateStore')
 
-var state = Immutable.Map()
-setStateKeys({
+var setState = (key, value) => { state = state.set(key, value) }
+var setStateObj = (obj) => { for (var key in obj) setState(key, obj[key]) }
+
+var state = Immutable.Map({
   songs: [],
   scales: {},
-  dynamic: DynamicStateStore
+  dynamic: DynamicStateStore.getState()
 })
 
 var SongStore = _.extend({}, EventEmitter.prototype, {
@@ -40,7 +42,7 @@ var SongStore = _.extend({}, EventEmitter.prototype, {
   },
 
   getState() {
-    return state.toJS()
+    return state
   },
 
   dispatcherToken: AppDispatcher.register((payload) => {
@@ -52,6 +54,7 @@ var SongStore = _.extend({}, EventEmitter.prototype, {
         loadSongs()
         break
       case 'SONGS_LOADED':
+console.log('songs loaded', action.data);
         action.data.forEach((songData) => {
           songData.versions.forEach((versionData) => {
             versionData.genre = Math.round(Math.random() * 5);
@@ -63,29 +66,19 @@ var SongStore = _.extend({}, EventEmitter.prototype, {
 
       // action events
       case 'HOVER_SYSTEM':
-        DynamicStateStore.setHoveredSystem(action.systemId)
-        setState('dynamic', DynamicStateStore.getState())
-        break
       case 'HOVER_OFF_SYSTEM':
-        DynamicStateStore.setHoveredSystem(null)
+      case 'CLICK_SYSTEM':
+      case 'END_TRANSITION':
+      case 'SHOW_DETAIL':
+        // intentional switch drop-through
+        DynamicStateStore.handleAction(action)
         setState('dynamic', DynamicStateStore.getState())
-        break
     }
 
     SongStore.emitChange()
   })
 
 })
-
-function setState(key, value) {
-  state = state.set(key, value)
-}
-
-function setStateKeys(obj) {
-  for (var key in obj) {
-    state = state.set(key, obj[key])
-  }
-}
 
 function loadSongs() {
   reqwest({
