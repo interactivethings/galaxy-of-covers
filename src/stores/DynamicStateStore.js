@@ -40,6 +40,9 @@ var DynamicStateStore = {
       case 'SHOW_DETAIL':
         this.showDetail(action.systemId)
         break
+      case 'SHOW_GALAXY':
+        this.showGalaxy()
+        break
     }
   },
 
