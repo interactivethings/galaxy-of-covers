@@ -1,0 +1,22 @@
+@import "bourbon";
+@import "../Constants";
+
+.AppHeader {
+  background-color: $c-app-bg;
+  left: 0;
+  padding: 0.4em 2em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.AppTitle {
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0;
+  vertical-align: middle;
+}

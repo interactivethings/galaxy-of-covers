@@ -23,17 +23,18 @@ var ViewActions = {
       systemId: id
     })
 
+    // this simulates a transition
     TweenMax.delayedCall(0.2, function() {
       Dispatcher.handleViewAction({
         type: 'SHOW_DETAIL',
         systemId: id
       })
     })
+  },
 
-    TweenMax.delayedCall(2, function() {
-      Dispatcher.handleViewAction({
-        type: 'SHOW_GALAXY'
-      })
+  navToGalaxy() {
+    Dispatcher.handleViewAction({
+      type: 'SHOW_GALAXY'
     })
   }
 
