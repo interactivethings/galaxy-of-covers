@@ -9,7 +9,6 @@ require('components/App/App.scss')
 
 var LoadActions = require('actions/LoadActions')
 ,   SongStore = require('stores/SongStore')
-,   ViewActions = require('actions/ViewActions')
 ,   AppHeader = require('components/AppHeader/AppHeader')
 ,   MainView = require('components/App/MainView')
 ,   AppFooter = require('components/AppFooter/AppFooter')
@@ -39,10 +38,6 @@ var App = React.createClass({
 
   shouldComponentUpdate(nextProps, nextState) {
     return !Immutable.is(this.state.appState, nextState.appState);
-  },
-
-  onMouseLeave() {
-    ViewActions.hoverOffSongSystem(this.props.id)
   },
 
   render() {
