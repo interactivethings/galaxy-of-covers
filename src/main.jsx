@@ -10,7 +10,7 @@ React.initializeTouchEvents(true)
 
 React.render(
   <App />,
-  document.getElementById('galaxy-vis')
+  document.getElementById('main')
 )
 
 if (__DEV__) {

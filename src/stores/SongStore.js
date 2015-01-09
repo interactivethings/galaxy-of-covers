@@ -10,6 +10,7 @@ var LoadActions = require('actions/LoadActions')
 
 var DynamicStateStore = require('stores/DynamicStateStore')
 ,   Constants = require('stores/Constants')
+,   DataUtil = require('util/datautil')
 
 var setState = (key, value) => { state = state.set(key, value) }
 var setStateObj = (obj) => { for (var key in obj) setState(key, obj[key]) }
@@ -57,7 +58,9 @@ var SongStore = _.extend({}, EventEmitter.prototype, {
       case 'SONGS_LOADED':
 console.log('songs loaded', action.data);
         action.data.forEach((songData) => {
+          songData.id = DataUtil.songSystemId(songData)
           songData.versions.forEach((versionData) => {
+            versionData.id = DataUtil.versionId(versionData)
             versionData.parsedDate = parseDate(versionData.date)
             versionData.genre = Math.round(Math.random() * 5);
           })

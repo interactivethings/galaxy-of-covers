@@ -35,7 +35,7 @@ var SongTimeline = React.createClass({
       }
 
       planets.push(
-        <TimelinePlanet key={versionData.artist} {...songProps} />
+        <TimelinePlanet key={versionData.id} {...songProps} />
       )
     })
 

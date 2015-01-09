@@ -12,6 +12,14 @@ var DataUtil = {
       minMax[1] = Math.max(minMax[1], value);
     })
     return minMax
+  },
+
+  songSystemId(songData) {
+    return songData.uri
+  },
+
+  versionId(versionData) {
+    return versionData.performer + '-' + versionData.title + '-' + versionData.date
   }
 
 }

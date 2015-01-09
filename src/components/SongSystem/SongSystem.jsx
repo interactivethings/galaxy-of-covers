@@ -14,10 +14,6 @@ function translateString(x, y) {
   return 'translate(' + x + ',' + y + ')'
 }
 
-function versionId(versionData) {
-  return versionData.performer + '-' + versionData.title + '-' + versionData.date
-}
-
 var SongSystem = React.createClass({
 
   onMouseEnter() {
@@ -65,7 +61,7 @@ var SongSystem = React.createClass({
             shouldAnimate: this.props.animate
           }
 
-      var id = versionId(versionData)
+      var id = versionData.id
       orbits.push(
         <SongOrbit key={'orbit-'+id} {...songProps} />
       )
