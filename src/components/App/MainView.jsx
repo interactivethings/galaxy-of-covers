@@ -49,10 +49,11 @@ var App = React.createClass({
     } else {
       var systemWidth = 400
       ,   systemHeight = 400
+      ,   topPadding = 42 // currently, this is hardcoded, but it should be calculated dynamically, based on the size of the header bar
       ,   dim = this.getGalaxyGroupDimensions(systemHeight, systemWidth, this.props.songs.length)
       ,   hoveredId = this.props.dynamic.get('hoveredSystemId')
       ,   systemX = 0
-      ,   systemY = 0
+      ,   systemY = topPadding
       ,   scales = this.props.scales
 
       return (

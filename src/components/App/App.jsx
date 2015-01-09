@@ -48,7 +48,7 @@ var App = React.createClass({
 
     return (
       <div className="AppBox">
-        <AppHeader />
+        <AppHeader dynamic={dynamicState} />
         <MainView songs={songsArray} scales={galaxyScales} dynamic={dynamicState} />
         <AppFooter />
       </div>

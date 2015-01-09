@@ -17,7 +17,9 @@ var AppHeader = React.createClass({
   render() {
     return (
       <div className="AppHeader" >
-        <h1 className="AppTitle" onClick={this.navigateBack} >A Galaxy of Covers</h1>
+        <div className={"AppHeader-navtitle"} >
+          <h1 className="AppTitle" onClick={this.navigateBack} >A Galaxy of Covers</h1>
+        </div>
       </div>
     )
   }

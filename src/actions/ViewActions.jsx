@@ -23,12 +23,10 @@ var ViewActions = {
       systemId: id
     })
 
-    // this simulates a transition
-    TweenMax.delayedCall(0.2, function() {
-      Dispatcher.handleViewAction({
-        type: 'SHOW_DETAIL',
-        systemId: id
-      })
+    // this should be called after a transition
+    Dispatcher.handleViewAction({
+      type: 'SHOW_DETAIL',
+      systemId: id
     })
   },
 
