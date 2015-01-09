@@ -1,15 +1,13 @@
 'use strict';
 
-var LoadActions = require('actions/LoadActions')
-,   AppDispatcher = require('dispatcher/AppDispatcher')
+var AppDispatcher = require('dispatcher/AppDispatcher')
 ,   reqwest = require('reqwest')
 ,   {EventEmitter} = require('events')
-,   _ = require('lodash')
+,   LoadActions = require('actions/LoadActions')
 ,   Immutable = require('Immutable')
 ,   d3 = require('d3')
 
 var DynamicStateStore = require('stores/DynamicStateStore')
-,   Constants = require('stores/Constants')
 ,   DataUtil = require('util/datautil')
 
 var setState = (key, value) => { state = state.set(key, value) }
@@ -21,7 +19,7 @@ var state = Immutable.Map({
   dynamic: DynamicStateStore.getState()
 })
 
-var SongStore = _.extend({}, EventEmitter.prototype, {
+var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
 
   emitChange() {
     this.emit('change')

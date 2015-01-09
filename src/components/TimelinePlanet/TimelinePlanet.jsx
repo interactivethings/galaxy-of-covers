@@ -3,7 +3,6 @@
  */
 
 var React = require('react')
-,   d3 = require('d3')
 
 require('components/TimelinePlanet/TimelinePlanet.scss')
 

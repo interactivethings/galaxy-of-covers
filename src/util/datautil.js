@@ -20,6 +20,17 @@ var DataUtil = {
 
   versionId(versionData) {
     return versionData.performer + '-' + versionData.title + '-' + versionData.date
+  },
+
+  extend(obj) {
+    Array.prototype.slice.call(arguments, 1).forEach((source) => {
+      for (var prop in source) {
+        if (source.hasOwnProperty(prop)) {
+          obj[prop] = source[prop]
+        }
+      }
+    })
+    return obj
   }
 
 }

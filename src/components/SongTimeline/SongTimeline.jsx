@@ -44,9 +44,11 @@ var SongTimeline = React.createClass({
       return b.props.r - a.props.r
     })
 
-    return <g transform={SVGUtil.translateString(0, this.props.timelineBaselineY)}>
-            {planets}
-          </g>
+    return (
+      <g transform={SVGUtil.translateString(0, this.props.timelineBaselineY)}>
+        {planets}
+      </g>
+    )
   }
 
 })

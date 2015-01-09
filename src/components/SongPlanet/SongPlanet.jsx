@@ -3,12 +3,10 @@
  */
 
 var React = require('react')
-,   TweenMax = require('TweenMax')
 
 require('components/SongPlanet/SongPlanet.scss')
 
-var Vec2 = require('util/vec2')
-,   SvgUtil = require('util/svgutil')
+var SvgUtil = require('util/svgutil')
 
 function getPosition(rx, ry, t, speed) {
   // calculates the planet's position given rx, ry, and t
