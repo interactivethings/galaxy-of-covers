@@ -131,8 +131,8 @@ function ScaleSet(bounds) {
   ,   radius = d3.scale.linear().domain([0, 100]).range([3, 18])
   ,   color = d3.scale.ordinal().domain(bounds.genres).range(['#E5D166', '#9BC054', '#57BF93', '#5882B4', '#CD6586'])
   // rotation ranges from 270 to 450 degrees
-  ,   rotation = d3.scale.linear().domain([0, 1]).range([270, 450])
-  ,   timelineRotation = d3.scale.linear().domain([0, 1]).range([-90, -270])
+  ,   rotation = d3.scale.linear().domain([0, 1]).range([0, -90])
+  ,   timelineRotation = d3.scale.linear().domain([0, 1]).range([0, -90])
   // rotation ranges from 0 to 360 degrees
 //  ,   rotation = d3.scale.linear().domain([0, 1]).range([0, 360])
   ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5, 2.5])
