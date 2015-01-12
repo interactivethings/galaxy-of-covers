@@ -4,7 +4,7 @@
   "description": "Blue sky vis project prototype",
   "main": "index.html",
   "devDependencies": {
-    "catalyst": "file:../../../../var/folders/n7/c3b1msrd48l8g2p82th3w2nc0000gn/T/npm-17915-7b87af69/1420463567995-0.34842188307084143/554aa55e19e9023f94477dba1d5db06e8f694a86",
+    "catalyst": "1.0.0-beta2",
     "cheerio": "^0.18.0",
     "cjsx-loader": "^1.1.0",
     "coffee-loader": "^0.7.2",
@@ -46,5 +46,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": ""
+  "author": "",
+  "dependencies": {
+    "catalyst": "git://github.com/interactivethings/catalyst.git#1.0.0-beta2"
+  }
 }
