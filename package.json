@@ -41,7 +41,8 @@
     "style-loader": "^0.8.2",
     "underscore": "^1.7.0",
     "webpack": "^1.4.13",
-    "webpack-dev-server": "^1.6.6"
+    "webpack-dev-server": "^1.6.6",
+    "zepto": "0.0.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

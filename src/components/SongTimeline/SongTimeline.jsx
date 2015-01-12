@@ -21,6 +21,7 @@ var SongTimeline = React.createClass({
     ,   radiusScale = this.props.scales.getTimelineRadiusScale()
     ,   colorScale = this.props.scales.getColorScale()
     ,   edgesScale = this.props.scales.getEdgesScale()
+    ,   rotationScale = this.props.scales.getTimelineRotation()
 
     var planets = []
     this.props.songData.versions.map(function(versionData, i) {
@@ -31,11 +32,12 @@ var SongTimeline = React.createClass({
         cy: timelineYScale(versionData.echonest.energy),
         r: radiusScale(versionData.spotify.popularity),
         color: colorScale(versionData.genre),
-        sides: edgesScale(versionData.echonest.speechiness)
+        sides: edgesScale(versionData.echonest.speechiness),
+        rotation: rotationScale(versionData.echonest.valence)
       }
 
       planets.push(
-        <TimelinePlanet key={versionData.id} {...songProps} />
+        <TimelinePlanet key={versionData.id} id={versionData.id} {...songProps} />
       )
     })
 

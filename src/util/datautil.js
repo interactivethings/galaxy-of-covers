@@ -1,3 +1,6 @@
+var songNum = 0
+var versionNum = 0
+
 var DataUtil = {
 
   baseBounds() {
@@ -15,11 +18,11 @@ var DataUtil = {
   },
 
   songSystemId(songData) {
-    return songData.uri
+    return 'song-' + (++songNum)
   },
 
   versionId(versionData) {
-    return versionData.performer + '-' + versionData.title + '-' + versionData.date
+    return 'version-' + (++versionNum)
   },
 
   extend(obj) {
