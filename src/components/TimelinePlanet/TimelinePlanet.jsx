@@ -66,7 +66,7 @@ var TimelinePlanet = React.createClass({
         </g>
       )
     } else {
-      var polygonPath = SvgUtil.getPolygonPoints(0, 0, this.props.r, this.props.sides)
+      var polygonPath = SvgUtil.joinPolygonPoints(this.props.polygonPoints)
       return (
         <g transform={SvgUtil.translateString(this.props.cx, this.props.cy)}>
           <defs dangerouslySetInnerHTML={{__html: clipPathPolygonTemplate({

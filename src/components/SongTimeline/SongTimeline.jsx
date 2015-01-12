@@ -7,9 +7,11 @@ var React = require('react')
 
 require('components/SongTimeline/SongTimeline.scss')
 
-var SVGUtil = require('util/svgutil')
+var SvgUtil = require('util/svgutil')
 ,   DataUtil = require('util/datautil')
 ,   TimelinePlanet = require('components/TimelinePlanet/TimelinePlanet')
+,   SongTimelineAxis = require('components/SongTimelineAxis/SongTimelineAxis')
+,   TimelineEnergyTail = require('components/TimelinePlanet/TimelineEnergyTail')
 
 var SongTimeline = React.createClass({
 
@@ -24,6 +26,7 @@ var SongTimeline = React.createClass({
     ,   rotationScale = this.props.scales.getTimelineRotation()
 
     var planets = []
+    ,   tails = []
     this.props.songData.versions.map(function(versionData, i) {
       if (!versionData.echonest) return;
 
@@ -36,8 +39,27 @@ var SongTimeline = React.createClass({
         rotation: rotationScale(versionData.echonest.valence)
       }
 
+      if (songProps.sides !== -1) {
+        var a = Math.floor(songProps.sides / 2)
+        var pt1 = new Vec2(-1, 0)
+        var pt2 = new Vec2(Math.cos(a), Math.sin(a))
+        var diagonal = Vec2.diff(pt1, pt2)
+        var rot = Vec2.crossProduct(new Vec2(1, 0), diagonal)
+        var polyPoints = SvgUtil.getPolygonPointsWithOffset(0, 0, songProps.r, songProps.sides, rot)
+
+        console.log(rot * 180 / Math.PI);
+
+        songProps.polygonPoints = polyPoints
+        songProps.tailpt1 = polyPoints[0]
+        songProps.tailpt2 = polyPoints[Math.ceil(polyPoints.length / 2)]
+      }
+
       planets.push(
         <TimelinePlanet key={versionData.id} id={versionData.id} {...songProps} />
+      )
+
+      tails.push(
+        <TimelineEnergyTail key={'tail-'+versionData.id} gradientId={"energyTailFadeColor"} {...songProps} />
       )
     })
 
@@ -47,10 +69,29 @@ var SongTimeline = React.createClass({
     })
 
     return (
-      <g transform={SVGUtil.translateString(0, this.props.timelineBaselineY)}>
+      <g transform={SvgUtil.translateString(0, this.props.timelineBaselineY)}>
+        <defs>
+          <linearGradient id="energyTailFadeColor" x1="0.5" y1="0" x2="0.5" y2="1">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.5)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
+          </linearGradient>
+        </defs>
+        {tails}
         {planets}
+        <SongTimelineAxis
+          songData={this.props.songData}
+          timelineXScale={timelineXScale}
+        />
       </g>
     )
+  },
+
+  componentDidMount() {
+    var node = d3.select(this.getDOMNode())
+
+    node.select('#energyTailFade')
+      .attr('maskUnits', 'objectBoundingBox')
+      .attr('maskContentUnits', 'objectBoundingBox')
   }
 
 })

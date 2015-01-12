@@ -137,8 +137,8 @@ function ScaleSet(bounds) {
 //  ,   rotation = d3.scale.linear().domain([0, 1]).range([0, 360])
   ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5, 2.5])
   ,   timelineRadius = d3.scale.linear().domain([0, 100]).range([3, 50])
-  ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([-1, 8, 7, 6, 5, 4, 3]) // reverse scale
-//  ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([5, 4, 3])
+//  ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([-1, 8, 7, 6, 5, 4, 3]) // reverse scale
+  ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([5, 4, 3])
 
   return {
     getOrbitRadiusScale: () => orbitRadius,

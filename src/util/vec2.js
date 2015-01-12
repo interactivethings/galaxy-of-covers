@@ -6,12 +6,20 @@
     this.y = y || 0;
   }
 
+  Vec2.fromVals = function(x, y) {
+    return new Vec2(x, y);
+  };
+
   Vec2.fromScalar = function(s) {
     return new Vec2(s, s);
   };
 
   Vec2.zeroVec = function() {
     return new Vec2(0, 0);
+  };
+
+  Vec2.fromArray = function(a) {
+    return new Vec2(a[0], a[1]);
   };
 
   Vec2.prototype = {
@@ -58,8 +66,25 @@
 
     dot: function(v) {
       return this.x * v.x + this.y * v.y;
+    },
+
+    negated: function() {
+      return new Vec2(- this.x, - this.y);
+    },
+
+    normalized: function() {
+      var m = this.mag();
+      return new Vec2(this.x / m, this.y / m);
     }
 
+  };
+
+  Vec2.sum = function(va, vb) {
+    return new Vec2(va.x + vb.x, va.y + vb.y);
+  };
+
+  Vec2.diff = function(va, vb) {
+    return new Vec2(va.x - vb.x, va.y - vb.y);
   };
 
   // static dot product a * b
