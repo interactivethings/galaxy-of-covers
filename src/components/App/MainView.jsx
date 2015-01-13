@@ -32,8 +32,8 @@ var App = React.createClass({
       ,   detailId = this.props.dynamic.get('detailSystemId')
       ,   selectedSong = this.props.songs.filter((songData) => songData.id === detailId )[0]
       ,   timelineBaselineY = dim.height * 3 / 5
-      ,   upperUIPadding = 120
-      ,   leftTimelinePadding = 260
+      ,   upperUIPadding = 60
+      ,   leftTimelinePadding = 100
 
       return (
         <svg className="MainView SongDetail" {...dim} >
@@ -41,8 +41,9 @@ var App = React.createClass({
             songData={selectedSong}
             scales={this.props.scales}
             timelineBaselineY={timelineBaselineY}
+            upperUIPadding={upperUIPadding}
+            timelineTotalWidth={dim.width}
             timelineXRange={[leftTimelinePadding, dim.width - leftTimelinePadding]}
-            timelineYRange={[0, - timelineBaselineY + upperUIPadding]}
           />
         </svg>
       )

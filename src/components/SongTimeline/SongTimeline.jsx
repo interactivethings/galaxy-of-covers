@@ -13,14 +13,17 @@ var SvgUtil = require('util/svgutil')
 ,   TimelinePlanet = require('components/TimelinePlanet/TimelinePlanet')
 ,   SongTimelineAxis = require('components/SongTimelineAxis/SongTimelineAxis')
 ,   TimelineEnergyTail = require('components/TimelinePlanet/TimelineEnergyTail')
+,   TimelineGenreHeader = require('components/TimelineGenreHeader/TimelineGenreHeader')
 
 var SongTimeline = React.createClass({
 
   render() {
-    var timeRange = DataUtil.getMinMax(this.props.songData.versions, (item) => item.parsedDate)
+    var genreUISpace = 60
+    ,   timelineYRange = [0, -this.props.timelineBaselineY + this.props.upperUIPadding + genreUISpace]
+    ,   timeRange = DataUtil.getMinMax(this.props.songData.versions, (item) => item.parsedDate)
     ,   energyRange = DataUtil.getMinMax(this.props.songData.versions, function(item) { return item.echonest ? item.echonest.energy : 0; })
     ,   timelineXScale = d3.scale.linear().domain(timeRange).range(this.props.timelineXRange)
-    ,   timelineYScale = d3.scale.linear().domain(energyRange).range(this.props.timelineYRange)
+    ,   timelineYScale = d3.scale.linear().domain(energyRange).range(timelineYRange)
     ,   radiusScale = this.props.scales.getTimelineRadiusScale()
     ,   colorScale = this.props.scales.getColorScale()
     ,   edgesScale = this.props.scales.getEdgesScale()
@@ -28,8 +31,13 @@ var SongTimeline = React.createClass({
 
     var planets = []
     ,   tails = []
+    ,   genreSplit = {}
     this.props.songData.versions.map(function(versionData, i) {
       if (!versionData.echonest) return;
+
+      var g = versionData.genre
+      if (!genreSplit[g]) genreSplit[g] = 0
+      genreSplit[g]++
 
       var songProps = {
         cx: timelineXScale(versionData.parsedDate),
@@ -82,6 +90,12 @@ var SongTimeline = React.createClass({
           <g dangerouslySetInnerHTML={{__html: getStarGlow()}} >
           </g>
         </defs>
+        <TimelineGenreHeader
+          genreSplit={genreSplit}
+          yOffset={-this.props.timelineBaselineY + this.props.upperUIPadding}
+          headerWidth={this.props.timelineTotalWidth}
+          colorScale={colorScale}
+        />
         {tails}
         {planets}
         <SongTimelineAxis
