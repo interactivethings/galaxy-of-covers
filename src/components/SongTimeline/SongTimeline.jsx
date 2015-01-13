@@ -79,12 +79,21 @@ var SongTimeline = React.createClass({
             <stop offset="0%" stopColor="rgba(255,255,255,0.5)" />
             <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
           </linearGradient>
+          <g dangerouslySetInnerHTML={{__html: getStarGlow()}} >
+          </g>
         </defs>
         {tails}
         {planets}
         <SongTimelineAxis
           songData={this.props.songData}
           timelineXScale={timelineXScale}
+        />
+        <circle
+          id={"glowingStar"}
+          cx={0}
+          cy={0}
+          fill={"#fff"}
+          r={8}
         />
       </g>
     )
@@ -96,8 +105,24 @@ var SongTimeline = React.createClass({
     node.select('#energyTailFade')
       .attr('maskUnits', 'objectBoundingBox')
       .attr('maskContentUnits', 'objectBoundingBox')
+
+    node.select('#glowingStar')
+      .attr('filter', 'url(#starGlowFilter)')
   }
 
 })
+
+function getStarGlow() {
+  return [
+    '<filter x="-100%" y="-100%" width="300%" height="300%" id="starGlowFilter">',
+      '<feGaussianBlur stdDeviation="8" result="BLUR_OUT" />',
+      '<feMerge>',
+        '<feMergeNode in="BLUR_OUT" />',
+        '<feMergeNode in="SourceGraphic" />',
+      '</feMerge>',
+    '</filter>',
+  ].join('')
+}
+
 
 module.exports = SongTimeline
