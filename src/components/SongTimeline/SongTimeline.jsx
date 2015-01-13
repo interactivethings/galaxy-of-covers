@@ -9,6 +9,7 @@ require('components/SongTimeline/SongTimeline.scss')
 
 var SvgUtil = require('util/svgutil')
 ,   DataUtil = require('util/datautil')
+,   Vec2 = require('util/vec2')
 ,   TimelinePlanet = require('components/TimelinePlanet/TimelinePlanet')
 ,   SongTimelineAxis = require('components/SongTimelineAxis/SongTimelineAxis')
 ,   TimelineEnergyTail = require('components/TimelinePlanet/TimelineEnergyTail')
@@ -40,18 +41,21 @@ var SongTimeline = React.createClass({
       }
 
       if (songProps.sides !== -1) {
-        var a = Math.floor(songProps.sides / 2)
-        var pt1 = new Vec2(-1, 0)
-        var pt2 = new Vec2(Math.cos(a), Math.sin(a))
-        var diagonal = Vec2.diff(pt1, pt2)
-        var rot = Vec2.crossProduct(new Vec2(1, 0), diagonal)
-        var polyPoints = SvgUtil.getPolygonPointsWithOffset(0, 0, songProps.r, songProps.sides, rot)
-
-        console.log(rot * 180 / Math.PI);
+        var a = Math.floor(songProps.sides / 2) * 2 * Math.PI / songProps.sides
+        ,   pt1 = new Vec2(-1, 0)
+        ,   pt2 = new Vec2(Math.cos(a), Math.sin(a))
+        ,   diagonal = Vec2.diff(pt2, pt1)
+        ,   rot = Vec2.crossProduct(new Vec2(1, 0), diagonal)
+        ,   polyPoints = SvgUtil.getOffsetPolygonPointsArray(0, 0, songProps.r, songProps.sides, rot / 2)
 
         songProps.polygonPoints = polyPoints
         songProps.tailpt1 = polyPoints[0]
         songProps.tailpt2 = polyPoints[Math.ceil(polyPoints.length / 2)]
+      } else {
+        // either side of the circle
+        // (no polygonPoints needed for a circle)
+        songProps.tailpt1 = [-songProps.r, 0]
+        songProps.tailpt2 = [songProps.r, 0]
       }
 
       planets.push(

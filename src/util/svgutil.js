@@ -1,7 +1,9 @@
 var Vec2 = require('util/Vec2')
 
-var HALF_PI = Math.PI / 2
-var PI_TO_RAD = 180 / Math.PI
+var PI = Math.PI
+,   HALF_PI = PI / 2
+,   TWO_PI = PI * 2
+,   PI_TO_RAD = 180 / PI
 
 var SvgUtil = {
 
@@ -26,20 +28,14 @@ var SvgUtil = {
   },
 
   getPolygonPointsArray(x, y, r, sides) {
-    var rot = 2 * Math.PI / sides
-    ,   pts = []
-    d3.range(sides).forEach(function(i) {
-      var a = i * rot
-      pts.push([x + Math.cos(a) * r, y + Math.sin(a) * r])
-    })
-    return pts
+    return this.getOffsetPolygonPointsArray(x, y, r, sides, 0)
   },
 
-  getPolygonPointsWithOffset(x, y, r, sides, offsetRotation) {
-    var rot = 2 * Math.PI / sides
+  getOffsetPolygonPointsArray(x, y, r, sides, offsetRotation) {
+    var rot = TWO_PI / sides
     ,   pts = []
     d3.range(sides).forEach(function(i) {
-      var a = i * rot - Math.PI - offsetRotation
+      var a = i * rot - PI - offsetRotation
       pts.push([x + Math.cos(a) * r, y + Math.sin(a) * r])
     })
     return pts
