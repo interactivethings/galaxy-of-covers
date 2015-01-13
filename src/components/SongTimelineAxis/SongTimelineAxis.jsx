@@ -18,9 +18,9 @@ var SongTimelineAxis = React.createClass({
     return (
       <g className="SongTimelineAxis">
         <line className="SongTimelineAxis-line" x1={x1} x2={x2} y1={0} y2={0} stroke="white" ></line>
-        <text className="SongTimelineAxis-label" x={x1} y={10} >{new Date(firstYear).getYear()}</text>
+        <text className="SongTimelineAxis-label" x={x1} y={10} >{new Date(firstYear).getFullYear()}</text>
         {ticks}
-        <text className="SongTimelineAxis-label" x={x2} y={10} >{new Date(lastYear).getYear()}</text>
+        <text className="SongTimelineAxis-label" x={x2} y={10} >{new Date(lastYear).getFullYear()}</text>
       </g>
     )
   }
