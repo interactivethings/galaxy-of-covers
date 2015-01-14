@@ -1,1 +1,7 @@
 $c-app-bg: #342E3D;
+
+@mixin half-opaque-white {
+  color: #fff;
+  fill: #fff;
+  opacity: 0.5;
+}

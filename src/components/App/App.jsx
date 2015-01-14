@@ -5,7 +5,8 @@
 var React = require('react')
 ,   Immutable = require('Immutable')
 
-require('components/App/App.scss')
+require('assets/icomoon/style.scss')
+require('components/App/App.scss');
 
 var LoadActions = require('actions/LoadActions')
 ,   SongStore = require('stores/SongStore')
@@ -48,9 +49,9 @@ var App = React.createClass({
 
     return (
       <div className="AppBox">
-        <AppHeader dynamic={dynamicState} />
-        <MainView songs={songsArray} scales={galaxyScales} dynamic={dynamicState} />
-        <AppFooter />
+        <AppHeader dynamicState={dynamicState} />
+        <MainView songs={songsArray} scales={galaxyScales} dynamicState={dynamicState} />
+        <AppFooter dynamicState={dynamicState} />
       </div>
     )
   }

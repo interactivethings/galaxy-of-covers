@@ -91,6 +91,7 @@ var SongTimeline = React.createClass({
           </g>
         </defs>
         <TimelineGenreHeader
+          dynamicState={this.props.dynamicState}
           genreSplit={genreSplit}
           yOffset={-this.props.timelineBaselineY + this.props.upperUIPadding}
           headerWidth={this.props.timelineTotalWidth}

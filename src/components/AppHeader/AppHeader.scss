@@ -3,20 +3,82 @@
 
 .AppHeader {
   background-color: $c-app-bg;
+  font-size: 24px;
   left: 0;
-  padding: 0.4em 2em;
+  padding: 0.62em 0;
   position: fixed;
   top: 0;
   width: 100%;
 }
 
-.AppTitle {
-  color: white;
+.AppHeader--back {
   cursor: pointer;
   display: inline-block;
-  font-size: 24px;
+  padding-left: 1em;
+}
+
+.AppHeader--title {
+  color: white;
+  display: inline-block;
+  font-size: 1em;
   font-weight: 400;
   letter-spacing: 1px;
+  line-height: 1.2em;
   margin: 0;
   vertical-align: middle;
+}
+
+.AppHeader--navigation {
+  display: inline-block;
+  float: right;
+  padding-right: 0.7em;
+  position: relative;
+}
+
+.AppHeader--navoption {
+  @include half-opaque-white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-left: 1em;
+}
+
+.AppHeader--navlabel {
+  display: inline-block;
+  font-weight: 300;
+  line-height: 1.2em;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.AppHeader-icon {
+  line-height: 1.2em;
+  vertical-align: middle;
+}
+
+.AppHeader-shareoptions {
+  display: inline-block;
+  position: absolute;
+  right: -100px;
+  top: 3px;
+  width: 190px;
+
+  @include transition(position 0.5s linear);
+}
+
+.AppHeader-shareicon {
+  display: none;
+  margin-left: 1em;
+}
+
+.AppHeader--navigation.AppHeader--shareopen {
+
+  .AppHeader-shareoptions {
+    right: 0px;
+  }
+
+  .AppHeader-shareicon {
+    display: inline-block;
+  }
+
 }

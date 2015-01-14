@@ -27,9 +27,9 @@ var App = React.createClass({
   },
 
   render() {
-    if (this.props.dynamic.get('inDetail')) {
+    if (this.props.dynamicState.get('inDetail')) {
       var dim = this.getWindowDimensions()
-      ,   detailId = this.props.dynamic.get('detailSystemId')
+      ,   detailId = this.props.dynamicState.get('detailSystemId')
       ,   selectedSong = this.props.songs.filter((songData) => songData.id === detailId )[0]
       ,   timelineBaselineY = dim.height * 3 / 5
       ,   upperUIPadding = 60
@@ -38,6 +38,7 @@ var App = React.createClass({
       return (
         <svg className="MainView SongDetail" {...dim} >
           <SongTimeline
+            dynamicState={this.props.dynamicState}
             songData={selectedSong}
             scales={this.props.scales}
             timelineBaselineY={timelineBaselineY}
@@ -52,7 +53,7 @@ var App = React.createClass({
       ,   systemHeight = 400
       ,   topPadding = 42 // currently, this is hardcoded, but it should be calculated dynamically, based on the size of the header bar
       ,   dim = this.getGalaxyGroupDimensions(systemHeight, systemWidth, this.props.songs.length)
-      ,   hoveredId = this.props.dynamic.get('hoveredSystemId')
+      ,   hoveredId = this.props.dynamicState.get('hoveredSystemId')
       ,   systemX = 0
       ,   systemY = topPadding
       ,   scales = this.props.scales

@@ -34,6 +34,18 @@ var ViewActions = {
     Dispatcher.handleViewAction({
       type: 'SHOW_GALAXY'
     })
+  },
+
+  openShare() {
+    Dispatcher.handleViewAction({
+      type: 'OPEN_SHARE'
+    })
+  },
+
+  closeShare() {
+    Dispatcher.handleViewAction({
+      type: 'CLOSE_SHARE'
+    })
   }
 
 }

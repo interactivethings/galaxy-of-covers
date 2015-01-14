@@ -10,7 +10,8 @@ var state = Immutable.Map({
   detailTransitionId: null,
   detailSystemId: null,
   inTransition: false,
-  inDetail: false
+  inDetail: false,
+  shareOpen: false
 })
 
 var DynamicStateStore = {
@@ -35,13 +36,19 @@ var DynamicStateStore = {
         }
         break
       case 'END_TRANSITION':
-        this.endTransition()
+        setState('inTransition', false)
         break
       case 'SHOW_DETAIL':
         this.showDetail(action.systemId)
         break
       case 'SHOW_GALAXY':
         this.showGalaxy()
+        break
+      case 'OPEN_SHARE':
+        setState('shareOpen', true)
+        break
+      case 'CLOSE_SHARE':
+        setState('shareOpen', false)
         break
     }
   },
@@ -55,10 +62,6 @@ var DynamicStateStore = {
       inTransition: true,
       detailTransitionId: id
     })
-  },
-
-  endTransition() {
-    setState('inTransition', false)
   },
 
   showDetail(id) {
