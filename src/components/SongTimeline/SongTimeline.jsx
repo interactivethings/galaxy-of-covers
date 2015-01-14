@@ -9,7 +9,7 @@ require('components/SongTimeline/SongTimeline.scss')
 
 var SvgUtil = require('util/svgutil')
 ,   DataUtil = require('util/datautil')
-,   Vec2 = require('util/vec2')
+,   Vec2 = require('svec2')
 ,   TimelinePlanet = require('components/TimelinePlanet/TimelinePlanet')
 ,   SongTimelineAxis = require('components/SongTimelineAxis/SongTimelineAxis')
 ,   TimelineEnergyTail = require('components/TimelinePlanet/TimelineEnergyTail')

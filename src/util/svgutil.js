@@ -1,4 +1,4 @@
-var Vec2 = require('util/Vec2')
+var Vec2 = require('svec2')
 
 var PI = Math.PI
 ,   HALF_PI = PI / 2
