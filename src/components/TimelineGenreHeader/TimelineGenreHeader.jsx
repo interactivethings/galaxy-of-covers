@@ -13,28 +13,29 @@ var TimelineGenreHeader = React.createClass({
 
   render() {
     var genreSplit = this.props.genreSplit
-    ,   sum = 0
-
-    for (var prop in genreSplit) sum += genreSplit[prop]
-
-    var scale = d3.scale.linear().domain([0, sum]).range([0, this.props.headerWidth])
+    ,   sum = Object.keys(genreSplit).reduce((m, k) => m + genreSplit[k], 0)
+    ,   scale = d3.scale.linear().domain([0, sum]).range([0, this.props.headerWidth])
     ,   cumulative = 0
     ,   colorScale = this.props.colorScale
 
     return (
       <g className="TimelineGenreHeader" transform={SvgUtil.translateString(0, this.props.yOffset)} >
-        {Object.keys(genreSplit).map(function(genre) {
+        {Object.keys(genreSplit).sort().map(function(genre) {
           var v = genreSplit[genre]
           ,   x = scale(cumulative)
+          ,   color = colorScale(genre)
           cumulative += v
           return (
-            <rect
-              x={x}
-              y={0}
-              width={scale(v)}
-              height={12}
-              fill={colorScale(genre)}
-            />
+            <g transform={SvgUtil.translateString(x, 0)} >
+              <rect
+                x={0}
+                y={0}
+                width={scale(v)}
+                height={12}
+                fill={color}
+              />
+              <text className="TimelineGenreHeader-genrelabel" fill={color} dx={4} dy={16} >{genre}</text>
+            </g>
           )
         })}
       </g>
