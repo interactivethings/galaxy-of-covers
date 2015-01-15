@@ -56,29 +56,7 @@
   vertical-align: middle;
 }
 
-.AppHeader-shareoptions {
-  display: inline-block;
-  position: absolute;
-  right: -100px;
-  top: 3px;
-  width: 190px;
-
-  @include transition(position 0.5s linear);
-}
-
 .AppHeader-shareicon {
-  display: none;
+  display: inline-block;
   margin-left: 1em;
-}
-
-.AppHeader--navigation.AppHeader--shareopen {
-
-  .AppHeader-shareoptions {
-    right: 0px;
-  }
-
-  .AppHeader-shareicon {
-    display: inline-block;
-  }
-
 }
