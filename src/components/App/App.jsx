@@ -13,7 +13,6 @@ var LoadActions = require('actions/LoadActions')
 ,   SongStore = require('stores/SongStore')
 ,   AppHeader = require('components/AppHeader/AppHeader')
 ,   MainView = require('components/App/MainView')
-,   AppFooter = require('components/AppFooter/AppFooter')
 
 function getAppState() {
   return {appState: SongStore.getState()}
@@ -76,7 +75,6 @@ var App = React.createClass({
       <div className="AppBox">
         <AppHeader dynamicState={dynamicState} {...componentSizes} />
         <MainView songs={songsArray} scales={galaxyScales} dynamicState={dynamicState} {...componentSizes} />
-        <AppFooter dynamicState={dynamicState} {...componentSizes} />
       </div>
     )
   }
