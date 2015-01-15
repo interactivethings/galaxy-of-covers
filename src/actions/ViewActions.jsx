@@ -46,6 +46,18 @@ var ViewActions = {
     Dispatcher.handleViewAction({
       type: 'CLOSE_SHARE'
     })
+  },
+
+  showLegend() {
+    Dispatcher.handleViewAction({
+      type: 'LEGEND_SHOW'
+    })
+  },
+
+  hideLegend() {
+    Dispatcher.handleViewAction({
+      type: 'LEGEND_HIDE'
+    })
   }
 
 }

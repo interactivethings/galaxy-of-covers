@@ -65,6 +65,28 @@ var AppHeader = React.createClass({
             </div>
           </div>
         )}
+        <div className={"AppHeader--legend " + dynamicState.get('legendOpen') ? 'AppHeader--legend__open'}>
+          <div className="AppHeader--legendoption">
+            <div className="AppHeader--legendlogo" />
+            <span clasName="AppHeader--legendlabel" >{"Popularity"}</span>
+          </div>
+          <div className="AppHeader--legendoption">
+            <div className="AppHeader--legendlogo" />
+            <span clasName="AppHeader--legendlabel" >{"Tempo (BPM)"}</span>
+          </div>
+          <div className="AppHeader--legendoption">
+            <div className="AppHeader--legendlogo" />
+            <span clasName="AppHeader--legendlabel" >{"Valence"}</span>
+          </div>
+          <div className="AppHeader--legendoption">
+            <div className="AppHeader--legendlogo" />
+            <span clasName="AppHeader--legendlabel" >{"Energy"}</span>
+          </div>
+          <div className="AppHeader--legendoption">
+            <div className="AppHeader--legendlogo" />
+            <span clasName="AppHeader--legendlabel" >{"Speechiness"}</span>
+          </div>
+        </div>
       </div>
     )
   }

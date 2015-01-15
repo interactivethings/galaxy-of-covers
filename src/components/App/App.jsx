@@ -7,7 +7,7 @@ var React = require('react')
 ,   ResizeMixin = require('../ResizeMixin')
 
 require('assets/icomoon/style.scss')
-require('components/App/App.scss');
+require('components/App/App.scss')
 
 var LoadActions = require('actions/LoadActions')
 ,   SongStore = require('stores/SongStore')
@@ -40,7 +40,7 @@ var App = React.createClass({
   },
 
   shouldComponentUpdate(nextProps, nextState) {
-    return !Immutable.is(this.state.appState, nextState.appState);
+    return !Immutable.is(this.state.appState, nextState.appState)
   },
 
   getWindowDimensions() {

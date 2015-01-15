@@ -11,7 +11,8 @@ var state = Immutable.Map({
   detailSystemId: null,
   inTransition: false,
   inDetail: false,
-  shareOpen: false
+  shareOpen: false,
+  legendVisible: false
 })
 
 var DynamicStateStore = {
@@ -49,6 +50,12 @@ var DynamicStateStore = {
         break
       case 'CLOSE_SHARE':
         setState('shareOpen', false)
+        break
+      case 'LEGEND_SHOW':
+        setState('legendVisible', true)
+        break
+      case 'LEGEND_HIDE':
+        setState('legendVisible', false)
         break
     }
   },
