@@ -19,7 +19,7 @@ var TimelineGenreHeader = React.createClass({
     ,   colorScale = this.props.colorScale
 
     return (
-      <g className="TimelineGenreHeader" transform={SvgUtil.translateString(0, this.props.yOffset)} >
+      <g className="TimelineGenreHeader" transform={this.props.transform} >
         {Object.keys(genreSplit).sort().map(function(genre) {
           var v = genreSplit[genre]
           ,   x = scale(cumulative)

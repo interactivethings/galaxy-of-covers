@@ -5,6 +5,7 @@
 body {
   background-color: $c-app-bg;
   font-family: "proxima-nova", sans-serif;
+  font-weight: 400;
   margin: 0;
   padding: 0;
 }
@@ -20,3 +21,27 @@ body {
 .MainView {
   display: block;
 }
+
+.SongDetail {
+  display: block;
+}
+
+.DetailTitle {
+  color: #fff;
+  font-weight: 200;
+  position: absolute;
+  text-align: center;
+  top: 10em;
+  width: 100%;
+}
+
+.DetailTitle--title {
+  font-size: 36px;
+}
+
+.DetailTitle--info {
+  font-size: 14px;
+  margin-top: 0.6em;
+  opacity: 0.5;
+}
+

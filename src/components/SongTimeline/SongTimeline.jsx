@@ -18,8 +18,10 @@ var SvgUtil = require('util/svgutil')
 var SongTimeline = React.createClass({
 
   render() {
-    var genreUISpace = 60
-    ,   timelineYRange = [0, -this.props.timelineBaselineY + this.props.upperUIPadding + genreUISpace]
+    var highlineY = this.props.timelineHighlineY
+    ,   baselineY = this.props.timelineBaselineY
+    ,   topSpace = (baselineY - highlineY) * 1 / 5
+    ,   timelineYRange = [baselineY, highlineY + topSpace]
     ,   timeRange = DataUtil.getMinMax(this.props.songData.versions, (item) => item.parsedDate)
     ,   energyRange = DataUtil.getMinMax(this.props.songData.versions, function(item) { return item.echonest ? item.echonest.energy : 0; })
     ,   timelineXScale = d3.scale.linear().domain(timeRange).range(this.props.timelineXRange)
@@ -40,6 +42,7 @@ var SongTimeline = React.createClass({
       genreSplit[g]++
 
       var songProps = {
+        baseY: baselineY,
         cx: timelineXScale(versionData.parsedDate),
         cy: timelineYScale(versionData.echonest.energy),
         r: radiusScale(versionData.spotify.popularity),
@@ -81,7 +84,7 @@ var SongTimeline = React.createClass({
     })
 
     return (
-      <g transform={SvgUtil.translateString(0, this.props.timelineBaselineY)}>
+      <g className="SongTimeline" >
         <defs>
           <linearGradient id="energyTailFadeColor" x1="0.5" y1="0" x2="0.5" y2="1">
             <stop offset="0%" stopColor="rgba(255,255,255,0.5)" />
@@ -91,22 +94,23 @@ var SongTimeline = React.createClass({
           </g>
         </defs>
         <TimelineGenreHeader
+          transform={SvgUtil.translateString(0, highlineY)}
           dynamicState={this.props.dynamicState}
           genreSplit={genreSplit}
-          yOffset={-this.props.timelineBaselineY + this.props.upperUIPadding}
           headerWidth={this.props.timelineTotalWidth}
           colorScale={colorScale}
         />
         {tails}
         {planets}
         <SongTimelineAxis
+          transform={SvgUtil.translateString(0, baselineY)}
           songData={this.props.songData}
           timelineXScale={timelineXScale}
         />
         <circle
           id={"glowingStar"}
           cx={0}
-          cy={0}
+          cy={baselineY}
           fill={"#fff"}
           r={8}
         />

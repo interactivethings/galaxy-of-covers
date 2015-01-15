@@ -16,37 +16,45 @@ var App = React.createClass({
     return {width, height}
   },
 
-  getWindowDimensions() {
-    var width = window.innerWidth
-    ,   height = window.innerHeight
-    return {width, height}
-  },
-
   onMouseLeave() {
     ViewActions.hoverOffSongSystem(this.props.id)
   },
 
+  getSongInfoString(songInfo) {
+    var timeDifference = (new Date()).getFullYear() - songInfo.versions[0].parsedDate.getFullYear()
+    return songInfo.versions.length + ' covers / ' + timeDifference + ' years old'
+  },
+
   render() {
     if (this.props.dynamicState.get('inDetail')) {
-      var dim = this.getWindowDimensions()
+      var dim = {
+        height: this.props.bodyHeight,
+        width: window.innerWidth
+      }
       ,   detailId = this.props.dynamicState.get('detailSystemId')
       ,   selectedSong = this.props.songs.filter((songData) => songData.id === detailId )[0]
-      ,   timelineBaselineY = dim.height * 3 / 5
-      ,   upperUIPadding = 60
+      ,   timelineBaselineY = dim.height * 4 / 5
+      ,   timelineHighlineY = this.props.headerHeight
       ,   leftTimelinePadding = 100
 
       return (
-        <svg className="MainView SongDetail" {...dim} >
-          <SongTimeline
-            dynamicState={this.props.dynamicState}
-            songData={selectedSong}
-            scales={this.props.scales}
-            timelineBaselineY={timelineBaselineY}
-            upperUIPadding={upperUIPadding}
-            timelineTotalWidth={dim.width}
-            timelineXRange={[leftTimelinePadding, dim.width - leftTimelinePadding]}
-          />
-        </svg>
+        <div className="MainView">
+          <div className="DetailTitle" >
+            <h2 className="DetailTitle--title">{selectedSong.title}</h2>
+            <h3 className="DetailTitle--info">{this.getSongInfoString(selectedSong)}</h3>
+          </div>
+          <svg className="SongDetail" {...dim} >
+            <SongTimeline
+              dynamicState={this.props.dynamicState}
+              songData={selectedSong}
+              scales={this.props.scales}
+              timelineBaselineY={timelineBaselineY}
+              timelineHighlineY={timelineHighlineY}
+              timelineTotalWidth={dim.width}
+              timelineXRange={[leftTimelinePadding, dim.width - leftTimelinePadding]}
+            />
+          </svg>
+        </div>
       )
     } else {
       var systemWidth = 400

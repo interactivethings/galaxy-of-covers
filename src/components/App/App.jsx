@@ -4,6 +4,7 @@
 
 var React = require('react')
 ,   Immutable = require('Immutable')
+,   ResizeMixin = require('../ResizeMixin')
 
 require('assets/icomoon/style.scss')
 require('components/App/App.scss');
@@ -19,6 +20,8 @@ function getAppState() {
 }
 
 var App = React.createClass({
+
+  mixings: [ ResizeMixin ],
 
   getInitialState() {
     return getAppState()
@@ -41,17 +44,39 @@ var App = React.createClass({
     return !Immutable.is(this.state.appState, nextState.appState);
   },
 
+  getWindowDimensions() {
+    var width = window.innerWidth
+    ,   height = window.innerHeight
+    return {width, height}
+  },
+
   render() {
     var stateRef = this.state.appState
+    ,   dim = this.getWindowDimensions()
     ,   songsArray = stateRef.get('songs') || []
     ,   galaxyScales = stateRef.get('scales')
     ,   dynamicState = stateRef.get('dynamic')
+    ,   componentSizes = {}
+
+    if (!dynamicState.get('inDetail')) {
+      componentSizes = {
+        headerHeight: 60,
+        bodyHeight: dim.height,
+        footerHeight: 0
+      }
+    } else {
+      componentSizes = {
+        headerHeight: 60,
+        bodyHeight: dim.height,
+        footerHeight: dim.height * 1 / 5
+      }
+    }
 
     return (
       <div className="AppBox">
-        <AppHeader dynamicState={dynamicState} />
-        <MainView songs={songsArray} scales={galaxyScales} dynamicState={dynamicState} />
-        <AppFooter dynamicState={dynamicState} />
+        <AppHeader dynamicState={dynamicState} {...componentSizes} />
+        <MainView songs={songsArray} scales={galaxyScales} dynamicState={dynamicState} {...componentSizes} />
+        <AppFooter dynamicState={dynamicState} {...componentSizes} />
       </div>
     )
   }
