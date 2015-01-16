@@ -27,10 +27,11 @@ var App = React.createClass({
 
   render() {
     if (this.props.dynamicState.get('inDetail')) {
+      // render the detail view
       var dim = {
-        height: this.props.bodyHeight,
-        width: window.innerWidth
-      }
+            height: this.props.bodyHeight,
+            width: window.innerWidth
+          }
       ,   detailId = this.props.dynamicState.get('detailSystemId')
       ,   selectedSong = this.props.songs.filter((songData) => songData.id === detailId )[0]
       ,   timelineBaselineY = dim.height * 4 / 5
@@ -57,6 +58,7 @@ var App = React.createClass({
         </div>
       )
     } else {
+      // render the "galaxy" view
       var systemWidth = 400
       ,   systemHeight = 400
       ,   topPadding = 42 // currently, this is hardcoded, but it should be calculated dynamically, based on the size of the header bar
