@@ -2,19 +2,32 @@
 @import "../Constants";
 
 .AppHeader {
-  background-color: $c-app-bg;
   font-size: 24px;
   left: 0;
-  padding: 0.62em 0;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: $z-header;
+}
+
+.AppHeader--navigation {
+  background-color: $c-app-bg;
+  padding: 0.62em 0;
+  position: relative;
+  @include user-select(none);
 }
 
 .AppHeader--back {
   cursor: pointer;
   display: inline-block;
   padding-left: 1em;
+}
+
+.AppHeader--backarrow {
+  @include half-opaque-white;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.8em;
 }
 
 .AppHeader--title {
@@ -28,14 +41,14 @@
   vertical-align: middle;
 }
 
-.AppHeader--navigation {
+.AppHeader--menu {
   display: inline-block;
   float: right;
   padding-right: 0.7em;
   position: relative;
 }
 
-.AppHeader--navoption {
+.AppHeader--menuoption {
   @include half-opaque-white;
   cursor: pointer;
   display: inline-block;
@@ -59,4 +72,56 @@
 .AppHeader-shareicon {
   display: inline-block;
   margin-left: 1em;
+}
+
+.AppHeader--legend {
+  background-color: $c-app-bg;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: absolute;
+  top: -120px;
+  text-align: center;
+  width: 100%;
+}
+
+.AppHeader--legend__open {
+  top: 100%;
+}
+
+.AppHeader--legendoption {
+  display: inline-block;
+  margin: 30px 20px 50px;
+}
+
+.AppHeader--legendlabel {
+  @include half-opaque-white;
+  font-size: 18px;
+  font-weight: 300;
+  margin-top: 0.1em;
+}
+
+.AppHeader--legendlogo {
+  background-color: #0ff;
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+}
+
+.AppHeader--legendlogo__popularity {
+
+}
+
+.AppHeader--legendlogo__tempo {
+
+}
+
+.AppHeader--legendlogo__valence {
+
+}
+
+.AppHeader--legendlogo__energy {
+
+}
+
+.AppHeader--legendlogo__speechiness {
+
 }

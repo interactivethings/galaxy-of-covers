@@ -58,6 +58,18 @@ var ViewActions = {
     Dispatcher.handleViewAction({
       type: 'LEGEND_HIDE'
     })
+  },
+
+  hideAbout() {
+    Dispatcher.handleViewAction({
+      type: 'ABOUT_HIDE'
+    })
+  },
+
+  showAbout() {
+    Dispatcher.handleViewAction({
+      type: 'ABOUT_SHOW'
+    })
   }
 
 }
