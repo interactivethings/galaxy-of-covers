@@ -61,7 +61,7 @@ console.log('songs loaded', action.data);
             versionData.id = DataUtil.versionId(versionData)
             versionData.parsedDate = parseDate(versionData.date)
             // genres sourced from: http://www.furia.com/page.cgi?type=log&id=427
-            versionData.genre = ['Metropopolis', 'Laboratorio', 'Easy Listening', 'Fallen Angel', 'Permanent Wave'][Math.floor(Math.random() * 5)]
+            versionData.genre = ['Metropopolis', 'Laboratorio', 'More Deeper House', 'Fallen Angel', 'Permanent Wave'][Math.floor(Math.random() * 5)]
           })
         })
         setState('songs', action.data)

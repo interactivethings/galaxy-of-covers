@@ -4,6 +4,7 @@ var React = require('react')
 require('components/TimelineGenreHeader/TimelineGenreHeader.scss')
 
 var SvgUtil = require('util/svgutil')
+,   DataUtil = require('util/datautil')
 
 var TimelineGenreHeader = React.createClass({
 
@@ -13,6 +14,7 @@ var TimelineGenreHeader = React.createClass({
     ,   scale = d3.scale.linear().domain([0, sum]).range([0, this.props.headerWidth])
     ,   cumulative = 0
     ,   colorScale = this.props.colorScale
+    ,   legendOpen = this.props.dynamicState.get('legendOpen')
 
     return (
       <g className="TimelineGenreHeader" transform={this.props.transform} >
@@ -20,6 +22,7 @@ var TimelineGenreHeader = React.createClass({
           var v = genreSplit[genre]
           ,   x = scale(cumulative)
           ,   color = colorScale(genre)
+          ,   barHeight = legendOpen ? 24 : 12
           cumulative += v
           return (
             <g transform={SvgUtil.translateString(x, 0)} >
@@ -27,10 +30,11 @@ var TimelineGenreHeader = React.createClass({
                 x={0}
                 y={0}
                 width={scale(v)}
-                height={12}
+                height={barHeight}
                 fill={color}
               />
-              <text className="TimelineGenreHeader-genrelabel" fill={color} dx={4} dy={16} >{genre}</text>
+              {legendOpen ? <text className="TimelineGenreHeader--valuelabel" dx={4} dy={barHeight / 2} >{DataUtil.formatPercent(v)}</text> : null}
+              <text className="TimelineGenreHeader--genrelabel" fill={color} dx={4} dy={legendOpen ? 28 : 16} >{genre}</text>
             </g>
           )
         })}

@@ -2,8 +2,14 @@
   cursor: pointer;
 }
 
-.TimelineGenreHeader-genrelabel {
+.TimelineGenreHeader--genrelabel {
   alignment-baseline: hanging;
   font-size: 13px;
   stroke: none;
+}
+
+.TimelineGenreHeader--valuelabel {
+  alignment-baseline: central;
+  color: #22222D;
+  font-size: 13px;
 }
