@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var React = require('react')
 ,   Immutable = require('Immutable')
 ,   ResizeMixin = require('../ResizeMixin')

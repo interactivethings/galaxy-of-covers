@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var React = require('react')
 
 var SongTimeline = require('components/SongTimeline/SongTimeline')

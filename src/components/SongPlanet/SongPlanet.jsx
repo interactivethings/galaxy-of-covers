@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var React = require('react')
 
 require('components/SongPlanet/SongPlanet.scss')

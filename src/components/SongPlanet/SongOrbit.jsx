@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var React = require('react')
 
 var SVGUtil = require('util/svgutil')
