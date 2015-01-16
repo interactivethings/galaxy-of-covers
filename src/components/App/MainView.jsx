@@ -6,9 +6,9 @@ var SongTimeline = require('components/SongTimeline/SongTimeline')
 
 var App = React.createClass({
 
-  getGalaxyGroupDimensions(systemHeight, systemWidth, numSystems) {
+  getGalaxyGroupDimensions(systemHeight, systemWidth, topPadding, numSystems) {
     var width = window.innerWidth
-    ,   height = systemHeight * Math.ceil(numSystems / Math.floor(width / systemWidth))
+    ,   height = systemHeight * Math.ceil(numSystems / Math.floor(width / systemWidth)) + topPadding
     return {width, height}
   },
 
@@ -59,10 +59,10 @@ var App = React.createClass({
       )
     } else {
       // render the "galaxy" view
-      var systemWidth = 400
-      ,   systemHeight = 400
-      ,   topPadding = 42 // currently, this is hardcoded, but it should be calculated dynamically, based on the size of the header bar
-      ,   dim = this.getGalaxyGroupDimensions(systemHeight, systemWidth, this.props.songs.length)
+      var systemWidth = 600
+      ,   systemHeight = 600
+      ,   topPadding = this.props.headerHeight
+      ,   dim = this.getGalaxyGroupDimensions(systemHeight, systemWidth, topPadding, this.props.songs.length)
       ,   hoveredId = this.props.dynamicState.get('hoveredSystemId')
       ,   systemX = 0
       ,   systemY = topPadding
