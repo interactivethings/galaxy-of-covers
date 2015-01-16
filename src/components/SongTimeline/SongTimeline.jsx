@@ -104,6 +104,7 @@ var SongTimeline = React.createClass({
           colorScale={colorScale}
         />
         <g transform={SvgUtil.translateString(0, timelineTop)}>
+          { __DEV__ ? <line x1={0} x2={this.props.timelineXRange[1]} stroke="#0ff" /> : null }
           {tails}
           {planets}
           <SongTimelineAxis

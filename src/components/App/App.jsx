@@ -53,17 +53,19 @@ var App = React.createClass({
     ,   dynamicState = stateRef.get('dynamic')
     ,   componentSizes = {}
 
-    if (!dynamicState.get('inDetail')) {
+    if (dynamicState.get('inDetail')) {
       componentSizes = {
         headerHeight: 60,
+        legendHeight: 175,
         bodyHeight: dim.height,
-        footerHeight: 0
+        footerHeight: dim.height * 1 / 5
       }
     } else {
       componentSizes = {
         headerHeight: 60,
+        legendHeight: 0,
         bodyHeight: dim.height,
-        footerHeight: dim.height * 1 / 5
+        footerHeight: 0
       }
     }
 
