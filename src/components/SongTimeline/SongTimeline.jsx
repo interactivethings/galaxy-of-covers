@@ -21,11 +21,15 @@ var SongTimeline = React.createClass({
     var highlineY = this.props.timelineHighlineY
     ,   baselineY = this.props.timelineBaselineY
     ,   topSpace = (baselineY - highlineY) * 1 / 5
-    ,   timelineYRange = [baselineY, highlineY + topSpace]
-    ,   timeRange = DataUtil.getMinMax(this.props.songData.versions, (item) => item.parsedDate)
+    ,   timelineTop = highlineY + topSpace
+    ,   timelineHeight = baselineY - timelineTop
+    ,   timelineYRange = [timelineHeight, 0]
     ,   energyRange = DataUtil.getMinMax(this.props.songData.versions, function(item) { return item.echonest ? item.echonest.energy : 0; })
+    ,   timelineYScale = d3.scale.linear()
+          .domain(energyRange)
+          .range(timelineYRange)
+    ,   timeRange = DataUtil.getMinMax(this.props.songData.versions, (item) => item.parsedDate)
     ,   timelineXScale = d3.scale.linear().domain(timeRange).range(this.props.timelineXRange)
-    ,   timelineYScale = d3.scale.linear().domain(energyRange).range(timelineYRange)
     ,   radiusScale = this.props.scales.getTimelineRadiusScale()
     ,   colorScale = this.props.scales.getColorScale()
     ,   edgesScale = this.props.scales.getEdgesScale()
@@ -34,15 +38,16 @@ var SongTimeline = React.createClass({
     var planets = []
     ,   tails = []
     ,   genreSplit = {}
-    this.props.songData.versions.map(function(versionData, i) {
+    this.props.songData.versions.forEach(function(versionData, i) {
       if (!versionData.echonest) return;
 
       var g = versionData.genre
       if (!genreSplit[g]) genreSplit[g] = 0
       genreSplit[g]++
 
+      // props for the representation of this song version
       var songProps = {
-        baseY: baselineY,
+        baseY: timelineHeight,
         cx: timelineXScale(versionData.parsedDate),
         cy: timelineYScale(versionData.echonest.energy),
         r: radiusScale(versionData.spotify.popularity),
@@ -51,7 +56,10 @@ var SongTimeline = React.createClass({
         rotation: rotationScale(versionData.echonest.valence)
       }
 
-      if (songProps.sides !== -1) {
+      songProps.isCircle = songProps.sides === -1
+
+      // reorient the polygon and draw the correct energy tail for it
+      if (!songProps.isCircle) {
         var a = Math.floor(songProps.sides / 2) * 2 * Math.PI / songProps.sides
         ,   pt1 = new Vec2(-1, 0)
         ,   pt2 = new Vec2(Math.cos(a), Math.sin(a))
@@ -63,8 +71,7 @@ var SongTimeline = React.createClass({
         songProps.tailpt1 = polyPoints[0]
         songProps.tailpt2 = polyPoints[Math.ceil(polyPoints.length / 2)]
       } else {
-        // either side of the circle
-        // (no polygonPoints needed for a circle)
+        // draw the energy tail for a circle (no polygonPoints needed)
         songProps.tailpt1 = [-songProps.r, 0]
         songProps.tailpt2 = [songProps.r, 0]
       }
@@ -100,20 +107,22 @@ var SongTimeline = React.createClass({
           headerWidth={this.props.timelineTotalWidth}
           colorScale={colorScale}
         />
-        {tails}
-        {planets}
-        <SongTimelineAxis
-          transform={SvgUtil.translateString(0, baselineY)}
-          songData={this.props.songData}
-          timelineXScale={timelineXScale}
-        />
-        <circle
-          id={"glowingStar"}
-          cx={0}
-          cy={baselineY}
-          fill={"#fff"}
-          r={8}
-        />
+        <g transform={SvgUtil.translateString(0, timelineTop)}>
+          {tails}
+          {planets}
+          <SongTimelineAxis
+            transform={SvgUtil.translateString(0, timelineHeight)}
+            songData={this.props.songData}
+            timelineXScale={timelineXScale}
+          />
+          <circle
+            id={"glowingStar"}
+            cx={0}
+            cy={timelineHeight}
+            fill={"#fff"}
+            r={8}
+          />
+        </g>
       </g>
     )
   },

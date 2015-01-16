@@ -49,7 +49,7 @@ var TimelinePlanet = React.createClass({
   },
 
   render() {
-    if (this.props.sides === -1) {
+    if (this.props.isCircle) {
       return (
         <g transform={SvgUtil.translateString(this.props.cx, this.props.cy)}>
           <defs dangerouslySetInnerHTML={{__html: clipPathCircleTemplate({
