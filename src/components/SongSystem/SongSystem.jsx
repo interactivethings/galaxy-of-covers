@@ -70,17 +70,15 @@ var SongSystem = React.createClass({
       )
     })
 
-    var centerX = this.props.w / 2, centerY = this.props.h / 2
-
     return (
       <g
         className="SongSystem"
-        transform={translateString(this.props.x + centerX, this.props.y + centerY)}
+        transform={translateString(this.props.x, this.props.y)}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
         onClick={this.onClick}
       >
-        <rect className="SongSystem--background" x={-centerX} y={-centerY} width={this.props.w} height={this.props.h} fill={"transparent"} stroke="none" />
+        <circle className="SongSystem--background" cx={0} cy={0} r={this.props.r} fill="transparent" stroke="none" />
         {orbits}
         {planets}
         <circle className="SongSystem--glowingstar" r="5" fill="#fff" />

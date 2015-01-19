@@ -7,9 +7,15 @@ var SvgUtil = require('util/svgutil')
 
 var App = React.createClass({
 
-  getGalaxyGroupDimensions(systemHeight, systemWidth, topPadding, numSystems) {
+  numRows(numSystems) {
+    var n = 2 * Math.ceil(numSystems / 3)
+    if (numSystems % 3 !== 0) n--
+    return n
+  },
+
+  getGalaxyGroupDimensions(systemRadius, numSystems) {
     var width = window.innerWidth
-    ,   height = systemHeight * Math.ceil(numSystems / Math.floor(width / systemWidth)) + topPadding
+    ,   height = 2 * systemRadius + this.numRows(numSystems) * (width / 4 * Math.tan(Math.PI / 3))
     return {width, height}
   },
 
@@ -56,27 +62,33 @@ var App = React.createClass({
       )
     } else {
       // render the "galaxy" view
-      var systemWidth = 600
-      ,   systemHeight = 600
+      var systemRadius = 300
       ,   topPadding = this.props.headerHeight
-      ,   dim = this.getGalaxyGroupDimensions(systemHeight, systemWidth, topPadding, this.props.songs.length)
+      ,   dim = this.getGalaxyGroupDimensions(systemRadius, this.props.songs.length)
+      ,   horizontalSpacing = dim.width / 4
+      ,   verticalSpacing = Math.max(horizontalSpacing * Math.tan(Math.PI / 3), systemRadius * Math.tan(Math.PI / 3))
       ,   hoveredId = this.props.dynamicState.get('hoveredSystemId')
-      ,   systemX = 0
-      ,   systemY = topPadding
       ,   scales = this.props.scales
 
+      var systemY = topPadding + systemRadius
       return (
         <svg className="MainView SongGalaxy" {...dim} >
           <defs>
             <g dangerouslySetInnerHTML={{ __html: SvgUtil.getStarGlow() }} />
           </defs>
           {this.props.songs.map(function(songData, i) {
-            if (systemX + systemWidth >= dim.width) {
-              systemX = 0
-              systemY += systemHeight
+            var sx
+            ,   sy = systemY
+            ,   index = (i + 1) % 3
+            if (index === 0) {
+              sx = 2 * horizontalSpacing
+              systemY += verticalSpacing
+            } else if (index === 1) {
+              sx = horizontalSpacing
+            } else if (index === 2) {
+              sx = 3 * horizontalSpacing
+              systemY += verticalSpacing
             }
-            var x = systemX
-            systemX += systemWidth
 
             var systemId = songData.id
             ,   shouldAnimate = systemId !== hoveredId
@@ -84,10 +96,9 @@ var App = React.createClass({
               <SongSystem
                 id={systemId}
                 animate={shouldAnimate}
-                x={x}
-                y={systemY}
-                w={systemWidth}
-                h={systemHeight}
+                x={sx}
+                y={sy}
+                r={systemRadius}
                 filter='url(#starGlowFilter)'
                 songData={songData}
                 scales={scales}
