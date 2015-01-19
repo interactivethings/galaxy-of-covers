@@ -128,7 +128,7 @@ function findBounds(dataset) {
 }
 
 function ScaleSet(bounds) {
-  var orbitRadius = d3.time.scale().domain([new Date(1940, 1, 1), new Date()]).range([50, 200])
+  var orbitRadius = d3.time.scale().domain([new Date(1940, 1, 1), new Date()]).range([10, 300])
   ,   radius = d3.scale.linear().domain([0, 100]).range([3, 18])
   ,   color = d3.scale.ordinal().domain(bounds.genres).range(['#E5D166', '#9BC054', '#57BF93', '#5882B4', '#CD6586'])
   // rotation ranges from 270 to 450 degrees
