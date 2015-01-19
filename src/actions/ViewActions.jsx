@@ -70,6 +70,13 @@ var ViewActions = {
     Dispatcher.handleViewAction({
       type: 'ABOUT_SHOW'
     })
+  },
+
+  highlightAttribute(attributeName) {
+    Dispatcher.handleViewAction({
+      type: 'ATTRIBUTE_HIGHLIGHT',
+      attributeToHighlight: attributeName
+    })
   }
 
 }

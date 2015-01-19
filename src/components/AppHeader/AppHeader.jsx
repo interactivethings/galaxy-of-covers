@@ -3,6 +3,7 @@ var React = require('react')
 require('components/AppHeader/AppHeader.scss')
 
 var ViewActions = require('actions/ViewActions')
+,   LegendOption = require('components/AppHeader/LegendOption')
 
 var AppHeader = React.createClass({
 
@@ -34,6 +35,10 @@ var AppHeader = React.createClass({
     ViewActions.closeShare()
   },
 
+  attributeLegendClick(attributeName) {
+    ViewActions.highlightAttribute(attributeName)
+  },
+
   render() {
     var dynamicState = this.props.dynamicState
     ,   detail = dynamicState.get('inDetail')
@@ -45,26 +50,45 @@ var AppHeader = React.createClass({
     return (
       <div className="AppHeader" >
         <div className={"AppHeader--legend " + (legend ? 'AppHeader--legend__open' : '')}>
-          <div className={"AppHeader--legendoption " + (highlightedAttribute && highlightedAttribute !== 'popularity' ? 'AppHeader--legendoption__inactive' : '')}>
-            <div className="AppHeader--legendlogo AppHeader--legendlogo__popularity" />
-            <div className="AppHeader--legendlabel" >Popularity</div>
-          </div>
-          <div className={"AppHeader--legendoption " + (highlightedAttribute && highlightedAttribute !== 'tempo' ? 'AppHeader--legendoption__inactive' : '')}>
-            <div className="AppHeader--legendlogo AppHeader--legendlogo__tempo" />
-            <div className="AppHeader--legendlabel" >Tempo (BPM)</div>
-          </div>
-          <div className={"AppHeader--legendoption " + (highlightedAttribute && highlightedAttribute !== 'valence' ? 'AppHeader--legendoption__inactive' : '')}>
-            <div className="AppHeader--legendlogo AppHeader--legendlogo__valence" />
-            <div className="AppHeader--legendlabel" >Valence</div>
-          </div>
-          <div className={"AppHeader--legendoption " + (highlightedAttribute && highlightedAttribute !== 'energy' ? 'AppHeader--legendoption__inactive' : '')}>
-            <div className="AppHeader--legendlogo AppHeader--legendlogo__energy" />
-            <div className="AppHeader--legendlabel" >Energy</div>
-          </div>
-          <div className={"AppHeader--legendoption " + (highlightedAttribute && highlightedAttribute !== 'speechiness' ? 'AppHeader--legendoption__inactive' : '')}>
-            <div className="AppHeader--legendlogo AppHeader--legendlogo__speechiness" />
-            <div className="AppHeader--legendlabel" >Speechiness</div>
-          </div>
+          <LegendOption
+            attributeName='popularity'
+            isInactive={highlightedAttribute && highlightedAttribute !== 'popularity'}
+            logoClass='AppHeader--legendlogo__popularity'
+            optionLabel='Popularity'
+            clickFunction={this.attributeLegendClick}
+          />
+
+          <LegendOption
+            attributeName='tempo'
+            isInactive={highlightedAttribute && highlightedAttribute !== 'tempo'}
+            logoClass='AppHeader--legendlogo__tempo'
+            optionLabel='Tempo (BPM)'
+            clickFunction={this.attributeLegendClick}
+          />
+
+          <LegendOption
+            attributeName='valence'
+            isInactive={highlightedAttribute && highlightedAttribute !== 'valence'}
+            logoClass='AppHeader--legendlogo__valence'
+            optionLabel='Valence'
+            clickFunction={this.attributeLegendClick}
+          />
+
+          <LegendOption
+            attributeName='energy'
+            isInactive={highlightedAttribute && highlightedAttribute !== 'energy'}
+            logoClass='AppHeader--legendlogo__energy'
+            optionLabel='Energy'
+            clickFunction={this.attributeLegendClick}
+          />
+
+          <LegendOption
+            attributeName='speechiness'
+            isInactive={highlightedAttribute && highlightedAttribute !== 'speechiness'}
+            logoClass='AppHeader--legendlogo__speechiness'
+            optionLabel='Speechiness'
+            clickFunction={this.attributeLegendClick}
+          />
         </div>
         <div className="AppHeader--navigation">
           <div className="AppHeader--back" onClick={this.navigateBack} >

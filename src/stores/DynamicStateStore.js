@@ -48,23 +48,30 @@ var DynamicStateStore = {
         this.showGalaxy()
         break
       case 'OPEN_SHARE':
-        setState('shareOpen', true)
+        this.navMenuToggle('shareOpen', true)
         break
       case 'CLOSE_SHARE':
-        setState('shareOpen', false)
+        this.navMenuToggle('shareOpen', false)
         break
       case 'LEGEND_SHOW':
-        setState('legendOpen', true)
+        this.navMenuToggle('legendOpen', true)
         break
       case 'LEGEND_HIDE':
-        setState('legendOpen', false)
+        this.navMenuToggle('legendOpen', false)
         break
       case 'ABOUT_HIDE':
-        setState('aboutOpen', false)
+        this.navMenuToggle('aboutOpen', false)
         break
       case 'ABOUT_SHOW':
-        setState('aboutOpen', true)
+        this.navMenuToggle('aboutOpen', true)
         break
+      case 'ATTRIBUTE_HIGHLIGHT':
+        if (state.get('highlightedAttribute') === action.attributeToHighlight) {
+          setState('highlightedAttribute', null)
+        } else {
+          setState('highlightedAttribute', action.attributeToHighlight)
+        }
+      break
     }
   },
 
@@ -95,6 +102,17 @@ var DynamicStateStore = {
       detailSystemId: null,
       inDetail: false
     })
+  },
+
+  navMenuToggle(optionName, isOpen) {
+    // toggling any of the three automatically closes the other two
+    var optionProps = {
+      shareOpen: false,
+      legendOpen: false,
+      aboutOpen: false
+    }
+    optionProps[optionName] = isOpen
+    setStateObj(optionProps)
   }
 
 }
