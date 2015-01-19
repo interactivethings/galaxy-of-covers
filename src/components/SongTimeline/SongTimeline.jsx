@@ -93,8 +93,7 @@ var SongTimeline = React.createClass({
             <stop offset="0%" stopColor="rgba(255,255,255,0.5)" />
             <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
           </linearGradient>
-          <g dangerouslySetInnerHTML={{__html: getStarGlow()}} >
-          </g>
+          <g dangerouslySetInnerHTML={{ __html: SvgUtil.getStarGlow() }} />
         </defs>
         <TimelineGenreHeader
           transform={SvgUtil.translateString(0, highlineY)}
@@ -136,18 +135,5 @@ var SongTimeline = React.createClass({
   }
 
 })
-
-function getStarGlow() {
-  return [
-    '<filter x="-100%" y="-100%" width="300%" height="300%" id="starGlowFilter">',
-      '<feGaussianBlur stdDeviation="8" result="BLUR_OUT" />',
-      '<feMerge>',
-        '<feMergeNode in="BLUR_OUT" />',
-        '<feMergeNode in="SourceGraphic" />',
-      '</feMerge>',
-    '</filter>',
-  ].join('')
-}
-
 
 module.exports = SongTimeline

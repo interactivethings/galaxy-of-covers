@@ -1,6 +1,7 @@
 var React = require('react')
 
-var SongTimeline = require('components/SongTimeline/SongTimeline')
+var SvgUtil = require('util/svgutil')
+,   SongTimeline = require('components/SongTimeline/SongTimeline')
 ,   SongSystem = require('components/SongSystem/SongSystem')
 ,   ViewActions = require('actions/ViewActions')
 
@@ -70,6 +71,9 @@ var App = React.createClass({
 
       return (
         <svg className="MainView SongGalaxy" {...dim} onMouseLeave={this.onMouseLeave} >
+          <defs>
+            <g dangerouslySetInnerHTML={{ __html: SvgUtil.getStarGlow() }} />
+          </defs>
           {this.props.songs.map(function(songData, i) {
             if (systemX + systemWidth >= dim.width) {
               systemX = 0
@@ -88,6 +92,7 @@ var App = React.createClass({
                 y={systemY}
                 w={systemWidth}
                 h={systemHeight}
+                filter='url(#starGlowFilter)'
                 songData={songData}
                 scales={scales}
                 key={songData.title}

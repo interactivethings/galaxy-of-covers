@@ -39,6 +39,18 @@ var SvgUtil = {
       pts.push([x + Math.cos(a) * r, y + Math.sin(a) * r])
     })
     return pts
+  },
+
+  getStarGlow() {
+    return [
+      '<filter x="-200%" y="-200%" width="500%" height="500%" id="starGlowFilter">'
+    ,   '<feGaussianBlur stdDeviation="8" result="BLUR_OUT" />'
+    ,   '<feMerge>'
+    ,     '<feMergeNode in="BLUR_OUT" />'
+    ,     '<feMergeNode in="SourceGraphic" />'
+    ,   '</feMerge>'
+    , '</filter>'
+    ].join('')
   }
 
 }

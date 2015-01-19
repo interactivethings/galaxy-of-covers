@@ -75,12 +75,19 @@ var SongSystem = React.createClass({
         onMouseEnter={this.onMouseEnter}
         onClick={this.onClick}
       >
-        <rect className="SoundSystem-background" x={-centerX} y={-centerY} width={this.props.w} height={this.props.h} fill={"transparent"} stroke="none" />
+        <rect className="SongSystem--background" x={-centerX} y={-centerY} width={this.props.w} height={this.props.h} fill={"transparent"} stroke="none" />
         {orbits}
         {planets}
-        <circle r="5" fill="#fff" />
+        <circle className="SongSystem--glowingstar" r="5" fill="#fff" />
       </g>
     )
+  },
+
+  componentDidMount() {
+    var node = d3.select(this.getDOMNode())
+
+    node.select('.SongSystem--glowingstar')
+      .attr('filter', 'url(#starGlowFilter)')
   }
 
 })
