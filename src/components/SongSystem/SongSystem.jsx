@@ -56,8 +56,8 @@ var SongSystem = React.createClass({
             sides: sidesScale(versionData.echonest.speechiness),
             shouldAnimate: this.props.animate
           }
+      ,   id = versionData.id
 
-      var id = versionData.id
       orbits.push(
         <SongOrbit key={'orbit-'+id} {...songProps} />
       )
