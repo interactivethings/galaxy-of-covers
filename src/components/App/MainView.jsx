@@ -24,9 +24,9 @@ var App = React.createClass({
   render() {
     if (this.props.dynamicState.get('inDetail')) {
       // render the detail view
-      var dim = {
-            height: this.props.bodyHeight,
-            width: window.innerWidth
+      var dim =
+          { height: this.props.bodyHeight
+          , width: window.innerWidth
           }
       ,   detailId = this.props.dynamicState.get('detailSystemId')
       ,   selectedSong = this.props.songs.filter((songData) => songData.id === detailId )[0]

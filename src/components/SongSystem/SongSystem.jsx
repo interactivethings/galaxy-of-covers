@@ -46,15 +46,15 @@ var SongSystem = React.createClass({
 
       var ellipseRadius = orbitRadScale(versionData.parsedDate)
       ,   yMult = 3 / 5
-      ,   songProps = {
-            orbitRadX: ellipseRadius,
-            orbitRadY: ellipseRadius * yMult,
-            r: radScale(versionData.spotify.popularity),
-            color: colorScale(versionData.genre),
-            rotation: rotationScale(versionData.echonest.valence),
-            speed: speedScale(versionData.echonest.energy),
-            sides: sidesScale(versionData.echonest.speechiness),
-            shouldAnimate: this.props.animate
+      ,   songProps =
+          { orbitRadX: ellipseRadius
+          , orbitRadY: ellipseRadius * yMult
+          , r: radScale(versionData.spotify.popularity)
+          , color: colorScale(versionData.genre)
+          , rotation: rotationScale(versionData.echonest.valence)
+          , speed: speedScale(versionData.echonest.energy)
+          , sides: sidesScale(versionData.echonest.speechiness)
+          , shouldAnimate: this.props.animate
           }
       ,   id = versionData.id
 
