@@ -13,10 +13,6 @@ var App = React.createClass({
     return {width, height}
   },
 
-  onMouseLeave() {
-    ViewActions.hoverOffSongSystem(this.props.id)
-  },
-
   getSongInfoString(songInfo) {
     var timeDifference = (new Date()).getFullYear() - songInfo.versions[0].parsedDate.getFullYear()
     return songInfo.versions.length + ' covers / ' + timeDifference + ' years old'
@@ -70,7 +66,7 @@ var App = React.createClass({
       ,   scales = this.props.scales
 
       return (
-        <svg className="MainView SongGalaxy" {...dim} onMouseLeave={this.onMouseLeave} >
+        <svg className="MainView SongGalaxy" {...dim} >
           <defs>
             <g dangerouslySetInnerHTML={{ __html: SvgUtil.getStarGlow() }} />
           </defs>

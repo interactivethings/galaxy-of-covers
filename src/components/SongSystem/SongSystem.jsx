@@ -16,6 +16,10 @@ var SongSystem = React.createClass({
     ViewActions.hoverOnSongSystem(this.props.id)
   },
 
+  onMouseLeave() {
+    ViewActions.hoverOffSongSystem()
+  },
+
   onClick() {
     ViewActions.clickOnSongSystem(this.props.id)
   },
@@ -73,6 +77,7 @@ var SongSystem = React.createClass({
         className="SongSystem"
         transform={translateString(this.props.x + centerX, this.props.y + centerY)}
         onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
         onClick={this.onClick}
       >
         <rect className="SongSystem--background" x={-centerX} y={-centerY} width={this.props.w} height={this.props.h} fill={"transparent"} stroke="none" />

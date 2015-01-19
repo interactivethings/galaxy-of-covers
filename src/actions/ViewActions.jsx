@@ -11,7 +11,7 @@ var ViewActions = {
     })
   },
 
-  hoverOffSongSystem(id) {
+  hoverOffSongSystem() {
     Dispatcher.handleViewAction({
       type: 'HOVER_OFF_SYSTEM'
     })
