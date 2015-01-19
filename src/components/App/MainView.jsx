@@ -75,6 +75,8 @@ var App = React.createClass({
         <svg className="MainView SongGalaxy" {...dim} >
           <defs>
             <g dangerouslySetInnerHTML={{ __html: SvgUtil.getStarGlow() }} />
+            <g dangerouslySetInnerHTML={{ __html: SvgUtil.getGalaxyGradient() }} />
+            <g dangerouslySetInnerHTML={{ __html: SvgUtil.getGalaxyShadow() }} />
           </defs>
           {this.props.songs.map(function(songData, i) {
             var sx
@@ -96,10 +98,10 @@ var App = React.createClass({
               <SongSystem
                 id={systemId}
                 animate={shouldAnimate}
+                isHovered={!shouldAnimate}
                 x={sx}
                 y={sy}
                 r={systemRadius}
-                filter='url(#starGlowFilter)'
                 songData={songData}
                 scales={scales}
                 key={songData.title}

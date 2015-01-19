@@ -78,7 +78,11 @@ var SongSystem = React.createClass({
         onMouseLeave={this.onMouseLeave}
         onClick={this.onClick}
       >
-        <circle className="SongSystem--background" cx={0} cy={0} r={this.props.r} fill="transparent" stroke="none" />
+        {this.props.isHovered ?
+          <circle className="SongSystem--background" cx={0} cy={0} r={this.props.r} stroke="rgba(0,0,0,0.15)" stroke-width="1" fill="url(#galaxyBackgroundGradient)" />
+        :
+          <circle className="SongSystem--background" cx={0} cy={0} r={this.props.r} fill="transparent" stroke="none" />
+        }
         {orbits}
         {planets}
         <circle className="SongSystem--glowingstar" r="5" fill="#fff" />
@@ -92,6 +96,11 @@ var SongSystem = React.createClass({
 
     node.select('.SongSystem--glowingstar')
       .attr('filter', 'url(#starGlowFilter)')
+
+    if (this.props.isHovered) {
+      node.select('.SongSystem--background')
+        .attr('filter', 'url(#galaxyShadow)')
+    }
   }
 
 })

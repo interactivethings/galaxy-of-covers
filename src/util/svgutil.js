@@ -51,6 +51,23 @@ var SvgUtil = {
     ,   '</feMerge>'
     , '</filter>'
     ].join('')
+  },
+
+  getGalaxyGradient() {
+    return [
+      '<radialGradient id="galaxyBackgroundGradient" r="100%" cx="40%" cy="30%" >'
+    ,   '<stop offset="0" stop-opacity="0" stop-color="black" />'
+    ,   '<stop offset="0.5" stop-opacity="0" stop-color="black" />'
+    ,   '<stop offset="1" stop-opacity="1" stop-color="black" />'
+    , '</radialGradient>'
+    ].join('')
+  },
+
+  getGalaxyShadow() {
+    return [
+      '<filter id="galaxyShadow" >'
+    , '</filter>'
+    ].join('')
   }
 
 }
