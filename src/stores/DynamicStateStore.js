@@ -13,7 +13,8 @@ var state = Immutable.Map({
   inDetail: false,
   shareOpen: false,
   legendOpen: false,
-  aboutOpen: false
+  aboutOpen: false,
+  highlightedAttribute: null
 })
 
 var DynamicStateStore = {

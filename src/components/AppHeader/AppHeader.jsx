@@ -40,27 +40,28 @@ var AppHeader = React.createClass({
     ,   legend = dynamicState.get('legendOpen')
     ,   about = dynamicState.get('aboutOpen')
     ,   share = dynamicState.get('shareOpen')
+    ,   highlightedAttribute = dynamicState.get('highlightedAttribute')
 
     return (
       <div className="AppHeader" >
         <div className={"AppHeader--legend " + (legend ? 'AppHeader--legend__open' : '')}>
-          <div className="AppHeader--legendoption">
+          <div className={"AppHeader--legendoption " + (highlightedAttribute && highlightedAttribute !== 'popularity' ? 'AppHeader--legendoption__inactive' : '')}>
             <div className="AppHeader--legendlogo AppHeader--legendlogo__popularity" />
             <div className="AppHeader--legendlabel" >Popularity</div>
           </div>
-          <div className="AppHeader--legendoption">
+          <div className={"AppHeader--legendoption " + (highlightedAttribute && highlightedAttribute !== 'tempo' ? 'AppHeader--legendoption__inactive' : '')}>
             <div className="AppHeader--legendlogo AppHeader--legendlogo__tempo" />
             <div className="AppHeader--legendlabel" >Tempo (BPM)</div>
           </div>
-          <div className="AppHeader--legendoption">
+          <div className={"AppHeader--legendoption " + (highlightedAttribute && highlightedAttribute !== 'valence' ? 'AppHeader--legendoption__inactive' : '')}>
             <div className="AppHeader--legendlogo AppHeader--legendlogo__valence" />
             <div className="AppHeader--legendlabel" >Valence</div>
           </div>
-          <div className="AppHeader--legendoption">
+          <div className={"AppHeader--legendoption " + (highlightedAttribute && highlightedAttribute !== 'energy' ? 'AppHeader--legendoption__inactive' : '')}>
             <div className="AppHeader--legendlogo AppHeader--legendlogo__energy" />
             <div className="AppHeader--legendlabel" >Energy</div>
           </div>
-          <div className="AppHeader--legendoption">
+          <div className={"AppHeader--legendoption " + (highlightedAttribute && highlightedAttribute !== 'speechiness' ? 'AppHeader--legendoption__inactive' : '')}>
             <div className="AppHeader--legendlogo AppHeader--legendlogo__speechiness" />
             <div className="AppHeader--legendlabel" >Speechiness</div>
           </div>
