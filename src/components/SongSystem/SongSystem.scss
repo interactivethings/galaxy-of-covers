@@ -1,3 +1,12 @@
 .SongSystem {
   cursor: pointer;
 }
+
+.SongSystem--songtitle {
+  alignment-baseline: central;
+  fill: #fff;
+  font-size: 14px;
+  font-weight: 200;
+  stroke: none;
+  text-anchor: middle;
+}

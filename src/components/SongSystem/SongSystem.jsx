@@ -79,6 +79,7 @@ var SongSystem = React.createClass({
         {orbits}
         {planets}
         <circle className="SongSystem--glowingstar" r="5" fill="#fff" />
+        <text className="SongSystem--songtitle" dy={-20} >{this.props.songData.title}</text>
       </g>
     )
   },
