@@ -54,6 +54,10 @@
   display: inline-block;
   font-size: 0.8em;
   margin-left: 1em;
+
+  &.AppHeader--menuoption__active {
+    opacity: 1;
+  }
 }
 
 .AppHeader--navlabel {
@@ -70,6 +74,7 @@
 }
 
 .AppHeader-shareicon {
+  @include half-opaque-white;
   display: inline-block;
   margin-left: 1em;
 }

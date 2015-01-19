@@ -75,11 +75,11 @@ var AppHeader = React.createClass({
           </div>
           {!share ? (
             <div className="AppHeader--menu" >
-              <div className="AppHeader--menuoption" onClick={this.toggleLegend} >
+              <div className={"AppHeader--menuoption " + (legend ? 'AppHeader--menuoption__active' : '')} onClick={this.toggleLegend} >
                 <h2 className="AppHeader--navlabel">Legend</h2>
                 <span className={"AppHeader-icon " + (legend ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
               </div>
-              <div className="AppHeader--menuoption" onClick={this.toggleAbout} >
+              <div className={"AppHeader--menuoption " + (about ? 'AppHeader--menuoption__active' : '')} onClick={this.toggleAbout} >
                 <h2 className="AppHeader--navlabel">About</h2>
                 <span className={"AppHeader-icon " + (about ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
               </div>
@@ -90,7 +90,7 @@ var AppHeader = React.createClass({
             </div>
           ) : (
             <div className="AppHeader--menu" >
-              <div className="AppHeader--menuoption" >
+              <div className="AppHeader--menuoption AppHeader--menuoption__active" >
                 <h2 className="AppHeader--navlabel" onClick={this.closeShare} >Share</h2>
                 <span className="AppHeader-icon icon-close" onClick={this.closeShare} />
                 <div className="AppHeader-icon AppHeader-shareicon icon-twitter" />
