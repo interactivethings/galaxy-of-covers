@@ -79,9 +79,9 @@ var SongSystem = React.createClass({
         onClick={this.onClick}
       >
         {this.props.isHovered ?
-          <circle className="SongSystem--background" cx={0} cy={0} r={this.props.r} stroke="rgba(0,0,0,0.15)" stroke-width="1" fill="url(#galaxyBackgroundGradient)" />
+          <circle className="SongSystem--background" cx={0} cy={0} r={this.props.r + 15} stroke="rgba(0,0,0,0.15)" strokeOpacity="0.153475996" fill="url(#galaxyBackgroundGradient)" fillOpacity="0.2" transform="rotate(-20)" />
         :
-          <circle className="SongSystem--background" cx={0} cy={0} r={this.props.r} fill="transparent" stroke="none" />
+          <circle className="SongSystem--background" cx={0} cy={0} r={this.props.r + 15} fill="transparent" stroke="none" />
         }
         {orbits}
         {planets}

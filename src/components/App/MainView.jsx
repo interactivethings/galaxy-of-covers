@@ -94,6 +94,7 @@ var App = React.createClass({
 
             var systemId = songData.id
             ,   shouldAnimate = systemId !== hoveredId
+
             return (
               <SongSystem
                 id={systemId}
