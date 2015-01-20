@@ -16,7 +16,8 @@ var setStateObj = (obj) => { for (var key in obj) setState(key, obj[key]) }
 var state = Immutable.Map({
   songs: [],
   scales: {},
-  dynamic: DynamicStateStore.getState()
+  dynamic: DynamicStateStore.getState(),
+  genreCount: {}
 })
 
 var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
@@ -41,6 +42,10 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
     return state.get('scales')
   },
 
+  getGenreCount() {
+    return state.get('genreCount')
+  },
+
   getState() {
     return state
   },
@@ -55,6 +60,7 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
         break
       case 'SONGS_LOADED':
 console.log('songs loaded', action.data);
+        var genreCounter = {}
         action.data.forEach((songData) => {
           songData.id = DataUtil.songSystemId(songData)
           songData.versions.forEach((versionData) => {
@@ -62,15 +68,20 @@ console.log('songs loaded', action.data);
             versionData.parsedDate = parseDate(versionData.date)
             // genres sourced from: http://www.furia.com/page.cgi?type=log&id=427
             // versionData.genre = ['Metropopolis', 'Laboratorio', 'More Deeper House', 'Fallen Angel', 'Permanent Wave'][Math.floor(Math.random() * 5)]
+            var genre
             if (versionData.musiXmatch && versionData.musiXmatch.genres && versionData.musiXmatch.genres.length > 0) {
-              versionData.genre = versionData.musiXmatch.genres[0]
+              genre = versionData.musiXmatch.genres[0]
             } else {
-              versionData.genre = 'Unknown'
+              genre = 'Unknown'
             }
+            versionData.genre = genre
+            if (!genreCounter[genre]) genreCounter[genre] = 0
+            genreCounter[genre]++
           })
         })
         setState('songs', action.data)
         setState('scales', ScaleSet(findBounds(action.data)))
+        setState('genreCount', genreCounter)
         break
 
       // view action events

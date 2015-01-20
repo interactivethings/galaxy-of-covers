@@ -51,6 +51,7 @@ var App = React.createClass({
     ,   songsArray = stateRef.get('songs') || []
     ,   galaxyScales = stateRef.get('scales')
     ,   dynamicState = stateRef.get('dynamic')
+    ,   genreCount = SongStore.getGenreCount()
     ,   componentSizes = {}
 
     if (dynamicState.get('inDetail')) {
@@ -63,7 +64,7 @@ var App = React.createClass({
     } else {
       componentSizes = {
         headerHeight: 60,
-        legendHeight: 0,
+        legendHeight: 175,
         bodyHeight: dim.height,
         footerHeight: 0
       }
@@ -72,7 +73,7 @@ var App = React.createClass({
     return (
       <div className="AppBox">
         <AppHeader dynamicState={dynamicState} {...componentSizes} />
-        <MainView songs={songsArray} scales={galaxyScales} dynamicState={dynamicState} {...componentSizes} />
+        <MainView songs={songsArray} scales={galaxyScales} dynamicState={dynamicState} genreCount={genreCount} {...componentSizes} />
       </div>
     )
   }
