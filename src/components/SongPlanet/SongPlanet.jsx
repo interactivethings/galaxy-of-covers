@@ -11,6 +11,10 @@ function getPosition(rx, ry, t, speed) {
   return [x, y]
 }
 
+function getBlinkOpacity(t, blinkSpeed) {
+  return (Math.sin(t * blinkSpeed) + 1.8) / 2
+}
+
 var SongPlanet = React.createClass({
 
   getInitialState() {
@@ -26,6 +30,7 @@ var SongPlanet = React.createClass({
 
     var t = 0
     ,   s = this.props.speed
+    ,   bs = this.props.blinkSpeed
     ,   rx = this.props.orbitRadX
     ,   ry = this.props.orbitRadY
     ,   rotation = this.props.rotation
@@ -39,6 +44,7 @@ var SongPlanet = React.createClass({
 
       var pos = getPosition(rx, ry, t, s)
       element.setAttribute('transform', SvgUtil.getRotateAndTranslate(rotation, pos[0], pos[1]))
+      element.setAttribute('opacity', getBlinkOpacity(t, bs))
 
       requestAnimationFrame(animate)
     }

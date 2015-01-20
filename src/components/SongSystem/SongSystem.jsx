@@ -43,6 +43,7 @@ var SongSystem = React.createClass({
     ,   colorScale = this.props.scales.getColorScale()
     ,   rotationScale = this.props.scales.getRotationScale()
     ,   speedScale = this.props.scales.getSpeedScale()
+    ,   blinkScale = this.props.scales.getBlinkScale()
     ,   sidesScale = this.props.scales.getEdgesScale()
 
     this.props.songData.versions.forEach((versionData, i) => {
@@ -57,6 +58,7 @@ var SongSystem = React.createClass({
           , color: colorScale(versionData.genre)
           , rotation: rotationScale(versionData.echonest.valence)
           , speed: speedScale(versionData.echonest.energy)
+          , blinkSpeed: blinkScale(versionData.echonest.tempo)
           , sides: sidesScale(versionData.echonest.speechiness)
           , shouldAnimate: this.props.animate
           }

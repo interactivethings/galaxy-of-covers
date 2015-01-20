@@ -113,6 +113,7 @@ function adjustBounds(bounds, value) {
 function findBounds(dataset) {
   var energy = baseBounds()
   ,   speechiness = baseBounds()
+  ,   tempo = baseBounds()
   ,   genres = {}
 
   dataset.forEach((songData) => {
@@ -120,6 +121,7 @@ function findBounds(dataset) {
       if (versionData.echonest) {
         adjustBounds(energy, versionData.echonest.energy)
         adjustBounds(speechiness, versionData.echonest.speechiness)
+        adjustBounds(tempo, versionData.echonest.tempo)
         genres[versionData.genre] = true
       }
     })
@@ -128,13 +130,13 @@ function findBounds(dataset) {
   return {
     energyRange: energy,
     speechinessRange: speechiness,
+    tempoRange: tempo,
     genres: Object.keys(genres).sort()
   }
 }
 
 function ScaleSet(bounds) {
-  console.log(bounds.genres);
-  var orbitRadius = d3.time.scale().domain([new Date(1940, 1, 1), new Date()]).range([10, 300])
+  var orbitRadius = d3.time.scale().domain([new Date(1931, 1, 1), new Date()]).range([10, 300])
   ,   radius = d3.scale.linear().domain([0, 100]).range([3, 18])
   ,   color = d3.scale.ordinal().domain(bounds.genres).range(['#E5D166', '#9BC054', '#57BF93', '#5882B4', '#CD6586'])
   // rotation ranges from 270 to 450 degrees
@@ -146,6 +148,7 @@ function ScaleSet(bounds) {
   ,   timelineRadius = d3.scale.linear().domain([0, 100]).range([3, 50])
   ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([-1, 8, 7, 6, 5, 4, 3]) // reverse scale
 //  ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([6])
+  ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2, 14])
 
   return {
     getOrbitRadiusScale: () => orbitRadius,
@@ -155,7 +158,8 @@ function ScaleSet(bounds) {
     getSpeedScale: () => speed,
     getTimelineRadiusScale: () => timelineRadius,
     getEdgesScale: () => edgesScale,
-    getTimelineRotation: () => timelineRotation
+    getTimelineRotation: () => timelineRotation,
+    getBlinkScale: () => blinkScale
   }
 }
 
