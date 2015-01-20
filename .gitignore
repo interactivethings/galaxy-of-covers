@@ -1,5 +1,6 @@
 *node_modules*
 *build-tmp*
+build/
 *__pycache__*
 data/cached
 data/shs-scrape-cache
