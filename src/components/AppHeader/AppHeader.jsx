@@ -52,40 +52,40 @@ var AppHeader = React.createClass({
         <div className={"AppHeader--legend " + (legend ? 'AppHeader--legend__open' : '')}>
           <LegendOption
             attributeName='popularity'
+            viewName={detail ? 'detail' : 'overview'}
             isInactive={highlightedAttribute && highlightedAttribute !== 'popularity'}
-            logoClass='AppHeader--legendlogo__popularity'
             optionLabel='Popularity'
             clickFunction={this.attributeLegendClick}
           />
 
           <LegendOption
             attributeName='tempo'
+            viewName={detail ? 'detail' : 'overview'}
             isInactive={highlightedAttribute && highlightedAttribute !== 'tempo'}
-            logoClass='AppHeader--legendlogo__tempo'
             optionLabel='Tempo (BPM)'
             clickFunction={this.attributeLegendClick}
           />
 
           <LegendOption
             attributeName='valence'
+            viewName={detail ? 'detail' : 'overview'}
             isInactive={highlightedAttribute && highlightedAttribute !== 'valence'}
-            logoClass='AppHeader--legendlogo__valence'
             optionLabel='Valence'
             clickFunction={this.attributeLegendClick}
           />
 
           <LegendOption
             attributeName='energy'
+            viewName={detail ? 'detail' : 'overview'}
             isInactive={highlightedAttribute && highlightedAttribute !== 'energy'}
-            logoClass='AppHeader--legendlogo__energy'
             optionLabel='Energy'
             clickFunction={this.attributeLegendClick}
           />
 
           <LegendOption
             attributeName='speechiness'
+            viewName={detail ? 'detail' : 'overview'}
             isInactive={highlightedAttribute && highlightedAttribute !== 'speechiness'}
-            logoClass='AppHeader--legendlogo__speechiness'
             optionLabel='Speechiness'
             clickFunction={this.attributeLegendClick}
           />

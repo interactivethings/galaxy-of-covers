@@ -29,6 +29,7 @@
     "p5": "^0.3.14",
     "promise": "^6.0.1",
     "queue-async": "^1.0.7",
+    "raw-loader": "^0.5.1",
     "react": "^0.12.2",
     "react-responsive": "0.0.1",
     "react-router": "^0.11.4",
@@ -49,6 +50,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "dependencies": {
-  }
+  "dependencies": {}
 }

@@ -42,13 +42,14 @@ module.exports = {
       {test: /\.scss$/, loader: 'style!css!sass?' + querySerializeArray(sassDirectories, 'includePaths[]=')},
       {test: /\.css$/, loader: 'style!css'},
       {test: /\.html$/, loader: 'file?name=[name].[ext]'},
-//      {test: /\.svg/, loader: 'raw'},
       {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}, // inline base64 URLs for <=8k images, direct URLs for the rest
+      // For icon fonts
+      {test: /assets\/icomoon\/.*\.(eot|woff|ttf|svg)$/, loader: 'file-loader'}
+      // For icon svgs
+      {test: /assets\/legendicons\/.*\.svg/, loader: 'raw'},
       // Enable for CoffeeScript support
       // { test: /\.coffee$/, loader: 'coffee' },
       // { test: /\.cjsx$/, loader: 'coffee!cjsx' },
-      // For icon fonts
-      {test: /\.eot|\.woff|\.ttf|\.svg$/, loader: 'file-loader'}
     ],
     postLoaders: [
       // Enable for jshint support

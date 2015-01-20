@@ -1,5 +1,7 @@
 var React = require('react')
 
+var LegendIcon = require('components/AppHeader/LegendIcon')
+
 var LegendOption = React.createClass({
 
   onOptionClick() {
@@ -7,14 +9,14 @@ var LegendOption = React.createClass({
   },
 
   render() {
-    var { isInactive, logoClass, optionLabel, ...other } = this.props
+    var { isInactive, viewName, iconName, optionLabel, ...other } = this.props
     return (
       <div
         {...other}
         className={"AppHeader--legendoption " + (isInactive ? 'AppHeader--legendoption__inactive' : '')}
         onClick={this.onOptionClick}
       >
-        <div className={"AppHeader--legendlogo " + logoClass} />
+        <LegendIcon icon={this.props.viewName + '_' + this.props.attributeName} />
         <div className="AppHeader--legendlabel" >{optionLabel}</div>
       </div>
     )

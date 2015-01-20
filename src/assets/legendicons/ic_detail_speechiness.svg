@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="54px" height="62px" viewBox="0 0 54 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_detail_speechiness</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Icons" sketch:type="MSArtboardGroup" transform="translate(-595.000000, -173.000000)">
+            <g id="ic_detail_speechiness" sketch:type="MSLayerGroup" transform="translate(592.000000, 174.000000)">
+                <polygon id="Polygon" stroke="#FFFFFF" stroke-dasharray="2,1" opacity="0.5" sketch:type="MSShapeGroup" points="30 0 55.9807621 15 55.9807621 45 30 60 4.01923789 45 4.01923789 15 "></polygon>
+                <polygon id="Polygon" stroke="#FFFFFF" stroke-dasharray="2,1" opacity="0.5" sketch:type="MSShapeGroup" points="30 6 54 30 30 54 6 30 "></polygon>
+                <polygon id="Polygon" stroke="#FFFFFF" stroke-dasharray="2,1" opacity="0.5" sketch:type="MSShapeGroup" points="30 5 47.6776695 12.3223305 55 30 47.6776695 47.6776695 30 55 12.3223305 47.6776695 5 30 12.3223305 12.3223305 "></polygon>
+                <circle id="Oval" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="30" cy="30" r="14"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
