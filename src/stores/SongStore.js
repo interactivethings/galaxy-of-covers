@@ -68,8 +68,7 @@ console.log('songs loaded', action.data);
         setState('scales', ScaleSet(findBounds(action.data)))
         break
 
-      // action events
-      // 'HOVER_SYSTEM', 'HOVER_OFF_SYSTEM', 'CLICK_SYSTEM', 'END_TRANSITION', 'SHOW_DETAIL', 'SHOW_GALAXY', etc...
+      // view action events
       default:
         DynamicStateStore.handleAction(action)
         setState('dynamic', DynamicStateStore.getState())
