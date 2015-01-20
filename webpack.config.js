@@ -44,7 +44,7 @@ module.exports = {
       {test: /\.html$/, loader: 'file?name=[name].[ext]'},
       {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}, // inline base64 URLs for <=8k images, direct URLs for the rest
       // For icon fonts
-      {test: /assets\/icomoon\/.*\.(eot|woff|ttf|svg)$/, loader: 'file-loader'}
+      {test: /assets\/icomoon\/.*\.(eot|woff|ttf|svg)$/, loader: 'file-loader'},
       // For icon svgs
       {test: /assets\/legendicons\/.*\.svg/, loader: 'raw'},
       // Enable for CoffeeScript support
