@@ -26,7 +26,7 @@ var DataUtil = {
   },
 
   formatPercent(number) {
-    return number+'%'
+    return (+number.toFixed(2) * 100)+'%'
   },
 
   extend(obj) {

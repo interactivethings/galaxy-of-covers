@@ -10,7 +10,9 @@ var TimelineGenreHeader = React.createClass({
 
   render() {
     var genreSplit = this.props.genreSplit
-    ,   sum = Object.keys(genreSplit).reduce((m, k) => m + genreSplit[k], 0)
+    ,   keys = Object.keys(genreSplit)
+    ,   sum = keys.reduce((m, k) => m + genreSplit[k], 0)
+    ,   total = keys.length
     ,   scale = d3.scale.linear().domain([0, sum]).range([0, this.props.headerWidth])
     ,   cumulative = 0
     ,   colorScale = this.props.colorScale
@@ -20,6 +22,7 @@ var TimelineGenreHeader = React.createClass({
       <g className="TimelineGenreHeader" transform={this.props.transform} >
         {Object.keys(genreSplit).sort().map(function(genre) {
           var v = genreSplit[genre]
+          ,   p = v / sum
           ,   x = scale(cumulative)
           ,   color = colorScale(genre)
           ,   barHeight = legendOpen ? 24 : 12
@@ -33,7 +36,7 @@ var TimelineGenreHeader = React.createClass({
                 height={barHeight}
                 fill={color}
               />
-              {legendOpen ? <text className="TimelineGenreHeader--valuelabel" dx={4} dy={barHeight / 2} >{DataUtil.formatPercent(v)}</text> : null}
+              {legendOpen ? <text className="TimelineGenreHeader--valuelabel" dx={4} dy={barHeight / 2} >{DataUtil.formatPercent(p)}</text> : null}
               <text className="TimelineGenreHeader--genrelabel" fill={color} dx={4} dy={legendOpen ? 28 : 16} >{genre}</text>
             </g>
           )
