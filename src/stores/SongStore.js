@@ -61,7 +61,12 @@ console.log('songs loaded', action.data);
             versionData.id = DataUtil.versionId(versionData)
             versionData.parsedDate = parseDate(versionData.date)
             // genres sourced from: http://www.furia.com/page.cgi?type=log&id=427
-            versionData.genre = ['Metropopolis', 'Laboratorio', 'More Deeper House', 'Fallen Angel', 'Permanent Wave'][Math.floor(Math.random() * 5)]
+            // versionData.genre = ['Metropopolis', 'Laboratorio', 'More Deeper House', 'Fallen Angel', 'Permanent Wave'][Math.floor(Math.random() * 5)]
+            if (versionData.musiXmatch && versionData.musiXmatch.genres && versionData.musiXmatch.genres.length > 0) {
+              versionData.genre = versionData.musiXmatch.genres[0]
+            } else {
+              versionData.genre = 'Unknown'
+            }
           })
         })
         setState('songs', action.data)
@@ -115,6 +120,7 @@ function findBounds(dataset) {
       if (versionData.echonest) {
         adjustBounds(energy, versionData.echonest.energy)
         adjustBounds(speechiness, versionData.echonest.speechiness)
+        genres[versionData.genre] = true
       }
     })
   })
@@ -122,11 +128,12 @@ function findBounds(dataset) {
   return {
     energyRange: energy,
     speechinessRange: speechiness,
-    genres: Object.keys(genres)
+    genres: Object.keys(genres).sort()
   }
 }
 
 function ScaleSet(bounds) {
+  console.log(bounds.genres);
   var orbitRadius = d3.time.scale().domain([new Date(1940, 1, 1), new Date()]).range([10, 300])
   ,   radius = d3.scale.linear().domain([0, 100]).range([3, 18])
   ,   color = d3.scale.ordinal().domain(bounds.genres).range(['#E5D166', '#9BC054', '#57BF93', '#5882B4', '#CD6586'])
