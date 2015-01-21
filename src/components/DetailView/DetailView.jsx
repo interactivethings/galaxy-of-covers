@@ -20,7 +20,7 @@ var DetailView = React.createClass({
     }
 
     return (
-      <div className="MainView">
+      <div className="DetailView">
         <div className="DetailTitle" style={titleStyleProps} >
           <h2 className="DetailTitle--title">{this.props.songData.title}</h2>
           <h3 className="DetailTitle--info">{this.getSongInfoString(this.props.songData)}</h3>

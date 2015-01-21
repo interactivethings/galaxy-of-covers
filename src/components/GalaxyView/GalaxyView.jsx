@@ -1,5 +1,7 @@
 var React = require('react')
 
+require('components/GalaxyView/GalaxyView.scss')
+
 var SvgUtil = require('util/svgutil')
 ,   SongSystem = require('components/SongSystem/SongSystem')
 
@@ -63,7 +65,7 @@ var GalaxyView = React.createClass({
         })
 
     return (
-      <svg className="MainView SongGalaxy" {...dim} >
+      <svg className="SongGalaxy" {...dim} >
         <defs>
           <g dangerouslySetInnerHTML={{ __html: SvgUtil.getStarGlow() }} />
           <g dangerouslySetInnerHTML={{ __html: SvgUtil.getGalaxyGradient() }} />

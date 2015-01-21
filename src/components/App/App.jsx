@@ -8,7 +8,8 @@ require('components/App/App.scss')
 var LoadActions = require('actions/LoadActions')
 ,   SongStore = require('stores/SongStore')
 ,   AppHeader = require('components/AppHeader/AppHeader')
-,   MainView = require('components/App/MainView')
+,   GalaxyView = require('components/GalaxyView/GalaxyView')
+,   DetailView = require('components/DetailView/DetailView')
 ,   Layout = require('components/Layout')
 
 function getAppState() {
@@ -51,7 +52,21 @@ var App = React.createClass({
     return (
       <div className="AppBox">
         <AppHeader genreCount={genreCount} scales={galaxyScales} dynamicState={dynamicState} layout={componentLayout} />
-        <MainView songs={songsArray} detailData={detailData} scales={galaxyScales} dynamicState={dynamicState} layout={componentLayout} />
+        {dynamicState.get('inDetail') ?
+          <DetailView
+            layout={componentLayout}
+            dynamicState={dynamicState}
+            scales={galaxyScales}
+            songData={detailData}
+          />
+        :
+          <GalaxyView
+            layout={componentLayout}
+            dynamicState={dynamicState}
+            scales={galaxyScales}
+            songs={songsArray}
+          />
+        }
       </div>
     )
   }
