@@ -26,7 +26,6 @@ var GalaxyView = React.createClass({
     ,   verticalSpacing = Math.max(horizontalSpacing * Math.tan(Math.PI / 3), systemRadius * Math.tan(Math.PI / 3))
     ,   hoveredId = this.props.dynamicState.get('hoveredSystemId')
     ,   scales = this.props.scales
-    ,   timelineHighlineY = this.props.dynamicState.get('legendOpen') ? this.props.layout.headerHeight + this.props.layout.legendHeight : this.props.layout.headerHeight
 
     var systemY = topPadding + systemRadius
     ,   songSystems = this.props.songs.map(function(songData, i) {
