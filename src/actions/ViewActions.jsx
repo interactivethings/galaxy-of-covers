@@ -79,6 +79,13 @@ var ViewActions = {
       type: 'ATTRIBUTE_HIGHLIGHT',
       attributeToHighlight: attributeName
     })
+  },
+
+  registerGenreClick(genreName) {
+    Dispatcher.handleViewAction({
+      type: 'FILTER_GENRE',
+      genre: genreName
+    })
   }
 
 }

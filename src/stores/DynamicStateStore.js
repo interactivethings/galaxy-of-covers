@@ -17,7 +17,8 @@ setStateObj({
   shareOpen: false,
   legendOpen: false,
   aboutOpen: false,
-  highlightedAttribute: null
+  highlightedAttribute: null,
+  filteredGenres: Immutable.Map()
 })
 
 var DynamicStateStore = {
@@ -78,7 +79,9 @@ var DynamicStateStore = {
         } else {
           setState('highlightedAttribute', action.attributeToHighlight)
         }
-      break
+      case 'FILTER_GENRE':
+        this.toggleFilteredGenre(action.genre)
+        break
     }
   },
 
@@ -120,6 +123,13 @@ var DynamicStateStore = {
     }
     optionProps[optionName] = isOpen
     setStateObj(optionProps)
+  },
+
+  toggleFilteredGenre(genre) {
+    var filter = state.get('filteredGenres')
+    if (filter.get(genre)) filter = filter.set(genre, false)
+    else filter = filter.set(genre, true)
+    setState('filteredGenres', filter)
   }
 
 }

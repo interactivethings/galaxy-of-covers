@@ -26,12 +26,14 @@ var SongTimeline = React.createClass({
     ,   colorScale = this.props.scales.getColorScale()
     ,   edgesScale = this.props.scales.getEdgesScale()
     ,   rotationScale = this.props.scales.getTimelineRotation()
+    ,   genreFilter = this.props.dynamicState.get('filteredGenres')
 
     var planets = []
     ,   tails = []
     ,   genreSplit = {}
     this.props.songData.versions.forEach(function(versionData, i) {
       if (!versionData.echonest) return;
+      if (genreFilter.get(versionData.genre)) return;
 
       var g = versionData.genre
       if (!genreSplit[g]) genreSplit[g] = 0

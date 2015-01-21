@@ -25,6 +25,7 @@ var GalaxyView = React.createClass({
     ,   horizontalSpacing = dim.width / 4
     ,   verticalSpacing = Math.max(horizontalSpacing * Math.tan(Math.PI / 3), systemRadius * Math.tan(Math.PI / 3))
     ,   hoveredId = this.props.dynamicState.get('hoveredSystemId')
+    ,   genreFilter = this.props.dynamicState.get('filteredGenres')
     ,   scales = this.props.scales
 
     var systemY = topPadding + systemRadius
@@ -56,6 +57,7 @@ var GalaxyView = React.createClass({
               songData={songData}
               scales={scales}
               key={songData.title}
+              genreFilter={genreFilter}
             />
           )
         })

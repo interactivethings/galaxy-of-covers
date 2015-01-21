@@ -26,7 +26,8 @@ var SongSystem = React.createClass({
     ViewActions.detailTransitionComplete(this.props.id)
   },
 
-  shouldComponentUpdate(newProps, newState) {
+// this works like a charm, but unfortunately it doesn't respect changes to genre filters...
+/*  shouldComponentUpdate(newProps, newState) {
     var curProps = this.props
     ,   prop
     for (prop in newProps) {
@@ -35,7 +36,7 @@ var SongSystem = React.createClass({
       }
     }
     return false
-  },
+  },*/
 
   render() {
     var orbits = []
@@ -47,9 +48,11 @@ var SongSystem = React.createClass({
     ,   speedScale = this.props.scales.getSpeedScale()
     ,   blinkScale = this.props.scales.getBlinkScale()
     ,   sidesScale = this.props.scales.getEdgesScale()
+    ,   genreFilter = this.props.genreFilter
 
     this.props.songData.versions.forEach((versionData, i) => {
       if (!versionData.echonest || !versionData.spotify) return;
+      if (genreFilter.get(versionData.genre)) return;
 
       var ellipseRadius = orbitRadScale(versionData.parsedDate)
       ,   yMult = 3 / 5
