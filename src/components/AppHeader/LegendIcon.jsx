@@ -26,8 +26,10 @@ var Icon = React.createClass({
 
   render() {
     return (
-      <div className={'LegendIcon--' + this.props.icon}
-           dangerouslySetInnerHTML={{ __html: icons[this.props.icon] }} />
+      <div
+        className={'LegendIcon--' + this.props.icon}
+        dangerouslySetInnerHTML={{ __html: icons[this.props.icon] }}
+      />
     )
   }
 })
