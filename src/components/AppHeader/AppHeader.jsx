@@ -3,7 +3,7 @@ var React = require('react')
 require('components/AppHeader/AppHeader.scss')
 
 var ViewActions = require('actions/ViewActions')
-,   LegendOption = require('components/AppHeader/LegendOption')
+,   Legend = require('components/AppHeader/Legend')
 
 var AppHeader = React.createClass({
 
@@ -49,47 +49,7 @@ var AppHeader = React.createClass({
 
     return (
       <div className="AppHeader" >
-        <div className={"AppHeader--legend " + (legend ? 'AppHeader--legend__open' : '')}>
-          <LegendOption
-            attributeName='popularity'
-            viewName={detail ? 'detail' : 'overview'}
-            isInactive={highlightedAttribute && highlightedAttribute !== 'popularity'}
-            optionLabel='Popularity'
-            clickFunction={this.attributeLegendClick}
-          />
-
-          <LegendOption
-            attributeName='tempo'
-            viewName={detail ? 'detail' : 'overview'}
-            isInactive={highlightedAttribute && highlightedAttribute !== 'tempo'}
-            optionLabel='Tempo (BPM)'
-            clickFunction={this.attributeLegendClick}
-          />
-
-          <LegendOption
-            attributeName='valence'
-            viewName={detail ? 'detail' : 'overview'}
-            isInactive={highlightedAttribute && highlightedAttribute !== 'valence'}
-            optionLabel='Valence'
-            clickFunction={this.attributeLegendClick}
-          />
-
-          <LegendOption
-            attributeName='energy'
-            viewName={detail ? 'detail' : 'overview'}
-            isInactive={highlightedAttribute && highlightedAttribute !== 'energy'}
-            optionLabel='Energy'
-            clickFunction={this.attributeLegendClick}
-          />
-
-          <LegendOption
-            attributeName='speechiness'
-            viewName={detail ? 'detail' : 'overview'}
-            isInactive={highlightedAttribute && highlightedAttribute !== 'speechiness'}
-            optionLabel='Speechiness'
-            clickFunction={this.attributeLegendClick}
-          />
-        </div>
+        <Legend isOpen={legend} inDetail={detail} highlighted={highlightedAttribute} onClick={this.attributeLegendClick} />
         <div className="AppHeader--navigation">
           <div className="AppHeader--back" onClick={this.navigateBack} >
             {detail ? (
