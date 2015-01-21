@@ -78,33 +78,3 @@
   display: inline-block;
   margin-left: 1em;
 }
-
-.AppHeader--legend {
-  background-color: $c-app-bg;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  position: absolute;
-  top: -120px;
-  text-align: center;
-  width: 100%;
-}
-
-.AppHeader--legend__open {
-  top: 100%;
-}
-
-.AppHeader--legendoption {
-  cursor: pointer;
-  display: inline-block;
-  margin: 30px 20px 50px;
-
-  &.AppHeader--legendoption__inactive {
-    opacity: 0.2;
-  }
-}
-
-.AppHeader--legendlabel {
-  @include half-opaque-white;
-  font-size: 18px;
-  font-weight: 300;
-  margin-top: 0.1em;
-}

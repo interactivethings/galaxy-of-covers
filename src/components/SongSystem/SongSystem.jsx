@@ -22,6 +22,8 @@ var SongSystem = React.createClass({
 
   onClick() {
     ViewActions.clickOnSongSystem(this.props.id)
+    // this represents an immediate transition
+    ViewActions.detailTransitionComplete(this.props.id)
   },
 
   shouldComponentUpdate(newProps, newState) {

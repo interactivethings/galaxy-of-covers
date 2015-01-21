@@ -5,7 +5,10 @@ var Immutable = require('Immutable')
 var setState = (key, value) => { state = state.set(key, value) }
 var setStateObj = (obj) => { for (var key in obj) setState(key, obj[key]) }
 
-var state = Immutable.Map({
+var state = Immutable.Map()
+
+// properties should all be mutable objects
+setStateObj({
   hoveredSystemId: null,
   detailTransitionId: null,
   detailSystemId: null,
@@ -21,6 +24,10 @@ var DynamicStateStore = {
 
   getState() {
     return state
+  },
+
+  isInDetail() {
+    return state.get('inDetail')
   },
 
   handleAction(action) {

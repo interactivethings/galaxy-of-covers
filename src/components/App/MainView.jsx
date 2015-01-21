@@ -6,7 +6,6 @@ var SvgUtil = require('util/svgutil')
 ,   ViewActions = require('actions/ViewActions')
 ,   GalaxyView = require('components/GalaxyView/GalaxyView')
 ,   DetailView = require('components/DetailView/DetailView')
-,   TimelineGenreHeader = require('components/TimelineGenreHeader/TimelineGenreHeader')
 
 var App = React.createClass({
 
@@ -14,24 +13,19 @@ var App = React.createClass({
     if (this.props.dynamicState.get('inDetail')) {
       return (
         <DetailView
-          headerHeight={this.props.headerHeight}
-          legendHeight={this.props.legendHeight}
-          bodyHeight={this.props.bodyHeight}
-          bodyWidth={window.innerWidth}
+          layout={this.props.layout}
           dynamicState={this.props.dynamicState}
           scales={this.props.scales}
-          songs={this.props.songs}
+          songData={this.props.detailData}
         />
       )
     } else {
       return (
         <GalaxyView
-          headerHeight={this.props.headerHeight}
-          legendHeight={this.props.legendHeight}
+          layout={this.props.layout}
           dynamicState={this.props.dynamicState}
           scales={this.props.scales}
           songs={this.props.songs}
-          genreCount={this.props.genreCount}
         />
       )
     }

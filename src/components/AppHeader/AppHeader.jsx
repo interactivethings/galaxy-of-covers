@@ -4,6 +4,7 @@ require('components/AppHeader/AppHeader.scss')
 
 var ViewActions = require('actions/ViewActions')
 ,   Legend = require('components/AppHeader/Legend')
+,   GenreHeader = require('components/AppHeader/GenreHeader')
 
 var AppHeader = React.createClass({
 
@@ -41,31 +42,30 @@ var AppHeader = React.createClass({
 
   render() {
     var dynamicState = this.props.dynamicState
-    ,   detail = dynamicState.get('inDetail')
-    ,   legend = dynamicState.get('legendOpen')
-    ,   about = dynamicState.get('aboutOpen')
-    ,   share = dynamicState.get('shareOpen')
+    ,   inDetail = dynamicState.get('inDetail')
+    ,   legendOpen = dynamicState.get('legendOpen')
+    ,   aboutOpen = dynamicState.get('aboutOpen')
+    ,   shareOpen = dynamicState.get('shareOpen')
     ,   highlightedAttribute = dynamicState.get('highlightedAttribute')
 
     return (
       <div className="AppHeader" >
-        <Legend isOpen={legend} inDetail={detail} highlighted={highlightedAttribute} onClick={this.attributeLegendClick} />
         <div className="AppHeader--navigation">
           <div className="AppHeader--back" onClick={this.navigateBack} >
-            {detail ? (
+            {inDetail ? (
               <div className="AppHeader--backarrow icon-arrow-back" />
             ) : ('')}
             <h1 className="AppHeader--title" >A Galaxy of Covers</h1>
           </div>
-          {!share ? (
+          {!shareOpen ? (
             <div className="AppHeader--menu" >
-              <div className={"AppHeader--menuoption " + (legend ? 'AppHeader--menuoption__active' : '')} onClick={this.toggleLegend} >
+              <div className={"AppHeader--menuoption " + (legendOpen ? 'AppHeader--menuoption__active' : '')} onClick={this.toggleLegend} >
                 <h2 className="AppHeader--navlabel">Legend</h2>
-                <span className={"AppHeader-icon " + (legend ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
+                <span className={"AppHeader-icon " + (legendOpen ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
               </div>
-              <div className={"AppHeader--menuoption " + (about ? 'AppHeader--menuoption__active' : '')} onClick={this.toggleAbout} >
+              <div className={"AppHeader--menuoption " + (aboutOpen ? 'AppHeader--menuoption__active' : '')} onClick={this.toggleAbout} >
                 <h2 className="AppHeader--navlabel">About</h2>
-                <span className={"AppHeader-icon " + (about ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
+                <span className={"AppHeader-icon " + (aboutOpen ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
               </div>
               <div className="AppHeader--menuoption" onClick={this.openShare} >
                 <h2 className="AppHeader--navlabel">Share</h2>
@@ -84,6 +84,13 @@ var AppHeader = React.createClass({
             </div>
           )}
         </div>
+        <Legend isOpen={legendOpen} inDetail={inDetail} highlighted={highlightedAttribute} onClick={this.attributeLegendClick} />
+        <GenreHeader
+          genreCount={this.props.genreCount}
+          headerWidth={this.props.layout.headerWidth}
+          dynamicState={this.props.dynamicState}
+          scales={this.props.scales}
+        />
       </div>
     )
   }

@@ -2,7 +2,6 @@ var React = require('react')
 
 var SvgUtil = require('util/svgutil')
 ,   SongSystem = require('components/SongSystem/SongSystem')
-,   TimelineGenreHeader = require('components/TimelineGenreHeader/TimelineGenreHeader')
 
 var GalaxyView = React.createClass({
 
@@ -21,13 +20,13 @@ var GalaxyView = React.createClass({
   render() {
     // render the "galaxy" view
     var systemRadius = 300
-    ,   topPadding = this.props.headerHeight
+    ,   topPadding = this.props.layout.headerHeight
     ,   dim = this.getGalaxyGroupDimensions(systemRadius, this.props.songs.length)
     ,   horizontalSpacing = dim.width / 4
     ,   verticalSpacing = Math.max(horizontalSpacing * Math.tan(Math.PI / 3), systemRadius * Math.tan(Math.PI / 3))
     ,   hoveredId = this.props.dynamicState.get('hoveredSystemId')
     ,   scales = this.props.scales
-    ,   timelineHighlineY = this.props.dynamicState.get('legendOpen') ? this.props.headerHeight + this.props.legendHeight : this.props.headerHeight
+    ,   timelineHighlineY = this.props.dynamicState.get('legendOpen') ? this.props.layout.headerHeight + this.props.layout.legendHeight : this.props.layout.headerHeight
 
     var systemY = topPadding + systemRadius
     ,   songSystems = this.props.songs.map(function(songData, i) {
@@ -69,15 +68,6 @@ var GalaxyView = React.createClass({
           <g dangerouslySetInnerHTML={{ __html: SvgUtil.getGalaxyGradient() }} />
           <g dangerouslySetInnerHTML={{ __html: SvgUtil.getGalaxyShadow() }} />
         </defs>
-        {this.props.songs.length ?
-          <TimelineGenreHeader
-            transform={SvgUtil.translateString(0, timelineHighlineY)}
-            dynamicState={this.props.dynamicState}
-            genreSplit={this.props.genreCount}
-            headerWidth={dim.width}
-            colorScale={scales.getColorScale()}
-          />
-        : null}
         {songSystems}
       </svg>
     )

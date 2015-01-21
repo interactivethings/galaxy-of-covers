@@ -7,20 +7,29 @@ var AppDispatcher = require('dispatcher/AppDispatcher')
 ,   Immutable = require('Immutable')
 ,   d3 = require('d3')
 
-var DynamicStateStore = require('stores/DynamicStateStore')
+var Constants = require('Constants')
+,   DynamicStateStore = require('stores/DynamicStateStore')
 ,   DataUtil = require('util/datautil')
 
 var setState = (key, value) => { state = state.set(key, value) }
 var setStateObj = (obj) => { for (var key in obj) setState(key, obj[key]) }
 
-var state = Immutable.Map({
+var state = Immutable.Map()
+
+// properties should all be mutable objects
+setStateObj({
   songs: [],
-  scales: {},
-  dynamic: DynamicStateStore.getState(),
-  genreCount: {}
+  detailSongData: {},
+  scales: null,
+  dynamicState: DynamicStateStore.getState(),
+  allGenresCount: {}
 })
 
 var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
+
+  getState() {
+    return state
+  },
 
   emitChange() {
     this.emit('change')
@@ -38,16 +47,34 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
     return state.get('songs')
   },
 
+  getDetailSongData() {
+    return state.get('detailSongData')
+  },
+
   getScales() {
     return state.get('scales')
   },
 
-  getGenreCount() {
-    return state.get('genreCount')
+  getDynamic() {
+    return state.get('dynamicState')
   },
 
-  getState() {
-    return state
+  getGenreCount() {
+    if (!DynamicStateStore.isInDetail()) {
+      return state.get('allGenresCount')
+    } else {
+      return this.getDetailGenreCount()
+    }
+  },
+
+  getDetailGenreCount() {
+    var songData = state.get('detailSongData')
+    return songData.versions.reduce((memo, versionData) => {
+      var genre = versionData.genre
+      if (!memo[genre]) memo[genre] = 0
+      memo[genre]++
+      return memo
+    }, {})
   },
 
   dispatcherToken: AppDispatcher.register((payload) => {
@@ -60,34 +87,19 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
         break
       case 'SONGS_LOADED':
 console.log('songs loaded', action.data);
-        var genreCounter = {}
-        action.data.forEach((songData) => {
-          songData.id = DataUtil.songSystemId(songData)
-          songData.versions.forEach((versionData) => {
-            versionData.id = DataUtil.versionId(versionData)
-            versionData.parsedDate = parseDate(versionData.date)
-            // genres sourced from: http://www.furia.com/page.cgi?type=log&id=427
-            // versionData.genre = ['Metropopolis', 'Laboratorio', 'More Deeper House', 'Fallen Angel', 'Permanent Wave'][Math.floor(Math.random() * 5)]
-            var genre
-            if (versionData.musiXmatch && versionData.musiXmatch.genres && versionData.musiXmatch.genres.length > 0) {
-              genre = versionData.musiXmatch.genres[0]
-            } else {
-              genre = 'Unknown'
-            }
-            versionData.genre = genre
-            if (!genreCounter[genre]) genreCounter[genre] = 0
-            genreCounter[genre]++
-          })
-        })
-        setState('songs', action.data)
-        setState('scales', ScaleSet(findBounds(action.data)))
-        setState('genreCount', genreCounter)
+        prepareLoadedData(action.data)
         break
+      case 'SHOW_DETAIL':
+        prepDetailData(action.systemId)
+        updateDynamicState(action)
+        break
+      case 'SHOW_GALAXY':
+        noDetailData()
+        updateDynamicState(action)
 
       // view action events
       default:
-        DynamicStateStore.handleAction(action)
-        setState('dynamic', DynamicStateStore.getState())
+        updateDynamicState(action)
     }
 
     SongStore.emitChange()
@@ -97,7 +109,7 @@ console.log('songs loaded', action.data);
 
 function loadSongs() {
   reqwest({
-    url: 'data/out/songinfo-spotify-echonest-genres.json',
+    url: Constants.DATA_URL,
     type: 'json',
     contentType: 'application/json',
     success: (data) => { LoadActions.dataLoaded(data) }
@@ -146,7 +158,7 @@ function findBounds(dataset) {
   }
 }
 
-function ScaleSet(bounds) {
+function makeScaleSet(bounds) {
   var orbitRadius = d3.time.scale().domain([new Date(1931, 1, 1), new Date()]).range([10, 300])
   ,   radius = d3.scale.linear().domain([0, 100]).range([3, 18])
   ,   color = d3.scale.ordinal().domain(bounds.genres).range(['#E5D166', '#9BC054', '#57BF93', '#5882B4', '#CD6586'])
@@ -172,6 +184,45 @@ function ScaleSet(bounds) {
     getTimelineRotation: () => timelineRotation,
     getBlinkScale: () => blinkScale
   }
+}
+
+function prepareLoadedData(dataset) {
+  var allGenresCounter = {}
+  dataset.forEach((songData) => {
+    songData.id = DataUtil.songSystemId(songData)
+    songData.versions.forEach((versionData) => {
+      versionData.id = DataUtil.versionId(versionData)
+      versionData.parsedDate = parseDate(versionData.date)
+      // genres sourced from: http://www.furia.com/page.cgi?type=log&id=427
+      // versionData.genre = ['Metropopolis', 'Laboratorio', 'More Deeper House', 'Fallen Angel', 'Permanent Wave'][Math.floor(Math.random() * 5)]
+      var genre
+      if (versionData.musiXmatch && versionData.musiXmatch.genres && versionData.musiXmatch.genres.length > 0) {
+        genre = versionData.musiXmatch.genres[0]
+      } else {
+        genre = 'Unknown'
+      }
+      versionData.genre = genre
+      if (!allGenresCounter[genre]) allGenresCounter[genre] = 0
+      allGenresCounter[genre]++
+    })
+  })
+  setState('songs', dataset)
+  setState('scales', makeScaleSet(findBounds(dataset)))
+  setState('allGenresCount', allGenresCounter)
+}
+
+function updateDynamicState(action) {
+  DynamicStateStore.handleAction(action)
+  setState('dynamicState', DynamicStateStore.getState())
+}
+
+function prepDetailData(detailId) {
+  var selectedSong = state.get('songs').filter((songData) => songData.id === detailId )[0]
+  setState('detailSongData', selectedSong)
+}
+
+function noDetailData() {
+  setState('detailSongData', {})
 }
 
 module.exports = SongStore

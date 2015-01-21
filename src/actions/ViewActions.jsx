@@ -22,8 +22,10 @@ var ViewActions = {
       type: 'CLICK_SYSTEM',
       systemId: id
     })
+  },
 
-    // this should be called after a transition
+  detailTransitionComplete(id) {
+    // this should be called after the transition to the detail view
     Dispatcher.handleViewAction({
       type: 'SHOW_DETAIL',
       systemId: id

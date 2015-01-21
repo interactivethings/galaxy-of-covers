@@ -1,5 +1,7 @@
 var React = require('react')
 
+require('components/AppHeader/LegendOption.scss')
+
 var LegendIcon = require('components/AppHeader/LegendIcon')
 
 var LegendOption = React.createClass({

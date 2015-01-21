@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react')
 
 var SongTimeline = require('components/SongTimeline/SongTimeline')
@@ -14,34 +16,33 @@ var DetailView = React.createClass({
   render() {
     // render the detail view
     var dim =
-        { height: this.props.bodyHeight
-        , width: window.innerWidth
+        { height: this.props.layout.bodyHeight
+        , width: this.props.layout.bodyWidth
         }
-    ,   detailId = this.props.dynamicState.get('detailSystemId')
-    ,   selectedSong = this.props.songs.filter((songData) => songData.id === detailId )[0]
-    ,   timelineBaselineY = this.props.bodyHeight * 4 / 5
-    ,   timelineHighlineY = this.props.dynamicState.get('legendOpen') ? this.props.headerHeight + this.props.legendHeight : this.props.headerHeight
+    ,   selectedSong = this.props.songData
+    ,   timelineBaselineY = dim.height * 4 / 5
+    ,   timelineHighlineY = this.props.dynamicState.get('legendOpen') ? this.props.layout.headerHeight + this.props.layout.legendHeight : this.props.layout.headerHeight
     ,   leftTimelinePadding = 100
 
-    var styleProps = {
+    var titleStyleProps = {
       top: this.props.dynamicState.get('legendOpen') ? timelineHighlineY + 90 : '10em'
     }
 
     return (
       <div className="MainView">
-        <div className="DetailTitle" style={styleProps} >
+        <div className="DetailTitle" style={titleStyleProps} >
           <h2 className="DetailTitle--title">{selectedSong.title}</h2>
           <h3 className="DetailTitle--info">{this.getSongInfoString(selectedSong)}</h3>
         </div>
-        <svg className="SongDetail" width={this.props.bodyWidth} height={this.props.bodyHeight} >
+        <svg className="SongDetail" width={dim.width} height={dim.height} >
           <SongTimeline
             dynamicState={this.props.dynamicState}
             songData={selectedSong}
             scales={this.props.scales}
             timelineBaselineY={timelineBaselineY}
             timelineHighlineY={timelineHighlineY}
-            timelineTotalWidth={this.props.bodyWidth}
-            timelineXRange={[leftTimelinePadding, this.props.bodyWidth - leftTimelinePadding]}
+            timelineTotalWidth={dim.width}
+            timelineXRange={[leftTimelinePadding, dim.width - leftTimelinePadding]}
           />
         </svg>
       </div>

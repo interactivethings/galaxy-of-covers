@@ -9,7 +9,6 @@ var SvgUtil = require('util/svgutil')
 ,   TimelinePlanet = require('components/TimelinePlanet/TimelinePlanet')
 ,   SongTimelineAxis = require('components/SongTimelineAxis/SongTimelineAxis')
 ,   TimelineEnergyTail = require('components/TimelinePlanet/TimelineEnergyTail')
-,   TimelineGenreHeader = require('components/TimelineGenreHeader/TimelineGenreHeader')
 
 var SongTimeline = React.createClass({
 
@@ -95,13 +94,6 @@ var SongTimeline = React.createClass({
           </linearGradient>
           <g dangerouslySetInnerHTML={{ __html: SvgUtil.getStarGlow() }} />
         </defs>
-        <TimelineGenreHeader
-          transform={SvgUtil.translateString(0, highlineY)}
-          dynamicState={this.props.dynamicState}
-          genreSplit={genreSplit}
-          headerWidth={this.props.timelineTotalWidth}
-          colorScale={colorScale}
-        />
         <g transform={SvgUtil.translateString(0, timelineTop)}>
           { __DEV__ ? <line x1={0} x2={this.props.timelineXRange[1]} stroke="#0ff" /> : null }
           {tails}

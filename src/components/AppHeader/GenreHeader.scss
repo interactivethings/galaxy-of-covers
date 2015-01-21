@@ -1,14 +1,15 @@
-.TimelineGenreHeader {
+.GenreHeader {
+  display: block;
   cursor: pointer;
 }
 
-.TimelineGenreHeader--genrelabel {
+.GenreHeader--genrelabel {
   alignment-baseline: hanging;
   font-size: 13px;
   stroke: none;
 }
 
-.TimelineGenreHeader--valuelabel {
+.GenreHeader--valuelabel {
   alignment-baseline: central;
   color: #22222D;
   font-size: 13px;

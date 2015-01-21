@@ -1,5 +1,7 @@
 var React = require('react')
 
+require('components/AppHeader/Legend.scss')
+
 var LegendOption = require('components/AppHeader/LegendOption')
 
 var pairs =
