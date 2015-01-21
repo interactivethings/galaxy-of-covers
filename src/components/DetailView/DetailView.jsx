@@ -15,34 +15,22 @@ var DetailView = React.createClass({
 
   render() {
     // render the detail view
-    var dim =
-        { height: this.props.layout.bodyHeight
-        , width: this.props.layout.bodyWidth
-        }
-    ,   selectedSong = this.props.songData
-    ,   timelineBaselineY = dim.height * 4 / 5
-    ,   timelineHighlineY = this.props.dynamicState.get('legendOpen') ? this.props.layout.headerHeight + this.props.layout.legendHeight : this.props.layout.headerHeight
-    ,   leftTimelinePadding = 100
-
     var titleStyleProps = {
-      top: this.props.dynamicState.get('legendOpen') ? timelineHighlineY + 90 : '10em'
+      top: this.props.dynamicState.get('legendOpen') ? this.props.layout.timelineTop + 90 : '10em'
     }
 
     return (
       <div className="MainView">
         <div className="DetailTitle" style={titleStyleProps} >
-          <h2 className="DetailTitle--title">{selectedSong.title}</h2>
-          <h3 className="DetailTitle--info">{this.getSongInfoString(selectedSong)}</h3>
+          <h2 className="DetailTitle--title">{this.props.songData.title}</h2>
+          <h3 className="DetailTitle--info">{this.getSongInfoString(this.props.songData)}</h3>
         </div>
-        <svg className="SongDetail" width={dim.width} height={dim.height} >
+        <svg className="SongDetail" width={this.props.layout.bodyWidth} height={this.props.layout.bodyHeight} >
           <SongTimeline
             dynamicState={this.props.dynamicState}
-            songData={selectedSong}
+            songData={this.props.songData}
             scales={this.props.scales}
-            timelineBaselineY={timelineBaselineY}
-            timelineHighlineY={timelineHighlineY}
-            timelineTotalWidth={dim.width}
-            timelineXRange={[leftTimelinePadding, dim.width - leftTimelinePadding]}
+            layout={this.props.layout}
           />
         </svg>
       </div>
