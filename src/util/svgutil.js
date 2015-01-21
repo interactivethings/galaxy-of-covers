@@ -41,6 +41,15 @@ var SvgUtil = {
     return pts
   },
 
+  getEnergyTailFade() {
+    return [
+      '<linearGradient id="energyTailFadeColor" x1="0.5" y1="0" x2="0.5" y2="1">'
+    ,   '<stop offset="0%" stop-color="rgba(255,255,255,0.5)" />'
+    ,   '<stop offset="100%" stop-color="rgba(255,255,255,0.05)" />'
+    , '</linearGradient>'
+    ].join('')
+  },
+
   getStarGlow() {
     return [
       '<filter x="-200%" y="-200%" width="500%" height="500%" id="starGlowFilter">'

@@ -23,6 +23,9 @@ var Layout = {
       , legendHeight: 175
       , bodyHeight: dim.height
       , bodyWidth: dim.width
+      , timelineTop: dynamicState.get('legendOpen') ? 60 + 175 : 60
+      , timelineBase: dim.height * 4 / 5
+      , timelineLeftRightPadding: 100
       }
     } else {
       componentLayout =

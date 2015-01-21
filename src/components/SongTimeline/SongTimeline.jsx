@@ -6,25 +6,22 @@ require('components/SongTimeline/SongTimeline.scss')
 var SvgUtil = require('util/svgutil')
 ,   DataUtil = require('util/datautil')
 ,   Vec2 = require('svec2')
-,   TimelinePlanet = require('components/TimelinePlanet/TimelinePlanet')
 ,   SongTimelineAxis = require('components/SongTimelineAxis/SongTimelineAxis')
+,   TimelinePlanet = require('components/TimelinePlanet/TimelinePlanet')
 ,   TimelineEnergyTail = require('components/TimelinePlanet/TimelineEnergyTail')
 
 var SongTimeline = React.createClass({
 
   render() {
-    var highlineY = this.props.timelineHighlineY
-    ,   baselineY = this.props.timelineBaselineY
-    ,   topSpace = (baselineY - highlineY) * 1 / 5
-    ,   timelineTop = highlineY + topSpace
+    var highlineY = this.props.layout.timelineTop
+    ,   baselineY = this.props.layout.timelineBase
+    ,   timelineTop = highlineY + (baselineY - highlineY) * 1 / 5
     ,   timelineHeight = baselineY - timelineTop
-    ,   timelineYRange = [timelineHeight, 0]
     ,   energyRange = DataUtil.getMinMax(this.props.songData.versions, function(item) { return item.echonest ? item.echonest.energy : 0; })
-    ,   timelineYScale = d3.scale.linear()
-          .domain(energyRange)
-          .range(timelineYRange)
+    ,   timelineYScale = d3.scale.linear().domain(energyRange).range([timelineHeight, 0])
     ,   timeRange = DataUtil.getMinMax(this.props.songData.versions, (item) => item.parsedDate)
-    ,   timelineXScale = d3.scale.linear().domain(timeRange).range(this.props.timelineXRange)
+    ,   timelineXRange = [this.props.layout.timelineLeftRightPadding, this.props.layout.bodyWidth - this.props.layout.timelineLeftRightPadding]
+    ,   timelineXScale = d3.time.scale().domain(timeRange).range(timelineXRange)
     ,   radiusScale = this.props.scales.getTimelineRadiusScale()
     ,   colorScale = this.props.scales.getColorScale()
     ,   edgesScale = this.props.scales.getEdgesScale()
@@ -88,14 +85,11 @@ var SongTimeline = React.createClass({
     return (
       <g className="SongTimeline" >
         <defs>
-          <linearGradient id="energyTailFadeColor" x1="0.5" y1="0" x2="0.5" y2="1">
-            <stop offset="0%" stopColor="rgba(255,255,255,0.5)" />
-            <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
-          </linearGradient>
+          <g dangerouslySetInnerHTML={{ __html: SvgUtil.getEnergyTailFade() }} />
           <g dangerouslySetInnerHTML={{ __html: SvgUtil.getStarGlow() }} />
         </defs>
         <g transform={SvgUtil.translateString(0, timelineTop)}>
-          { __DEV__ ? <line x1={0} x2={this.props.timelineXRange[1]} stroke="#0ff" /> : null }
+          { __DEV__ ? <line x1={0} x2={this.props.layout.bodyWidth} stroke="#0ff" /> : null }
           {tails}
           {planets}
           <SongTimelineAxis
@@ -117,10 +111,6 @@ var SongTimeline = React.createClass({
 
   componentDidMount() {
     var node = d3.select(this.getDOMNode())
-
-    node.select('#energyTailFade')
-      .attr('maskUnits', 'objectBoundingBox')
-      .attr('maskContentUnits', 'objectBoundingBox')
 
     node.select('#glowingStar')
       .attr('filter', 'url(#starGlowFilter)')
