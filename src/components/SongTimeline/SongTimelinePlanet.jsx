@@ -1,7 +1,5 @@
 var React = require('react')
 
-require('components/TimelinePlanet/TimelinePlanet.scss')
-
 var SvgUtil = require('util/svgutil')
 
 function clipPathCircleTemplate(data) {
@@ -36,7 +34,7 @@ function getShadowRect(radius, rotation) {
   )
 }
 
-var TimelinePlanet = React.createClass({
+var SongTimelinePlanet = React.createClass({
 
   componentWillMount() {
     this.setState({
@@ -87,4 +85,4 @@ var TimelinePlanet = React.createClass({
 
 })
 
-module.exports = TimelinePlanet
+module.exports = SongTimelinePlanet

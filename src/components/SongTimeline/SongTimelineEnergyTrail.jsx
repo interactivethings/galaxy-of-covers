@@ -1,6 +1,6 @@
 var React = require('react')
 
-var TimelineEnergyTail = React.createClass({
+var SongTimelineEnergyTrail = React.createClass({
 
   render() {
     var x = this.props.cx
@@ -22,4 +22,4 @@ var TimelineEnergyTail = React.createClass({
 
 })
 
-module.exports = TimelineEnergyTail
+module.exports = SongTimelineEnergyTrail

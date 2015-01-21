@@ -6,9 +6,9 @@ require('components/SongTimeline/SongTimeline.scss')
 var SvgUtil = require('util/svgutil')
 ,   DataUtil = require('util/datautil')
 ,   Vec2 = require('svec2')
-,   SongTimelineAxis = require('components/SongTimelineAxis/SongTimelineAxis')
-,   TimelinePlanet = require('components/TimelinePlanet/TimelinePlanet')
-,   TimelineEnergyTail = require('components/TimelinePlanet/TimelineEnergyTail')
+,   SongTimelineAxis = require('components/SongTimeline/SongTimelineAxis')
+,   TimelinePlanet = require('components/SongTimeline/SongTimelinePlanet')
+,   TimelineEnergyTail = require('components/SongTimeline/SongTimelineEnergyTrail')
 
 var SongTimeline = React.createClass({
 

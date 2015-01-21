@@ -2,7 +2,7 @@ var React = require('react')
 
 var SVGUtil = require('util/svgutil')
 
-var SongOrbit = React.createClass({
+var SongSystemOrbit = React.createClass({
 
   render() {
     return (
@@ -21,4 +21,4 @@ var SongOrbit = React.createClass({
 
 })
 
-module.exports = SongOrbit
+module.exports = SongSystemOrbit

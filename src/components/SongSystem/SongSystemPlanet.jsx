@@ -1,7 +1,5 @@
 var React = require('react')
 
-require('components/SongPlanet/SongPlanet.scss')
-
 var SvgUtil = require('util/svgutil')
 
 function getPosition(rx, ry, t, speed) {
@@ -15,7 +13,7 @@ function getBlinkOpacity(t, blinkSpeed) {
   return (Math.sin(t * blinkSpeed) + 1.8) / 2
 }
 
-var SongPlanet = React.createClass({
+var SongSystemPlanet = React.createClass({
 
   getInitialState() {
     this.animationTracker = {
@@ -97,4 +95,4 @@ var SongPlanet = React.createClass({
 
 })
 
-module.exports = SongPlanet
+module.exports = SongSystemPlanet

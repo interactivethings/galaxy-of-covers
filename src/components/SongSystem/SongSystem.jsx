@@ -2,8 +2,8 @@ var React = require('react')
 
 require('components/SongSystem/SongSystem.scss')
 
-var SongPlanet = require('components/SongPlanet/SongPlanet')
-,   SongOrbit = require('components/SongPlanet/SongOrbit')
+var SongSystemPlanet = require('components/SongSystem/SongSystemPlanet')
+,   SongSystemOrbit = require('components/SongSystem/SongSystemOrbit')
 ,   ViewActions = require('actions/ViewActions')
 
 function translateString(x, y) {
@@ -70,10 +70,10 @@ var SongSystem = React.createClass({
       ,   id = versionData.id
 
       orbits.push(
-        <SongOrbit key={'orbit-'+id} {...songProps} />
+        <SongSystemOrbit key={'orbit-'+id} {...songProps} />
       )
       planets.push(
-        <SongPlanet key={id} {...songProps} />
+        <SongSystemPlanet key={id} {...songProps} />
       )
     })
 

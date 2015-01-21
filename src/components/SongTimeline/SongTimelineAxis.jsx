@@ -1,6 +1,6 @@
 var React = require('react')
 
-require('components/SongTimelineAxis/SongTimelineAxis.scss')
+require('components/SongTimeline/SongTimelineAxis.scss')
 
 var SongTimelineAxis = React.createClass({
 
