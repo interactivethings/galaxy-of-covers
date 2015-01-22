@@ -159,7 +159,7 @@ function findBounds(dataset) {
 }
 
 function makeScaleSet(bounds) {
-  var orbitRadius = d3.time.scale().domain([new Date(1931, 1, 1), new Date()]).range([10, 300])
+  var orbitRadius = d3.time.scale().domain([new Date(1931, 1, 1), new Date()]).range([10, Constants.SYSTEM_WIDTH])
   ,   planetRadius = d3.scale.linear().domain([0, 100]).range([3, 18])
   ,   planetColor = d3.scale.ordinal().domain(bounds.genres).range(['#E5D166', '#9BC054', '#57BF93', '#5882B4', '#CD6586'])
   // rotation ranges from 270 to 450 degrees

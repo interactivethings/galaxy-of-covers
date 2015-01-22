@@ -2,7 +2,8 @@ var React = require('react')
 
 require('components/GalaxyView/GalaxyView.scss')
 
-var SvgUtil = require('util/svgutil')
+var Constants = require('Constants')
+,   SvgUtil = require('util/svgutil')
 ,   SongSystem = require('components/SongSystem/SongSystem')
 
 var GalaxyView = React.createClass({
@@ -19,31 +20,56 @@ var GalaxyView = React.createClass({
     return {width, height}
   },
 
+  makeHexGrid(length, maxCols) {
+    var grid = []
+    ,   column = 0
+    ,   r = 0
+    ,   shortRowBit = 0 // start with a long row
+    for (var i = 0; i < length; ++i) {
+      grid.push({
+        q: column - ((r / 2) | 0) // (x | 0) is a simple Math.floor
+      , r: r
+      })
+
+      column++
+      if (!shortRowBit) {
+        if (column == maxCols) {
+          column = 0
+          r++
+          shortRowBit = 1
+        }
+      } else {
+        if (column == maxCols - 1) {
+          column = 0
+          r++
+          shortRowBit = 0
+        }
+      }
+    }
+    return grid
+  },
+
   render() {
     // render the "galaxy" view
-    var systemRadius = 300
-    ,   topPadding = this.props.layout.headerHeight
-    ,   dim = this.getGalaxyGroupDimensions(systemRadius, this.props.songs.length)
-    ,   horizontalSpacing = dim.width / 4
-    ,   verticalSpacing = Math.max(horizontalSpacing * Math.tan(Math.PI / 3), systemRadius * Math.tan(Math.PI / 3))
-    ,   hoveredId = this.props.dynamicState.get('hoveredSystemId')
+    var hoveredId = this.props.dynamicState.get('hoveredSystemId')
     ,   genreFilter = this.props.dynamicState.get('filteredGenres')
     ,   scales = this.props.scales
 
-    var systemY = topPadding + systemRadius
+    var viewportWidth = window.innerWidth
+    ,   systemRadius = Constants.SYSTEM_WIDTH
+    ,   rootThree = Math.sqrt(3)
+    ,   hexRadius = ((systemRadius / rootThree) * 2) + Constants.SYSTEM_PADDING
+    ,   hexWidth = hexRadius / 2 * rootThree * 2
+    ,   numSystemsWidest = Math.floor(viewportWidth / hexWidth)
+    ,   leftOffset = ((((viewportWidth / hexWidth) % 1) / 2) * hexWidth) + (hexWidth / 2)
+    ,   topOffset = this.props.layout.headerHeight + hexRadius
+    ,   hexGrid = this.makeHexGrid(this.props.songs.length, numSystemsWidest)
     ,   songSystems = this.props.songs.map(function(songData, i) {
-          var sx
-          ,   sy = systemY
-          ,   index = (i + 1) % 3
-          if (index === 0) {
-            sx = 2 * horizontalSpacing
-            systemY += verticalSpacing
-          } else if (index === 1) {
-            sx = horizontalSpacing
-          } else if (index === 2) {
-            sx = 3 * horizontalSpacing
-            systemY += verticalSpacing
-          }
+          var hex = hexGrid[i]
+          ,   r = hex.r
+          ,   q = hex.q
+          ,   sx = leftOffset + hexRadius * rootThree * (q + r / 2)
+          ,   sy = topOffset + hexRadius * 3 / 2 * r
 
           var systemId = songData.id
           ,   shouldAnimate = systemId !== hoveredId
@@ -64,8 +90,10 @@ var GalaxyView = React.createClass({
           )
         })
 
+    var galaxyHeight = this.props.songs.length ? topOffset + hexGrid[hexGrid.length - 1].r * (hexRadius * 2 * 3 / 4) + hexRadius : 0
+
     return (
-      <svg className="SongGalaxy" {...dim} >
+      <svg className="SongGalaxy" width={viewportWidth} height={galaxyHeight} >
         <defs>
           <g dangerouslySetInnerHTML={{ __html: SvgUtil.getStarGlow() }} />
           <g dangerouslySetInnerHTML={{ __html: SvgUtil.getGalaxyGradient() }} />
