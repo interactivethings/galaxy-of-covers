@@ -11,7 +11,7 @@ var Layout = {
     }
   },
 
-  getLayout(dynamicState) {
+  getLayout() {
     var dynamicState = SongStore.getDynamic()
     ,   dim = this.getWindowDimensions()
     ,   componentLayout
