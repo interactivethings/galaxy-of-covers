@@ -32,7 +32,6 @@ var Layout = {
       { headerHeight: 60
       , headerWidth: dim.width
       , legendHeight: 175
-      , bodyHeight: dim.height
       , bodyWidth: dim.width
       }
     }
