@@ -160,26 +160,26 @@ function findBounds(dataset) {
 
 function makeScaleSet(bounds) {
   var orbitRadius = d3.time.scale().domain([new Date(1931, 1, 1), new Date()]).range([10, 300])
-  ,   radius = d3.scale.linear().domain([0, 100]).range([3, 18])
-  ,   color = d3.scale.ordinal().domain(bounds.genres).range(['#E5D166', '#9BC054', '#57BF93', '#5882B4', '#CD6586'])
+  ,   planetRadius = d3.scale.linear().domain([0, 100]).range([3, 18])
+  ,   planetColor = d3.scale.ordinal().domain(bounds.genres).range(['#E5D166', '#9BC054', '#57BF93', '#5882B4', '#CD6586'])
   // rotation ranges from 270 to 450 degrees
   ,   rotation = d3.scale.linear().domain([0, 1]).range([0, -90])
   ,   timelineRotation = d3.scale.linear().domain([0, 1]).range([0, -90])
   // rotation ranges from 0 to 360 degrees
 //  ,   rotation = d3.scale.linear().domain([0, 1]).range([0, 360])
   ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5, 2.5])
-  ,   timelineRadius = d3.scale.linear().domain([0, 100]).range([3, 50])
+  ,   timelinePlanetRadius = d3.scale.linear().domain([0, 100]).range([3, 50])
   ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([-1, 8, 7, 6, 5, 4, 3]) // reverse scale
 //  ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([6])
   ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2, 14])
 
   return {
     getOrbitRadiusScale: () => orbitRadius,
-    getRadiusScale: () => radius,
-    getColorScale: () => color,
+    getRadiusScale: () => planetRadius,
+    getColorScale: () => planetColor,
     getRotationScale: () => rotation,
     getSpeedScale: () => speed,
-    getTimelineRadiusScale: () => timelineRadius,
+    getTimelineRadiusScale: () => timelinePlanetRadius,
     getEdgesScale: () => edgesScale,
     getTimelineRotation: () => timelineRotation,
     getBlinkScale: () => blinkScale
