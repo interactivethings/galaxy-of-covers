@@ -91,7 +91,7 @@ var SongTimeline = React.createClass({
           <g dangerouslySetInnerHTML={{ __html: SvgUtil.getStarGlow() }} />
         </defs>
         <g transform={SvgUtil.translateString(0, timelineTop)}>
-          { __DEV__ ? <line x1={0} x2={this.props.layout.bodyWidth} stroke="#0ff" /> : null }
+          {/* __DEV__ ? <line x1={0} x2={this.props.layout.bodyWidth} stroke="#0ff" /> : null */}
           {tails}
           {planets}
           <SongTimelineAxis
