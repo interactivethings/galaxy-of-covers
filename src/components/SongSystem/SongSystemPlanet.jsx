@@ -1,4 +1,5 @@
 var React = require('react')
+,   d3 = require('d3')
 
 var SvgUtil = require('util/svgutil')
 
@@ -34,22 +35,16 @@ var SongSystemPlanet = React.createClass({
     ,   rotation = this.props.rotation
     ,   element = this.getDOMNode()
 
-    function animate() {
+    function animate(t) {
       if (animationTracker.stop) return true
-      if (animationTracker.pause) return requestAnimationFrame(animate)
-
-      t += 0.1
+      if (animationTracker.pause) return false
 
       var pos = getPosition(rx, ry, t, s)
       element.setAttribute('transform', SvgUtil.getRotateAndTranslate(rotation, pos[0], pos[1]))
       element.setAttribute('opacity', getBlinkOpacity(t, bs))
-
-      requestAnimationFrame(animate)
     }
 
-    this.animationTracker = animationTracker
-
-    animate()
+    d3.timer(animate)
   },
 
   shouldComponentUpdate(newProps, newState) {

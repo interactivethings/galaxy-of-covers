@@ -167,11 +167,11 @@ function makeScaleSet(bounds) {
   ,   timelineRotation = d3.scale.linear().domain([0, 1]).range([0, -90])
   // rotation ranges from 0 to 360 degrees
 //  ,   rotation = d3.scale.linear().domain([0, 1]).range([0, 360])
-  ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5, 2.5])
+  ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5 / 600, 2.5 / 600])
   ,   timelinePlanetRadius = d3.scale.linear().domain([0, 100]).range([3, 50])
   ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([-1, 8, 7, 6, 5, 4, 3]) // reverse scale
 //  ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([6])
-  ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2, 14])
+  ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2 / 600, 14 / 600])
 
   return {
     getOrbitRadiusScale: () => orbitRadius,
