@@ -64,7 +64,7 @@ var GalaxyView = React.createClass({
     ,   leftOffset = ((((viewportWidth / hexWidth) % 1) / 2) * hexWidth) + (hexWidth / 2)
     ,   topOffset = this.props.layout.headerHeight + hexRadius
     ,   hexGrid = this.makeHexGrid(this.props.songs.length, numSystemsWidest)
-    ,   songSystems = this.props.songs.map(function(songData, i) {
+    ,   songSystems = this.props.songs.map((songData, i) => {
           var hex = hexGrid[i]
           ,   r = hex.r
           ,   q = hex.q
