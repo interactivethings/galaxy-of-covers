@@ -5,6 +5,7 @@ require('components/SongSystem/SongSystem.scss')
 var SongSystemPlanet = require('components/SongSystem/SongSystemPlanet')
 ,   SongSystemOrbit = require('components/SongSystem/SongSystemOrbit')
 ,   ViewActions = require('actions/ViewActions')
+,   Layout = require('components/Layout')
 
 function translateString(x, y) {
   return 'translate(' + x + ',' + y + ')'
@@ -100,6 +101,10 @@ var SongSystem = React.createClass({
 
   componentDidMount() {
     var node = d3.select(this.getDOMNode())
+
+    // optimize this later
+/*    var bounds = this.getDOMNode().getBoundingClientRect()
+    ,   scrollTop = Layout.getScrollY()*/
 
     node.select('.SongSystem--glowingstar')
       .attr('filter', 'url(#starGlowFilter)')

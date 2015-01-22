@@ -2,6 +2,10 @@
 
 var SongStore = require('stores/SongStore')
 
+// source: https://developer.mozilla.org/en-US/docs/Web/API/Window.scrollY
+var supportPageOffset = window.pageXOffset !== undefined
+var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat")
+
 var Layout = {
 
   getWindowDimensions() {
@@ -9,6 +13,10 @@ var Layout = {
       width: window.innerWidth,
       height: window.innerHeight
     }
+  },
+
+  getScrollY() {
+    return supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop
   },
 
   getLayout() {
