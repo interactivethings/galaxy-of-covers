@@ -38,7 +38,7 @@ var App = React.createClass({
   },
 
   shouldComponentUpdate(nextProps, nextState) {
-    return !Immutable.is(this.state.appState, nextState.appState)
+    return !Immutable.is(this.state.appState, nextState.appState) || (this.state.size !== nextState.size)
   },
 
   render() {
