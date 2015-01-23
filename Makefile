@@ -61,6 +61,12 @@ data-whosampled:
 data-shs-versions:
 	$(PYTHON) data/py/pullData.py
 
+data-add-whosampled-genres:
+	$(PYTHON) data/py/mergeWhoSampledGenres.py
+
+data-trim-for-production:
+	$(PYTHON) data/py/trimForProduction.py
+
 clean-shs-cache: clean-shs-search-cache clean-shs-scrape-cache
 
 clean-shs-search-cache:

@@ -193,15 +193,7 @@ function prepareLoadedData(dataset) {
     songData.versions.forEach((versionData) => {
       versionData.id = DataUtil.versionId(versionData)
       versionData.parsedDate = parseDate(versionData.date)
-      // genres sourced from: http://www.furia.com/page.cgi?type=log&id=427
-      // versionData.genre = ['Metropopolis', 'Laboratorio', 'More Deeper House', 'Fallen Angel', 'Permanent Wave'][Math.floor(Math.random() * 5)]
-      var genre
-      if (versionData.musiXmatch && versionData.musiXmatch.genres && versionData.musiXmatch.genres.length > 0) {
-        genre = versionData.musiXmatch.genres[0]
-      } else {
-        genre = 'Unknown'
-      }
-      versionData.genre = genre
+      var genre = versionData.genre
       if (!allGenresCounter[genre]) allGenresCounter[genre] = 0
       allGenresCounter[genre]++
     })
