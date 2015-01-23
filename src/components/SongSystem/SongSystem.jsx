@@ -74,7 +74,7 @@ var SongSystem = React.createClass({
         <SongSystemOrbit key={'orbit-'+id} {...songProps} />
       )
       planets.push(
-        <SongSystemPlanet key={id} {...songProps} />
+        <SongSystemPlanet key={'planet-'+id} {...songProps} />
       )
     })
 

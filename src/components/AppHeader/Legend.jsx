@@ -21,11 +21,13 @@ var Legend = React.createClass({
       <div className={"AppHeader--legend " + (this.props.isOpen ? 'AppHeader--legend__open' : '')}>
       {
         pairs.map((pair) => {
+          var optionName = pair[0]
           return (
             <LegendOption
-              attributeName={pair[0]}
+              key={'legendoption-'+optionName}
+              attributeName={optionName}
               viewName={inDetail ? 'detail' : 'overview'}
-              isInactive={highlighted && highlighted !== pair[0]}
+              isInactive={highlighted && highlighted !== optionName}
               optionLabel={pair[1]}
               clickFunction={onClick}
             />

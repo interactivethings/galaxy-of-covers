@@ -37,6 +37,7 @@ var GenreHeader = React.createClass({
             cumulative += n
             return (
               <GenreListing
+                key={'genrelisting-'+genre}
                 genre={genre}
                 onGenreClick={clickFunction}
                 x={x}
