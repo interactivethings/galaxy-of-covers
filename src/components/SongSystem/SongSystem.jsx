@@ -6,6 +6,7 @@ var SongSystemPlanet = require('components/SongSystem/SongSystemPlanet')
 ,   SongSystemOrbit = require('components/SongSystem/SongSystemOrbit')
 ,   ViewActions = require('actions/ViewActions')
 ,   Layout = require('components/Layout')
+,   AnimationManager = require('components/Animation/AnimationManager')
 
 function translateString(x, y) {
   return 'translate(' + x + ',' + y + ')'
@@ -52,23 +53,29 @@ var SongSystem = React.createClass({
     ,   genreFilter = this.props.genreFilter
     ,   songId = this.props.id
 
+    AnimationManager.toggleSystemPlay(this.props.id, this.props.animate)
+
     this.props.songData.versions.forEach((versionData, i) => {
-      if (!versionData.echonest || !versionData.spotify) return;
-      if (genreFilter.get(versionData.genre)) return;
+      if (!versionData.echonest || !versionData.spotify) return
+
+      var genre = versionData.genre
+      ,   versionId = versionData.id
+      if (genreFilter.get(genre)) {
+        AnimationManager.togglePlanetPlay(versionId, false)
+        return
+      }
 
       var ellipseRadius = orbitRadScale(versionData.parsedDate)
       ,   yMult = 3 / 5
-      ,   versionId = versionData.id
       ,   planetProps =
           { orbitRadX: ellipseRadius
           , orbitRadY: ellipseRadius * yMult
           , r: radScale(versionData.spotify.popularity)
-          , color: colorScale(versionData.genre)
+          , color: colorScale(genre)
           , rotation: rotationScale(versionData.echonest.valence)
           , speed: speedScale(versionData.echonest.energy)
           , blinkSpeed: blinkScale(versionData.echonest.tempo)
           , sides: sidesScale(versionData.echonest.speechiness)
-          , shouldAnimate: this.props.animate
           , songId: songId
           , versionId: versionId
           }
@@ -116,6 +123,10 @@ var SongSystem = React.createClass({
       node.select('.SongSystem--background')
         .attr('filter', 'url(#galaxyShadow)')
     }
+  },
+
+  componentWillUnmount() {
+    AnimationManager.stopSystem(this.props.id)
   }
 
 })

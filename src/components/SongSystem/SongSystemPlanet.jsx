@@ -2,23 +2,17 @@ var React = require('react')
 ,   d3 = require('d3')
 
 var SvgUtil = require('util/svgutil')
-,   AnimationManager = require('components/AnimationManager/AnimationManager')
-,   PlanetAnimator = require('components/AnimationManager/PlanetAnimator')
+,   AnimationManager = require('components/Animation/AnimationManager')
+,   PlanetAnimator = require('components/Animation/PlanetAnimator')
 
 var SongSystemPlanet = React.createClass({
 
   componentDidMount() {
     var AnimatedNode = PlanetAnimator(this.getDOMNode(), this.props.versionId, this.props.speed, this.props.blinkSpeed, this.props.orbitRadX, this.props.orbitRadY, this.props.rotation)
-    AnimationManager.registerAnimatedPlanet(AnimatedNode)
-    AnimationManager.continuousPlanetAnimation(AnimatedNode.id)
+    AnimationManager.registerSystemPlanet(this.props.songId, AnimatedNode)
   },
 
   shouldComponentUpdate(newProps, newState) {
-    if (newProps.shouldAnimate !== this.props.shouldAnimate) {
-      AnimationManager.togglePlanetPlay(this.props.versionId, newProps.shouldAnimate)
-      return false
-    }
-
     var updateProps = ['r', 'color', 'rotation']
     ,   curProps = this.props
     ,   prop
@@ -30,8 +24,6 @@ var SongSystemPlanet = React.createClass({
   },
 
   render() {
-    AnimationManager.togglePlanetPlay(this.props.versionId, this.props.shouldAnimate)
-
     var planetPos = PlanetAnimator.getPosition(this.props.orbitRadX, this.props.orbitRadY, 0, this.props.speed)
 
     if (this.props.sides === -1) {
@@ -55,10 +47,6 @@ var SongSystemPlanet = React.createClass({
         />
       )
     }
-  },
-
-  componentWillUnmount() {
-    AnimationManager.stopPlanet(this.props.versionId)
   }
 
 })
