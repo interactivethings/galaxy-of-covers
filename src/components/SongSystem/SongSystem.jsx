@@ -50,6 +50,7 @@ var SongSystem = React.createClass({
     ,   blinkScale = this.props.scales.getBlinkScale()
     ,   sidesScale = this.props.scales.getEdgesScale()
     ,   genreFilter = this.props.genreFilter
+    ,   songId = this.props.id
 
     this.props.songData.versions.forEach((versionData, i) => {
       if (!versionData.echonest || !versionData.spotify) return;
@@ -57,7 +58,8 @@ var SongSystem = React.createClass({
 
       var ellipseRadius = orbitRadScale(versionData.parsedDate)
       ,   yMult = 3 / 5
-      ,   songProps =
+      ,   versionId = versionData.id
+      ,   planetProps =
           { orbitRadX: ellipseRadius
           , orbitRadY: ellipseRadius * yMult
           , r: radScale(versionData.spotify.popularity)
@@ -67,14 +69,15 @@ var SongSystem = React.createClass({
           , blinkSpeed: blinkScale(versionData.echonest.tempo)
           , sides: sidesScale(versionData.echonest.speechiness)
           , shouldAnimate: this.props.animate
+          , songId: songId
+          , versionId: versionId
           }
-      ,   id = versionData.id
 
       orbits.push(
-        <SongSystemOrbit key={'orbit-'+id} {...songProps} />
+        <SongSystemOrbit key={'orbit-'+versionId} {...planetProps} />
       )
       planets.push(
-        <SongSystemPlanet key={'planet-'+id} {...songProps} />
+        <SongSystemPlanet key={'planet-'+versionId} {...planetProps} />
       )
     })
 
@@ -102,7 +105,7 @@ var SongSystem = React.createClass({
   componentDidMount() {
     var node = d3.select(this.getDOMNode())
 
-    // optimize this later
+    // optimize this later (only render if within window)
 /*    var bounds = this.getDOMNode().getBoundingClientRect()
     ,   scrollTop = Layout.getScrollY()*/
 
