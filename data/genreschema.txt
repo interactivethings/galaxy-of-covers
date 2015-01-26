@@ -1,0 +1,71 @@
+("mm" means that the genre, or combination of genres, comes from musiXmatch, rather than whosampled)
+
+core genres:
+"Rock / Pop"
+"Country / Folk"
+"Hip-Hop / R&B"
+"Soul / Funk / Disco"
+"Jazz / Blues"
+"Reggae"
+"Electronic / Dance"
+"Classical"
+"Vocal"
+
+automatically reclassify:
+'mm Pop': "Rock / Pop"
+'mm Rock': "Rock / Pop"
+'mm Pop/Rock': "Rock / Pop"
+'mm Pop / Rock': "Rock / Pop"
+'mm Blues': "Jazz / Blues"
+'mm Jazz': "Jazz / Blues"
+'mm Country': "Country / Folk"
+'mm Reggae': "Reggae"
+
+manually reclassify:
+"Easy Listening"
+"World"
+"Other"
+"Soundtrack"
+'mm Pop / Singer/Songwriter'
+'mm Dance'
+'mm Pop / Country'
+'mm Country / Singer/Songwriter'
+'mm Psychedelic'
+'mm Singer/Songwriter / Pop / Rock / Contemporary Folk'
+'mm Pop / Easy Listening'
+'mm Vocal / Pop / Rock'
+'mm Alternative'
+'mm Doo Wop / R&B/Soul'
+'mm Pop / French Pop'
+'mm Dance / Pop'
+'mm Pop / Jazz / Country'
+'mm Classical'
+'mm Christian & Gospel'
+'mm Country / Pop'
+'mm MPB'
+'mm Pop / Alternative'
+'mm Pop / Vocal'
+'mm R&B/Soul'
+'mm Comedy / Spoken Word'
+'mm Singer/Songwriter'
+'mm Singer/Songwriter / Alternative'
+'mm Holiday / Christian & Gospel'
+'mm Singer/Songwriter / Pop'
+'mm R&B/Soul / Rock'
+'mm New Age / Pop'
+'mm Blues / Rock'
+'mm Heavy Metal / Comedy'
+'mm Country / Easy Listening / Folk-Rock'
+'mm Classical / Vocal / Pop'
+'mm Pop Latino'
+'mm Pop / Soundtrack'
+'mm Rock / Country'
+'mm Rock / Blues / Blues-Rock'
+'mm Vocal / Pop'
+'mm French Pop / Pop'
+'mm Pop / Rock / Dance'
+'mm French Pop'
+'mm Pop / R&B/Soul / Vocal'
+'mm Easy Listening / Pop'
+'mm Alternative / Rock'
+'mm Vocal'

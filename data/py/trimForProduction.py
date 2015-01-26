@@ -1,4 +1,5 @@
 import json
+import csv
 
 from constants import *
 
@@ -13,22 +14,61 @@ fullData = json.load(open(OUT_DIR+"songinfo-spotify-echonest-genres-whosampled.j
 trimmedData = []
 
 clearOpenFile(FILE_TRIMMED_FOR_PRODUCTION)
+classificationCsvFile = open(OUT_DIR+"classificationhelper.csv", "a")
+clearOpenFile(classificationCsvFile)
+classificationWriter = csv.writer(classificationCsvFile)
+classificationWriter.writerow(["songid", "link"])
+
+genreReMap = {
+  'mm Pop': "Rock / Pop",
+  'mm Rock': "Rock / Pop",
+  'mm Pop/Rock': "Rock / Pop",
+  'mm Pop / Rock': "Rock / Pop",
+  'mm Blues': "Jazz / Blues",
+  'mm Jazz': "Jazz / Blues",
+  'mm Country': "Country / Folk",
+  'mm Reggae': "Reggae",
+}
+
+coreGrenres = [
+  "Rock / Pop",
+  "Country / Folk",
+  "Hip-Hop / R&B",
+  "Soul / Funk / Disco",
+  "Jazz / Blues",
+  "Reggae",
+  "Electronic / Dance",
+  "Classical",
+  "Vocal",
+]
 
 for songData in fullData:
   trimmedSong = pick(songData, ["title"])
   trimmedVersions = []
   for versionData in songData["versions"]:
+    # make sure necessary data exists
     if "echonest" not in versionData or "spotify" not in versionData:
       continue
     trimmedV = pick(versionData, ["title", "performer", "date"])
+    trimmedV["id"] = versionData["echonest"]["songId"]
     trimmedV["spotify"] = pick(versionData["spotify"], ["popularity", "preview"])
     trimmedV["echonest"] = pick(versionData["echonest"], ["speechiness", "valence", "tempo", "energy"])
+    # genre selection
     if "whosampled" in versionData and versionData["whosampled"]["genre"]:
-      trimmedV["genre"] = versionData["whosampled"]["genre"]
+      chosenGenre = versionData["whosampled"]["genre"]
     elif "musiXmatch" in versionData and versionData["musiXmatch"] and len(versionData["musiXmatch"]["genres"]):
-      trimmedV["genre"] = " / ".join(versionData["musiXmatch"]["genres"])
+      chosenGenre = "mm " + " / ".join(versionData["musiXmatch"]["genres"])
     else:
-      trimmedV["genre"] = "Unknown"
+      chosenGenre = None
+    # genre remap
+    if chosenGenre in genreReMap:
+      chosenGenre = genreReMap[chosenGenre]
+    # genre validity check
+    if chosenGenre not in coreGrenres:
+      chosenGenre = None
+      classificationWriter.writerow([trimmedV["id"], trimmedV["spotify"]["preview"]])
+
+    trimmedV["genre"] = chosenGenre
     trimmedVersions.append(trimmedV)
   trimmedSong["versions"] = trimmedVersions
   trimmedData.append(trimmedSong)
