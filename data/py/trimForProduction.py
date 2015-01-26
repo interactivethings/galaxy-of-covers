@@ -17,7 +17,7 @@ clearOpenFile(FILE_TRIMMED_FOR_PRODUCTION)
 classificationCsvFile = open(OUT_DIR+"classificationhelper.csv", "a")
 clearOpenFile(classificationCsvFile)
 classificationWriter = csv.writer(classificationCsvFile)
-classificationWriter.writerow(["songid", "link"])
+classificationWriter.writerow(["spotifyid", "link", "genre"])
 
 genreReMap = {
   'mm Pop': "Rock / Pop",
@@ -50,7 +50,7 @@ for songData in fullData:
     if "echonest" not in versionData or "spotify" not in versionData:
       continue
     trimmedV = pick(versionData, ["title", "performer", "date"])
-    trimmedV["id"] = versionData["echonest"]["songId"]
+    trimmedV["id"] = versionData["spotify"]["id"]
     trimmedV["spotify"] = pick(versionData["spotify"], ["popularity", "preview"])
     trimmedV["echonest"] = pick(versionData["echonest"], ["speechiness", "valence", "tempo", "energy"])
     # genre selection
@@ -66,7 +66,7 @@ for songData in fullData:
     # genre validity check
     if chosenGenre not in coreGrenres:
       chosenGenre = None
-      classificationWriter.writerow([trimmedV["id"], trimmedV["spotify"]["preview"]])
+      classificationWriter.writerow([trimmedV["id"], trimmedV["spotify"]["preview"], chosenGenre or ''])
 
     trimmedV["genre"] = chosenGenre
     trimmedVersions.append(trimmedV)
