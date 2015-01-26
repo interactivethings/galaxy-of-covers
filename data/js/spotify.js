@@ -129,11 +129,28 @@ Promise
   .then(function(data) {
 
     console.log('Total works:', data.length);
+
+    var existingIds = {};
     data.forEach(function(d) {
       var counts = _.countBy(d.versions, function(d) { return d.spotify ? true : false; });
       var maxPop = d3.max(d.versions, function(d) { return d.spotify ? d.spotify.popularity : 0; });
       console.log('Spotified '+ counts.true + ' of ' + d.versions.length +' versions of "'+ d.title + '" ' +
                   '(popMax='+maxPop+')');
+      // this reduce operation filters out versions which returned the same spotify id as an already - existing version
+      d.versions = d.versions.reduce(function(vMemo, trackDatum) {
+        if (trackDatum.spotify && trackDatum.spotify.id) {
+          var id = trackDatum.spotify.id;
+          if (!existingIds[id]) {
+            existingIds[id] = trackDatum;
+            vMemo.push(trackDatum);
+          } else {
+            console.log("Warning: two versions with the same spotify id. Keeping the version dated:", existingIds[id].date, "instead of the one dated:", trackDatum.date);
+          }
+        } else {
+          vMemo.push(trackDatum);
+        }
+        return vMemo;
+      }, []);
     });
 
     console.log('Writing to', OUTPUT_FILE);

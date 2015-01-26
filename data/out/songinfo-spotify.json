@@ -3581,29 +3581,6 @@
         "spotify": null
       },
       {
-        "date": "October 1996",
-        "performer": "Grateful Dead",
-        "title": "All Along the Watchtower",
-        "spotify": {
-          "id": "1z56u8TDvHTB6rA9aQSQvM",
-          "name": "All Along the Watchtower - Live",
-          "artists": [
-            {
-              "id": "74ASZWbe4lXaubB36ztrGX",
-              "name": "Bob Dylan"
-            },
-            {
-              "id": "4TMHGUX5WI7OOm53PqSDAT",
-              "name": "Grateful Dead"
-            }
-          ],
-          "duration": 386306,
-          "popularity": 34,
-          "preview": "https://p.scdn.co/mp3-preview/d625d101cac92dc5461038c7361d804b3d82c6a8",
-          "albumArtwork": "https://i.scdn.co/image/51cba9b889fd3c01d5858ead4daf2eb0d9d333fa"
-        }
-      },
-      {
         "date": "1996",
         "performer": "The Hamsters",
         "title": "All Along the Watchtower",
@@ -7220,25 +7197,6 @@
           "popularity": 39,
           "preview": "https://p.scdn.co/mp3-preview/7c79e9aecb4d630e8dadd3a31ce6ab2036be01fc",
           "albumArtwork": "https://i.scdn.co/image/645bec3f4b52d10d4166fb29752c3f162998033c"
-        }
-      },
-      {
-        "date": "1992",
-        "performer": "Beatles Revival Band",
-        "title": "With a Little Help From My Friends",
-        "spotify": {
-          "id": "64KDDyYzHNeRohROdiUnq5",
-          "name": "With a Little Help from My Friends - Live",
-          "artists": [
-            {
-              "id": "0zRgwHorAZPeYVdTW9F5OX",
-              "name": "The Beatles Revival Band"
-            }
-          ],
-          "duration": 163315,
-          "popularity": 30,
-          "preview": "https://p.scdn.co/mp3-preview/a246410e45af0cb07c5a8be023815b6216b4cf57",
-          "albumArtwork": "https://i.scdn.co/image/32917ffa986260f19af7b5f2d655299a3820197b"
         }
       },
       {
@@ -11581,25 +11539,6 @@
         "performer": "Pat Boone",
         "title": "Song of the Siren",
         "spotify": null
-      },
-      {
-        "date": "1970",
-        "performer": "Tim Buckley",
-        "title": "Song to the Siren",
-        "spotify": {
-          "id": "4wVziiCDtgX39cglWWQDqm",
-          "name": "Song To the Siren",
-          "artists": [
-            {
-              "id": "6zHRqvws8dVeqL8D31ponr",
-              "name": "Tim Buckley"
-            }
-          ],
-          "duration": 209173,
-          "popularity": 44,
-          "preview": "https://p.scdn.co/mp3-preview/d3c7d1a0aaaa70c076228f23b2becdf1a17d01a9",
-          "albumArtwork": "https://i.scdn.co/image/108398c94441e4ade6e08688ba9045ead1745217"
-        }
       },
       {
         "date": "September 1983",
@@ -21314,25 +21253,6 @@
         }
       },
       {
-        "date": "1952",
-        "performer": "Ewan MacColl",
-        "title": "Dirty Old Town",
-        "spotify": {
-          "id": "70Lp2jydCCgyzWLqZsDlMN",
-          "name": "Dirty Old Town",
-          "artists": [
-            {
-              "id": "3tetInyzmPXATzLBTzl125",
-              "name": "Ewan MacColl"
-            }
-          ],
-          "duration": 63160,
-          "popularity": 22,
-          "preview": "https://p.scdn.co/mp3-preview/865466d0f6d81a60ca1c3cbdbc47911aacf7adec",
-          "albumArtwork": "https://i.scdn.co/image/f84208c032bb85cb0002158bd0501532ca9ab4ae"
-        }
-      },
-      {
         "date": "1956",
         "performer": "Alan Lomax",
         "title": "Dirty Old Town",
@@ -27923,33 +27843,6 @@
         }
       },
       {
-        "date": "May 8, 2001",
-        "performer": "Nicole Kidman, Ewan McGregor and Jamie Allen",
-        "title": "Elephant Love Medley",
-        "spotify": {
-          "id": "7FCcTxy5GsRFHWWcHAIGJ4",
-          "name": "Elephant Love Medley",
-          "artists": [
-            {
-              "id": "0ExYzTb7raTAfsXPtiI5vq",
-              "name": "Nicole Kidman"
-            },
-            {
-              "id": "105Paee9vmV5rfLSG652e1",
-              "name": "Ewan McGregor"
-            },
-            {
-              "id": "5R51XX6tR8R2zlBYRmXm0o",
-              "name": "Jamie Allen"
-            }
-          ],
-          "duration": 251560,
-          "popularity": 34,
-          "preview": "https://p.scdn.co/mp3-preview/3db51bb2d44f589abb11c5c2530d432071b2d354",
-          "albumArtwork": "https://i.scdn.co/image/9ec453196ffd76ce36471e7bf41723036b162299"
-        }
-      },
-      {
         "date": "2001",
         "performer": "Michelle Walker",
         "title": "Your Song",
@@ -28090,29 +27983,6 @@
         "performer": "Meade Skelton",
         "title": "Your Song",
         "spotify": null
-      },
-      {
-        "date": "2004",
-        "performer": "Cheryl Porter",
-        "title": "Your Song",
-        "spotify": {
-          "id": "1JED0tXK4nXXtEDRNAUAF0",
-          "name": "Your Song",
-          "artists": [
-            {
-              "id": "3BCwn8kef8LNrfMhOiTcYa",
-              "name": "Cheryl Porter"
-            },
-            {
-              "id": "4Ob9aNB0iSv2xpePq7wjIs",
-              "name": "The Archimia String Quartet"
-            }
-          ],
-          "duration": 320092,
-          "popularity": 3,
-          "preview": "https://p.scdn.co/mp3-preview/caf4a155eb9ad8b8afab1a9bee223307deadf28d",
-          "albumArtwork": "https://i.scdn.co/image/20910a8da062ced740f623535d4ac7bbf904e07e"
-        }
       },
       {
         "date": "2004",

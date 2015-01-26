@@ -128,7 +128,7 @@
           "location": "Memphis, TN",
           "longitude": -89.990415,
           "whosampledId": "8586",
-          "musixmatch": "15646525"
+          "musixmatch": "1009015"
         }
       },
       {
@@ -179,7 +179,7 @@
           "location": "Abbott, TX, US",
           "longitude": -97.0757,
           "whosampledId": "8587",
-          "musixmatch": "51142456"
+          "musixmatch": "35569136"
         }
       },
       {
@@ -2277,7 +2277,7 @@
           "location": "Cleveland, OH",
           "longitude": -81.667486,
           "whosampledId": "7675",
-          "musixmatch": "15441057"
+          "musixmatch": "2204517"
         }
       },
       {
@@ -2921,7 +2921,7 @@
           "location": "East Orange, NJ",
           "longitude": -74.207039,
           "whosampledId": "4153",
-          "musixmatch": "32982673"
+          "musixmatch": "35476339"
         }
       },
       {
@@ -3558,7 +3558,7 @@
           "location": "Pittsburgh, PA, US",
           "longitude": -79.9975,
           "whosampledId": "124924",
-          "musixmatch": "17755747"
+          "musixmatch": "14705441"
         }
       },
       {
@@ -3690,7 +3690,7 @@
           "latitude": 40.736101,
           "location": "Newark, NJ",
           "longitude": -74.22509,
-          "musixmatch": "48526069"
+          "musixmatch": "64308483"
         }
       },
       {
@@ -4220,7 +4220,7 @@
           "location": "Newark, NJ, US",
           "longitude": -74.1742,
           "whosampledId": "29934",
-          "musixmatch": "38163047"
+          "musixmatch": "1963780"
         }
       },
       {
@@ -4271,7 +4271,7 @@
           "location": "Guildford, England, GB",
           "longitude": -0.57051,
           "whosampledId": "23447",
-          "musixmatch": "15866955"
+          "musixmatch": "19442975"
         }
       },
       {
@@ -5570,7 +5570,7 @@
           "location": "Duluth, MN, US",
           "longitude": -92.0999,
           "whosampledId": "10771",
-          "musixmatch": "15108920"
+          "musixmatch": "2708205"
         }
       },
       {
@@ -5886,7 +5886,7 @@
           "latitude": 52.1911,
           "location": "Worcester, England, GB",
           "longitude": -2.22227,
-          "musixmatch": "35602449"
+          "musixmatch": "1822082"
         }
       },
       {
@@ -6055,7 +6055,7 @@
           "location": "Sacramento, CA",
           "longitude": -121.555406,
           "whosampledId": "49754",
-          "musixmatch": "1942900"
+          "musixmatch": "35054910"
         }
       },
       {
@@ -6138,7 +6138,7 @@
           "location": "Brooklyn, NY",
           "longitude": -73.989319,
           "whosampledId": "79395",
-          "musixmatch": "2626986"
+          "musixmatch": "2055585"
         }
       },
       {
@@ -6180,7 +6180,7 @@
           "latitude": 46.788,
           "location": "Duluth, MN, US",
           "longitude": -92.0999,
-          "musixmatch": "15108920"
+          "musixmatch": "2708205"
         }
       },
       {
@@ -6428,48 +6428,6 @@
         "spotify": null
       },
       {
-        "date": "October 1996",
-        "performer": "Grateful Dead",
-        "title": "All Along the Watchtower",
-        "spotify": {
-          "id": "1z56u8TDvHTB6rA9aQSQvM",
-          "name": "All Along the Watchtower - Live",
-          "artists": [
-            {
-              "id": "74ASZWbe4lXaubB36ztrGX",
-              "name": "Bob Dylan"
-            },
-            {
-              "id": "4TMHGUX5WI7OOm53PqSDAT",
-              "name": "Grateful Dead"
-            }
-          ],
-          "duration": 386306,
-          "popularity": 34,
-          "preview": "https://p.scdn.co/mp3-preview/d625d101cac92dc5461038c7361d804b3d82c6a8",
-          "albumArtwork": "https://i.scdn.co/image/51cba9b889fd3c01d5858ead4daf2eb0d9d333fa"
-        },
-        "echonest": {
-          "songId": "SOFJKPP144C964EC61",
-          "energy": 0.809914,
-          "liveness": 0.991616,
-          "tempo": 137.459,
-          "speechiness": 0.046285,
-          "acousticness": 0.007343,
-          "instrumentalness": 0.029875,
-          "mode": 0,
-          "time_signature": 4,
-          "duration": 386.37959,
-          "loudness": -8.097,
-          "valence": 0.693047,
-          "danceability": 0.454394,
-          "latitude": 46.788,
-          "location": "Duluth, MN, US",
-          "longitude": -92.0999,
-          "musixmatch": "15108920"
-        }
-      },
-      {
         "date": "1996",
         "performer": "The Hamsters",
         "title": "All Along the Watchtower",
@@ -6511,7 +6469,7 @@
           "location": "Charlottesville, VA",
           "longitude": -78.556765,
           "whosampledId": "62515",
-          "musixmatch": "18561109"
+          "musixmatch": "30215078"
         }
       },
       {
@@ -7392,7 +7350,7 @@
           "latitude": 43.6486,
           "location": "Toronto, Ontario, CA",
           "longitude": -79.3853,
-          "musixmatch": "15011669"
+          "musixmatch": "52213771"
         }
       },
       {
@@ -7523,7 +7481,7 @@
           "location": "Anaheim, CA",
           "longitude": -117.952151,
           "whosampledId": "10360",
-          "musixmatch": "14659564"
+          "musixmatch": "15171340"
         }
       },
       {
@@ -9335,7 +9293,7 @@
           "location": "New York, NY, US",
           "longitude": -74.0071,
           "whosampledId": "81377",
-          "musixmatch": "30825753"
+          "musixmatch": "45183900"
         }
       },
       {
@@ -12201,7 +12159,7 @@
           "location": "Niteroi, Brazil",
           "longitude": -43.0944444,
           "whosampledId": "41438",
-          "musixmatch": "15079144"
+          "musixmatch": "36182554"
         }
       },
       {
@@ -12996,43 +12954,6 @@
           "location": "Clydebank, Scotland, GB",
           "longitude": -4.42534,
           "musixmatch": "15368280"
-        }
-      },
-      {
-        "date": "1992",
-        "performer": "Beatles Revival Band",
-        "title": "With a Little Help From My Friends",
-        "spotify": {
-          "id": "64KDDyYzHNeRohROdiUnq5",
-          "name": "With a Little Help from My Friends - Live",
-          "artists": [
-            {
-              "id": "0zRgwHorAZPeYVdTW9F5OX",
-              "name": "The Beatles Revival Band"
-            }
-          ],
-          "duration": 163315,
-          "popularity": 30,
-          "preview": "https://p.scdn.co/mp3-preview/a246410e45af0cb07c5a8be023815b6216b4cf57",
-          "albumArtwork": "https://i.scdn.co/image/32917ffa986260f19af7b5f2d655299a3820197b"
-        },
-        "echonest": {
-          "songId": "SOGIZKP134EE36C325",
-          "energy": 0.620356,
-          "liveness": 0.661171,
-          "tempo": 116.774,
-          "speechiness": 0.029443,
-          "acousticness": 0.537953,
-          "instrumentalness": 0,
-          "mode": 1,
-          "time_signature": 4,
-          "duration": 163.31483,
-          "loudness": -7.333,
-          "valence": 0.858639,
-          "danceability": 0.659379,
-          "latitude": 48.1492,
-          "location": "Bratislava, Bratislavsky, SK",
-          "longitude": 17.107
         }
       },
       {
@@ -14334,7 +14255,7 @@
           "latitude": 53.3330556,
           "location": "Dublin, Ireland",
           "longitude": -6.2488889,
-          "musixmatch": "33724072"
+          "musixmatch": "14969642"
         }
       },
       {
@@ -17821,7 +17742,7 @@
           "location": "Atlanta, GA",
           "longitude": -84.47405,
           "whosampledId": "9370",
-          "musixmatch": "37121512"
+          "musixmatch": "17853866"
         }
       },
       {
@@ -17897,7 +17818,7 @@
           "location": "Washington, DC",
           "longitude": -77.036366,
           "whosampledId": "67373",
-          "musixmatch": "19236463"
+          "musixmatch": "19479136"
         }
       },
       {
@@ -18199,7 +18120,7 @@
           "location": "El Cerrito, CA, US",
           "longitude": -122.312,
           "whosampledId": "8562",
-          "musixmatch": "1543292"
+          "musixmatch": "15635433"
         }
       },
       {
@@ -18337,7 +18258,7 @@
           "location": "Detroit, MI",
           "longitude": -83.060184,
           "whosampledId": "125348",
-          "musixmatch": "20012251"
+          "musixmatch": "36467495"
         }
       },
       {
@@ -18375,7 +18296,7 @@
           "latitude": 56.4614,
           "location": "Dundee, Scotland, GB",
           "longitude": -2.96761,
-          "musixmatch": "18993191"
+          "musixmatch": "15002655"
         }
       },
       {
@@ -18451,7 +18372,7 @@
           "location": "London, England, GB",
           "longitude": -0.12714,
           "whosampledId": "36550",
-          "musixmatch": "16543018"
+          "musixmatch": "30703862"
         }
       },
       {
@@ -20683,45 +20604,6 @@
         "spotify": null
       },
       {
-        "date": "1970",
-        "performer": "Tim Buckley",
-        "title": "Song to the Siren",
-        "spotify": {
-          "id": "4wVziiCDtgX39cglWWQDqm",
-          "name": "Song To the Siren",
-          "artists": [
-            {
-              "id": "6zHRqvws8dVeqL8D31ponr",
-              "name": "Tim Buckley"
-            }
-          ],
-          "duration": 209173,
-          "popularity": 44,
-          "preview": "https://p.scdn.co/mp3-preview/d3c7d1a0aaaa70c076228f23b2becdf1a17d01a9",
-          "albumArtwork": "https://i.scdn.co/image/108398c94441e4ade6e08688ba9045ead1745217"
-        },
-        "echonest": {
-          "songId": "SOMGSLL14639DAA23F",
-          "energy": 0.051288,
-          "liveness": 0.106241,
-          "tempo": 67.604,
-          "speechiness": 0.03335,
-          "acousticness": 0.843617,
-          "instrumentalness": 0.00016,
-          "mode": 1,
-          "time_signature": 4,
-          "duration": 208.39955,
-          "loudness": -21.305,
-          "valence": 0.070088,
-          "danceability": 0.57347,
-          "latitude": 38.8991,
-          "location": "Washington, DC, US",
-          "longitude": -77.029,
-          "whosampledId": "10765",
-          "musixmatch": "33208247"
-        }
-      },
-      {
         "date": "September 1983",
         "performer": "This Mortal Coil",
         "title": "Song to the Siren",
@@ -21539,7 +21421,7 @@
           "latitude": 33.5777778,
           "location": "Lubbock, TX ",
           "longitude": -101.8547222,
-          "musixmatch": "46994133"
+          "musixmatch": "42258570"
         }
       },
       {
@@ -21681,7 +21563,7 @@
           "latitude": 33.5777778,
           "location": "Lubbock, TX ",
           "longitude": -101.8547222,
-          "musixmatch": "46994133"
+          "musixmatch": "42258570"
         }
       },
       {
@@ -21780,7 +21662,7 @@
           "latitude": 51.5063,
           "location": "London, England, GB",
           "longitude": -0.12714,
-          "musixmatch": "2818985"
+          "musixmatch": "15469463"
         }
       },
       {
@@ -22011,7 +21893,7 @@
           "location": "Massapequa, NY, US",
           "longitude": -73.4653,
           "whosampledId": "60239",
-          "musixmatch": "58400948"
+          "musixmatch": "893897"
         }
       },
       {
@@ -22448,7 +22330,7 @@
           "location": "Berkeley, CA",
           "longitude": -122.29673,
           "whosampledId": "39012",
-          "musixmatch": "72233080"
+          "musixmatch": "32026220"
         }
       },
       {
@@ -22661,7 +22543,7 @@
           "location": "Bexleyheath, London, England, GB",
           "longitude": 0.13804,
           "whosampledId": "26324",
-          "musixmatch": "19236474"
+          "musixmatch": "17099074"
         }
       },
       {
@@ -23218,7 +23100,7 @@
           "location": "Glasgow, Scotland, GB",
           "longitude": -4.24251,
           "whosampledId": "26519",
-          "musixmatch": "33351821"
+          "musixmatch": "32013343"
         }
       },
       {
@@ -23556,7 +23438,7 @@
           "location": "Macon, GA",
           "longitude": -83.617554,
           "whosampledId": "6907",
-          "musixmatch": "2374187"
+          "musixmatch": "14736091"
         }
       },
       {
@@ -23738,7 +23620,7 @@
           "location": "Detroit, MI",
           "longitude": -83.060184,
           "whosampledId": "5226",
-          "musixmatch": "31788635"
+          "musixmatch": "36613642"
         }
       },
       {
@@ -23783,7 +23665,7 @@
           "location": "Detroit Michigan",
           "longitude": -83.060184,
           "whosampledId": "25878",
-          "musixmatch": "30664793"
+          "musixmatch": "35495508"
         }
       },
       {
@@ -24151,7 +24033,7 @@
           "location": "Australia",
           "longitude": 133.398,
           "whosampledId": "214605",
-          "musixmatch": "35614714"
+          "musixmatch": "1495911"
         }
       },
       {
@@ -24602,7 +24484,7 @@
           "location": "Washington, DC, US",
           "longitude": -77.029,
           "whosampledId": "164520",
-          "musixmatch": "41659140"
+          "musixmatch": "15809535"
         }
       },
       {
@@ -24781,7 +24663,7 @@
           "latitude": 42.3966,
           "location": "Livonia, MI, US",
           "longitude": -83.3696,
-          "musixmatch": "44766321"
+          "musixmatch": "5830559"
         }
       },
       {
@@ -25525,7 +25407,7 @@
           "location": "Detroit, MI, US",
           "longitude": -83.0479,
           "whosampledId": "34297",
-          "musixmatch": "56720440"
+          "musixmatch": "17326180"
         }
       },
       {
@@ -25564,7 +25446,7 @@
           "location": "Leesburg, GA, US",
           "longitude": -84.1722,
           "whosampledId": "36355",
-          "musixmatch": "33926106"
+          "musixmatch": "36704655"
         }
       },
       {
@@ -25603,7 +25485,7 @@
           "location": "Tyro, MS, US",
           "longitude": -89.7108,
           "whosampledId": "36354",
-          "musixmatch": "32142927"
+          "musixmatch": "41608720"
         }
       },
       {
@@ -25686,7 +25568,7 @@
           "location": "Ontario, CA",
           "longitude": -84.7563,
           "whosampledId": "42767",
-          "musixmatch": "42203780"
+          "musixmatch": "37643240"
         }
       },
       {
@@ -25822,7 +25704,7 @@
           "latitude": 40.8572,
           "location": "Bronx, New York, NY, US",
           "longitude": -73.8568,
-          "musixmatch": "49666173"
+          "musixmatch": "36282422"
         }
       },
       {
@@ -25861,7 +25743,7 @@
           "location": "Harlem, New York, NY, US",
           "longitude": -73.9469,
           "whosampledId": "86297",
-          "musixmatch": "34214064"
+          "musixmatch": "17950017"
         }
       },
       {
@@ -25900,7 +25782,7 @@
           "location": "Norfolk, VA, US",
           "longitude": -76.2851,
           "whosampledId": "36549",
-          "musixmatch": "67810085"
+          "musixmatch": "32960358"
         }
       },
       {
@@ -26107,7 +25989,7 @@
           "latitude": 42.2748,
           "location": "Wall Lake, IA, US",
           "longitude": -95.0906,
-          "musixmatch": "19001638"
+          "musixmatch": "40545149"
         }
       },
       {
@@ -26258,7 +26140,7 @@
           "latitude": 47.0392,
           "location": "Olympia, WA, US",
           "longitude": -122.891,
-          "musixmatch": "65991562"
+          "musixmatch": "64546520"
         }
       },
       {
@@ -26553,7 +26435,7 @@
           "latitude": 33.5386,
           "location": "Glendale, AZ, US",
           "longitude": -112.186,
-          "musixmatch": "67370889"
+          "musixmatch": "19594490"
         }
       },
       {
@@ -26929,7 +26811,7 @@
           "latitude": 37.1679,
           "location": "United States",
           "longitude": -95.845,
-          "musixmatch": "35684821"
+          "musixmatch": "35726021"
         }
       },
       {
@@ -27029,7 +26911,7 @@
           "latitude": 51.5072648,
           "location": "London, UK",
           "longitude": -0.1278328,
-          "musixmatch": "17953120"
+          "musixmatch": "54707364"
         }
       },
       {
@@ -27143,7 +27025,7 @@
           "location": "East Orange, NJ",
           "longitude": -74.207039,
           "whosampledId": "36552",
-          "musixmatch": "5149601"
+          "musixmatch": "36168224"
         }
       },
       {
@@ -27188,7 +27070,7 @@
           "location": "Los Angeles, CA, US",
           "longitude": -118.245,
           "whosampledId": "11867",
-          "musixmatch": "30191298"
+          "musixmatch": "37058525"
         }
       },
       {
@@ -27275,7 +27157,7 @@
           "latitude": 39.7393,
           "location": "Illinois, US",
           "longitude": -89.5041,
-          "musixmatch": "62435131"
+          "musixmatch": "32969009"
         }
       },
       {
@@ -27763,7 +27645,7 @@
           "location": "Los Angeles, CA, US",
           "longitude": -118.245,
           "whosampledId": "29477",
-          "musixmatch": "2044475"
+          "musixmatch": "3080077"
         }
       },
       {
@@ -27801,7 +27683,7 @@
           "latitude": 35.088055,
           "location": "Colt, Arkansas",
           "longitude": -90.889489,
-          "musixmatch": "62887572"
+          "musixmatch": "35606392"
         }
       },
       {
@@ -30926,7 +30808,7 @@
           "location": "London, England, GB",
           "longitude": -0.12714,
           "whosampledId": "15497",
-          "musixmatch": "15200839"
+          "musixmatch": "19390305"
         }
       },
       {
@@ -31319,7 +31201,7 @@
           "location": "Los Angeles, CA",
           "longitude": -118.248405,
           "whosampledId": "135622",
-          "musixmatch": "4808085"
+          "musixmatch": "40553306"
         }
       },
       {
@@ -31469,7 +31351,7 @@
           "location": "Seattle, Washington ",
           "longitude": -122.332071,
           "whosampledId": "7751",
-          "musixmatch": "37180909"
+          "musixmatch": "14739937"
         }
       },
       {
@@ -32192,7 +32074,7 @@
           "latitude": 45.5118,
           "location": "Portland, OR, US",
           "longitude": -122.676,
-          "musixmatch": "3349097"
+          "musixmatch": "17533288"
         }
       },
       {
@@ -32374,7 +32256,7 @@
           "location": "Stamford, CT, US",
           "longitude": -73.5422,
           "whosampledId": "67683",
-          "musixmatch": "1964565"
+          "musixmatch": "53575678"
         }
       },
       {
@@ -32815,7 +32697,7 @@
           "latitude": 40.8572,
           "location": "Bronx, New York, NY, US",
           "longitude": -73.8568,
-          "musixmatch": "46194725"
+          "musixmatch": "58225511"
         }
       },
       {
@@ -33382,7 +33264,7 @@
           "location": "North Philadelphia, Philadelphia, PA, US",
           "longitude": -75.1529,
           "whosampledId": "57576",
-          "musixmatch": "1505936"
+          "musixmatch": "32043476"
         }
       },
       {
@@ -33529,7 +33411,7 @@
           "location": "Bath, England, GB",
           "longitude": -2.36132,
           "whosampledId": "8604",
-          "musixmatch": "30310023"
+          "musixmatch": "14786346"
         }
       },
       {
@@ -34627,7 +34509,7 @@
           "location": "Duluth, MN, US",
           "longitude": -92.0999,
           "whosampledId": "27790",
-          "musixmatch": "17087020"
+          "musixmatch": "14780139"
         }
       },
       {
@@ -35685,7 +35567,7 @@
           "location": "Eau Claire, WI, US",
           "longitude": -91.5012,
           "whosampledId": "130873",
-          "musixmatch": "30403499"
+          "musixmatch": "19736757"
         }
       },
       {
@@ -35812,7 +35694,7 @@
           "location": "Black Mountain, NC, US",
           "longitude": -82.3205,
           "whosampledId": "6880",
-          "musixmatch": "15278679"
+          "musixmatch": "35518069"
         }
       },
       {
@@ -36763,7 +36645,7 @@
           "location": "South Orange, NJ",
           "longitude": -74.267541,
           "whosampledId": "805",
-          "musixmatch": "19987551"
+          "musixmatch": "15498784"
         }
       },
       {
@@ -37575,45 +37457,6 @@
         }
       },
       {
-        "date": "1952",
-        "performer": "Ewan MacColl",
-        "title": "Dirty Old Town",
-        "spotify": {
-          "id": "70Lp2jydCCgyzWLqZsDlMN",
-          "name": "Dirty Old Town",
-          "artists": [
-            {
-              "id": "3tetInyzmPXATzLBTzl125",
-              "name": "Ewan MacColl"
-            }
-          ],
-          "duration": 63160,
-          "popularity": 22,
-          "preview": "https://p.scdn.co/mp3-preview/865466d0f6d81a60ca1c3cbdbc47911aacf7adec",
-          "albumArtwork": "https://i.scdn.co/image/f84208c032bb85cb0002158bd0501532ca9ab4ae"
-        },
-        "echonest": {
-          "songId": "SOAHIHM12A8C139F73",
-          "energy": 0.019512,
-          "liveness": 0.111207,
-          "tempo": 132.802,
-          "speechiness": 0.09365,
-          "acousticness": 0.984457,
-          "instrumentalness": 0.000053,
-          "mode": 0,
-          "time_signature": 3,
-          "duration": 63.15955,
-          "loudness": -20.164,
-          "valence": 0.271877,
-          "danceability": 0.548345,
-          "latitude": 53.4984,
-          "location": "Broughton, Salford, England, GB",
-          "longitude": -2.25856,
-          "whosampledId": "195142",
-          "musixmatch": "1605262"
-        }
-      },
-      {
         "date": "1956",
         "performer": "Alan Lomax",
         "title": "Dirty Old Town",
@@ -37745,7 +37588,7 @@
           "latitude": 53.3438,
           "location": "Dublin, Dublin, IE",
           "longitude": -6.24953,
-          "musixmatch": "1861267"
+          "musixmatch": "15190613"
         }
       },
       {
@@ -37898,7 +37741,7 @@
           "latitude": 53.3438,
           "location": "Dublin, Dublin, IE",
           "longitude": -6.24953,
-          "musixmatch": "1861267"
+          "musixmatch": "15190613"
         }
       },
       {
@@ -38405,7 +38248,7 @@
           "location": "Beaumont, TX, US",
           "longitude": -94.1016,
           "whosampledId": "59771",
-          "musixmatch": "2000641"
+          "musixmatch": "30340915"
         }
       },
       {
@@ -38893,7 +38736,7 @@
           "location": "Cincinnati, OH ",
           "longitude": -84.53822,
           "whosampledId": "5952",
-          "musixmatch": "32049967"
+          "musixmatch": "16608674"
         }
       },
       {
@@ -39984,7 +39827,7 @@
           "location": "London, UK",
           "longitude": -0.1278328,
           "whosampledId": "88333",
-          "musixmatch": "1064981"
+          "musixmatch": "14755214"
         }
       },
       {
@@ -40061,7 +39904,7 @@
           "location": "New York, NY, US",
           "longitude": -74.0071,
           "whosampledId": "16643",
-          "musixmatch": "17140343"
+          "musixmatch": "14638642"
         }
       },
       {
@@ -40143,7 +39986,7 @@
           "latitude": 32.7486,
           "location": "Fort Worth, TX, US",
           "longitude": -97.3292,
-          "musixmatch": "7147550"
+          "musixmatch": "31600271"
         }
       },
       {
@@ -40533,7 +40376,7 @@
           "location": "Muskegon, MI",
           "longitude": -86.254186,
           "whosampledId": "11305",
-          "musixmatch": "32834007"
+          "musixmatch": "38158383"
         }
       },
       {
@@ -42172,7 +42015,7 @@
           "location": "Oneonta, NY, US",
           "longitude": -75.0603,
           "whosampledId": "29007",
-          "musixmatch": "1269243"
+          "musixmatch": "18281307"
         }
       },
       {
@@ -42210,7 +42053,7 @@
           "latitude": 40.6551,
           "location": "Brooklyn, New York, NY, US",
           "longitude": -73.9489,
-          "musixmatch": "1772320"
+          "musixmatch": "1786242"
         }
       },
       {
@@ -43377,7 +43220,7 @@
           "location": "The Hague, South Holland, NL",
           "longitude": 4.31741,
           "whosampledId": "63913",
-          "musixmatch": "30571940"
+          "musixmatch": "39301706"
         }
       },
       {
@@ -43864,7 +43707,7 @@
           "location": "Los Angeles, CA",
           "longitude": -118.248405,
           "whosampledId": "184657",
-          "musixmatch": "33553808"
+          "musixmatch": "15431680"
         }
       },
       {
@@ -45146,7 +44989,7 @@
           "location": "Bedford-Stuyvesant, New York, NY, US",
           "longitude": -73.9392,
           "whosampledId": "195870",
-          "musixmatch": "50666448"
+          "musixmatch": "33856080"
         }
       },
       {
@@ -45238,7 +45081,7 @@
           "latitude": 41.88531,
           "location": "Chicago, IL",
           "longitude": -87.62213,
-          "musixmatch": "17377703"
+          "musixmatch": "3148679"
         }
       },
       {
@@ -47850,7 +47693,7 @@
           "location": "New York, NY, US",
           "longitude": -74.0071,
           "whosampledId": "75437",
-          "musixmatch": "17370229"
+          "musixmatch": "43522032"
         }
       },
       {
@@ -47930,7 +47773,7 @@
           "latitude": 37.784827,
           "location": "San Francisco, CA",
           "longitude": -122.727802,
-          "musixmatch": "30365971"
+          "musixmatch": "14637333"
         }
       },
       {
@@ -48352,7 +48195,7 @@
           "location": "London, UK",
           "longitude": -0.1278328,
           "whosampledId": "77830",
-          "musixmatch": "16045022"
+          "musixmatch": "16301422"
         }
       }
     ],
@@ -48942,7 +48785,7 @@
           "loudness": -13.543,
           "valence": 0.072529,
           "danceability": 0.553367,
-          "musixmatch": "53617817"
+          "musixmatch": "32712515"
         }
       },
       {
@@ -49131,52 +48974,6 @@
           "longitude": -3.44252,
           "whosampledId": "28636",
           "musixmatch": "15672030"
-        }
-      },
-      {
-        "date": "May 8, 2001",
-        "performer": "Nicole Kidman, Ewan McGregor and Jamie Allen",
-        "title": "Elephant Love Medley",
-        "spotify": {
-          "id": "7FCcTxy5GsRFHWWcHAIGJ4",
-          "name": "Elephant Love Medley",
-          "artists": [
-            {
-              "id": "0ExYzTb7raTAfsXPtiI5vq",
-              "name": "Nicole Kidman"
-            },
-            {
-              "id": "105Paee9vmV5rfLSG652e1",
-              "name": "Ewan McGregor"
-            },
-            {
-              "id": "5R51XX6tR8R2zlBYRmXm0o",
-              "name": "Jamie Allen"
-            }
-          ],
-          "duration": 251560,
-          "popularity": 34,
-          "preview": "https://p.scdn.co/mp3-preview/3db51bb2d44f589abb11c5c2530d432071b2d354",
-          "albumArtwork": "https://i.scdn.co/image/9ec453196ffd76ce36471e7bf41723036b162299"
-        },
-        "echonest": {
-          "songId": "SOAMCSE12A6701C62C",
-          "energy": 0.30331,
-          "liveness": 0.108671,
-          "tempo": 65.057,
-          "speechiness": 0.035135,
-          "acousticness": 0.590655,
-          "instrumentalness": 0,
-          "mode": 1,
-          "time_signature": 4,
-          "duration": 251.22621,
-          "loudness": -8.15,
-          "valence": 0.272348,
-          "danceability": 0.252643,
-          "latitude": -33.883333,
-          "location": "Sydney, Australia",
-          "longitude": 151.216667,
-          "musixmatch": "15672034"
         }
       },
       {
@@ -49426,47 +49223,6 @@
         "performer": "Meade Skelton",
         "title": "Your Song",
         "spotify": null
-      },
-      {
-        "date": "2004",
-        "performer": "Cheryl Porter",
-        "title": "Your Song",
-        "spotify": {
-          "id": "1JED0tXK4nXXtEDRNAUAF0",
-          "name": "Your Song",
-          "artists": [
-            {
-              "id": "3BCwn8kef8LNrfMhOiTcYa",
-              "name": "Cheryl Porter"
-            },
-            {
-              "id": "4Ob9aNB0iSv2xpePq7wjIs",
-              "name": "The Archimia String Quartet"
-            }
-          ],
-          "duration": 320092,
-          "popularity": 3,
-          "preview": "https://p.scdn.co/mp3-preview/caf4a155eb9ad8b8afab1a9bee223307deadf28d",
-          "albumArtwork": "https://i.scdn.co/image/20910a8da062ced740f623535d4ac7bbf904e07e"
-        },
-        "echonest": {
-          "songId": "SOHYYHC13134386D51",
-          "energy": 0.331859,
-          "liveness": 0.112638,
-          "tempo": 133.356,
-          "speechiness": 0.037058,
-          "acousticness": 0.558374,
-          "instrumentalness": 0.000003,
-          "mode": 1,
-          "time_signature": 4,
-          "duration": 320.09288,
-          "loudness": -10.794,
-          "valence": 0.082876,
-          "danceability": 0.464649,
-          "latitude": 39.9453,
-          "location": "Camden, NJ, US",
-          "longitude": -75.1191
-        }
       },
       {
         "date": "2004",
@@ -50312,7 +50068,7 @@
           "location": "New York, NY, US",
           "longitude": -74.0071,
           "whosampledId": "10944",
-          "musixmatch": "51422209"
+          "musixmatch": "36035958"
         }
       },
       {
@@ -50922,7 +50678,7 @@
           "location": "Los Angeles, CA",
           "longitude": -118.248405,
           "whosampledId": "5495",
-          "musixmatch": "14696101"
+          "musixmatch": "54637495"
         }
       },
       {
@@ -51205,7 +50961,7 @@
           "location": "Los Angeles, CA",
           "longitude": -118.248405,
           "whosampledId": "5495",
-          "musixmatch": "14696101"
+          "musixmatch": "54637495"
         }
       }
     ],

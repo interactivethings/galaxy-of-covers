@@ -38,13 +38,15 @@ pythonsetup:
 	$(PIP) install requests
 	$(PIP) install beautifulsoup4
 
-data: data-song-list data-spotify data-shs-versions
-
+# the data-processing pipeline
 data-song-list:
 	wget -O data/out/songs.csv https://docs.google.com/spreadsheets/d/1EqO6oF0o8oL0XLcNXNkdOA4wbcKJBiTb24rBphubgrA/export?format=csv
 
 data-guardian-covers:
 	wget -O data/out/guardian_songs.csv https://docs.google.com/spreadsheets/d/1vIkPwZaE58TbgoPpCQvMLvSvPfs068m1pIetNvElCr4/export?format=csv
+
+data-shs-versions:
+	$(PYTHON) data/py/pullData.py
 
 data-spotify:
 	node data/js/spotify.js
@@ -55,17 +57,15 @@ data-echonest:
 data-musixmatch:
 	node data/js/musixmatch.js
 
-data-whosampled:
-	node data/js/whosampled.js
-
-data-shs-versions:
-	$(PYTHON) data/py/pullData.py
-
 data-add-whosampled-genres:
 	$(PYTHON) data/py/mergeWhoSampledGenres.py
 
 data-trim-for-production:
 	$(PYTHON) data/py/trimForProduction.py
+
+data-whosampled:
+#	probably shouldn't use this - it's broken
+#	node data/js/whosampled.js
 
 clean-shs-cache: clean-shs-search-cache clean-shs-scrape-cache
 
