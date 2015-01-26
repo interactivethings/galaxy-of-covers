@@ -9,7 +9,8 @@ core genres:
 "Reggae"
 "Electronic / Dance"
 "Classical"
-"Vocal"
+"Other"
+"Instrumental"
 
 automatically reclassify:
 'mm Pop': "Rock / Pop"
