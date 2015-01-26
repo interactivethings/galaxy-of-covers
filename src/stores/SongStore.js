@@ -191,16 +191,52 @@ function prepareLoadedData(dataset) {
   dataset.forEach((songData) => {
     songData.id = DataUtil.songSystemId(songData)
     songData.versions.forEach((versionData) => {
-      versionData.id = DataUtil.versionId(versionData)
+//      versionData.id = DataUtil.versionId(versionData)
       versionData.parsedDate = parseDate(versionData.date)
-      var genre = versionData.genre
+      var genre = versionData.genre || "Unknown"
       if (!allGenresCounter[genre]) allGenresCounter[genre] = 0
       allGenresCounter[genre]++
+      versionData.genre = genre
     })
   })
   setState('songs', dataset)
-  setState('scales', makeScaleSet(findBounds(dataset)))
+  var scaleset = makeScaleSet(findBounds(dataset))
+  setState('scales', scaleset)
   setState('allGenresCount', allGenresCounter)
+  var displayObjects = dataset.map((songData) => {
+    return {
+      title: songData.title,
+      songId: songData.id,
+      galaxyX: 0,
+      galaxyY: 0,
+      versions: songData.versions.map((versionData) => {
+        return {
+          songId: songData.id,
+          versionId: versionData.id,
+          galaxyX: 0,
+          galaxyY: 0,
+          orbitRadiusX: scaleset.getOrbitRadiusScale()(versionData.parsedDate),
+          orbitRadiusY: scaleset.getOrbitRadiusScale()(versionData.parsedDate) * 3 / 5,
+          galaxyPlanetRadius: scaleset.getRadiusScale()(versionData.spotify.popularity),
+          timelinePlanetRadius: scaleset.getTimelineRadiusScale()(versionData.spotify.popularity),
+          genreColor: scaleset.getColorScale()(versionData.genre),
+          orbitRotationOffset: scaleset.getRotationScale()(versionData.echonest.valence),
+          orbitSpeed: scaleset.getSpeedScale()(versionData.echonest.energy),
+          blinkSpeed: scaleset.getBlinkScale()(versionData.echonest.tempo),
+          numSides: scaleset.getEdgesScale()(versionData.echonest.speechiness),
+          isCircle: scaleset.getEdgesScale()(versionData.echonest.speechiness) === -1,
+          timelineCX: 0,
+          timelineCY: 0,
+          timelineBaseY: 0,
+          timelineRotation: scaleset.getTimelineRotation()(versionData.echonest.valence),
+          polygonPoints: null,
+          tailpt1: 0,
+          tailpt2: 0
+        }
+      })
+    }
+  })
+  setState('displayObjects', displayObjects)
 }
 
 function updateDynamicState(action) {
