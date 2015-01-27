@@ -1,5 +1,6 @@
 import json
 import csv
+import re
 
 from constants import *
 
@@ -50,6 +51,7 @@ for songData in fullData:
     if "echonest" not in versionData or "spotify" not in versionData:
       continue
     trimmedV = pick(versionData, ["title", "performer", "date"])
+    trimmedV["date"] = re.sub(" \(performance date\)", '', trimmedV["date"])
     trimmedV["id"] = versionData["spotify"]["id"]
     trimmedV["spotify"] = pick(versionData["spotify"], ["popularity", "preview"])
     trimmedV["echonest"] = pick(versionData["echonest"], ["speechiness", "valence", "tempo", "energy"])
