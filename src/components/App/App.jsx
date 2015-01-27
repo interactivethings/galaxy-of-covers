@@ -8,6 +8,7 @@ require('components/App/App.scss')
 var LoadActions = require('actions/LoadActions')
 ,   SongStore = require('stores/SongStore')
 ,   AppHeader = require('components/AppHeader/AppHeader')
+,   MainView = require('components/MainView/MainView')
 ,   GalaxyView = require('components/GalaxyView/GalaxyView')
 ,   DetailView = require('components/DetailView/DetailView')
 ,   Layout = require('components/Layout')
@@ -56,10 +57,14 @@ var App = React.createClass({
     ,   state = this.state.appState
     ,   genreCount = SongStore.getGenreCount()
     ,   componentLayout = Layout.getLayout()
+    ,   displayObjects = SongStore.getDisplayObjects()
 
     return (
       <div className="AppBox">
         <AppHeader genreCount={genreCount} scales={galaxyScales} dynamicState={state} layout={componentLayout} />
+        <MainView displayObjects={displayObjects} dynamicState={state} />
+        {
+        /*state.get('inDetail') ?
           <DetailView
             layout={componentLayout}
             dynamicState={state}
@@ -72,8 +77,8 @@ var App = React.createClass({
             dynamicState={state}
             scales={galaxyScales}
             songs={songsArray}
-          />
-        }
+          /> */
+       }
       </div>
     )
   }

@@ -231,6 +231,8 @@ function prepareLoadedData(dataset) {
           timelinePlanetRadius: scaleset.getTimelineRadiusScale()(versionData.spotify.popularity),
           genreColor: scaleset.getColorScale()(versionData.genre),
           orbitRotationOffset: scaleset.getRotationScale()(versionData.echonest.valence),
+          orbitRotationOffsetCos: Math.cos(scaleset.getRotationScale()(versionData.echonest.valence) * Math.PI / 180),
+          orbitRotationOffsetSin: Math.sin(scaleset.getRotationScale()(versionData.echonest.valence) * Math.PI / 180),
           orbitSpeed: scaleset.getSpeedScale()(versionData.echonest.energy),
           blinkSpeed: scaleset.getBlinkScale()(versionData.echonest.tempo),
           numSides: scaleset.getEdgesScale()(versionData.echonest.speechiness),
