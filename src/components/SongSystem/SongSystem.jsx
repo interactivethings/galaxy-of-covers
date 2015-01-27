@@ -24,8 +24,6 @@ var SongSystem = React.createClass({
 
   onClick() {
     ViewActions.clickOnSongSystem(this.props.id)
-    // this represents an immediate transition
-    ViewActions.detailTransitionComplete(this.props.id)
   },
 
 // this works like a charm, but unfortunately it doesn't respect changes to genre filters...

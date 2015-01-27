@@ -24,8 +24,7 @@ setStateObj({
   displayObjects: {},
   hoveredSystemId: null,
   detailTransitionId: null,
-  detailSystemId: null,
-  inTransition: false,
+  inGalaxy: true,
   inDetail: false,
   shareOpen: false,
   legendOpen: false,
@@ -90,28 +89,22 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
     setState('hoveredSystemId', id)
   },
 
-  transitionToDetail(id) {
+  showDetail(songId) {
+    var selectedSong = state.get('songs').filter((songData) => songData.id === songId )[0]
     setStateObj({
-      inTransition: true,
-      detailTransitionId: id
-    })
-  },
-
-  showDetail(id) {
-    setStateObj({
-      inTransition: false,
-      detailSystemId: id,
-      inDetail: true
+      detailSongData: selectedSong,
+      inDetail: true,
+      inGalaxy: false
     })
   },
 
   showGalaxy() {
     setStateObj({
+      detailSongData: {},
       hoveredSystemId: null,
-      inTransition: false,
       detailTransitionId: null,
-      detailSystemId: null,
-      inDetail: false
+      inDetail: false,
+      inGalaxy: true
     })
   },
 
@@ -147,28 +140,16 @@ console.log('songs loaded', action.data);
         break
       // view actions
       case 'SHOW_DETAIL':
-        prepDetailData(action.systemId)
         this.showDetail(action.systemId)
         break
       case 'SHOW_GALAXY':
-        noDetailData()
         this.showGalaxy()
         break
       case 'HOVER_SYSTEM':
-        if (!state.get('inTransition')) {
-          this.setHoveredSystem(action.systemId)
-        }
+        this.setHoveredSystem(action.systemId)
         break
       case 'HOVER_OFF_SYSTEM':
         this.setHoveredSystem(null)
-        break
-      case 'CLICK_SYSTEM':
-        if (!state.get('inTransition')) {
-          this.transitionToDetail(action.systemId)
-        }
-        break
-      case 'END_TRANSITION':
-        setState('inTransition', false)
         break
       case 'OPEN_SHARE':
         this.navMenuToggle('shareOpen', true)
@@ -266,15 +247,6 @@ function prepareLoadedData(dataset) {
     }
   })
   setState('displayObjects', displayObjects)
-}
-
-function prepDetailData(detailId) {
-  var selectedSong = state.get('songs').filter((songData) => songData.id === detailId )[0]
-  setState('detailSongData', selectedSong)
-}
-
-function noDetailData() {
-  setState('detailSongData', {})
 }
 
 module.exports = SongStore
