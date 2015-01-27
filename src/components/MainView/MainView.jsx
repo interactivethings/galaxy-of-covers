@@ -24,6 +24,16 @@ var MainView = React.createClass({
       dimensions = GalaxyView.applyHexLayout(data)
       node.setAttribute('width', dimensions.layoutWidth)
       node.setAttribute('height', dimensions.layoutHeight)
+
+      if (!data.length) return true
+
+      var genreFilter = state.get('filteredGenres')
+      ,   hoveredId = state.get('hoveredSystemId')
+      data.forEach((songData) => {
+        songData.versionsFilteredIn = songData.versions.filter((versionData) => !genreFilter.get(versionData.genreName))
+        songData.systemIsHovered = songData.songId === hoveredId
+      })
+
       GalaxyView.render(node, data, state)
     } else if (state.get('inDetail')) {
 

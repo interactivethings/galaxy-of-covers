@@ -89,7 +89,7 @@ var ViewFilters = {
 
     var galaxyNoBackgroundCircle = d3Node.append('circle')
       .attr('id', 'galaxyNoBackgroudCircle')
-      .attr('class', 'SongSystem--background')
+      .attr('class', 'SongSystem--background__transparent')
       .attr('r', Constants.SYSTEM_BACKGROUND_RADIUS)
 
     var galaxyShadedBackgroundCircle = d3Node.append('circle')
