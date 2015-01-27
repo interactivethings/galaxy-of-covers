@@ -1,6 +1,7 @@
-var Vec2 = require('svec2')
 'use strict';
 
+var d3 = require('d3')
+,   Vec2 = require('svec2')
 
 var PI = Math.PI
 ,   HALF_PI = PI / 2

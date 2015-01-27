@@ -1,5 +1,7 @@
 'use strict';
 
+var d3 = require('d3')
+
 require('components/GalaxyView/GalaxyView.scss')
 
 var Constants = require('Constants')
