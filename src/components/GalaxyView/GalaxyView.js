@@ -1,3 +1,5 @@
+'use strict';
+
 require('components/GalaxyView/GalaxyView.scss')
 
 var Constants = require('Constants')
