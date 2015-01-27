@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react')
 ,   Immutable = require('Immutable')
 ,   ResizeMixin = require('components/ResizeMixin')
