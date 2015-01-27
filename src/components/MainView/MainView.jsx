@@ -5,12 +5,10 @@ var React = require('react')
 var ViewFilters = require('util/ViewFilters')
 ,   GalaxyView = require('components/GalaxyView/GalaxyView')
 
-
 var MainView = React.createClass({
 
   componentDidMount() {
     var node = this.getDOMNode()
-
     ViewFilters.renderFilters(node)
   },
 
@@ -18,10 +16,9 @@ var MainView = React.createClass({
     var data = this.props.displayObjects
     ,   state = this.props.dynamicState
     ,   node = this.getDOMNode()
-    ,   dimensions
 
     if (state.get('inGalaxy')) {
-      dimensions = GalaxyView.applyHexLayout(data)
+      var dimensions = GalaxyView.applyHexLayout(data)
       node.setAttribute('width', dimensions.layoutWidth)
       node.setAttribute('height', dimensions.layoutHeight)
 
@@ -31,7 +28,11 @@ var MainView = React.createClass({
       ,   hoveredId = state.get('hoveredSystemId')
       data.forEach((songData) => {
         songData.versionsFilteredIn = songData.versions.filter((versionData) => !genreFilter.get(versionData.genreName))
-        songData.systemIsHovered = songData.songId === hoveredId
+        var isHovered = songData.songId === hoveredId
+        if (isHovered !== songData.systemIsHovered) {
+          songData.versions.forEach((v) => { v.pauseAnimation = isHovered })
+          songData.systemIsHovered = isHovered
+        }
       })
 
       GalaxyView.render(node, data, state)

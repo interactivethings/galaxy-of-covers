@@ -7,41 +7,9 @@ require('components/GalaxyView/GalaxyView.scss')
 var Constants = require('Constants')
 ,   SvgUtil = require('util/svgutil')
 ,   ViewActions = require('actions/ViewActions')
+,   AnimationUtil = require('util/AnimationUtil')
 
 var ROOT_THREE = Math.sqrt(3)
-
-var cos = Math.cos
-var sin = Math.sin
-
-function planetPosition(planet, t) {
-  var ang = t * planet.orbitSpeed
-  ,   px = cos(ang) * planet.orbitRadiusX
-  ,   py = sin(ang) * planet.orbitRadiusY
-  ,   rc = planet.orbitRotationOffsetCos
-  ,   rs = planet.orbitRotationOffsetSin
-  ,   pos = [planet.galaxyX + rc * px - rs * py, planet.galaxyY + rs * px + rc * py]
-  return 'translate(' + pos.join(',') + ')'
-}
-
-function planetOpacity(blinkSpeed, t) {
-  return (sin(t * blinkSpeed) + 1.8) / 2
-}
-
-function startContinuousAnimation(datum) {
-  var node = this
-  datum.stopAnimation = false
-
-  d3.timer(function(time) {
-    node.setAttribute('transform', planetPosition(datum, time))
-    node.setAttribute('opacity', planetOpacity(datum.blinkSpeed, time))
-
-    return datum.stopAnimation
-  })
-}
-
-function stopContinuousAnimation(datum) {
-  datum.stopAnimation = true
-}
 
 var GalaxyView = {
 
@@ -179,10 +147,10 @@ var GalaxyView = {
       .attr('class', 'SongSystem--planet SongSystem--planet__round')
       .attr('r', (d) => d.galaxyPlanetRadius)
       .attr('fill', (d) => d.genreColor)
-      .attr('transform', (d) => planetPosition(d, 0))
-      .each(startContinuousAnimation)
+      .attr('transform', (d) => AnimationUtil.planetPosition(d, 0))
+      .each(AnimationUtil.startContinuousAnimation)
 
-    roundPlanets.exit().each(stopContinuousAnimation).remove()
+    roundPlanets.exit().each(AnimationUtil.stopContinuousAnimation).remove()
 
     var pointyPlanets = systems.selectAll('.SongSystem--planet.SongSystem--planet__pointy')
       .data((d) => d.versionsFilteredIn.filter((v) => !v.isCircle))
@@ -192,10 +160,10 @@ var GalaxyView = {
       .attr('class', 'SongSystem--planet SongSystem--planet__pointy')
       .attr('points', (d) => SvgUtil.getPolygonPoints(0, 0, d.galaxyPlanetRadius, d.numSides))
       .attr('fill', (d) => d.genreColor)
-      .attr('transform', (d) => planetPosition(d, 0))
-      .each(startContinuousAnimation)
+      .attr('transform', (d) => AnimationUtil.planetPosition(d, 0))
+      .each(AnimationUtil.startContinuousAnimation)
 
-    pointyPlanets.exit().each(stopContinuousAnimation).remove()
+    pointyPlanets.exit().each(AnimationUtil.stopContinuousAnimation).remove()
 
     // song label
     enterSystems
