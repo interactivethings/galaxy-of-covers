@@ -10,9 +10,8 @@ require('components/App/App.scss')
 var LoadActions = require('actions/LoadActions')
 ,   SongStore = require('stores/SongStore')
 ,   AppHeader = require('components/AppHeader/AppHeader')
+,   DetailHeader = require('components/DetailView/DetailHeader')
 ,   MainView = require('components/MainView/MainView')
-,   GalaxyView = require('components/GalaxyView/GalaxyView')
-,   DetailView = require('components/DetailView/DetailView')
 ,   Layout = require('components/Layout')
 
 function getAppState() {
@@ -53,34 +52,18 @@ var App = React.createClass({
   },
 
   render() {
-    var songsArray = SongStore.getSongs()
+    var displayObjects = SongStore.getDisplayObjects()
     ,   detailData = SongStore.getDetailSongData()
     ,   galaxyScales = SongStore.getScales()
     ,   state = this.state.appState
     ,   genreCount = SongStore.getGenreCount()
     ,   componentLayout = Layout.getLayout()
-    ,   displayObjects = SongStore.getDisplayObjects()
 
     return (
       <div className="AppBox">
         <AppHeader genreCount={genreCount} scales={galaxyScales} dynamicState={state} layout={componentLayout} />
+        {state.get('inDetail') ? <DetailHeader songData={detailData} state={state} layout={componentLayout} /> : null}
         <MainView displayObjects={displayObjects} dynamicState={state} />
-        {
-        /*state.get('inDetail') ?
-          <DetailView
-            layout={componentLayout}
-            dynamicState={state}
-            scales={galaxyScales}
-            songData={detailData}
-          />
-        :
-          <GalaxyView
-            layout={componentLayout}
-            dynamicState={state}
-            scales={galaxyScales}
-            songs={songsArray}
-          /> */
-       }
       </div>
     )
   }

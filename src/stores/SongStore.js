@@ -49,10 +49,6 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
     this.removeListener('change', handler)
   },
 
-  getSongs() {
-    return state.get('songs')
-  },
-
   getDetailSongData() {
     return state.get('detailSongData')
   },
@@ -88,7 +84,7 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
   },
 
   showDetail(songId) {
-    var selectedSong = state.get('songs').filter((songData) => songData.id === songId )[0]
+    var selectedSong = state.get('displayObjects').filter((songData) => songData.songId === songId )[0]
     setStateObj({
       detailSongData: selectedSong,
       inDetail: true,
@@ -200,6 +196,7 @@ function prepareLoadedData(dataset) {
     songData.versions.forEach((versionData) => {
 //      versionData.id = DataUtil.versionId(versionData)
       versionData.parsedDate = DataUtil.parseDate(versionData.date)
+      if (versionData.parsedDate === null) console.log(versionData);
       var genre = versionData.genre || "Unknown"
       if (!allGenresCounter[genre]) allGenresCounter[genre] = 0
       allGenresCounter[genre]++
@@ -222,6 +219,7 @@ function prepareLoadedData(dataset) {
         return {
           songId: songData.id,
           versionId: versionData.id,
+          songYear: versionData.parsedDate ? versionData.parsedDate.getFullYear() : null,
           galaxyX: 0,
           galaxyY: 0,
           stopAnimation: false,

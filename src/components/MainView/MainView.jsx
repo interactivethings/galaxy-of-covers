@@ -4,6 +4,7 @@ var React = require('react')
 
 var ViewFilters = require('util/ViewFilters')
 ,   GalaxyView = require('components/GalaxyView/GalaxyView')
+,   DetailView = require('components/DetailView/DetailView')
 
 var MainView = React.createClass({
 
@@ -37,7 +38,11 @@ var MainView = React.createClass({
 
       GalaxyView.render(node, data, state)
     } else if (state.get('inDetail')) {
+      var detailData = state.get('detailSongData')
+      node.setAttribute('width', window.innerWidth)
+      node.setAttribute('height', window.innerHeight)
 
+      DetailView.render(node, detailData, state)
     }
 
   },
