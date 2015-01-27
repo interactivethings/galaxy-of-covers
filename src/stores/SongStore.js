@@ -5,7 +5,6 @@ var AppDispatcher = require('dispatcher/AppDispatcher')
 ,   {EventEmitter} = require('events')
 ,   LoadActions = require('actions/LoadActions')
 ,   Immutable = require('Immutable')
-,   d3 = require('d3')
 
 var Constants = require('Constants')
 ,   DataUtil = require('util/datautil')
@@ -23,7 +22,6 @@ setStateObj({
   allGenresCount: {},
   displayObjects: {},
   hoveredSystemId: null,
-  detailTransitionId: null,
   inGalaxy: true,
   inDetail: false,
   shareOpen: false,
@@ -102,7 +100,6 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
     setStateObj({
       detailSongData: {},
       hoveredSystemId: null,
-      detailTransitionId: null,
       inDetail: false,
       inGalaxy: true
     })
