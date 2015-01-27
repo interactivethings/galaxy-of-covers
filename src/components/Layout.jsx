@@ -20,18 +20,18 @@ var Layout = {
   },
 
   getLayout() {
-    var dynamicState = SongStore.getDynamic()
+    var state = SongStore.getState()
     ,   dim = this.getWindowDimensions()
     ,   componentLayout
 
-    if (dynamicState.get('inDetail')) {
+    if (state.get('inDetail')) {
       componentLayout =
       { headerHeight: 60
       , headerWidth: dim.width
       , legendHeight: 175
       , bodyHeight: dim.height
       , bodyWidth: dim.width
-      , timelineTop: dynamicState.get('legendOpen') ? 60 + 175 : 60
+      , timelineTop: state.get('legendOpen') ? 60 + 175 : 60
       , timelineBase: dim.height * 4 / 5
       , timelineLeftRightPadding: 100
       }

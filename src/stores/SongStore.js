@@ -8,7 +8,6 @@ var AppDispatcher = require('dispatcher/AppDispatcher')
 ,   d3 = require('d3')
 
 var Constants = require('Constants')
-,   DynamicStateStore = require('stores/DynamicStateStore')
 ,   DataUtil = require('util/datautil')
 
 var setState = (key, value) => { state = state.set(key, value) }
@@ -21,8 +20,18 @@ setStateObj({
   songs: [],
   detailSongData: {},
   scales: null,
-  dynamicState: DynamicStateStore.getState(),
-  allGenresCount: {}
+  allGenresCount: {},
+  displayObjects: {},
+  hoveredSystemId: null,
+  detailTransitionId: null,
+  detailSystemId: null,
+  inTransition: false,
+  inDetail: false,
+  shareOpen: false,
+  legendOpen: false,
+  aboutOpen: false,
+  highlightedAttribute: null,
+  filteredGenres: Immutable.Map()
 })
 
 var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
@@ -55,12 +64,12 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
     return state.get('scales')
   },
 
-  getDynamic() {
-    return state.get('dynamicState')
+  getDisplayObjects() {
+    return state.get('displayObjects')
   },
 
   getGenreCount() {
-    if (!DynamicStateStore.isInDetail()) {
+    if (!state.get('inDetail')) {
       return state.get('allGenresCount')
     } else {
       return this.getDetailGenreCount()
@@ -77,7 +86,54 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
     }, {})
   },
 
-  dispatcherToken: AppDispatcher.register((payload) => {
+  setHoveredSystem(id) {
+    setState('hoveredSystemId', id)
+  },
+
+  transitionToDetail(id) {
+    setStateObj({
+      inTransition: true,
+      detailTransitionId: id
+    })
+  },
+
+  showDetail(id) {
+    setStateObj({
+      inTransition: false,
+      detailSystemId: id,
+      inDetail: true
+    })
+  },
+
+  showGalaxy() {
+    setStateObj({
+      hoveredSystemId: null,
+      inTransition: false,
+      detailTransitionId: null,
+      detailSystemId: null,
+      inDetail: false
+    })
+  },
+
+  navMenuToggle(optionName, isOpen) {
+    // toggling any of the three automatically closes the other two
+    var optionProps = {
+      shareOpen: false,
+      legendOpen: false,
+      aboutOpen: false
+    }
+    optionProps[optionName] = isOpen
+    setStateObj(optionProps)
+  },
+
+  toggleFilteredGenre(genre) {
+    var filter = state.get('filteredGenres')
+    if (filter.get(genre)) filter = filter.set(genre, false)
+    else filter = filter.set(genre, true)
+    setState('filteredGenres', filter)
+  },
+
+  handleAction(payload) {
     var {action} = payload;
 
     switch (action.type) {
@@ -89,23 +145,66 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
 console.log('songs loaded', action.data);
         prepareLoadedData(action.data)
         break
+      // view actions
       case 'SHOW_DETAIL':
         prepDetailData(action.systemId)
-        updateDynamicState(action)
+        this.showDetail(action.systemId)
         break
       case 'SHOW_GALAXY':
         noDetailData()
-        updateDynamicState(action)
-
-      // view action events
-      default:
-        updateDynamicState(action)
+        this.showGalaxy()
+        break
+      case 'HOVER_SYSTEM':
+        if (!state.get('inTransition')) {
+          this.setHoveredSystem(action.systemId)
+        }
+        break
+      case 'HOVER_OFF_SYSTEM':
+        this.setHoveredSystem(null)
+        break
+      case 'CLICK_SYSTEM':
+        if (!state.get('inTransition')) {
+          this.transitionToDetail(action.systemId)
+        }
+        break
+      case 'END_TRANSITION':
+        setState('inTransition', false)
+        break
+      case 'OPEN_SHARE':
+        this.navMenuToggle('shareOpen', true)
+        break
+      case 'CLOSE_SHARE':
+        this.navMenuToggle('shareOpen', false)
+        break
+      case 'LEGEND_SHOW':
+        this.navMenuToggle('legendOpen', true)
+        break
+      case 'LEGEND_HIDE':
+        this.navMenuToggle('legendOpen', false)
+        break
+      case 'ABOUT_HIDE':
+        this.navMenuToggle('aboutOpen', false)
+        break
+      case 'ABOUT_SHOW':
+        this.navMenuToggle('aboutOpen', true)
+        break
+      case 'ATTRIBUTE_HIGHLIGHT':
+        if (state.get('highlightedAttribute') === action.attributeToHighlight) {
+          setState('highlightedAttribute', null)
+        } else {
+          setState('highlightedAttribute', action.attributeToHighlight)
+        }
+      case 'FILTER_GENRE':
+        this.toggleFilteredGenre(action.genre)
+        break
     }
 
-    SongStore.emitChange()
-  })
+    this.emitChange()
+  }
 
 })
+
+SongStore.dispatcherToken = AppDispatcher.register(SongStore.handleAction.bind(SongStore))
 
 function loadSongs() {
   reqwest({
@@ -116,83 +215,13 @@ function loadSongs() {
   })
 }
 
-var monthDayYear = d3.time.format('%B %e, %Y')
-,   monthYear = d3.time.format('%B %Y')
-,   year = d3.time.format('%Y')
-
-function parseDate(dateString) {
-  return monthDayYear.parse(dateString) || monthYear.parse(dateString) || year.parse(dateString)
-}
-
-function baseBounds() {
-  return [Infinity, -Infinity]
-}
-
-function adjustBounds(bounds, value) {
-  bounds[0] = Math.min(bounds[0], value);
-  bounds[1] = Math.max(bounds[1], value);
-}
-
-function findBounds(dataset) {
-  var energy = baseBounds()
-  ,   speechiness = baseBounds()
-  ,   tempo = baseBounds()
-  ,   genres = {}
-
-  dataset.forEach((songData) => {
-    songData.versions.forEach((versionData) => {
-      if (versionData.echonest) {
-        adjustBounds(energy, versionData.echonest.energy)
-        adjustBounds(speechiness, versionData.echonest.speechiness)
-        adjustBounds(tempo, versionData.echonest.tempo)
-        genres[versionData.genre] = true
-      }
-    })
-  })
-
-  return {
-    energyRange: energy,
-    speechinessRange: speechiness,
-    tempoRange: tempo,
-    genres: Object.keys(genres).sort()
-  }
-}
-
-function makeScaleSet(bounds) {
-  var orbitRadius = d3.time.scale().domain([new Date(1929, 1, 1), new Date()]).range([4, Constants.SYSTEM_WIDTH])
-  ,   planetRadius = d3.scale.linear().domain([0, 100]).range([3, 18])
-  ,   planetColor = d3.scale.ordinal().domain(bounds.genres).range(['#E5D166', '#9BC054', '#57BF93', '#5882B4', '#CD6586'])
-  // rotation ranges from 270 to 450 degrees
-  ,   rotation = d3.scale.linear().domain([0, 1]).range([0, -90])
-  ,   timelineRotation = d3.scale.linear().domain([0, 1]).range([0, -90])
-  // rotation ranges from 0 to 360 degrees
-//  ,   rotation = d3.scale.linear().domain([0, 1]).range([0, 360])
-  ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5 / 600, 2.5 / 600])
-  ,   timelinePlanetRadius = d3.scale.linear().domain([0, 100]).range([3, 50])
-  ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([-1, 8, 7, 6, 5, 4, 3]) // reverse scale
-//  ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([6])
-  ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2 / 600, 14 / 600])
-
-  return {
-    getOrbitRadiusScale: () => orbitRadius,
-    getRadiusScale: () => planetRadius,
-    getColorScale: () => planetColor,
-    getRotationScale: () => rotation,
-    getSpeedScale: () => speed,
-    getTimelineRadiusScale: () => timelinePlanetRadius,
-    getEdgesScale: () => edgesScale,
-    getTimelineRotation: () => timelineRotation,
-    getBlinkScale: () => blinkScale
-  }
-}
-
 function prepareLoadedData(dataset) {
   var allGenresCounter = {}
   dataset.forEach((songData) => {
     songData.id = DataUtil.songSystemId(songData)
     songData.versions.forEach((versionData) => {
 //      versionData.id = DataUtil.versionId(versionData)
-      versionData.parsedDate = parseDate(versionData.date)
+      versionData.parsedDate = DataUtil.parseDate(versionData.date)
       var genre = versionData.genre || "Unknown"
       if (!allGenresCounter[genre]) allGenresCounter[genre] = 0
       allGenresCounter[genre]++
@@ -200,7 +229,7 @@ function prepareLoadedData(dataset) {
     })
   })
   setState('songs', dataset)
-  var scaleset = makeScaleSet(findBounds(dataset))
+  var scaleset = DataUtil.makeScaleSet(DataUtil.findBounds(dataset))
   setState('scales', scaleset)
   setState('allGenresCount', allGenresCounter)
   var displayObjects = dataset.map((songData) => {
@@ -237,11 +266,6 @@ function prepareLoadedData(dataset) {
     }
   })
   setState('displayObjects', displayObjects)
-}
-
-function updateDynamicState(action) {
-  DynamicStateStore.handleAction(action)
-  setState('dynamicState', DynamicStateStore.getState())
 }
 
 function prepDetailData(detailId) {

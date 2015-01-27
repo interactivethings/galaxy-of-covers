@@ -16,6 +16,14 @@ function getAppState() {
   return {appState: SongStore.getState()}
 }
 
+function sizesEqual(size1, size2) {
+  if (size1 === size2) {
+    return true
+  } else if (size1 && size2) {
+    return size1[0] === size2[0] && size1[1] === size2[1]
+  }
+}
+
 var App = React.createClass({
 
   mixins: [ ResizeMixin ],
@@ -38,31 +46,30 @@ var App = React.createClass({
   },
 
   shouldComponentUpdate(nextProps, nextState) {
-    return !Immutable.is(this.state.appState, nextState.appState) || (this.state.size !== nextState.size)
+    return !Immutable.is(this.state.appState, nextState.appState) || !sizesEqual(this.state.size, nextState.size)
   },
 
   render() {
     var songsArray = SongStore.getSongs()
     ,   detailData = SongStore.getDetailSongData()
     ,   galaxyScales = SongStore.getScales()
-    ,   dynamicState = SongStore.getDynamic()
+    ,   state = this.state.appState
     ,   genreCount = SongStore.getGenreCount()
     ,   componentLayout = Layout.getLayout()
 
     return (
       <div className="AppBox">
-        <AppHeader genreCount={genreCount} scales={galaxyScales} dynamicState={dynamicState} layout={componentLayout} />
-        {dynamicState.get('inDetail') ?
+        <AppHeader genreCount={genreCount} scales={galaxyScales} dynamicState={state} layout={componentLayout} />
           <DetailView
             layout={componentLayout}
-            dynamicState={dynamicState}
+            dynamicState={state}
             scales={galaxyScales}
             songData={detailData}
           />
         :
           <GalaxyView
             layout={componentLayout}
-            dynamicState={dynamicState}
+            dynamicState={state}
             scales={galaxyScales}
             songs={songsArray}
           />
