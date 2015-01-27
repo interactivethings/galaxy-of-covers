@@ -1,3 +1,39 @@
 .SongGalaxy {
   display: block;
 }
+
+.SongSystem {
+  cursor: pointer;
+}
+
+.SongSystem--background__transparent {
+  fill: transparent;
+  stroke: none;
+}
+
+.SongSystem--background__hovered {
+  fill: url(#galaxyBackgroundGradient);
+  fill-opacity: 0.2;
+  filter: url(#galaxyShadow);
+  stroke: rgba(0,0,0,0.15);
+}
+
+.SongSystem--glowingstar {
+  fill: #fff;
+  filter: url(#starGlowFilter);
+}
+
+.SongSystem--songtitle {
+  alignment-baseline: central;
+  fill: #fff;
+  font-size: 14px;
+  font-weight: 200;
+  stroke: none;
+  text-anchor: middle;
+}
+
+.SongSystem--orbit {
+  fill: none;
+  stroke: #aaa;
+  stroke-width: 0.5;
+}
