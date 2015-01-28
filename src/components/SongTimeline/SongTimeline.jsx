@@ -13,62 +13,13 @@ var SvgUtil = require('util/svgutil')
 var SongTimeline = React.createClass({
 
   render() {
-    var highlineY = this.props.layout.timelineTop
-    ,   baselineY = this.props.layout.timelineBase
-    ,   timelineTop = highlineY + (baselineY - highlineY) * 1 / 5
-    ,   timelineHeight = baselineY - timelineTop
-    ,   energyRange = DataUtil.getMinMax(this.props.songData.versions, function(item) { return item.echonest ? item.echonest.energy : 0; })
-    ,   timelineYScale = d3.scale.linear().domain(energyRange).range([timelineHeight, 0])
-    ,   timeRange = DataUtil.getMinMax(this.props.songData.versions, (item) => item.parsedDate)
-    ,   timelineXRange = [this.props.layout.timelineLeftRightPadding, this.props.layout.bodyWidth - this.props.layout.timelineLeftRightPadding]
-    ,   timelineXScale = d3.time.scale().domain(timeRange).range(timelineXRange)
-    ,   radiusScale = this.props.scales.getTimelineRadiusScale()
-    ,   colorScale = this.props.scales.getColorScale()
-    ,   edgesScale = this.props.scales.getEdgesScale()
-    ,   rotationScale = this.props.scales.getTimelineRotation()
-    ,   genreFilter = this.props.dynamicState.get('filteredGenres')
+
 
     var planets = []
     ,   tails = []
-    ,   genreSplit = {}
     this.props.songData.versions.forEach(function(versionData, i) {
-      if (!versionData.echonest) return;
-      if (genreFilter.get(versionData.genre)) return;
 
-      var g = versionData.genre
-      if (!genreSplit[g]) genreSplit[g] = 0
-      genreSplit[g]++
 
-      // props for the representation of this song version
-      var songProps = {
-        baseY: timelineHeight,
-        cx: timelineXScale(versionData.parsedDate),
-        cy: timelineYScale(versionData.echonest.energy),
-        r: radiusScale(versionData.spotify.popularity),
-        color: colorScale(versionData.genre),
-        sides: edgesScale(versionData.echonest.speechiness),
-        rotation: rotationScale(versionData.echonest.valence)
-      }
-
-      songProps.isCircle = songProps.sides === -1
-
-      // reorient the polygon and draw the correct energy tail for it
-      if (!songProps.isCircle) {
-        var a = Math.floor(songProps.sides / 2) * 2 * Math.PI / songProps.sides
-        ,   pt1 = new Vec2(-1, 0)
-        ,   pt2 = new Vec2(Math.cos(a), Math.sin(a))
-        ,   diagonal = Vec2.diff(pt2, pt1)
-        ,   rot = Vec2.crossProduct(new Vec2(1, 0), diagonal)
-        ,   polyPoints = SvgUtil.getOffsetPolygonPointsArray(0, 0, songProps.r, songProps.sides, rot / 2)
-
-        songProps.polygonPoints = polyPoints
-        songProps.tailpt1 = polyPoints[0]
-        songProps.tailpt2 = polyPoints[Math.ceil(polyPoints.length / 2)]
-      } else {
-        // draw the energy tail for a circle (no polygonPoints needed)
-        songProps.tailpt1 = [-songProps.r, 0]
-        songProps.tailpt2 = [songProps.r, 0]
-      }
 
       planets.push(
         <TimelinePlanet key={versionData.id} id={versionData.id} {...songProps} />

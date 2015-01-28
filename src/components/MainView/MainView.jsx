@@ -18,16 +18,16 @@ var MainView = React.createClass({
     var data = this.props.displayObjects
     ,   state = this.props.dynamicState
     ,   node = this.getDOMNode()
+    ,   genreFilter = state.get('filteredGenres')
 
     if (state.get('inGalaxy')) {
-      var dimensions = GalaxyView.applyHexLayout(data)
+      var dimensions = GalaxyView.applyHexLayout(data) // this also mutates data
       node.setAttribute('width', dimensions.layoutWidth)
       node.setAttribute('height', dimensions.layoutHeight)
 
       if (!data.length) return true
 
-      var genreFilter = state.get('filteredGenres')
-      ,   hoveredId = state.get('hoveredSystemId')
+      var hoveredId = state.get('hoveredSystemId')
       ,   systemMinY = this.props.scrollY - 2 * Constants.SYSTEM_BACKGROUND_RADIUS
       ,   systemMaxY = this.props.scrollY + window.innerHeight + 2 * Constants.SYSTEM_BACKGROUND_RADIUS
 
@@ -46,8 +46,12 @@ var MainView = React.createClass({
       GalaxyView.render(node, data, state)
     } else if (state.get('inDetail')) {
       var detailData = state.get('detailSongData')
+      DetailView.applyDetailLayout(detailData, state)
+
       node.setAttribute('width', window.innerWidth)
       node.setAttribute('height', window.innerHeight)
+
+      detailData.versionsFilteredIn = detailData.versions.filter((versionData) => !genreFilter.get(versionData.genreName))
 
       DetailView.render(node, detailData, state)
     }

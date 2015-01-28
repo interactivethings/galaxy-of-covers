@@ -84,7 +84,7 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
   },
 
   showDetail(songId) {
-    var selectedSong = state.get('displayObjects').filter((songData) => songData.songId === songId )[0]
+    var selectedSong = state.get('displayObjects').filter((songData) => songData.songId === songId )[0] || {}
     setStateObj({
       detailSongData: selectedSong,
       inDetail: true,
@@ -237,6 +237,8 @@ function prepareLoadedData(dataset) {
           blinkSpeed: scaleset.getBlinkScale()(versionData.echonest.tempo),
           numSides: scaleset.getEdgesScale()(versionData.echonest.speechiness),
           isCircle: scaleset.getEdgesScale()(versionData.echonest.speechiness) === -1,
+          energy: versionData.echonest.energy,
+          parsedDate: versionData.parsedDate,
           timelineCX: 0,
           timelineCY: 0,
           timelineBaseY: 0,
