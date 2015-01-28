@@ -67,7 +67,7 @@ var GalaxyView = {
     if (!data.length) return {}
 
     var width = window.innerWidth
-    ,   systemRadius = Constants.SYSTEM_WIDTH
+    ,   systemRadius = Constants.SYSTEM_RADIUS
     ,   hexRadius = ((systemRadius / ROOT_THREE) * 2) + Constants.SYSTEM_PADDING
     ,   hexWidth = hexRadius / 2 * ROOT_THREE * 2
     ,   numSystemsWidest = Math.floor(width / hexWidth)
@@ -96,12 +96,24 @@ var GalaxyView = {
   render(node, data, state) {
     var d3Node = d3.select(node)
 
+    data = data.filter((d) => d.isInViewport)
+
     var systems = d3Node.selectAll('.SongSystem')
       .data(data)
 
     var enterSystems = systems.enter()
       .append('g')
       .attr('class', 'SongSystem')
+      .attr('opacity', 0)
+      .transition()
+      .attr('opacity', 1)
+
+    systems.exit()
+      .transition()
+      .attr('opacity', 0)
+      .remove()
+
+    systems
       .on('mouseenter', (d) => {
         ViewActions.hoverOnSongSystem(d.songId)
       })
@@ -113,18 +125,28 @@ var GalaxyView = {
       })
 
     // background and star
-    enterSystems
+    var backgrounds = systems.selectAll('.SongSystem--background')
+      .data((d) => [d])
+
+    backgrounds.enter()
       .append('use')
       .attr('class', 'SongSystem--background')
-      .attr('transform', (d) => SvgUtil.getTranslateAndRotate(d.galaxyX, d.galaxyY, -20))
 
-    systems.selectAll('.SongSystem--background')
+    backgrounds
+      .attr('transform', (d) => SvgUtil.getTranslateAndRotate(d.galaxyX, d.galaxyY, -20))
       .attr('xlink:href', (d) => d.systemIsHovered ? '#galaxyShadedBackgroudCircle' : '#galaxyNoBackgroudCircle')
 
-    enterSystems
+    backgrounds.exit().remove()
+
+    var stars = systems.selectAll('.SongSystem--glowingstar')
+      .data((d) => [d])
+
+    stars.enter()
       .append('circle')
       .attr('class', 'SongSystem--glowingstar')
       .attr('r', 5)
+
+    stars
       .attr('transform', (d) => SvgUtil.translateString(d.galaxyX, d.galaxyY))
 
     var orbits = systems.selectAll('.SongSystem--orbit')
@@ -133,43 +155,62 @@ var GalaxyView = {
     orbits.enter()
       .append('ellipse')
       .attr('class', 'SongSystem--orbit')
+
+    orbits.exit().remove()
+
+    orbits
       .attr('rx', (d) => d.orbitRadiusX)
       .attr('ry', (d) => d.orbitRadiusY)
       .attr('transform', (d) => SvgUtil.getTranslateAndRotate(d.galaxyX, d.galaxyY, d.orbitRotationOffset))
 
-    orbits.exit().remove()
-
     var roundPlanets = systems.selectAll('.SongSystem--planet.SongSystem--planet__round')
-      .data((d) => d.versionsFilteredIn.filter((v) => v.isCircle))
+      .data((d) => d.versionsFilteredIn.filter((datum) => datum.isCircle))
 
     roundPlanets.enter()
       .append('circle')
       .attr('class', 'SongSystem--planet SongSystem--planet__round')
+
+    roundPlanets.exit()
+      .remove()
+
+    roundPlanets
+      .attr('transform', (d) => AnimationUtil.planetPosition(d, 0))
+//      .each(AnimationUtil.stopContinuousAnimation)
+//      .each(AnimationUtil.startContinuousAnimation)
+
+    roundPlanets
       .attr('r', (d) => d.galaxyPlanetRadius)
       .attr('fill', (d) => d.genreColor)
-      .attr('transform', (d) => AnimationUtil.planetPosition(d, 0))
-      .each(AnimationUtil.startContinuousAnimation)
-
-    roundPlanets.exit().each(AnimationUtil.stopContinuousAnimation).remove()
 
     var pointyPlanets = systems.selectAll('.SongSystem--planet.SongSystem--planet__pointy')
-      .data((d) => d.versionsFilteredIn.filter((v) => !v.isCircle))
+      .data((d) => d.versionsFilteredIn.filter((datum) => !datum.isCircle))
 
     pointyPlanets.enter()
       .append('polygon')
       .attr('class', 'SongSystem--planet SongSystem--planet__pointy')
+
+    pointyPlanets.exit()
+      .remove()
+
+    pointyPlanets
+      .attr('transform', (d) => AnimationUtil.planetPosition(d, 0))
+//      .each(AnimationUtil.stopContinuousAnimation)
+//      .each(AnimationUtil.startContinuousAnimation)
+
+    pointyPlanets
       .attr('points', (d) => SvgUtil.getPolygonPoints(0, 0, d.galaxyPlanetRadius, d.numSides))
       .attr('fill', (d) => d.genreColor)
-      .attr('transform', (d) => AnimationUtil.planetPosition(d, 0))
-      .each(AnimationUtil.startContinuousAnimation)
 
-    pointyPlanets.exit().each(AnimationUtil.stopContinuousAnimation).remove()
+    // song label is above the rest of the system
+    var labels = systems.selectAll('.SongSystem--songtitle')
+      .data((d) => [d])
 
-    // song label
-    enterSystems
+    labels.enter()
       .append('text')
       .attr('class', 'SongSystem--songtitle')
       .attr('dy', -20)
+
+    labels
       .text((d) => d.title)
       .attr('transform', (d) => SvgUtil.translateString(d.galaxyX, d.galaxyY))
   }

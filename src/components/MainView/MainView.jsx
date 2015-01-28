@@ -5,6 +5,7 @@ var React = require('react')
 var ViewFilters = require('util/ViewFilters')
 ,   GalaxyView = require('components/GalaxyView/GalaxyView')
 ,   DetailView = require('components/DetailView/DetailView')
+,   Constants = require('Constants')
 
 var MainView = React.createClass({
 
@@ -27,11 +28,17 @@ var MainView = React.createClass({
 
       var genreFilter = state.get('filteredGenres')
       ,   hoveredId = state.get('hoveredSystemId')
+      ,   systemMinY = this.props.scrollY - 2 * Constants.SYSTEM_BACKGROUND_RADIUS
+      ,   systemMaxY = this.props.scrollY + window.innerHeight + 2 * Constants.SYSTEM_BACKGROUND_RADIUS
+
       data.forEach((songData) => {
         songData.versionsFilteredIn = songData.versions.filter((versionData) => !genreFilter.get(versionData.genreName))
+        songData.isInViewport = systemMinY <= songData.galaxyY && songData.galaxyY <= systemMaxY
         var isHovered = songData.songId === hoveredId
         if (isHovered !== songData.systemIsHovered) {
-          songData.versions.forEach((v) => { v.pauseAnimation = isHovered })
+          songData.versions.forEach((v) => {
+            v.pauseAnimation = isHovered
+          })
           songData.systemIsHovered = isHovered
         }
       })

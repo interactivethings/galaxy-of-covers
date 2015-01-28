@@ -63,10 +63,41 @@ var DataUtil = {
     return obj
   },
 
+  // from underscore
+  throttle(func, wait, options) {
+    var context, args, result;
+    var timeout = null;
+    var previous = 0;
+    if (!options) options = {};
+    var later = function() {
+      previous = options.leading === false ? 0 : Date.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+    return function() {
+      var now = Date.now();
+      if (!previous && options.leading === false) previous = now;
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        clearTimeout(timeout);
+        timeout = null;
+        previous = now;
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+      return result;
+    };
+  },
+
   parseDate: parseDate,
 
   makeScaleSet(bounds) {
-    var orbitRadius = d3.time.scale().domain([new Date(1929, 1, 1), new Date()]).range([4, Constants.SYSTEM_WIDTH])
+    var orbitRadius = d3.time.scale().domain([new Date(1929, 1, 1), new Date()]).range([4, Constants.SYSTEM_RADIUS])
     ,   planetRadius = d3.scale.linear().domain([0, 100]).range([3, 18])
     ,   planetColor = d3.scale.ordinal().domain(bounds.genres).range(['#FB826F', '#FE839F', '#E493CB', '#B0ABE9', '#67BFEC', '#0ACED4', '#37D5A9', '#7ED679', '#BDD053', '#F8C24B'])
     // rotation ranges from 270 to 450 degrees

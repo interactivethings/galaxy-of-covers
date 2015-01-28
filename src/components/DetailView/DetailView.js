@@ -9,7 +9,7 @@ var DetailView = {
   render(node, data, state) {
     var d3Node = d3.select(node)
 
-    d3Node.selectAll('.SongSystem--background, .SongSystem--glowingstar, .SongSystem--orbit, .SongSystem--songtitle')
+    d3Node.selectAll('.SongSystem')
       .transition()
       .style('opacity', 0)
       .remove()
@@ -17,12 +17,13 @@ var DetailView = {
     var planets = d3Node.selectAll('.SongSystem--planet')
 
     planets.filter((d) => d.songId !== data.songId)
-      .transition()
       .style('opacity', 0)
       .remove()
 
-    planets.filter((d) => d.songId == data.songId)
-      .attr('transform', 'translate(600,600)')
+    planets.filter((d) => d.songId === data.songId)
+      .transition()
+      .duration(7000)
+      .attr('transform', () => 'translate(' + (Math.random() * window.innerWidth).toString() + ',' + (Math.random() * window.innerHeight).toString() + ')')
 
     return true
   }

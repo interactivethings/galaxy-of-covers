@@ -13,9 +13,13 @@ var LoadActions = require('actions/LoadActions')
 ,   DetailHeader = require('components/DetailView/DetailHeader')
 ,   MainView = require('components/MainView/MainView')
 ,   Layout = require('components/Layout')
+,   DataUtil = require('util/datautil')
 
 function getAppState() {
-  return {appState: SongStore.getState()}
+  return {
+    appState: SongStore.getState(),
+    scrollY: window.pageYOffset
+  }
 }
 
 function sizesEqual(size1, size2) {
@@ -38,17 +42,21 @@ var App = React.createClass({
     this.setState(getAppState())
   },
 
+  setViewportScroll() {
+    this.setState({
+      scrollY: window.pageYOffset
+    })
+  },
+
   componentDidMount() {
     SongStore.onChange(this.handleChange)
     LoadActions.initialLoad()
+
+    window.addEventListener('scroll', DataUtil.throttle(this.setViewportScroll, 400))
   },
 
   componentWillUnmount() {
     SongStore.removeChangeHandler(this.handleChange)
-  },
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return !Immutable.is(this.state.appState, nextState.appState) || !sizesEqual(this.state.size, nextState.size)
   },
 
   render() {
@@ -56,6 +64,7 @@ var App = React.createClass({
     ,   detailData = SongStore.getDetailSongData()
     ,   galaxyScales = SongStore.getScales()
     ,   state = this.state.appState
+    ,   scrollY = this.state.scrollY
     ,   genreCount = SongStore.getGenreCount()
     ,   componentLayout = Layout.getLayout()
 
@@ -63,7 +72,7 @@ var App = React.createClass({
       <div className="AppBox">
         <AppHeader genreCount={genreCount} scales={galaxyScales} dynamicState={state} layout={componentLayout} />
         {state.get('inDetail') ? <DetailHeader songData={detailData} state={state} layout={componentLayout} /> : null}
-        <MainView displayObjects={displayObjects} dynamicState={state} />
+        <MainView displayObjects={displayObjects} dynamicState={state} scrollY={scrollY} />
       </div>
     )
   }

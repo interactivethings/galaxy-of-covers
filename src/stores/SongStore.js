@@ -214,6 +214,7 @@ function prepareLoadedData(dataset) {
       galaxyY: 0,
       systemIsHovered: false,
       versionsFilteredIn: [],
+      isInViewport: true,
       versions: songData.versions.map((versionData) => {
         return {
           songId: songData.id,
