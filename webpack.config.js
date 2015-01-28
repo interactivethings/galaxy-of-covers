@@ -8,6 +8,7 @@ var moduleDirectories = [
     'node_modules',
     'bower_components',
     'node_modules/catalyst/src',
+    'node_modules/gsap/src/minified',
     'src'
   ];
 
@@ -62,7 +63,8 @@ module.exports = {
   resolve: {
     alias: {
       'd3': 'd3/d3',
-      'TweenMax': 'gsap/src/minified/TweenMax.min'
+      'tweenmax': 'gsap/src/minified/TweenMax.min',
+      'tweenlite': 'gsap/src/minified/TweenLite.min'
     },
     modulesDirectories: moduleDirectories,
     extensions: ['', '.js', '.jsx', '.json', '.css', '.scss', '.coffee', '.cjsx']

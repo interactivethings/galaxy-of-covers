@@ -2,6 +2,7 @@
   "name": "1408-data-visualization-reference",
   "version": "0.0.1",
   "description": "Blue sky vis project prototype",
+  "private": true,
   "main": "index.html",
   "devDependencies": {
     "catalyst": "interactivethings/catalyst",
@@ -17,7 +18,7 @@
     "es6-promise": "^2.0.1",
     "file-loader": "^0.8.1",
     "flux": "^2.0.1",
-    "gsap": "^1.15.0",
+    "gsap": "^1.15.1",
     "immutable": "^3.4.1",
     "imports-loader": "^0.6.3",
     "json-loader": "^0.5.1",
@@ -50,5 +51,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "dependencies": {}
+  "dependencies": {},
+  "repository": "https://bitbucket.org/interactivethings/l1408-data-visualization-reference"
 }
