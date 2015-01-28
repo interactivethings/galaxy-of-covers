@@ -1,7 +1,5 @@
 'use strict';
 
-var TweenMax = require('TweenMax')
-
 var Dispatcher = require('dispatcher/AppDispatcher')
 
 var ViewActions = {
