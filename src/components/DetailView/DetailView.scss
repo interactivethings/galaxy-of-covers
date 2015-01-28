@@ -24,3 +24,22 @@
   opacity: 0.5;
 }
 
+.SongDetailStar {
+  fill: #fff;
+  filter: url(#starGlowFilter);
+}
+
+.SongTimelineAxis--line, .SongTimelineAxis--line__axistick {
+  opacity: 0.5;
+  stroke: white;
+}
+
+.SongTimelineAxis--label {
+  alignment-baseline: before-edge;
+  fill: white;
+  font-size: 10px;
+  font-weight: 400;
+  opacity: 0.5;
+  stroke: none;
+  text-anchor: middle;
+}

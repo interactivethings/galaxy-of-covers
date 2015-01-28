@@ -40,9 +40,14 @@ var DetailView = {
         versionData.tailpt2 = polyPoints[Math.ceil(polyPoints.length / 2)]
       }
     })
+
+    return {
+      baselineY: baselineY
+    , timelineXScale: timelineXScale
+    }
   },
 
-  render(node, data, state) {
+  render(node, data, state, dimensions) {
     var d3Node = d3.select(node)
 
     var systems = d3Node.selectAll('.SongSystem')
@@ -64,12 +69,76 @@ var DetailView = {
     planets
       .transition()
       .duration(1000)
-      .attr('transform', (d) => 'translate(' + d.timelineCX + ',' + d.timelineBaseY + ')')
+      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY))
       .transition()
       .duration(1500)
-      .attr('transform', (d) => 'translate(' + d.timelineCX + ',' + d.timelineCY + ')')
+      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineCY))
 
-    return true
+    var star = d3Node.selectAll('.SongDetailStar')
+      .data([0])
+
+    star.enter().append('circle')
+      .attr('class', 'SongDetailStar')
+
+    star.exit().remove()
+
+    star
+      .attr('cx', 0)
+      .attr('cy', dimensions.baselineY)
+      .attr('r', 8)
+
+    var axisDomain = dimensions.timelineXScale.domain()
+    ,   axisRange = dimensions.timelineXScale.range()
+
+    var axis = d3Node.selectAll('.SongTimelineAxis')
+      .data([0])
+
+    axis.enter().append('g')
+      .attr('class', 'SongTimelineAxis')
+
+    axis.exit().remove()
+
+    axis
+      .attr('transform', SvgUtil.translateString(0, dimensions.baselineY))
+
+    var axisLine = axis.selectAll('.SongTimelineAxis--line')
+      .data([0])
+
+    axisLine.enter().append('line')
+      .attr('class', 'SongTimelineAxis--line')
+
+    axisLine.exit().remove()
+
+    axisLine
+      .attr('x1', axisRange[0])
+      .attr('x2', axisRange[1])
+
+    var axisLabels = axis.selectAll('.SongTimelineAxis--label')
+      .data(axisDomain)
+
+    axisLabels.enter().append('text')
+      .attr('class',' SongTimelineAxis--label')
+
+    axisLabels.exit().remove()
+
+    axisLabels
+      .attr('x', (d, i) => axisRange[i])
+      .attr('y', 10)
+      .text((d) => d.getFullYear())
+
+    var axisTicks = axis.selectAll('SongTimelineAxis--line__axistick')
+      .data(data.versionsFilteredIn.map((d) => dimensions.timelineXScale(d.parsedDate) ))
+
+    axisTicks.enter().append('line')
+      .attr('class', 'SongTimelineAxis--line__axistick')
+
+    axisTicks.exit().remove()
+
+    axisTicks
+      .attr('x1', (d) => d)
+      .attr('y1', -5)
+      .attr('x2', (d) => d)
+      .attr('y2', 5)
   }
 
 }

@@ -21,7 +21,7 @@ var MainView = React.createClass({
     ,   genreFilter = state.get('filteredGenres')
 
     if (state.get('inGalaxy')) {
-      var dimensions = GalaxyView.applyHexLayout(data) // this also mutates data
+      var dimensions = GalaxyView.applyHexLayout(data) // this mutates data using the layout
       node.setAttribute('width', dimensions.layoutWidth)
       node.setAttribute('height', dimensions.layoutHeight)
 
@@ -46,14 +46,14 @@ var MainView = React.createClass({
       GalaxyView.render(node, data, state)
     } else if (state.get('inDetail')) {
       var detailData = state.get('detailSongData')
-      DetailView.applyDetailLayout(detailData, state)
+      var dimensions = DetailView.applyDetailLayout(detailData, state) // this mutates detailData using the layout
 
       node.setAttribute('width', window.innerWidth)
       node.setAttribute('height', window.innerHeight)
 
       detailData.versionsFilteredIn = detailData.versions.filter((versionData) => !genreFilter.get(versionData.genreName))
 
-      DetailView.render(node, detailData, state)
+      DetailView.render(node, detailData, state, dimensions)
     }
 
   },
