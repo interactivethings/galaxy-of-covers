@@ -196,7 +196,6 @@ function prepareLoadedData(dataset) {
     songData.versions.forEach((versionData) => {
 //      versionData.id = DataUtil.versionId(versionData)
       versionData.parsedDate = DataUtil.parseDate(versionData.date)
-      if (versionData.parsedDate === null) console.log(versionData);
       var genre = versionData.genre || "Unknown"
       if (!allGenresCounter[genre]) allGenresCounter[genre] = 0
       allGenresCounter[genre]++
