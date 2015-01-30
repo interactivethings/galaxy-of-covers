@@ -72,7 +72,7 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
   getDetailGenreCount() {
     var songData = state.get('detailSongData')
     return songData.versions.reduce((memo, versionData) => {
-      var genre = versionData.genre
+      var genre = versionData.genreName
       if (!memo[genre]) memo[genre] = 0
       memo[genre]++
       return memo
