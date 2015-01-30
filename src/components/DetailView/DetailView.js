@@ -310,7 +310,9 @@ var DetailView = {
 
     // new planets
     var detailPlanets = viewWrapper.selectAll('.SongTimeline--planet')
-      .data(data.versionsFilteredIn)
+      .data(data.versionsFilteredIn, (d) => d.versionId)
+
+    detailPlanets.exit().remove()
 
     detailPlanets.transition()
       .duration(200)
@@ -325,8 +327,6 @@ var DetailView = {
       .transition()
       .duration(800)
       .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineCY))
-
-    detailPlanets.exit().remove()
 
     // render the shapes
     detailPlanets.call(renderDetailShapes)
