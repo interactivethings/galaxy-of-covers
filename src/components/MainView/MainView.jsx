@@ -57,8 +57,10 @@ var MainView = React.createClass({
       })
 
       if (DetailView.isActive(node)) {
+        var oldScrollPos = this.props.scrollY
         DetailView.deRender(node, function() {
           GalaxyView.render(node, data, state, dimensions)
+          window.scrollTo(0, oldScrollPos)
         })
       } else {
         GalaxyView.render(node, data, state, dimensions)
