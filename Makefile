@@ -16,7 +16,7 @@ build: clean install
 	NODE_ENV=production webpack -p --colors --progress --hide-modules
 	cp index.html build/index.html
 	mkdir -p build/data/out
-	cp data/out/songinfo-spotify-echonest-genres.json build/data/out/songinfo-spotify-echonest-genres.json
+	cp data/out/songinfo-production.json build/data/out/songinfo-production.json
 
 deploy: build
 	rsync -avz build/ --exclude=.DS_Store interact@interactivethings.com:/home/interact/www/lab.interactivethings.com/song-covers
