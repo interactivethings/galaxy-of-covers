@@ -182,13 +182,13 @@ var DetailView = {
     var highlineY = yOffset + (state.get('legendOpen') ? 60 + 175 : 60)
     ,   baselineY = yOffset + window.innerHeight * 4 / 5
     ,   timelineTop = highlineY + (baselineY - highlineY) * 1 / 5
-    ,   energyRange = DataUtil.getMinMax(datum.versionsFilteredIn, (item) => item.energy || 0)
+    ,   energyRange = DataUtil.getMinMax(datum.versions, (item) => item.energy || 0)
     ,   timelineYScale = d3.scale.linear().domain(energyRange).range([baselineY, timelineTop])
-    ,   timeRange = DataUtil.getMinMax(datum.versionsFilteredIn, (item) => item.parsedDate)
+    ,   timeRange = DataUtil.getMinMax(datum.versions, (item) => item.parsedDate)
     ,   timelineXRange = [100, window.innerWidth - 100]
     ,   timelineXScale = d3.time.scale().domain(timeRange).range(timelineXRange)
 
-    datum.versionsFilteredIn.forEach((versionData) => {
+    datum.versions.forEach((versionData) => {
       versionData.timelineCX = timelineXScale(versionData.parsedDate)
       versionData.timelineCY = timelineYScale(versionData.energy)
       versionData.timelineBaseY = baselineY
