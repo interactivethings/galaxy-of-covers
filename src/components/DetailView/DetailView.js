@@ -284,8 +284,17 @@ var DetailView = {
     viewWrapper
       .attr('transform', 'translate(0,' + -dimensions.yOffset + ')')
 
-    var detailEnergyTails = viewWrapper.selectAll('.SongTimeline--energytail')
-      .data(data.versionsFilteredIn)
+    var energyTailContainer = viewWrapper.selectAll('.SongTimeline--energytailbox')
+
+    if (energyTailContainer.empty()) {
+      energyTailContainer = viewWrapper.append('g')
+        .attr('class', 'SongTimeline--energytailbox')
+    }
+
+    var detailEnergyTails = energyTailContainer.selectAll('.SongTimeline--energytail')
+      .data(data.versionsFilteredIn, (d) => d.versionId)
+
+    detailEnergyTails.exit().remove()
 
     detailEnergyTails.transition()
       .duration(200)
@@ -298,8 +307,6 @@ var DetailView = {
       .delay(200)
       .duration(800)
       .attr('points', energyExtendedPoints)
-
-    detailEnergyTails.exit().remove()
 
     // new planets
     var detailPlanets = viewWrapper.selectAll('.SongTimeline--planet')
