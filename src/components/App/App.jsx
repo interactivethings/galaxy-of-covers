@@ -2,7 +2,6 @@
 
 var React = require('react')
 ,   Immutable = require('Immutable')
-,   ResizeMixin = require('components/ResizeMixin')
 
 require('assets/icomoon/style.scss')
 require('components/App/App.scss')
@@ -15,13 +14,6 @@ var LoadActions = require('actions/LoadActions')
 ,   Layout = require('components/Layout')
 ,   DataUtil = require('util/datautil')
 
-function getAppState() {
-  return {
-    appState: SongStore.getState(),
-    scrollY: window.pageYOffset
-  }
-}
-
 function sizesEqual(size1, size2) {
   if (size1 === size2) {
     return true
@@ -32,14 +24,17 @@ function sizesEqual(size1, size2) {
 
 var App = React.createClass({
 
-  mixins: [ ResizeMixin ],
-
   getInitialState() {
-    return getAppState()
+    return {
+      appState: SongStore.getState(),
+      scrollY: window.pageYOffset
+    }
   },
 
   handleChange() {
-    this.setState(getAppState())
+    this.setState({
+      appState: SongStore.getState()
+    })
   },
 
   setViewportScroll() {
@@ -50,11 +45,18 @@ var App = React.createClass({
     }
   },
 
+  onWindowResize() {
+    this.setState({
+      windowSize: [window.innerWidth, window.innerHeight]
+    })
+  },
+
   componentDidMount() {
     SongStore.onChange(this.handleChange)
     LoadActions.initialLoad()
 
     window.addEventListener('scroll', DataUtil.throttle(this.setViewportScroll, 400))
+    window.addEventListener('resize', this.onWindowResize);
   },
 
   componentWillUnmount() {
