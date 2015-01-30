@@ -119,7 +119,7 @@ var GalaxyView = {
     viewWrapper.attr('transform', 'translate(0,0)')
 
     var systems = viewWrapper.selectAll('.SongSystem')
-      .data(data)
+      .data(data, (d) => d.songId)
 
     var enterSystems = systems.enter()
       .append('g')
@@ -170,7 +170,7 @@ var GalaxyView = {
       .attr('transform', (d) => SvgUtil.translateString(d.galaxyX, d.galaxyY))
 
     var orbits = systems.selectAll('.SongSystem--orbit')
-      .data((d) => d.versionsFilteredIn)
+      .data((d) => d.versionsFilteredIn, (d) => d.versionId)
 
     orbits.enter()
       .append('ellipse')
@@ -184,28 +184,28 @@ var GalaxyView = {
       .attr('transform', (d) => SvgUtil.getTranslateAndRotate(d.galaxyX, d.galaxyY, d.orbitRotationOffset))
 
     var roundPlanets = systems.selectAll('.SongSystem--planet.SongSystem--planet__round')
-      .data((d) => d.versionsFilteredIn.filter((datum) => datum.isCircle))
+      .data((d) => d.versionsFilteredIn.filter((datum) => datum.isCircle), (d) => d.versionId)
+
+    roundPlanets.exit()
+      .remove()
 
     roundPlanets.enter()
       .append('circle')
       .attr('class', 'SongSystem--planet SongSystem--planet__round')
-
-    roundPlanets.exit()
-      .remove()
 
     roundPlanets
       .attr('r', (d) => d.galaxyPlanetRadius)
       .attr('fill', (d) => d.genreColor)
 
     var pointyPlanets = systems.selectAll('.SongSystem--planet.SongSystem--planet__pointy')
-      .data((d) => d.versionsFilteredIn.filter((datum) => !datum.isCircle))
+      .data((d) => d.versionsFilteredIn.filter((datum) => !datum.isCircle), (d) => d.versionId)
+
+    pointyPlanets.exit()
+      .remove()
 
     pointyPlanets.enter()
       .append('polygon')
       .attr('class', 'SongSystem--planet SongSystem--planet__pointy')
-
-    pointyPlanets.exit()
-      .remove()
 
     pointyPlanets
       .attr('points', (d) => SvgUtil.getPolygonPoints(0, 0, d.galaxyPlanetRadius, d.numSides))
