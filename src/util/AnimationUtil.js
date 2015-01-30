@@ -19,26 +19,7 @@ function planetOpacity(blinkSpeed, t) {
   return (sin(t * blinkSpeed) + 1.8) / 2
 }
 
-function startContinuousAnimation(datum) {
-  var node = this
-  datum.stopAnimation = false
-
-  d3.timer(function(time) {
-    if (datum.pauseAnimation) return false
-
-    node.setAttribute('transform', planetPosition(datum, time))
-    node.setAttribute('opacity', planetOpacity(datum.blinkSpeed, time))
-
-    return datum.stopAnimation
-  })
-}
-
-function stopContinuousAnimation(datum) {
-  datum.stopAnimation = true
-}
-
 module.exports = {
   planetPosition: planetPosition,
-  startContinuousAnimation: startContinuousAnimation,
-  stopContinuousAnimation: stopContinuousAnimation
+  planetOpacity: planetOpacity
 }

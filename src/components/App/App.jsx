@@ -43,9 +43,11 @@ var App = React.createClass({
   },
 
   setViewportScroll() {
-    this.setState({
-      scrollY: window.pageYOffset
-    })
+    if (!this.state.appState.get('inDetail')) {
+      this.setState({
+        scrollY: window.pageYOffset
+      })
+    }
   },
 
   componentDidMount() {

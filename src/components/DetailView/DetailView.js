@@ -8,11 +8,179 @@ require('components/DetailView/DetailView.scss')
 var DataUtil = require('util/datautil')
 ,   SvgUtil = require('util/svgutil')
 
+function energyBaselinePoints(d) {
+  var x = d.timelineCX
+  ,   baseY = d.timelineBaseY
+  ,   p1 = d.tailpt1
+  ,   p2 = d.tailpt2
+  ,   pts = [
+    [x, baseY],
+    [x + p1[0], baseY + p1[1]],
+    [x + p2[0], baseY + p2[1]],
+    [x, baseY]
+  ]
+  return pts.join(' ')
+}
+
+function energyExtendedPoints(d) {
+  var x = d.timelineCX
+  ,   baseY = d.timelineBaseY
+  ,   y = d.timelineCY
+  ,   p1 = d.tailpt1
+  ,   p2 = d.tailpt2
+  ,   pts = [
+        [x, baseY],
+        [x + p1[0], y + p1[1]],
+        [x + p2[0], y + p2[1]],
+        [x, baseY]
+      ]
+  return pts.join(' ')
+}
+
+function renderDetailShapes(selection) {
+  selection
+    .attr('clip-path', (d) => 'url(#' + 'tlplanetclip-' + d.versionId + ')')
+
+  var detailClips = selection.selectAll('.SongTimeline--clip')
+    .data((d) => [d])
+
+  detailClips.enter().append('clipPath')
+    .attr('class', 'SongTimeline--clip')
+
+  detailClips.exit().remove()
+
+  detailClips
+    .attr('id', (d) => 'tlplanetclip-' + d.versionId)
+
+  var detailClipUse = detailClips.selectAll('use')
+    .data((d) => [d])
+
+  detailClipUse.enter().append('use')
+
+  detailClipUse.exit().remove()
+
+  detailClipUse
+    .attr('xlink:href', (d) => '#' + 'tlplanet-' + d.versionId)
+
+  var roundDetailShapes = selection.filter((d) => d.isCircle)
+    .selectAll('.SongTimeline--planet__shape.SongTimeline--planet__round')
+    .data((d) => [d])
+
+  roundDetailShapes.enter().append('circle')
+    .attr('class', 'SongTimeline--planet__shape SongTimeline--planet__round')
+
+  roundDetailShapes
+    .attr('id', (d) => 'tlplanet-' + d.versionId)
+    .attr('r', (d) => d.timelinePlanetRadius)
+    .attr('fill', (d) => d.genreColor)
+
+  roundDetailShapes.exit().remove()
+
+  var pointyDetailShapes = selection.filter((d) => !d.isCircle)
+    .selectAll('.SongTimeline--planet__shape.SongTimeline--planet__pointy')
+    .data((d) => [d])
+
+  pointyDetailShapes.enter().append('polygon')
+    .attr('class', 'SongTimeline--planet__shape SongTimeline--planet__pointy')
+
+  pointyDetailShapes
+    .attr('id', (d) => 'tlplanet-' + d.versionId)
+    .attr('points', (d) => SvgUtil.joinPolygonPoints(d.polygonPoints))
+    .attr('fill', (d) => d.genreColor)
+
+  pointyDetailShapes.exit().remove()
+
+  var detailShadows = selection.selectAll('.SongTimeline--planet__shadow')
+    .data((d) => [d])
+
+  detailShadows.enter().append('rect')
+    .attr('class', 'SongTimeline--planet__shadow')
+
+  detailShadows.exit().remove()
+
+  detailShadows
+    .attr('transform', (d) => 'rotate(' + d.timelineRotation + ')' )
+    .attr('y', (d) => -d.timelinePlanetRadius)
+    .attr('width', (d) => 2 * d.timelinePlanetRadius)
+    .attr('height', (d) => 2 * d.timelinePlanetRadius)
+}
+
+function axisStar(selection, yPosition) {
+  var star = selection.selectAll('.SongDetailStar')
+    .data([0])
+
+  star.enter().append('circle')
+    .attr('class', 'SongDetailStar')
+    .attr('opacity', 0)
+
+  star.exit().remove()
+
+  star
+    .attr('cx', 0)
+    .attr('cy', yPosition)
+    .attr('r', 8)
+    .transition()
+    .attr('opacity', 1)
+}
+
+function axis(selection, yPosition, xDomain, xRange, ticks) {
+  var axis = selection.selectAll('.SongTimelineAxis')
+
+  if (axis.empty()) {
+    axis = selection.append('g')
+      .attr('class', 'SongTimelineAxis')
+      .attr('opacity', 0)
+  }
+
+  axis
+    .attr('transform', SvgUtil.translateString(0, yPosition))
+    .transition()
+    .attr('opacity', 1)
+
+  var axisLine = axis.selectAll('.SongTimelineAxis--line')
+
+  if (axisLine.empty()) {
+    axisLine = axis.append('line')
+      .attr('class', 'SongTimelineAxis--line')
+  }
+
+  axisLine
+    .attr('x1', xRange[0])
+    .attr('x2', xRange[1])
+
+  var axisLabels = axis.selectAll('.SongTimelineAxis--label')
+    .data(xDomain)
+
+  axisLabels.enter().append('text')
+    .attr('class',' SongTimelineAxis--label')
+
+  axisLabels.exit().remove()
+
+  axisLabels
+    .attr('x', (d, i) => xRange[i])
+    .attr('y', 10)
+    .text((d) => d.getFullYear())
+
+  var axisTicks = axis.selectAll('SongTimelineAxis--line__axistick')
+    .data(ticks)
+
+  axisTicks.enter().append('line')
+    .attr('class', 'SongTimelineAxis--line__axistick')
+
+  axisTicks.exit().remove()
+
+  axisTicks
+    .attr('x1', (d) => d)
+    .attr('y1', -5)
+    .attr('x2', (d) => d)
+    .attr('y2', 5)
+}
+
 var DetailView = {
 
-  applyDetailLayout(datum, state) {
-    var highlineY = 60
-    ,   baselineY = window.innerHeight * 4 / 5
+  applyDetailLayout(datum, state, yOffset) {
+    var highlineY = yOffset + (state.get('legendOpen') ? 60 + 175 : 60)
+    ,   baselineY = yOffset + window.innerHeight * 4 / 5
     ,   timelineTop = highlineY + (baselineY - highlineY) * 1 / 5
     ,   energyRange = DataUtil.getMinMax(datum.versionsFilteredIn, (item) => item.energy || 0)
     ,   timelineYScale = d3.scale.linear().domain(energyRange).range([baselineY, timelineTop])
@@ -42,18 +210,33 @@ var DetailView = {
     })
 
     return {
-      baselineY: baselineY
+      yOffset: yOffset
+    , baselineY: baselineY
     , timelineXScale: timelineXScale
+    , layoutWidth: innerWidth
+    , layoutHeight: innerHeight
     }
   },
 
-  render(node, data, state, dimensions) {
+  isActive(node) {
+    return d3.select(node).classed('MainView__detail')
+  },
+
+  transitionIn(node, data, state, dimensions, callback) {
     var d3Node = d3.select(node)
+
+    d3Node.classed('MainView__galaxy', false)
 
     var systems = d3Node.selectAll('.SongSystem')
 
+    systems
+      .on('mouseenter', null)
+      .on('mouseleave', null)
+      .on('click', null)
+
     systems.filter((d) => d.songId !== data.songId)
       .transition()
+      .duration(300)
       .style('opacity', 0)
       .remove()
 
@@ -61,84 +244,127 @@ var DetailView = {
 
     includedSystems.selectAll('.SongSystem--background, .SongSystem--glowingstar, .SongSystem--orbit, .SongSystem--songtitle')
       .transition()
+      .duration(300)
       .style('opacity', 0)
       .remove()
 
-    var planets = includedSystems.selectAll('.SongSystem--planet')
-
-    planets
+    // existing planets
+    var it0 = includedSystems.selectAll('.SongSystem--planet')
       .transition()
-      .duration(1000)
+      .delay(300)
+      .duration(800)
       .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY))
+
+    var it1 = it0.transition()
+      .duration(200)
+      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(0)')
+      .each('end', DataUtil.before(2, function() {
+        callback()
+      }))
+      .remove()
+  },
+
+  render(node, data, state, dimensions) {
+    var d3Node = d3.select(node)
+
+    d3Node
+      .classed('MainView__detail', true)
+      .attr('width', dimensions.layoutWidth)
+      .attr('height', dimensions.layoutHeight)
+
+    d3Node.datum(dimensions)
+
+    var viewWrapper = d3Node.selectAll('.ViewWrapper')
+
+    if (viewWrapper.empty()) {
+      viewWrapper = d3Node.append('g')
+        .attr('class', 'ViewWrapper')
+    }
+
+    viewWrapper
+      .attr('transform', 'translate(0,' + -dimensions.yOffset + ')')
+
+    var detailEnergyTails = viewWrapper.selectAll('.SongTimeline--energytail')
+      .data(data.versionsFilteredIn)
+
+    detailEnergyTails.transition()
+      .duration(200)
+      .attr('points', energyExtendedPoints)
+
+    detailEnergyTails.enter().append('polygon')
+      .attr('class', 'SongTimeline--energytail')
+      .attr('points', energyBaselinePoints)
       .transition()
-      .duration(1500)
+      .delay(200)
+      .duration(800)
+      .attr('points', energyExtendedPoints)
+
+    detailEnergyTails.exit().remove()
+
+    // new planets
+    var detailPlanets = viewWrapper.selectAll('.SongTimeline--planet')
+      .data(data.versionsFilteredIn)
+
+    detailPlanets.transition()
+      .duration(200)
       .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineCY))
 
-    var star = d3Node.selectAll('.SongDetailStar')
-      .data([0])
+    detailPlanets.enter().append('g')
+      .attr('class', 'SongTimeline--planet')
+      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(0)')
+      .transition()
+      .duration(200)
+      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(1)')
+      .transition()
+      .duration(800)
+      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineCY))
 
-    star.enter().append('circle')
-      .attr('class', 'SongDetailStar')
+    detailPlanets.exit().remove()
 
-    star.exit().remove()
+    // render the shapes
+    detailPlanets.call(renderDetailShapes)
 
-    star
-      .attr('cx', 0)
-      .attr('cy', dimensions.baselineY)
-      .attr('r', 8)
+    // star
+    viewWrapper.call(axisStar, dimensions.baselineY)
 
-    var axisDomain = dimensions.timelineXScale.domain()
-    ,   axisRange = dimensions.timelineXScale.range()
+    // axis
+    viewWrapper.call(axis, dimensions.baselineY, dimensions.timelineXScale.domain(), dimensions.timelineXScale.range(), data.versionsFilteredIn.map((d) => dimensions.timelineXScale(d.parsedDate)))
+  },
 
-    var axis = d3Node.selectAll('.SongTimelineAxis')
-      .data([0])
+  deRender(node, callback) {
+    var d3Node = d3.select(node)
 
-    axis.enter().append('g')
-      .attr('class', 'SongTimelineAxis')
+    var dimensions = d3Node.datum()
 
-    axis.exit().remove()
+    d3Node.classed('MainView__detail', false)
 
-    axis
-      .attr('transform', SvgUtil.translateString(0, dimensions.baselineY))
+    // cancel any incoming transition, if applicable
+    d3Node.selectAll('.SongSystem--planet').interrupt().transition()
 
-    var axisLine = axis.selectAll('.SongTimelineAxis--line')
-      .data([0])
+    d3Node.selectAll('.SongDetailStar, .SongTimelineAxis')
+      .transition()
+      .duration(500)
+      .attr('opacity', 0)
+      .remove()
 
-    axisLine.enter().append('line')
-      .attr('class', 'SongTimelineAxis--line')
+    var trailT0 = d3Node.selectAll('.SongTimeline--energytail')
+      .transition()
+      .duration(500)
+      .attr('points', energyBaselinePoints)
+      .remove()
 
-    axisLine.exit().remove()
+    var t0 = d3Node.selectAll('.SongTimeline--planet')
+      .transition()
+      .duration(500)
+      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY))
 
-    axisLine
-      .attr('x1', axisRange[0])
-      .attr('x2', axisRange[1])
-
-    var axisLabels = axis.selectAll('.SongTimelineAxis--label')
-      .data(axisDomain)
-
-    axisLabels.enter().append('text')
-      .attr('class',' SongTimelineAxis--label')
-
-    axisLabels.exit().remove()
-
-    axisLabels
-      .attr('x', (d, i) => axisRange[i])
-      .attr('y', 10)
-      .text((d) => d.getFullYear())
-
-    var axisTicks = axis.selectAll('SongTimelineAxis--line__axistick')
-      .data(data.versionsFilteredIn.map((d) => dimensions.timelineXScale(d.parsedDate) ))
-
-    axisTicks.enter().append('line')
-      .attr('class', 'SongTimelineAxis--line__axistick')
-
-    axisTicks.exit().remove()
-
-    axisTicks
-      .attr('x1', (d) => d)
-      .attr('y1', -5)
-      .attr('x2', (d) => d)
-      .attr('y2', 5)
+    t0.transition()
+      .duration(200)
+      .attr('opacity', 0)
+      .remove()
+      .each('end', DataUtil.before(2, function() {
+        callback()
+      }))
   }
 
 }

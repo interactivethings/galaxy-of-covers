@@ -93,12 +93,32 @@ var GalaxyView = {
     }
   },
 
-  render(node, data, state) {
+  isActive(node) {
+    return d3.select(node).classed('MainView__galaxy')
+  },
+
+  render(node, data, state, dimensions) {
     var d3Node = d3.select(node)
+
+    d3Node
+      .classed('MainView__galaxy', true)
+      .attr('width', dimensions.layoutWidth)
+      .attr('height', dimensions.layoutHeight)
+
+    d3Node.datum(dimensions)
 
     data = data.filter((d) => d.isInViewport)
 
-    var systems = d3Node.selectAll('.SongSystem')
+    var viewWrapper = d3Node.selectAll('.ViewWrapper')
+
+    if (viewWrapper.empty()) {
+      viewWrapper = d3Node.append('g')
+        .attr('class', 'ViewWrapper')
+    }
+
+    viewWrapper.attr('transform', 'translate(0,0)')
+
+    var systems = viewWrapper.selectAll('.SongSystem')
       .data(data)
 
     var enterSystems = systems.enter()
@@ -174,11 +194,6 @@ var GalaxyView = {
       .remove()
 
     roundPlanets
-      .attr('transform', (d) => AnimationUtil.planetPosition(d, 0))
-//      .each(AnimationUtil.stopContinuousAnimation)
-//      .each(AnimationUtil.startContinuousAnimation)
-
-    roundPlanets
       .attr('r', (d) => d.galaxyPlanetRadius)
       .attr('fill', (d) => d.genreColor)
 
@@ -191,11 +206,6 @@ var GalaxyView = {
 
     pointyPlanets.exit()
       .remove()
-
-    pointyPlanets
-      .attr('transform', (d) => AnimationUtil.planetPosition(d, 0))
-//      .each(AnimationUtil.stopContinuousAnimation)
-//      .each(AnimationUtil.startContinuousAnimation)
 
     pointyPlanets
       .attr('points', (d) => SvgUtil.getPolygonPoints(0, 0, d.galaxyPlanetRadius, d.numSides))

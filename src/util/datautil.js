@@ -94,6 +94,18 @@ var DataUtil = {
     };
   },
 
+  before(times, func) {
+    var memo;
+    return function() {
+      if (--times > 0) {
+        memo = func.apply(this, arguments);
+      } else {
+        func = null;
+      }
+      return memo;
+    };
+  },
+
   parseDate: parseDate,
 
   makeScaleSet(bounds) {
@@ -105,11 +117,13 @@ var DataUtil = {
     ,   timelineRotation = d3.scale.linear().domain([0, 1]).range([0, -90])
     // rotation ranges from 0 to 360 degrees
   //  ,   rotation = d3.scale.linear().domain([0, 1]).range([0, 360])
-    ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5 / 600, 2.5 / 600])
+    ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5 / 600, 2.5 / 600]) // time-based animation speed
+//    ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5 / 8, 2.5 / 8]) // frame-based animation speed
     ,   timelinePlanetRadius = d3.scale.linear().domain([0, 100]).range([3, 50])
     ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([-1, 8, 7, 6, 5, 4, 3]) // reverse scale
-  //  ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([6])
-    ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2 / 600, 14 / 600])
+//    ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([9])
+    ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2 / 600, 14 / 600]) // time-based animation speed
+//    ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2 / 8, 14 / 8]) // frame-based animation speed
 
     return {
       getOrbitRadiusScale: () => orbitRadius,

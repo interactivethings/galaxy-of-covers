@@ -43,3 +43,13 @@
   stroke: none;
   text-anchor: middle;
 }
+
+.SongTimeline--energytail {
+  fill: url(#energyTailFade);
+}
+
+.SongTimeline--planet__shadow {
+  fill: #000;
+  opacity: 0.25;
+  transform-origin: 0 50%;
+}

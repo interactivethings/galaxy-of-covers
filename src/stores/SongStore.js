@@ -224,6 +224,7 @@ function prepareLoadedData(dataset) {
           galaxyY: 0,
           stopAnimation: false,
           pauseAnimation: false,
+          animationTime: 0,
           orbitRadiusX: scaleset.getOrbitRadiusScale()(versionData.parsedDate),
           orbitRadiusY: scaleset.getOrbitRadiusScale()(versionData.parsedDate) * 3 / 5,
           galaxyPlanetRadius: scaleset.getRadiusScale()(versionData.spotify.popularity),

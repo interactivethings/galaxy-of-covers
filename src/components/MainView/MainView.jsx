@@ -6,12 +6,27 @@ var ViewFilters = require('util/ViewFilters')
 ,   GalaxyView = require('components/GalaxyView/GalaxyView')
 ,   DetailView = require('components/DetailView/DetailView')
 ,   Constants = require('Constants')
+,   AnimationUtil = require('util/AnimationUtil')
 
 var MainView = React.createClass({
 
   componentDidMount() {
     var node = this.getDOMNode()
     ViewFilters.renderFilters(node)
+
+    var d3Node = d3.select(node)
+    var prevTime = 0
+    d3.timer((time) => {
+      if (this.props.dynamicState.get('inDetail')) return
+
+      d3Node.selectAll('.SongSystem--planet')
+        .filter((d) => !d.pauseAnimation)
+        .each((d) => { d.animationTime += (time - prevTime) })
+        .attr('transform', (d) => AnimationUtil.planetPosition(d, d.animationTime))
+        .attr('opacity', (d) => AnimationUtil.planetOpacity(d.blinkSpeed, d.animationTime))
+
+      prevTime = time
+    })
   },
 
   componentDidUpdate() {
@@ -22,8 +37,6 @@ var MainView = React.createClass({
 
     if (state.get('inGalaxy')) {
       var dimensions = GalaxyView.applyHexLayout(data) // this mutates data using the layout
-      node.setAttribute('width', dimensions.layoutWidth)
-      node.setAttribute('height', dimensions.layoutHeight)
 
       if (!data.length) return true
 
@@ -43,17 +56,26 @@ var MainView = React.createClass({
         }
       })
 
-      GalaxyView.render(node, data, state)
+      if (DetailView.isActive(node)) {
+        DetailView.deRender(node, function() {
+          GalaxyView.render(node, data, state, dimensions)
+        })
+      } else {
+        GalaxyView.render(node, data, state, dimensions)
+      }
     } else if (state.get('inDetail')) {
       var detailData = state.get('detailSongData')
-      var dimensions = DetailView.applyDetailLayout(detailData, state) // this mutates detailData using the layout
-
-      node.setAttribute('width', window.innerWidth)
-      node.setAttribute('height', window.innerHeight)
+      ,   dimensions = DetailView.applyDetailLayout(detailData, state, this.props.scrollY) // this mutates detailData using the layout
 
       detailData.versionsFilteredIn = detailData.versions.filter((versionData) => !genreFilter.get(versionData.genreName))
 
-      DetailView.render(node, detailData, state, dimensions)
+      if (GalaxyView.isActive(node)) {
+        DetailView.transitionIn(node, detailData, state, dimensions, function() {
+          DetailView.render(node, detailData, state, dimensions)
+        })
+      } else {
+        DetailView.render(node, detailData, state, dimensions)
+      }
     }
 
   },
