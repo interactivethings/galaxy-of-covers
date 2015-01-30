@@ -38,9 +38,6 @@ function energyExtendedPoints(d) {
 }
 
 function renderDetailShapes(selection) {
-  selection
-    .attr('clip-path', (d) => 'url(#' + 'tlplanetclip-' + d.versionId + ')')
-
   var detailClips = selection.selectAll('.SongTimeline--clip')
     .data((d) => [d])
 
@@ -69,12 +66,12 @@ function renderDetailShapes(selection) {
   roundDetailShapes.enter().append('circle')
     .attr('class', 'SongTimeline--planet__shape SongTimeline--planet__round')
 
+  roundDetailShapes.exit().remove()
+
   roundDetailShapes
     .attr('id', (d) => 'tlplanet-' + d.versionId)
     .attr('r', (d) => d.timelinePlanetRadius)
     .attr('fill', (d) => d.genreColor)
-
-  roundDetailShapes.exit().remove()
 
   var pointyDetailShapes = selection.filter((d) => !d.isCircle)
     .selectAll('.SongTimeline--planet__shape.SongTimeline--planet__pointy')
@@ -83,12 +80,12 @@ function renderDetailShapes(selection) {
   pointyDetailShapes.enter().append('polygon')
     .attr('class', 'SongTimeline--planet__shape SongTimeline--planet__pointy')
 
+  pointyDetailShapes.exit().remove()
+
   pointyDetailShapes
     .attr('id', (d) => 'tlplanet-' + d.versionId)
     .attr('points', (d) => SvgUtil.joinPolygonPoints(d.polygonPoints))
     .attr('fill', (d) => d.genreColor)
-
-  pointyDetailShapes.exit().remove()
 
   var detailShadows = selection.selectAll('.SongTimeline--planet__shadow')
     .data((d) => [d])
@@ -103,6 +100,9 @@ function renderDetailShapes(selection) {
     .attr('y', (d) => -d.timelinePlanetRadius)
     .attr('width', (d) => 2 * d.timelinePlanetRadius)
     .attr('height', (d) => 2 * d.timelinePlanetRadius)
+
+  selection
+    .attr('clip-path', (d) => 'url(#' + 'tlplanetclip-' + d.versionId + ')')
 }
 
 function axisStar(selection, yPosition) {
