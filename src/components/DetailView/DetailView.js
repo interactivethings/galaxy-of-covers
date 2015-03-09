@@ -5,176 +5,15 @@ var d3 = require('d3')
 
 require('components/DetailView/DetailView.scss')
 
-var DataUtil = require('util/datautil')
+var ViewActions = require('actions/ViewActions')
+,   DataUtil = require('util/datautil')
 ,   SvgUtil = require('util/svgutil')
-
-function energyBaselinePoints(d) {
-  var x = d.timelineCX
-  ,   baseY = d.timelineBaseY
-  ,   p1 = d.tailpt1
-  ,   p2 = d.tailpt2
-  ,   pts = [
-    [x, baseY],
-    [x + p1[0], baseY + p1[1]],
-    [x + p2[0], baseY + p2[1]],
-    [x, baseY]
-  ]
-  return pts.join(' ')
-}
-
-function energyExtendedPoints(d) {
-  var x = d.timelineCX
-  ,   baseY = d.timelineBaseY
-  ,   y = d.timelineCY
-  ,   p1 = d.tailpt1
-  ,   p2 = d.tailpt2
-  ,   pts = [
-        [x, baseY],
-        [x + p1[0], y + p1[1]],
-        [x + p2[0], y + p2[1]],
-        [x, baseY]
-      ]
-  return pts.join(' ')
-}
-
-function renderDetailShapes(selection) {
-  var detailClips = selection.selectAll('.SongTimeline--clip')
-    .data((d) => [d])
-
-  detailClips.enter().append('clipPath')
-    .attr('class', 'SongTimeline--clip')
-
-  detailClips.exit().remove()
-
-  detailClips
-    .attr('id', (d) => 'tlplanetclip-' + d.versionId)
-
-  var detailClipUse = detailClips.selectAll('use')
-    .data((d) => [d])
-
-  detailClipUse.enter().append('use')
-
-  detailClipUse.exit().remove()
-
-  detailClipUse
-    .attr('xlink:href', (d) => '#' + 'tlplanet-' + d.versionId)
-
-  var roundDetailShapes = selection.filter((d) => d.isCircle)
-    .selectAll('.SongTimeline--planet__shape.SongTimeline--planet__round')
-    .data((d) => [d])
-
-  roundDetailShapes.enter().append('circle')
-    .attr('class', 'SongTimeline--planet__shape SongTimeline--planet__round')
-
-  roundDetailShapes.exit().remove()
-
-  roundDetailShapes
-    .attr('id', (d) => 'tlplanet-' + d.versionId)
-    .attr('r', (d) => d.timelinePlanetRadius)
-    .attr('fill', (d) => d.genreColor)
-
-  var pointyDetailShapes = selection.filter((d) => !d.isCircle)
-    .selectAll('.SongTimeline--planet__shape.SongTimeline--planet__pointy')
-    .data((d) => [d])
-
-  pointyDetailShapes.enter().append('polygon')
-    .attr('class', 'SongTimeline--planet__shape SongTimeline--planet__pointy')
-
-  pointyDetailShapes.exit().remove()
-
-  pointyDetailShapes
-    .attr('id', (d) => 'tlplanet-' + d.versionId)
-    .attr('points', (d) => SvgUtil.joinPolygonPoints(d.polygonPoints))
-    .attr('fill', (d) => d.genreColor)
-
-  var detailShadows = selection.selectAll('.SongTimeline--planet__shadow')
-    .data((d) => [d])
-
-  detailShadows.enter().append('rect')
-    .attr('class', 'SongTimeline--planet__shadow')
-
-  detailShadows.exit().remove()
-
-  detailShadows
-    .attr('transform', (d) => 'rotate(' + d.timelineRotation + ')' )
-    .attr('y', (d) => -d.timelinePlanetRadius)
-    .attr('width', (d) => 2 * d.timelinePlanetRadius)
-    .attr('height', (d) => 2 * d.timelinePlanetRadius)
-
-  selection
-    .attr('clip-path', (d) => 'url(#' + 'tlplanetclip-' + d.versionId + ')')
-}
-
-function axisStar(selection, yPosition) {
-  var star = selection.selectAll('.SongDetailStar')
-    .data([0])
-
-  star.enter().append('circle')
-    .attr('class', 'SongDetailStar')
-    .attr('opacity', 0)
-
-  star.exit().remove()
-
-  star
-    .attr('cx', 0)
-    .attr('cy', yPosition)
-    .attr('r', 8)
-    .transition()
-    .attr('opacity', 1)
-}
-
-function axis(selection, yPosition, xDomain, xRange, ticks) {
-  var axis = selection.selectAll('.SongTimelineAxis')
-
-  if (axis.empty()) {
-    axis = selection.append('g')
-      .attr('class', 'SongTimelineAxis')
-      .attr('opacity', 0)
-  }
-
-  axis
-    .attr('transform', SvgUtil.translateString(0, yPosition))
-    .transition()
-    .attr('opacity', 1)
-
-  var axisLine = axis.selectAll('.SongTimelineAxis--line')
-
-  if (axisLine.empty()) {
-    axisLine = axis.append('line')
-      .attr('class', 'SongTimelineAxis--line')
-  }
-
-  axisLine
-    .attr('x1', xRange[0])
-    .attr('x2', xRange[1])
-
-  var axisLabels = axis.selectAll('.SongTimelineAxis--label')
-    .data(xDomain)
-
-  axisLabels.enter().append('text')
-    .attr('class',' SongTimelineAxis--label')
-
-  axisLabels.exit().remove()
-
-  axisLabels
-    .attr('x', (d, i) => xRange[i])
-    .attr('y', 10)
-    .text((d) => d.getFullYear())
-
-  var axisTicks = axis.selectAll('SongTimelineAxis--line__axistick')
-    .data(ticks)
-
-  axisTicks.enter().append('line')
-    .attr('class', 'SongTimelineAxis--line__axistick')
-
-  axisTicks.exit().remove()
-
-  axisTicks
-    .attr('x1', (d) => d)
-    .attr('y1', -5)
-    .attr('x2', (d) => d)
-    .attr('y2', 5)
-}
+,   energyBaselinePoints = require('components/DetailView/energyBaselinePoints')
+,   energyExtendedPoints = require('components/DetailView/energyExtendedPoints')
+,   DetailShapes = require('components/DetailView/DetailShapes')
+,   AxisStar = require('components/DetailView/AxisStar')
+,   Axis = require('components/DetailView/Axis')
+,   DetailOverlay = require('components/DetailView/DetailOverlay')
 
 var DetailView = {
 
@@ -265,6 +104,7 @@ var DetailView = {
   },
 
   render(node, data, state, dimensions) {
+    console.log('render detail view');
     var d3Node = d3.select(node)
 
     d3Node
@@ -320,6 +160,8 @@ var DetailView = {
 
     detailPlanets.enter().append('g')
       .attr('class', 'SongTimeline--planet')
+      .on('mouseenter', this.onPlanetMouseEnter)
+      .on('mouseleave', this.onPlanetMouseLeave)
       .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(0)')
       .transition()
       .duration(200)
@@ -329,13 +171,30 @@ var DetailView = {
       .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineCY))
 
     // render the shapes
-    detailPlanets.call(renderDetailShapes)
+    detailPlanets.call(DetailShapes)
+
+    // detail overlay
+    var detailData = state.get('detailOverlay')
+    if (detailData) {
+      detailPlanets.filter((d) => d.versionId === detailData.versionId)
+        .call(DetailOverlay.render)
+    } else {
+      viewWrapper.call(DetailOverlay.deRender)
+    }
 
     // star
-    viewWrapper.call(axisStar, dimensions.baselineY)
+    viewWrapper.call(AxisStar, dimensions.baselineY)
 
     // axis
-    viewWrapper.call(axis, dimensions.baselineY, dimensions.timelineXScale.domain(), dimensions.timelineXScale.range(), data.versionsFilteredIn.map((d) => dimensions.timelineXScale(d.parsedDate)))
+    viewWrapper.call(Axis, dimensions.baselineY, dimensions.timelineXScale.domain(), dimensions.timelineXScale.range(), data.versionsFilteredIn.map((d) => dimensions.timelineXScale(d.parsedDate)))
+  },
+
+  onPlanetMouseEnter(d) {
+    ViewActions.hoverOnDetailVersion(d)
+  },
+
+  onPlanetMouseLeave(d) {
+    ViewActions.hoverOffDetailVersion()
   },
 
   deRender(node, callback) {

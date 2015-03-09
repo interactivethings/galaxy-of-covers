@@ -10,6 +10,17 @@ var PI = Math.PI
 
 var SvgUtil = {
 
+  acquire(rootSelection, className, elementType) {
+    var selection = rootSelection.selectAll('.' + className)
+
+    if (selection.empty() && elementType) {
+      selection = rootSelection.append(elementType)
+        .attr('class', className)
+    }
+
+    return selection
+  },
+
   getRotateTransform(rot) {
     return 'rotate(' + rot + ')'
   },
@@ -46,6 +57,10 @@ var SvgUtil = {
       pts.push([x + Math.cos(a) * r, y + Math.sin(a) * r])
     })
     return pts
+  },
+
+  arcString(sx, sy, rx, ry, rot, largeArc, sweep, ex, ey) {
+    return 'M ' + sx + ' ' + sy + ' A ' + rx + ' ' + ry + ' ' + rot + ' ' + Number(!!largeArc) + ' ' + Number(!!sweep) + ' ' + ex + ' ' + ey;
   }
 
 }

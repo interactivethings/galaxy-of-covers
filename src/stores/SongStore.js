@@ -29,7 +29,8 @@ setStateObj({
   aboutOpen: false,
   highlightedAttribute: null,
   filteredGenres: Immutable.Map(),
-  genreList: []
+  genreList: [],
+  detailOverlay: null
 })
 
 var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
@@ -124,6 +125,14 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
     setState('filteredGenres', filter)
   },
 
+  showDetailOverlay(data) {
+    setState('detailOverlay', data)
+  },
+
+  hideDetailOverlay() {
+    setState('detailOverlay', null)
+  },
+
   handleAction(payload) {
     var {action} = payload
 
@@ -176,6 +185,12 @@ console.log('songs loaded', action.data);
       case 'FILTER_GENRE':
         this.toggleFilteredGenre(action.genre)
         break
+      case 'HOVER_VERSION':
+        this.showDetailOverlay(action.versionData)
+        break
+      case 'HOVER_OFF_VERSION':
+        this.hideDetailOverlay()
+        break
     }
 
     this.emitChange()
@@ -224,6 +239,7 @@ function prepareLoadedData(dataset) {
       versions: songData.versions.map((versionData) => {
         return {
           songId: songData.id,
+          versionTitle: versionData.title,
           versionId: versionData.id,
           songYear: versionData.parsedDate ? versionData.parsedDate.getFullYear() : null,
           galaxyX: 0,

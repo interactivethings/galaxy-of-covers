@@ -78,6 +78,19 @@ var ViewActions = {
       type: 'FILTER_GENRE',
       genre: genreName
     })
+  },
+
+  hoverOnDetailVersion(data) {
+    Dispatcher.handleViewAction({
+      type: 'HOVER_VERSION',
+      versionData: data
+    })
+  },
+
+  hoverOffDetailVersion() {
+    Dispatcher.handleViewAction({
+      type: 'HOVER_OFF_VERSION'
+    })
   }
 
 }
