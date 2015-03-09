@@ -30,7 +30,7 @@ var GenreHeader = React.createClass({
     return (
       <svg className="GenreHeader" width={this.props.headerWidth} height={50} >
         <g transform={this.props.transform} >
-          {this.props.dynamicState.get('genreList').map(function(genre) {
+          {this.props.genreList.map(function(genre) {
             var n = genreCount[genre] || 0
             ,   p = n / sum
             ,   x = xScale(cumulative)

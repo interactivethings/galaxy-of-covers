@@ -70,11 +70,12 @@ var App = React.createClass({
     ,   state = this.state.appState
     ,   scrollY = this.state.scrollY
     ,   genreCount = SongStore.getGenreCount()
+    ,   genreList = SongStore.getGenreList()
     ,   componentLayout = Layout.getLayout()
 
     return (
       <div className="AppBox">
-        <AppHeader genreCount={genreCount} scales={galaxyScales} dynamicState={state} layout={componentLayout} />
+        <AppHeader genreCount={genreCount} genreList={genreList} scales={galaxyScales} dynamicState={state} layout={componentLayout} />
         {state.get('inDetail') ? <DetailHeader songData={detailData} state={state} layout={componentLayout} /> : null}
         <MainView displayObjects={displayObjects} dynamicState={state} scrollY={scrollY} />
       </div>

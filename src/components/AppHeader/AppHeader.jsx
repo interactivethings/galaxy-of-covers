@@ -89,10 +89,10 @@ var AppHeader = React.createClass({
         <Legend isOpen={legendOpen} inDetail={inDetail} highlighted={highlightedAttribute} onClick={this.attributeLegendClick} />
         <GenreHeader
           genreCount={this.props.genreCount}
+          genreList={this.props.genreList}
           headerWidth={this.props.layout.headerWidth}
           dynamicState={this.props.dynamicState}
-          scales={this.props.scales}
-        />
+          scales={this.props.scales} />
       </div>
     )
   }
