@@ -10,7 +10,7 @@ PIP = pip3
 all: server
 
 server: install
-	webpack-dev-server --colors --progress
+	webpack-dev-server --colors --progress --port 6060
 
 build: clean install
 	NODE_ENV=production webpack -p --colors --progress --hide-modules
