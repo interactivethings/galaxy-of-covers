@@ -111,7 +111,7 @@ var DataUtil = {
   makeScaleSet(bounds) {
     var orbitRadius = d3.time.scale().domain([new Date(1929, 1, 1), new Date()]).range([4, Constants.SYSTEM_RADIUS])
     ,   planetRadius = d3.scale.linear().domain([0, 100]).range([3, 18])
-    ,   planetColor = d3.scale.ordinal().domain(bounds.genres).range(['#FB826F', '#FE839F', '#E493CB', '#B0ABE9', '#67BFEC', '#0ACED4', '#37D5A9', '#7ED679', '#BDD053', '#F8C24B'])
+    ,   planetColor = d3.scale.ordinal().domain(bounds.genres).range(['#FE839F', '#E493CB', '#B0ABE9', '#67BFEC', '#0ACED4', '#37D5A9', '#7ED679', '#BDD053', '#F8C24B', '#FB826F'])
     // rotation ranges from 270 to 450 degrees
     ,   rotation = d3.scale.linear().domain([0, 1]).range([0, -90])
     ,   timelineRotation = d3.scale.linear().domain([0, 1]).range([0, -90])
@@ -142,7 +142,6 @@ var DataUtil = {
     var energy = baseBounds()
     ,   speechiness = baseBounds()
     ,   tempo = baseBounds()
-    ,   genres = {}
 
     dataset.forEach((songData) => {
       songData.versions.forEach((versionData) => {
@@ -150,7 +149,6 @@ var DataUtil = {
           adjustBounds(energy, versionData.echonest.energy)
           adjustBounds(speechiness, versionData.echonest.speechiness)
           adjustBounds(tempo, versionData.echonest.tempo)
-          genres[versionData.genre] = true
         }
       })
     })
@@ -159,7 +157,7 @@ var DataUtil = {
       energyRange: energy,
       speechinessRange: speechiness,
       tempoRange: tempo,
-      genres: Object.keys(genres).sort()
+      genres: ["Rock / Pop", "Soul / Funk / Disco", "Jazz / Blues", "Country / Folk", "Instrumental", "Classical", "Electronic / Dance", "Reggae", "Hip-Hop / R&B", "Other"]
     }
   }
 

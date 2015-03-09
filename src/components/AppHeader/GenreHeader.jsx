@@ -30,8 +30,8 @@ var GenreHeader = React.createClass({
     return (
       <svg className="GenreHeader" width={this.props.headerWidth} height={50} >
         <g transform={this.props.transform} >
-          {Object.keys(genreCount).sort().map(function(genre) {
-            var n = genreCount[genre]
+          {this.props.dynamicState.get('genreList').map(function(genre) {
+            var n = genreCount[genre] || 0
             ,   p = n / sum
             ,   x = xScale(cumulative)
             ,   color = colorScale(genre)
@@ -48,9 +48,8 @@ var GenreHeader = React.createClass({
                 color={color}
                 showValue={legendOpen}
                 value={p}
-                opacity={genreFilter.get(genre) ? 0.2 : 1}
-              />
-            )
+                opacity={genreFilter.get(genre) ? 0.2 : 1} />
+            );
           })}
         </g>
       </svg>
@@ -71,8 +70,7 @@ var GenreListing = React.createClass({
         <rect
           width={this.props.width}
           height={this.props.height}
-          fill={this.props.color}
-        />
+          fill={this.props.color} />
         {this.props.showValue ? <text className="GenreHeader--valuelabel" dx={4} dy={this.props.height / 2} >{DataUtil.formatPercent(this.props.value)}</text> : null}
         <text className="GenreHeader--genrelabel" fill={this.props.color} dx={4} dy={this.props.height + 4} >{this.props.genre}</text>
       </g>

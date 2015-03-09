@@ -28,7 +28,8 @@ setStateObj({
   legendOpen: false,
   aboutOpen: false,
   highlightedAttribute: null,
-  filteredGenres: Immutable.Map()
+  filteredGenres: Immutable.Map(),
+  genreList: []
 })
 
 var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
@@ -67,6 +68,10 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
     } else {
       return this.getDetailGenreCount()
     }
+  },
+
+  getGenreList() {
+    return state.get('genreList')
   },
 
   getDetailGenreCount() {
@@ -120,7 +125,7 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
   },
 
   handleAction(payload) {
-    var {action} = payload;
+    var {action} = payload
 
     switch (action.type) {
       // load/network events
@@ -206,6 +211,7 @@ function prepareLoadedData(dataset) {
   var scaleset = DataUtil.makeScaleSet(DataUtil.findBounds(dataset))
   setState('scales', scaleset)
   setState('allGenresCount', allGenresCounter)
+  setState('genreList', scaleset.getColorScale().domain())
   var displayObjects = dataset.map((songData) => {
     return {
       title: songData.title,
