@@ -63,6 +63,9 @@ data-add-whosampled-genres:
 data-trim-for-production:
 	$(PYTHON) data/py/trimForProduction.py
 
+data-add-manual-genres:
+	$(PYTHON) data/py/addManualGenres.py
+
 data-whosampled:
 #	probably shouldn't use this - it's broken
 #	node data/js/whosampled.js

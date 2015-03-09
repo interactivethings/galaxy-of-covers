@@ -13,7 +13,8 @@ FILE_DEBUG_SEARCH = open(DEBUG_DIR + "searchdebug.txt", "a")
 FILE_SONG_SOURCE = open(OUT_DIR + "guardian_songs.csv", "r")
 FILE_SONG_OUTPUT = open(OUT_DIR + "songinfo.json", "a")
 FILE_WITH_WHOSAMPLED_GENRES_OUTPUT = open(OUT_DIR + "songinfo-spotify-echonest-genres-whosampled.json", "a")
-FILE_TRIMMED_FOR_PRODUCTION = open(OUT_DIR + "songinfo-production.json", "a")
+FILE_TRIMMED_FOR_PRODUCTION = open(OUT_DIR + "songinfo-production.json", "a+")
+FILE_MANUAL_GENRES = open(ROOT_DIR + "genre_manual_categorization.csv", "r")
 
 def clearOpenFile(fileObj):
   fileObj.seek(0)
