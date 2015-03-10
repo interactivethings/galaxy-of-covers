@@ -154,7 +154,7 @@ var GalaxyView = {
 
     backgrounds
       .attr('transform', (d) => SvgUtil.getTranslateAndRotate(d.galaxyX, d.galaxyY, -20))
-      .attr('xlink:href', (d) => d.systemIsHovered ? '#galaxyShadedBackgroudCircle' : '#galaxyNoBackgroudCircle')
+      .attr('xlink:href', '#galaxyNoBackgroudCircle')
 
     backgrounds.exit().remove()
 
