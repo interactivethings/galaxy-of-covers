@@ -38,7 +38,7 @@ function Axis(selection, yPosition, xDomain, xRange, ticks) {
     .attr('y', 10)
     .text((d) => d.getFullYear())
 
-  var axisTicks = axis.selectAll('SongTimelineAxis--line__axistick')
+  var axisTicks = axis.selectAll('.SongTimelineAxis--line__axistick')
     .data(ticks)
 
   axisTicks.enter().append('line')
