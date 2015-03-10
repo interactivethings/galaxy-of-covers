@@ -77,7 +77,7 @@ var App = React.createClass({
       <div className="AppBox">
         <AppHeader genreCount={genreCount} genreList={genreList} scales={galaxyScales} dynamicState={state} layout={componentLayout} />
         {state.get('inDetail') ? <DetailHeader songData={detailData} state={state} layout={componentLayout} /> : null}
-        <MainView displayObjects={displayObjects} dynamicState={state} scrollY={scrollY} />
+        <MainView displayObjects={displayObjects} dynamicState={state} scrollY={scrollY} layout={componentLayout} />
       </div>
     )
   }

@@ -21,30 +21,32 @@ var Layout = {
 
   getLayout() {
     var state = SongStore.getState()
-    ,   dim = this.getWindowDimensions()
-    ,   componentLayout
+    ,   {width, height} = this.getWindowDimensions()
+    ,   lyt
 
     if (state.get('inDetail')) {
-      componentLayout =
+      lyt =
       { headerHeight: 60
-      , headerWidth: dim.width
+      , headerWidth: width
       , legendHeight: 175
-      , bodyHeight: dim.height
-      , bodyWidth: dim.width
-      , timelineTop: state.get('legendOpen') ? 60 + 175 : 60
-      , timelineBase: dim.height * 4 / 5
-      , timelineLeftRightPadding: 100
+      , bodyHeight: height
+      , bodyWidth: width
+      , tlHighline: state.get('legendOpen') ? 60 + 200 : 60
+      , tlBase: height * (height > 1000 ? 4 / 5 : height > 500 ? 15 / 16 : 19 / 20)
+      , tlLRPad: 100
       }
+      lyt.tlHeader = lyt.tlHighline + height * (height > 1000 ? 1 / 6 : 1 / 30)
+      lyt.tlTop = lyt.tlHighline + (lyt.tlBase - lyt.tlHighline) * (height > 1000 ? 1 / 5 : height > 500 ? 1 / 6 : 1 / 8)
     } else {
-      componentLayout =
+      lyt =
       { headerHeight: 60
-      , headerWidth: dim.width
+      , headerWidth: width
       , legendHeight: 175
-      , bodyWidth: dim.width
+      , bodyWidth: width
       }
     }
 
-    return componentLayout
+    return lyt
   }
 
 }

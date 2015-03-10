@@ -67,7 +67,7 @@ var MainView = React.createClass({
       }
     } else if (state.get('inDetail')) {
       var detailData = state.get('detailSongData')
-      ,   dimensions = DetailView.applyDetailLayout(detailData, state, this.props.scrollY) // this mutates detailData using the layout
+      ,   dimensions = DetailView.applyDetailLayout(detailData, state, this.props.layout, this.props.scrollY) // this mutates detailData using the layout
 
       detailData.versionsFilteredIn = detailData.versions.filter((versionData) => !genreFilter || genreFilter === versionData.genreName)
 

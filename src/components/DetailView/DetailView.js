@@ -16,10 +16,10 @@ var ViewActions = require('actions/ViewActions')
 
 var DetailView = {
 
-  applyDetailLayout(datum, state, yOffset) {
-    var highlineY = yOffset + (state.get('legendOpen') ? 60 + 175 : 60)
-    ,   baselineY = yOffset + window.innerHeight * 4 / 5
-    ,   timelineTop = highlineY + (baselineY - highlineY) * 1 / 5
+  applyDetailLayout(datum, state, layout, yOffset) {
+    var highlineY = yOffset + layout.tlHighline
+    ,   baselineY = yOffset + layout.tlBase
+    ,   timelineTop = yOffset + layout.tlTop
     ,   energyRange = DataUtil.getMinMax(datum.versions, (item) => item.energy || 0)
     ,   timelineYScale = d3.scale.linear().domain(energyRange).range([baselineY, timelineTop])
     ,   timeRange = DataUtil.getMinMax(datum.versions, (item) => item.parsedDate)
@@ -51,8 +51,8 @@ var DetailView = {
       yOffset: yOffset
     , baselineY: baselineY
     , timelineXScale: timelineXScale
-    , layoutWidth: innerWidth
-    , layoutHeight: innerHeight
+    , layoutWidth: layout.bodyWidth
+    , layoutHeight: layout.bodyHeight
     }
   },
 

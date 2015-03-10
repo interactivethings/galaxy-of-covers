@@ -11,7 +11,7 @@ var DetailHeader = React.createClass({
 
   render() {
     var style = {
-      top: this.props.state.get('legendOpen') ? this.props.layout.timelineTop + 90 : '10em'
+      top: this.props.layout.tlHeader
     }
 
     return (
