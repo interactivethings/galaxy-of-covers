@@ -1,3 +1,26 @@
+@import "components/Constants";
+
+.DetailOverlay__stop {
+  stop-color: rgb(255, 255, 255);
+}
+
+.DetailOverlay__stop--stop1 {
+  stop-opacity: 0;
+}
+
+.DetailOverlay__stop--stop2 {
+  stop-opacity: 1;
+}
+
+.DetailOverlay__stop--stop3 {
+  stop-opacity: 0;
+}
+
+.DetailOverlay__shadow {
+  fill: $c-app-bg;
+  opacity: 0.8;
+}
+
 .DetailOverlay__midline {
   stroke: #fff;
 }
@@ -19,4 +42,9 @@
   fill: none;
   stroke: #fff;
   stroke-width: 4;
+}
+
+.DetailOverlay__label {
+  fill: #fff;
+  font-size: 16px;
 }

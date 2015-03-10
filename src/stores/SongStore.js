@@ -242,6 +242,8 @@ function prepareLoadedData(dataset) {
           versionTitle: versionData.title,
           versionId: versionData.id,
           songYear: versionData.parsedDate ? versionData.parsedDate.getFullYear() : null,
+          spotify: versionData.spotify,
+          echonest: versionData.echonest,
           galaxyX: 0,
           galaxyY: 0,
           stopAnimation: false,

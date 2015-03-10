@@ -11,7 +11,7 @@ var PI = Math.PI
 var SvgUtil = {
 
   acquire(rootSelection, className, elementType) {
-    var selection = rootSelection.selectAll('.' + className)
+    var selection = rootSelection.selectAll('.' + className.replace(' ', '.'))
 
     if (selection.empty() && elementType) {
       selection = rootSelection.append(elementType)
