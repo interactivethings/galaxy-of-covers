@@ -28,7 +28,7 @@ setStateObj({
   legendOpen: false,
   aboutOpen: false,
   highlightedAttribute: null,
-  filteredGenres: Immutable.Map(),
+  filteredGenre: null,
   genreList: [],
   detailOverlay: null
 })
@@ -119,10 +119,8 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
   },
 
   toggleFilteredGenre(genre) {
-    var filter = state.get('filteredGenres')
-    if (filter.get(genre)) filter = filter.set(genre, false)
-    else filter = filter.set(genre, true)
-    setState('filteredGenres', filter)
+    if (state.get('filteredGenre') === genre) genre = null
+    setState('filteredGenre', genre)
   },
 
   showDetailOverlay(data) {

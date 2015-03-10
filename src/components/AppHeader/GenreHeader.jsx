@@ -23,7 +23,7 @@ var GenreHeader = React.createClass({
     ,   xScale = d3.scale.linear().domain([0, sum]).range([0, this.props.headerWidth])
     ,   colorScale = this.props.scales ? this.props.scales.getColorScale() : x => x
     ,   legendOpen = this.props.dynamicState.get('legendOpen')
-    ,   genreFilter = this.props.dynamicState.get('filteredGenres')
+    ,   genreFilter = this.props.dynamicState.get('filteredGenre')
     ,   clickFunction = this.onGenreClick
     ,   cumulative = 0
 
@@ -48,7 +48,7 @@ var GenreHeader = React.createClass({
                 color={color}
                 showValue={legendOpen}
                 value={p}
-                opacity={genreFilter.get(genre) ? 0.2 : 1} />
+                opacity={!genreFilter || genreFilter === genre ? 1 : 0.2} />
             );
           })}
         </g>
