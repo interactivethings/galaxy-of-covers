@@ -175,6 +175,7 @@ console.log('songs loaded', action.data);
         this.navMenuToggle('aboutOpen', true)
         break
       case 'ATTRIBUTE_HIGHLIGHT':
+        break // TODO: This line deactivates the effect of clicking on a legend item
         if (state.get('highlightedAttribute') === action.attributeToHighlight) {
           setState('highlightedAttribute', null)
         } else {
