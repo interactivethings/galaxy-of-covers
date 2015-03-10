@@ -21,15 +21,12 @@ var DetailOverlay = {
       .attr('gradientUnits', 'userSpaceOnUse')
 
     svgutil.acquire(gradient, 'DetailOverlay__stop DetailOverlay__stop--stop1', 'stop')
-      .datum(selection.datum())
       .attr('offset', (d) => Math.round(d.timelineCX / (xRange[1] - xRange[0]) * 100) - 80 + '%')
 
     svgutil.acquire(gradient, 'DetailOverlay__stop DetailOverlay__stop--stop2', 'stop')
-      .datum(selection.datum())
       .attr('offset', (d) => Math.round(d.timelineCX / (xRange[1] - xRange[0]) * 100) + '%')
 
     svgutil.acquire(gradient, 'DetailOverlay__stop DetailOverlay__stop--stop3', 'stop')
-      .datum(selection.datum())
       .attr('offset', (d) => Math.round(d.timelineCX / (xRange[1] - xRange[0]) * 100) + 80 + '%')
 
     var overlay = svgutil.acquire(selection, 'DetailOverlay__shadow', 'rect')
@@ -38,6 +35,7 @@ var DetailOverlay = {
       .attr('transform', (d) => svgutil.translateString(0, yOffset))
       .attr('width', '100%')
       .attr('height', '100%')
+      .on('mouseover', () => ViewActions.hoverOffDetailVersion())
 
     var line = svgutil.acquire(selection, 'DetailOverlay__line', 'line')
 
@@ -49,11 +47,17 @@ var DetailOverlay = {
       .attr('stroke', 'url(#detail-overlay-line-gradient)')
 
     var marksContainer = svgutil.acquire(selection, 'DetailOverlay__markbox', 'g')
-      .datum(selection.datum())
 
     marksContainer
       .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineCY))
       .on('mouseleave', () => ViewActions.hoverOffDetailVersion())
+
+    var audioElement = svgutil.acquire(marksContainer, 'DetailOverlay--sound', 'audio')
+
+    audioElement
+      .attr('autoplay', true)
+      .attr('src', (d) => { console.log(d.spotify.preview); return d.spotify.preview + '.mp3'; })
+      .attr('volume', 1)
 
     var energyUse = svgutil.acquire(marksContainer, 'DetailOverlay--energyuse', 'use')
 
@@ -124,12 +128,7 @@ var DetailOverlay = {
   },
 
   deRender(selection) {
-    svgutil.acquire(selection, 'DetailOverlay__shadow')
-//      .transition()
-//      .duration(100)
-//      .attr('opacity', 0)
-      .remove()
-
+    svgutil.acquire(selection, 'DetailOverlay__shadow').remove()
     svgutil.acquire(selection, 'DetailOverlay__line').remove()
     svgutil.acquire(selection, 'DetailOverlay__markbox').remove()
   }
