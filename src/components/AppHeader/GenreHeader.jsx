@@ -16,40 +16,73 @@ var GenreHeader = React.createClass({
   },
 
   render() {
+    if (!this.props.isVisible) return null
+
     var genreCount = this.props.genreCount
-    ,   keys = Object.keys(genreCount)
-    ,   sum = keys.reduce((m, k) => m + genreCount[k], 0)
-    ,   total = keys.length
+    ,   colorScale = this.props.scales ? this.props.scales.getColorScale() : (x => x)
+    ,   filteredGenre = this.props.dynamicState.get('filteredGenre')
+
+    if (this.props.dynamicState.get('legendOpen')) {
+      return this.makeOpenGenreHeader(genreCount, colorScale, filteredGenre)
+    } else {
+      return this.makeClosedGenreHeader(genreCount, colorScale, filteredGenre)
+    }
+  },
+
+  makeOpenGenreHeader(genreCount, colorScale, filteredGenre) {
+    var individualWidth = this.props.headerWidth / this.props.genreList.length
+    ,   sum = d3.sum(Object.keys(genreCount), (k) => genreCount[k])
+    ,   xScale = d3.scale.linear().domain([0, sum]).range([0, individualWidth])
+
+    return (
+      <svg className="GenreHeader" width={this.props.headerWidth} height={50} >
+        <rect className='GenreHeader__bgrect' height={24} width={this.props.headerWidth} />
+        <g transform={this.props.transform} >
+          {this.props.genreList.map((genre, i) => {
+            var n = genreCount[genre] || 0
+            return (
+              <PercentListing
+                key={'genrelisting-'+genre}
+                onGenreClick={this.onGenreClick}
+                genre={genre}
+                x={i * individualWidth}
+                totalWidth={individualWidth}
+                height={24}
+                color={colorScale(genre)}
+                barWidth={xScale(n)}
+                opacity={!filteredGenre || filteredGenre === genre ? 1 : 0.2}
+                value={n / sum} />
+            )
+          })}
+        </g>
+      </svg>
+    )
+  },
+
+  makeClosedGenreHeader(genreCount, colorScale, filteredGenre) {
+    var sum = d3.sum(Object.keys(genreCount), (k) => genreCount[k])
     ,   xScale = d3.scale.linear().domain([0, sum]).range([0, this.props.headerWidth])
-    ,   colorScale = this.props.scales ? this.props.scales.getColorScale() : x => x
-    ,   legendOpen = this.props.dynamicState.get('legendOpen')
-    ,   genreFilter = this.props.dynamicState.get('filteredGenre')
-    ,   clickFunction = this.onGenreClick
     ,   cumulative = 0
 
     return (
-      <svg className={"GenreHeader" + (!this.props.isVisible ? ' GenreHeader--invisible' : '')} width={this.props.headerWidth} height={50} >
+      <svg className="GenreHeader" width={this.props.headerWidth} height={50} >
         <g transform={this.props.transform} >
-          {this.props.genreList.map(function(genre) {
+          {this.props.genreList.map((genre) => {
             var n = genreCount[genre] || 0
             ,   p = n / sum
             ,   x = xScale(cumulative)
-            ,   color = colorScale(genre)
-            ,   barHeight = legendOpen ? 24 : 12
             cumulative += n
             return (
-              <GenreListing
+              <ProportionalListing
                 key={'genrelisting-'+genre}
+                onGenreClick={this.onGenreClick}
                 genre={genre}
-                onGenreClick={clickFunction}
                 x={x}
+                opacity={!filteredGenre || filteredGenre === genre ? 1 : 0.2}
                 width={xScale(n)}
-                height={barHeight}
-                color={color}
-                showValue={legendOpen}
-                value={p}
-                opacity={!genreFilter || genreFilter === genre ? 1 : 0.2} />
-            );
+                height={12}
+                color={colorScale(genre)} />
+            )
           })}
         </g>
       </svg>
@@ -58,7 +91,55 @@ var GenreHeader = React.createClass({
 
 })
 
-var GenreListing = React.createClass({
+var PercentListing = React.createClass({
+
+  propTypes: {
+    onGenreClick: React.PropTypes.func,
+    genre: React.PropTypes.string,
+    x: React.PropTypes.number,
+    totalWidth: React.PropTypes.number,
+    height: React.PropTypes.number,
+    color: React.PropTypes.string,
+    barWidth: React.PropTypes.number,
+    opacity: React.PropTypes.number,
+    value: React.PropTypes.number
+  },
+
+  onClick() {
+    this.props.onGenreClick(this.props.genre)
+  },
+
+  render() {
+    return (
+      <g transform={SvgUtil.translateString(this.props.x, 0)} onClick={this.onClick} opacity={this.props.opacity} >
+        <rect
+          width={this.props.totalWidth}
+          height={this.props.height}
+          fill={this.props.color}
+          opacity={0.2} />
+        <rect
+          width={this.props.barWidth}
+          height={this.props.height}
+          fill={this.props.color} />
+        <text className='GenreHeader__percentlabel' dy={16} dx={this.props.totalWidth / 2} >{DataUtil.formatPercent(this.props.value)}</text>
+        <text className='GenreHeader__genrelabel' fill={this.props.color} dy={40} dx={this.props.totalWidth / 2} >{this.props.genre}</text>
+      </g>
+    )
+  }
+
+})
+
+var ProportionalListing = React.createClass({
+
+  propTypes: {
+    onGenreClick: React.PropTypes.func,
+    genre: React.PropTypes.string,
+    x: React.PropTypes.number,
+    opacity: React.PropTypes.number,
+    width: React.PropTypes.number,
+    height: React.PropTypes.number,
+    color: React.PropTypes.string
+  },
 
   onClick() {
     this.props.onGenreClick(this.props.genre)
@@ -71,8 +152,6 @@ var GenreListing = React.createClass({
           width={this.props.width}
           height={this.props.height}
           fill={this.props.color} />
-        {this.props.showValue ? <text className="GenreHeader--valuelabel" dx={4} dy={this.props.height / 2} >{DataUtil.formatPercent(this.props.value)}</text> : null}
-        <text className="GenreHeader--genrelabel" fill={this.props.color} dx={4} dy={this.props.height + 4} >{this.props.genre}</text>
       </g>
     )
   }

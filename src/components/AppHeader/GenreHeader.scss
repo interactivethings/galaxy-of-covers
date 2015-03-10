@@ -1,20 +1,25 @@
+@import "components/Constants";
+
 .GenreHeader {
   display: block;
   cursor: pointer;
 }
 
-.GenreHeader--invisible {
-  display: none;
+.GenreHeader__bgrect {
+  fill: $c-header-bg;
 }
 
-.GenreHeader--genrelabel {
-  alignment-baseline: hanging;
+.GenreHeader__percentlabel {
+  fill: #fff;
   font-size: 13px;
+  font-weight: 500;
   stroke: none;
+  text-anchor: middle;
 }
 
-.GenreHeader--valuelabel {
-  alignment-baseline: central;
-  color: #22222D;
+.GenreHeader__genrelabel {
   font-size: 13px;
+  font-weight: 200;
+  stroke: none;
+  text-anchor: middle;
 }
