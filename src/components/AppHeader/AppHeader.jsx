@@ -96,7 +96,8 @@ var AppHeader = React.createClass({
           dynamicState={this.props.dynamicState}
           scales={this.props.scales} />
         <AboutPage
-          isOpen={aboutOpen} />
+          isOpen={aboutOpen}
+          maxHeight={window.innerHeight - this.props.layout.headerHeight} />
       </div>
     )
   }

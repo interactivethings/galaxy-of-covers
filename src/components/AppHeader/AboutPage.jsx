@@ -8,7 +8,7 @@ var ComponentName = React.createClass({
 
   render() {
     return (
-      <div className={'AboutPage' + (this.props.isOpen ? '' : ' AboutPage--closed')}>
+      <div className={'AboutPage' + (this.props.isOpen ? '' : ' AboutPage--closed')} style={{ maxHeight: this.props.maxHeight }}>
         <div className='AboutPage__wrapper'>
           <h2>Galaxy of Covers</h2>
           <h3>Honoring the evolution of the 50 most popular cover songs of all time.</h3>
