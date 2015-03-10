@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="69px" height="58px" viewBox="0 0 69 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<svg width="64px" height="81px" viewBox="0 0 64 81" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
-    <title>ic_overview_energy</title>
+    <title>Energy</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
@@ -15,11 +15,20 @@
         </filter>
     </defs>
     <g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Icons" sketch:type="MSArtboardGroup" transform="translate(-417.000000, -38.000000)">
-            <g id="ic_overview_energy" sketch:type="MSLayerGroup" transform="translate(418.000000, 39.000000)">
-                <circle id="Oval" stroke="" opacity="0.5" sketch:type="MSShapeGroup" cx="28" cy="28" r="28"></circle>
-                <circle id="Sun" fill="#FFFFFF" filter="url(#filter-1)" sketch:type="MSShapeGroup" cx="28" cy="28" r="4"></circle>
-                <circle id="Path" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="56" cy="28" r="12"></circle>
+        <g id="05_Overview-Legend" sketch:type="MSArtboardGroup" transform="translate(-682.000000, -100.000000)">
+            <g id="Legend" sketch:type="MSLayerGroup" transform="translate(0.000000, 56.000000)">
+                <g id="Keys" transform="translate(72.000000, 45.000000)">
+                    <g id="Energy" transform="translate(611.000000, 0.000000)">
+                        <g id="Key" sketch:type="MSShapeGroup">
+                            <circle id="Oval" stroke="" opacity="0.5" cx="28" cy="28" r="28"></circle>
+                            <circle id="Sun" fill="#FFFFFF" filter="url(#filter-1)" cx="28" cy="28" r="2"></circle>
+                            <circle id="Path" fill="#FFFFFF" cx="55" cy="28" r="8"></circle>
+                        </g>
+                        <text opacity="0.5" sketch:type="MSTextLayer" font-family="Gotham" font-size="14" font-weight="313" sketch:alignment="middle" fill="#FFFFFF">
+                            <tspan x="2.234" y="77">Energy</tspan>
+                        </text>
+                    </g>
+                </g>
             </g>
         </g>
     </g>

@@ -21,7 +21,6 @@ var LegendOption = React.createClass({
         onClick={this.onOptionClick}
       >
         <LegendIcon icon={this.props.viewName + '_' + this.props.attributeName} />
-        <div className="AppHeader--legendlabel" >{optionLabel}</div>
       </div>
     )
   }

@@ -31,8 +31,7 @@ var Legend = React.createClass({
               viewName={inDetail ? 'detail' : 'overview'}
               isInactive={highlighted && highlighted !== optionName}
               optionLabel={pair[1]}
-              clickFunction={onClick}
-            />
+              clickFunction={onClick} />
           )
         })
       }

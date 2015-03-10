@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="58px" height="58px" viewBox="0 0 58 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<svg width="71px" height="81px" viewBox="0 0 71 81" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
-    <title>ic_overview_popularity</title>
+    <title>Popularity</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Icons" sketch:type="MSArtboardGroup" transform="translate(-32.000000, -38.000000)" stroke="#FFFFFF">
-            <g id="ic_overview_popularity" sketch:type="MSLayerGroup" transform="translate(33.000000, 39.000000)">
-                <circle id="Oval" sketch:type="MSShapeGroup" cx="28" cy="28" r="28"></circle>
-                <circle id="Path" sketch:type="MSShapeGroup" cx="28" cy="44" r="12"></circle>
+        <g id="05_Overview-Legend" sketch:type="MSArtboardGroup" transform="translate(-73.000000, -100.000000)" opacity="0.5">
+            <g id="Legend" sketch:type="MSLayerGroup" transform="translate(0.000000, 56.000000)">
+                <g id="Keys" transform="translate(72.000000, 45.000000)">
+                    <g id="Popularity">
+                        <circle id="Oval" stroke="#FFFFFF" sketch:type="MSShapeGroup" cx="36" cy="28" r="28"></circle>
+                        <circle id="Oval" stroke="#FFFFFF" stroke-dasharray="2,1" sketch:type="MSShapeGroup" cx="36" cy="44" r="12"></circle>
+                        <text sketch:type="MSTextLayer" font-family="Gotham" font-size="14" font-weight="313" sketch:alignment="middle" fill="#FFFFFF">
+                            <tspan x="0.307" y="77">Popularity</tspan>
+                        </text>
+                    </g>
+                </g>
             </g>
         </g>
     </g>
