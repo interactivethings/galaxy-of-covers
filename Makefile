@@ -19,7 +19,7 @@ build: clean install
 	cp data/out/songinfo-production.json build/data/out/songinfo-production.json
 
 deploy: build
-	rsync -avz build/ --exclude=.DS_Store interact@interactivethings.com:/home/interact/www/lab.interactivethings.com/song-covers
+	rsync -avz build/ --exclude=.DS_Store interact@interactivethings.com:/home/interact/www/lab.interactivethings.com/galaxy-of-covers
 
 clean:
 	rm -rf build
