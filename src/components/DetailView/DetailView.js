@@ -8,8 +8,7 @@ require('components/DetailView/DetailView.scss')
 var ViewActions = require('actions/ViewActions')
 ,   DataUtil = require('util/datautil')
 ,   SvgUtil = require('util/svgutil')
-,   energyBaselinePoints = require('components/DetailView/energyBaselinePoints')
-,   energyExtendedPoints = require('components/DetailView/energyExtendedPoints')
+,   EnergyTails = require('components/DetailView/EnergyTails')
 ,   DetailShapes = require('components/DetailView/DetailShapes')
 ,   AxisStar = require('components/DetailView/AxisStar')
 ,   Axis = require('components/DetailView/Axis')
@@ -138,15 +137,15 @@ var DetailView = {
 
     detailEnergyTails.transition()
       .duration(200)
-      .attr('points', energyExtendedPoints)
+      .attr('points', EnergyTails.ExtendedPoints)
 
     detailEnergyTails.enter().append('polygon')
       .attr('class', 'SongTimeline--energytail')
-      .attr('points', energyBaselinePoints)
       .transition()
+      .attr('points', EnergyTails.BaselinePoints)
       .delay(200)
       .duration(800)
-      .attr('points', energyExtendedPoints)
+      .attr('points', EnergyTails.ExtendedPoints)
 
     // new planets
     var detailPlanets = viewWrapper.selectAll('.SongTimeline--planet')
@@ -216,7 +215,7 @@ var DetailView = {
     var trailT0 = d3Node.selectAll('.SongTimeline--energytail')
       .transition()
       .duration(500)
-      .attr('points', energyBaselinePoints)
+      .attr('points', EnergyTails.BaselinePoints)
       .remove()
 
     var t0 = d3Node.selectAll('.SongTimeline--planet')
