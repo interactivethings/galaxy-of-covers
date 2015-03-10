@@ -3,6 +3,10 @@
   cursor: pointer;
 }
 
+.GenreHeader--invisible {
+  display: none;
+}
+
 .GenreHeader--genrelabel {
   alignment-baseline: hanging;
   font-size: 13px;

@@ -15,6 +15,7 @@
   padding: 0.62em 0;
   position: relative;
   @include user-select(none);
+  z-index: $z-nav;
 }
 
 .AppHeader--back {
@@ -61,9 +62,11 @@
 }
 
 .AppHeader--navlabel {
+  color: #fff;
   display: inline-block;
+  font-size: 18px;
   font-weight: 300;
-  line-height: 1.2em;
+  line-height: 22px;
   margin: 0;
   vertical-align: middle;
 }

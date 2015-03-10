@@ -7,6 +7,7 @@ require('components/AppHeader/AppHeader.scss')
 var ViewActions = require('actions/ViewActions')
 ,   Legend = require('components/AppHeader/Legend')
 ,   GenreHeader = require('components/AppHeader/GenreHeader')
+,   AboutPage = require('components/AppHeader/AboutPage')
 
 var AppHeader = React.createClass({
 
@@ -88,11 +89,14 @@ var AppHeader = React.createClass({
         </div>
         <Legend isOpen={legendOpen} inDetail={inDetail} highlighted={highlightedAttribute} onClick={this.attributeLegendClick} />
         <GenreHeader
+          isVisible={!aboutOpen}
           genreCount={this.props.genreCount}
           genreList={this.props.genreList}
           headerWidth={this.props.layout.headerWidth}
           dynamicState={this.props.dynamicState}
           scales={this.props.scales} />
+        <AboutPage
+          isOpen={aboutOpen} />
       </div>
     )
   }

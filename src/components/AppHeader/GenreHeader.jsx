@@ -28,7 +28,7 @@ var GenreHeader = React.createClass({
     ,   cumulative = 0
 
     return (
-      <svg className="GenreHeader" width={this.props.headerWidth} height={50} >
+      <svg className={"GenreHeader" + (!this.props.isVisible ? ' GenreHeader--invisible' : '')} width={this.props.headerWidth} height={50} >
         <g transform={this.props.transform} >
           {this.props.genreList.map(function(genre) {
             var n = genreCount[genre] || 0
