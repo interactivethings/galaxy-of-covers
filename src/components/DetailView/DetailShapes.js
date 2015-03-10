@@ -1,4 +1,4 @@
-var SvgUtil = require('util/svgutil');
+var svgutil = require('util/svgutil');
 
 function DetailShapes(selection) {
   var detailClips = selection.selectAll('.SongTimeline--clip')
@@ -47,7 +47,7 @@ function DetailShapes(selection) {
 
   pointyDetailShapes
     .attr('id', (d) => 'tlplanet-' + d.versionId)
-    .attr('points', (d) => SvgUtil.joinPolygonPoints(d.polygonPoints))
+    .attr('points', (d) => svgutil.joinPolygonPoints(d.polygonPoints))
     .attr('fill', (d) => d.genreColor)
 
   var detailShadows = selection.selectAll('.SongTimeline--planet__shadow')

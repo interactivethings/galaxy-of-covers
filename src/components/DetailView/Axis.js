@@ -1,4 +1,4 @@
-var SvgUtil = require('util/svgutil')
+var svgutil = require('util/svgutil')
 
 function Axis(selection, yPosition, xDomain, xRange, ticks) {
   var axis = selection.selectAll('.SongTimelineAxis')
@@ -10,7 +10,7 @@ function Axis(selection, yPosition, xDomain, xRange, ticks) {
   }
 
   axis
-    .attr('transform', SvgUtil.translateString(0, yPosition))
+    .attr('transform', svgutil.translateString(0, yPosition))
     .transition()
     .attr('opacity', 1)
 

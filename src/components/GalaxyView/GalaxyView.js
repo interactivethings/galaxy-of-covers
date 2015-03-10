@@ -5,7 +5,7 @@ var d3 = require('d3')
 require('components/GalaxyView/GalaxyView.scss')
 
 var Constants = require('Constants')
-,   SvgUtil = require('util/svgutil')
+,   svgutil = require('util/svgutil')
 ,   ViewActions = require('actions/ViewActions')
 ,   AnimationUtil = require('util/AnimationUtil')
 
@@ -153,7 +153,7 @@ var GalaxyView = {
       .attr('class', 'SongSystem--background')
 
     backgrounds
-      .attr('transform', (d) => SvgUtil.getTranslateAndRotate(d.galaxyX, d.galaxyY, -20))
+      .attr('transform', (d) => svgutil.getTranslateAndRotate(d.galaxyX, d.galaxyY, -20))
       .attr('xlink:href', '#galaxyNoBackgroudCircle')
 
     backgrounds.exit().remove()
@@ -167,7 +167,7 @@ var GalaxyView = {
       .attr('r', 5)
 
     stars
-      .attr('transform', (d) => SvgUtil.translateString(d.galaxyX, d.galaxyY))
+      .attr('transform', (d) => svgutil.translateString(d.galaxyX, d.galaxyY))
 
     var orbits = systems.selectAll('.SongSystem--orbit')
       .data((d) => d.versionsFilteredIn, (d) => d.versionId)
@@ -181,7 +181,7 @@ var GalaxyView = {
     orbits
       .attr('rx', (d) => d.orbitRadiusX)
       .attr('ry', (d) => d.orbitRadiusY)
-      .attr('transform', (d) => SvgUtil.getTranslateAndRotate(d.galaxyX, d.galaxyY, d.orbitRotationOffset))
+      .attr('transform', (d) => svgutil.getTranslateAndRotate(d.galaxyX, d.galaxyY, d.orbitRotationOffset))
 
     var roundPlanets = systems.selectAll('.SongSystem--planet.SongSystem--planet__round')
       .data((d) => d.versionsFilteredIn.filter((datum) => datum.isCircle), (d) => d.versionId)
@@ -208,7 +208,7 @@ var GalaxyView = {
       .attr('class', 'SongSystem--planet SongSystem--planet__pointy')
 
     pointyPlanets
-      .attr('points', (d) => SvgUtil.getPolygonPoints(0, 0, d.galaxyPlanetRadius, d.numSides))
+      .attr('points', (d) => svgutil.getPolygonPoints(0, 0, d.galaxyPlanetRadius, d.numSides))
       .attr('fill', (d) => d.genreColor)
 
     // song label is above the rest of the system
@@ -222,7 +222,7 @@ var GalaxyView = {
 
     labels
       .text((d) => d.title)
-      .attr('transform', (d) => SvgUtil.translateString(d.galaxyX, d.galaxyY))
+      .attr('transform', (d) => svgutil.translateString(d.galaxyX, d.galaxyY))
   }
 
 }

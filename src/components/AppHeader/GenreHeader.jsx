@@ -6,7 +6,7 @@ var React = require('react')
 require('components/AppHeader/GenreHeader.scss')
 
 var ViewActions = require('actions/ViewActions')
-,   SvgUtil = require('util/svgutil')
+,   svgutil = require('util/svgutil')
 ,   DataUtil = require('util/datautil')
 
 var GenreHeader = React.createClass({
@@ -111,7 +111,7 @@ var PercentListing = React.createClass({
 
   render() {
     return (
-      <g transform={SvgUtil.translateString(this.props.x, 0)} onClick={this.onClick} opacity={this.props.opacity} >
+      <g transform={svgutil.translateString(this.props.x, 0)} onClick={this.onClick} opacity={this.props.opacity} >
         <rect
           width={this.props.totalWidth}
           height={this.props.height}
@@ -152,7 +152,7 @@ var ProportionalListing = React.createClass({
 
   render() {
     return (
-      <g transform={SvgUtil.translateString(this.props.x, 0)} onClick={this.onClick} fillOpacity={this.props.opacity} >
+      <g transform={svgutil.translateString(this.props.x, 0)} onClick={this.onClick} fillOpacity={this.props.opacity} >
         <rect
           width={this.props.width}
           height={this.props.height}

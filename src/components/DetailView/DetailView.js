@@ -7,7 +7,7 @@ require('components/DetailView/DetailView.scss')
 
 var ViewActions = require('actions/ViewActions')
 ,   DataUtil = require('util/datautil')
-,   SvgUtil = require('util/svgutil')
+,   svgutil = require('util/svgutil')
 ,   EnergyTails = require('components/DetailView/EnergyTails')
 ,   DetailShapes = require('components/DetailView/DetailShapes')
 ,   AxisStar = require('components/DetailView/AxisStar')
@@ -39,7 +39,7 @@ var DetailView = {
         ,   pt2 = new Vec2(Math.cos(a), Math.sin(a))
         ,   diagonal = Vec2.diff(pt2, pt1)
         ,   rot = Vec2.crossProduct(new Vec2(1, 0), diagonal)
-        ,   polyPoints = SvgUtil.getOffsetPolygonPointsArray(0, 0, versionData.timelinePlanetRadius, versionData.numSides, rot / 2)
+        ,   polyPoints = svgutil.getOffsetPolygonPointsArray(0, 0, versionData.timelinePlanetRadius, versionData.numSides, rot / 2)
 
         versionData.polygonPoints = polyPoints
         versionData.tailpt1 = polyPoints[0]
@@ -91,11 +91,11 @@ var DetailView = {
       .transition()
       .delay(300)
       .duration(800)
-      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY))
+      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY))
 
     var it1 = it0.transition()
       .duration(200)
-      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(0)')
+      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(0)')
       .each('end', DataUtil.before(2, function() {
         callback()
       }))
@@ -154,7 +154,7 @@ var DetailView = {
 
     detailEnergyTails.attr('id', (d) => 'tlenergytail-' + d.versionId)
 
-    var detailPlanetContainer = SvgUtil.acquire(viewWrapper, 'SongTimeline--planetbox', 'g')
+    var detailPlanetContainer = svgutil.acquire(viewWrapper, 'SongTimeline--planetbox', 'g')
 
     // new planets
     var detailPlanets = detailPlanetContainer.selectAll('.SongTimeline--planet')
@@ -163,25 +163,25 @@ var DetailView = {
     detailPlanets.exit()
       .transition('SongSystem-render')
       .duration(500)
-      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY))
+      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY))
       .style('opacity', 0)
       .remove()
 
     detailPlanets.transition('SongSystem-render')
       .duration(200)
-      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineCY))
+      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineCY))
 
     detailPlanets.enter().append('g')
       .attr('class', 'SongTimeline--planet')
       .on('mouseenter', this.onPlanetMouseEnter)
       .on('mouseleave', this.onPlanetMouseLeave)
-      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(0)')
+      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(0)')
       .transition('SongSystem-render')
       .duration(200)
-      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(1)')
+      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(1)')
       .transition('SongSystem-render')
       .duration(800)
-      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineCY))
+      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineCY))
 
     detailPlanets.attr('id', (d) => 'tlplanetgroup-' + d.versionId)
 
@@ -190,7 +190,7 @@ var DetailView = {
 
     // detail overlay
     var detailData = state.get('detailOverlay'),
-        detailLayer = SvgUtil.acquire(viewWrapper, 'SongTimeline--detaillayer', 'g')
+        detailLayer = svgutil.acquire(viewWrapper, 'SongTimeline--detaillayer', 'g')
     if (detailData) {
       detailLayer.datum(detailData)
         .call(DetailOverlay.render, dimensions.timelineXScale.range(), dimensions.yOffset)
@@ -234,7 +234,7 @@ var DetailView = {
     var t0 = d3Node.selectAll('.SongTimeline--planet')
       .transition('SongSystem-derender')
       .duration(500)
-      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY))
+      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY))
 
     t0.transition('SongSystem-derender')
       .duration(200)
