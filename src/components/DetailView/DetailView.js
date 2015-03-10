@@ -137,6 +137,7 @@ var DetailView = {
       .transition('SongSystem-render')
       .duration(500)
       .attr('points', EnergyTails.BaselinePoints)
+      .style('opacity', 0)
       .remove()
 
     detailEnergyTails.transition('SongSystem-render')
@@ -163,9 +164,7 @@ var DetailView = {
       .transition('SongSystem-render')
       .duration(500)
       .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY))
-      .transition('SongSystem-render')
-      .duration(200)
-      .attr('opacity', 0)
+      .style('opacity', 0)
       .remove()
 
     detailPlanets.transition('SongSystem-render')
@@ -223,7 +222,7 @@ var DetailView = {
     d3Node.selectAll('.SongDetailStar, .SongTimelineAxis')
       .transition('SongSystem-derender')
       .duration(500)
-      .attr('opacity', 0)
+      .style('opacity', 0)
       .remove()
 
     var trailT0 = d3Node.selectAll('.SongTimeline--energytail')
@@ -239,7 +238,7 @@ var DetailView = {
 
     t0.transition('SongSystem-derender')
       .duration(200)
-      .attr('opacity', 0)
+      .style('opacity', 0)
       .remove()
       .each('end', DataUtil.before(2, function() {
         callback()
