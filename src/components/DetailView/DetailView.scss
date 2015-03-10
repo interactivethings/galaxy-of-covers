@@ -1,3 +1,5 @@
+@import "components/Constants";
+
 .DetailView {
   display: block;
 }
@@ -34,15 +36,20 @@
 }
 
 .SongTimelineAxis--line, .SongTimelineAxis--line__axistick {
-  opacity: 0.5;
   stroke: white;
+  fill: $c-app-bg;
+}
+
+.SongTimelineAxis__firsttick {
+  stroke: white;
+  fill: white;
 }
 
 .SongTimelineAxis--label {
   alignment-baseline: before-edge;
   fill: white;
-  font-size: 10px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   opacity: 0.5;
   stroke: none;
   text-anchor: middle;

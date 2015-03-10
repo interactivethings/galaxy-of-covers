@@ -41,16 +41,22 @@ function Axis(selection, yPosition, xDomain, xRange, ticks) {
   var axisTicks = axis.selectAll('.SongTimelineAxis--line__axistick')
     .data(ticks)
 
-  axisTicks.enter().append('line')
+  axisTicks.enter().append('circle')
     .attr('class', 'SongTimelineAxis--line__axistick')
 
   axisTicks.exit().remove()
 
   axisTicks
-    .attr('x1', (d) => d)
-    .attr('y1', -5)
-    .attr('x2', (d) => d)
-    .attr('y2', 5)
+    .attr('cx', (d) => d)
+    .attr('cy', 0)
+    .attr('r', 3.5)
+
+  var firstTick = svgutil.acquire(axis, 'SongTimelineAxis__firsttick', 'circle')
+
+  firstTick
+    .attr('cx', d3.min(ticks))
+    .attr('cy', 0)
+    .attr('r', 3.5)
 
   var timelineLabel = svgutil.acquire(axis, 'SongTimelineAxis--label SongTimelineAxis--label__timeline', 'text')
 
