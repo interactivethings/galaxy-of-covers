@@ -180,6 +180,7 @@ console.log('songs loaded', action.data);
         } else {
           setState('highlightedAttribute', action.attributeToHighlight)
         }
+        break
       case 'FILTER_GENRE':
         this.toggleFilteredGenre(action.genre)
         break
