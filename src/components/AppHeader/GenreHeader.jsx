@@ -35,7 +35,7 @@ var GenreHeader = React.createClass({
     ,   xScale = d3.scale.linear().domain([0, sum]).range([0, individualWidth])
 
     return (
-      <svg className="GenreHeader" width={this.props.headerWidth} height={50} >
+      <svg className="GenreHeader" width={this.props.headerWidth} height={48} >
         <rect className='GenreHeader__bgrect' height={24} width={this.props.headerWidth} />
         <g transform={this.props.transform} >
           {this.props.genreList.map((genre, i) => {
@@ -65,7 +65,7 @@ var GenreHeader = React.createClass({
     ,   cumulative = 0
 
     return (
-      <svg className="GenreHeader" width={this.props.headerWidth} height={50} >
+      <svg className="GenreHeader" width={this.props.headerWidth} height={12} >
         <g transform={this.props.transform} >
           {this.props.genreList.map((genre) => {
             var n = genreCount[genre] || 0
@@ -121,6 +121,11 @@ var PercentListing = React.createClass({
           width={this.props.barWidth}
           height={this.props.height}
           fill={this.props.color} />
+        <rect className='GenreHeader__clickbg'
+          y={this.props.height}
+          width={this.props.totalWidth}
+          height={this.props.height}
+          fill='transparent' />
         <text className='GenreHeader__percentlabel' dy={16} dx={this.props.totalWidth / 2} >{DataUtil.formatPercent(this.props.value)}</text>
         <text className='GenreHeader__genrelabel' fill={this.props.color} dy={40} dx={this.props.totalWidth / 2} >{this.props.genre}</text>
       </g>
