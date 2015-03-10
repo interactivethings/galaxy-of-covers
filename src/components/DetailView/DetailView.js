@@ -133,7 +133,11 @@ var DetailView = {
     var detailEnergyTails = energyTailContainer.selectAll('.SongTimeline--energytail')
       .data(data.versionsFilteredIn, (d) => d.versionId)
 
-    detailEnergyTails.exit().remove()
+    detailEnergyTails.exit()
+      .transition('SongSystem-render')
+      .duration(500)
+      .attr('points', EnergyTails.BaselinePoints)
+      .remove()
 
     detailEnergyTails.transition('SongSystem-render')
       .duration(200)
@@ -155,7 +159,14 @@ var DetailView = {
     var detailPlanets = detailPlanetContainer.selectAll('.SongTimeline--planet')
       .data(data.versionsFilteredIn, (d) => d.versionId)
 
-    detailPlanets.exit().remove()
+    detailPlanets.exit()
+      .transition('SongSystem-render')
+      .duration(500)
+      .attr('transform', (d) => SvgUtil.translateString(d.timelineCX, d.timelineBaseY))
+      .transition('SongSystem-render')
+      .duration(200)
+      .attr('opacity', 0)
+      .remove()
 
     detailPlanets.transition('SongSystem-render')
       .duration(200)
@@ -207,7 +218,7 @@ var DetailView = {
     d3Node.classed('MainView__detail', false)
 
     // cancel any incoming transition, if applicable
-    d3Node.selectAll('.SongSystem--planet').interrupt().transition('SongSystem-derender')
+    d3Node.selectAll('.SongSystem--planet').interrupt()
 
     d3Node.selectAll('.SongDetailStar, .SongTimelineAxis')
       .transition('SongSystem-derender')
