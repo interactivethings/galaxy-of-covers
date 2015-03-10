@@ -11,7 +11,7 @@
 }
 
 .AppHeader--navigation {
-  background-color: $c-app-bg;
+  background-color: $c-header-bg;
   padding: 0.62em 0;
   position: relative;
   @include user-select(none);

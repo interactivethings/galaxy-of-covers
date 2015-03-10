@@ -2,7 +2,7 @@
 @import "components/Constants";
 
 .AboutPage {
-  background-color: #282836;
+  background-color: $c-app-bg;
   box-sizing: border-box;
   padding: 60px 0 60px 0;
   @include transition(transform 0.2s linear);
