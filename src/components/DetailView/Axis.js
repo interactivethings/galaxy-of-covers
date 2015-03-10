@@ -51,6 +51,13 @@ function Axis(selection, yPosition, xDomain, xRange, ticks) {
     .attr('y1', -5)
     .attr('x2', (d) => d)
     .attr('y2', 5)
+
+  var timelineLabel = svgutil.acquire(axis, 'SongTimelineAxis--label SongTimelineAxis--label__timeline', 'text')
+
+  timelineLabel
+    .attr('x', (xRange[0] + xRange[1]) / 2)
+    .attr('y', 10)
+    .text('Timeline')
 }
 
 module.exports = Axis;
