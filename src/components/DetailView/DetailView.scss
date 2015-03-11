@@ -8,28 +8,6 @@
   display: block;
 }
 
-.DetailTitle {
-  color: #fff;
-  font-weight: 200;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  pointer-events: none;
-}
-
-.DetailTitle--title {
-  font-size: 36px;
-  font-weight: 300;
-  margin: 0;
-}
-
-.DetailTitle--info {
-  font-size: 14px;
-  font-weight: 300;
-  margin: 0.6em 0 0 0;
-  opacity: 0.5;
-}
-
 .SongDetailStar {
   fill: #fff;
   filter: url(#starGlowFilter);

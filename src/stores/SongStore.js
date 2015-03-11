@@ -240,6 +240,7 @@ function prepareLoadedData(dataset) {
         return {
           songId: songData.id,
           versionTitle: versionData.title,
+          versionPerformer: versionData.performer,
           versionId: versionData.id,
           songYear: versionData.parsedDate ? versionData.parsedDate.getFullYear() : null,
           spotify: versionData.spotify,

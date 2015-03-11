@@ -2,6 +2,8 @@
 
 var React = require('react')
 
+require('components/DetailView/DetailHeader.scss')
+
 var DetailHeader = React.createClass({
 
   getSongInfoString(songInfo) {
@@ -14,10 +16,17 @@ var DetailHeader = React.createClass({
       top: this.props.layout.tlHeader
     }
 
+    var detailData, songInfoString
+    if (detailData = this.props.state.get('detailOverlay')) {
+      songInfoString = detailData.versionPerformer
+    } else {
+      songInfoString = this.getSongInfoString(this.props.songData)
+    }
+
     return (
       <div className="DetailTitle" style={style} >
         <h2 className="DetailTitle--title">{this.props.songData.title}</h2>
-        <h3 className="DetailTitle--info">{this.getSongInfoString(this.props.songData)}</h3>
+        <h3 className="DetailTitle--info">{songInfoString}</h3>
       </div>
     )
   }
