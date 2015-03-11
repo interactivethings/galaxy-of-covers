@@ -1,26 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="69px" height="58px" viewBox="0 0 69 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
-    <title>ic_overview_energy</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
-            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.7 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
-            <feMerge>
-                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                <feMergeNode in="SourceGraphic"></feMergeNode>
-            </feMerge>
-        </filter>
-    </defs>
-    <g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Icons" sketch:type="MSArtboardGroup" transform="translate(-417.000000, -38.000000)">
-            <g id="ic_overview_energy" sketch:type="MSLayerGroup" transform="translate(418.000000, 39.000000)">
-                <circle id="Oval" stroke="" opacity="0.5" sketch:type="MSShapeGroup" cx="28" cy="28" r="28"></circle>
-                <circle id="Sun" fill="#FFFFFF" filter="url(#filter-1)" sketch:type="MSShapeGroup" cx="28" cy="28" r="4"></circle>
-                <circle id="Path" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="56" cy="28" r="12"></circle>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 68.7 57" enable-background="new 0 0 68.7 57" xml:space="preserve">
+<path opacity="4.000000e-02" fill="#FFFFFF" d="M28.5,56C13.3,56,1,43.7,1,28.5S13.3,1,28.5,1S56,13.3,56,28.5S43.7,56,28.5,56z
+	 M28.5,57C44.2,57,57,44.2,57,28.5S44.2,0,28.5,0S0,12.8,0,28.5S12.8,57,28.5,57z"/>
+<radialGradient id="SVGID_1_" cx="47.3801" cy="45.3469" r="51.9778" fx="96.9398" fy="61.0163" gradientTransform="matrix(0.9509 0.3096 -0.1517 0.4659 9.2059 9.5512)" gradientUnits="userSpaceOnUse">
+	<stop  offset="0" style="stop-color:#FFFFFF"/>
+	<stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
+</radialGradient>
+<path fill="url(#SVGID_1_)" d="M28.5,56C13.3,56,1,43.7,1,28.5S13.3,1,28.5,1S56,13.3,56,28.5S43.7,56,28.5,56z M28.5,57
+	C44.2,57,57,44.2,57,28.5S44.2,0,28.5,0S0,12.8,0,28.5S12.8,57,28.5,57z"/>
+<circle fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="56.6" cy="28.7" r="12"/>
+<g>
+	
+		<radialGradient id="SVGID_2_" cx="28.5" cy="-7.1465" r="6.9062" gradientTransform="matrix(1 0 0 0.9637 0 35.3868)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
+	</radialGradient>
+	<ellipse fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_2_)" cx="28.5" cy="28.5" rx="6.9" ry="7.3"/>
+</g>
+<circle fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="28.5" cy="28.5" r="2"/>
 </svg>

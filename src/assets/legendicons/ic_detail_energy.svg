@@ -1,36 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="58px" height="60px" viewBox="0 0 58 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
-    <title>ic_detail_energy</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <rect id="path-1" x="0" y="0" width="58" height="30"></rect>
-        <linearGradient x1="50%" y1="100%" x2="50%" y2="-2.22044605e-14%" id="linearGradient-3">
-            <stop stop-color="#22222D" stop-opacity="0" offset="0%"></stop>
-            <stop stop-color="#22222D" offset="100%"></stop>
-        </linearGradient>
-        <path id="path-4" d="M58,0 L58,28 L0,28 L0,0 L58,0 Z"></path>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-6">
-            <stop stop-color="#FFFFFF" offset="0%"></stop>
-            <stop stop-color="#FFFFFF" stop-opacity="0.01" offset="100%"></stop>
-        </linearGradient>
-    </defs>
-    <g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Icons" sketch:type="MSArtboardGroup" transform="translate(-454.000000, -172.000000)">
-            <g id="ic_detail_energy" sketch:type="MSLayerGroup" transform="translate(454.000000, 172.000000)">
-                <g id="Mask">
-                    <mask id="mask-2" sketch:name="Mask" fill="white">
-                        <use xlink:href="#path-1"></use>
-                    </mask>
-                    <use sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
-                    <circle id="Oval" stroke="#FFFFFF" opacity="0.5" sketch:type="MSShapeGroup" mask="url(#mask-2)" cx="29" cy="0" r="28"></circle>
-                    <mask id="mask-5" sketch:name="Gradient" fill="white">
-                        <use xlink:href="#path-4"></use>
-                    </mask>
-                    <use id="Gradient" fill="url(#linearGradient-3)" sketch:type="MSShapeGroup" xlink:href="#path-4"></use>
-                </g>
-                <path d="M2.22528659,10.2385563 L1.99247026,9.81759726 L2.05573273,9.81759726 C2.11120959,9.95842393 2.16773078,10.0987472 2.22528659,10.2385563 Z M5.53498173,16.2228703 L29.7464374,60 L51.2513309,17.810419 C45.9316374,24.308869 37.9380278,28.5117912 29,28.5117912 C19.353533,28.5117912 10.8071289,23.6162071 5.53498173,16.2228703 Z" id="Tail" fill="url(#linearGradient-6)" sketch:type="MSShapeGroup"></path>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 56 60.8" enable-background="new 0 0 56 60.8" xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="27.651" y1="60.7684" x2="27.651" y2="14.7863">
+	<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:1.000000e-02"/>
+	<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0.9"/>
+</linearGradient>
+<path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_1_)" d="M51.6,15.9L28.7,60.8l-25-46l0,0
+	c4.8,8.4,13.9,14,24.2,14C37.9,28.8,46.6,23.6,51.6,15.9z"/>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="28" y1="-8.782536e-08" x2="28" y2="28.77">
+	<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:1.000000e-02"/>
+	<stop  offset="0.135" style="stop-color:#FFFFFF;stop-opacity:0.1302"/>
+	<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0.9"/>
+</linearGradient>
+<path opacity="0.6" fill="url(#SVGID_2_)" d="M56,0.8c0,15.5-12.5,28-28,28c-15.5,0-28-12.5-28-28C0,0.5,0,0.2,0,0h1
+	c0,0.2,0,0.5,0,0.8c0,14.9,12.1,27,27,27c14.9,0,27-12.1,27-27c0-0.3,0-0.5,0-0.8h1C56,0.2,56,0.5,56,0.8z"/>
 </svg>
