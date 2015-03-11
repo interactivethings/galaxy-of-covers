@@ -16,7 +16,7 @@ function planetPosition(planet, t) {
 }
 
 function planetOpacity(blinkSpeed, t) {
-  return (sin(t * blinkSpeed) + 1.8) / 2
+  return 0.6 + 0.2 * (sin(t * blinkSpeed) + 1) // 0.6 + 0.4 * ((sin(t*bs) + 1) / 2)
 }
 
 module.exports = {

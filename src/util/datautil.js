@@ -112,7 +112,8 @@ var DataUtil = {
     ,   timelinePlanetRadius = d3.scale.linear().domain([0, 100]).range([3, 50])
     ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([-1, 8, 7, 6, 5, 4, 3]) // reverse scale
 //    ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([9])
-    ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2 / 600, 14 / 600]) // time-based animation speed
+    ,   blinkScale = function(bpm) { return bpm * 2 * Math.PI / 60000 } // time-based animation speed (blink rate is equal to BPM)
+//    ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2 / 600, 14 / 600]) // time-based animation speed (old parameters)
 //    ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2 / 8, 14 / 8]) // frame-based animation speed
 
     return {
