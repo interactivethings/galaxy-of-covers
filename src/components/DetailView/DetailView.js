@@ -20,7 +20,7 @@ var DetailView = {
     var highlineY = yOffset + layout.tlHighline
     ,   baselineY = yOffset + layout.tlBase
     ,   timelineTop = yOffset + layout.tlTop
-    ,   energyRange = DataUtil.getMinMax(datum.versions, (item) => item.energy || 0)
+    ,   energyRange = [0, 1] // DataUtil.getMinMax(datum.versions, (item) => item.energy || 0)
     ,   timelineYScale = d3.scale.linear().domain(energyRange).range([baselineY, timelineTop])
     ,   timeRange = DataUtil.getMinMax(datum.versions, (item) => item.parsedDate)
     ,   timelineXRange = [100, window.innerWidth - 100]
