@@ -24,7 +24,6 @@ setStateObj({
   hoveredSystemId: null,
   inGalaxy: true,
   inDetail: false,
-  shareOpen: false,
   legendOpen: false,
   aboutOpen: false,
   highlightedAttribute: null,
@@ -110,7 +109,6 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
   navMenuToggle(optionName, isOpen) {
     // toggling any of the three automatically closes the other two
     var optionProps = {
-      shareOpen: false,
       legendOpen: false,
       aboutOpen: false
     }
@@ -155,12 +153,6 @@ console.log('songs loaded', action.data);
         break
       case 'HOVER_OFF_SYSTEM':
         this.setHoveredSystem(null)
-        break
-      case 'OPEN_SHARE':
-        this.navMenuToggle('shareOpen', true)
-        break
-      case 'CLOSE_SHARE':
-        this.navMenuToggle('shareOpen', false)
         break
       case 'LEGEND_SHOW':
         this.navMenuToggle('legendOpen', true)

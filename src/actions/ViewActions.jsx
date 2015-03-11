@@ -30,18 +30,6 @@ var ViewActions = {
     })
   },
 
-  openShare() {
-    Dispatcher.handleViewAction({
-      type: 'OPEN_SHARE'
-    })
-  },
-
-  closeShare() {
-    Dispatcher.handleViewAction({
-      type: 'CLOSE_SHARE'
-    })
-  },
-
   showLegend() {
     Dispatcher.handleViewAction({
       type: 'LEGEND_SHOW'
