@@ -1,34 +1,77 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="36px" height="70px" viewBox="0 0 36 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
-    <title>ic_overview_valence</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
-            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.7 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
-            <feMerge>
-                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                <feMergeNode in="SourceGraphic"></feMergeNode>
-            </feMerge>
-        </filter>
-    </defs>
-    <g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Icons" sketch:type="MSArtboardGroup" transform="translate(-299.000000, -29.000000)">
-            <g id="ic_overview_valence" sketch:type="MSLayerGroup" transform="translate(285.000000, 30.000000)">
-                <g id="Key" sketch:type="MSShapeGroup">
-                    <circle id="Sun" fill="#FFFFFF" filter="url(#filter-1)" cx="32" cy="37" r="4"></circle>
-                    <g id="Planet" transform="translate(0.000000, 14.000000)" stroke="#FFFFFF" opacity="0.5">
-                        <ellipse id="Oval-56" transform="translate(32.000000, 23.000000) rotate(-14.000000) translate(-32.000000, -23.000000) " cx="32" cy="23" rx="28" ry="16"></ellipse>
-                    </g>
-                    <g id="Amount-+-Angle-+-Reference-Line" transform="translate(22.000000, 0.000000)" stroke="#FFFFFF">
-                        <path d="M11.5,1.03170076 C6.32215818,0.847813216 2.10319973,1.50257056 0.5,2" id="Amount" stroke-width="3" transform="translate(6.000000, 1.500000) rotate(-1.000000) translate(-6.000000, -1.500000) "></path>
-                        <path d="M2,6 L16.6223723,63.6752653" id="Angle" stroke-linecap="square"></path>
-                        <path d="M11,5 L11,69" id="Reference-Line" stroke-linecap="square" stroke-dasharray="1,2"></path>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="551 1239.5 70.2 41.2" enable-background="new 551 1239.5 70.2 41.2" xml:space="preserve">
+<g>
+	<path fill="#FFFFFF" d="M621.2,1263.6l-3-0.1c0.1-5-0.6-9-1.1-10.5l2.8-0.9C620.7,1254.1,621.3,1258.5,621.2,1263.6z"/>
+</g>
+<g>
+	<path fill="#989898" d="M616,1263.1h-2v-1h2V1263.1z M613,1263.1h-2v-1h2V1263.1z M610,1263.1h-2v-1h2V1263.1z M607,1263.1h-2v-1h2
+		V1263.1z M604,1263.1h-2v-1h2V1263.1z M601,1263.1h-2v-1h2V1263.1z M598,1263.1h-2v-1h2V1263.1z M595,1263.1h-2v-1h2V1263.1z
+		 M592,1263.1h-2v-1h2V1263.1z M589,1263.1h-2v-1h2V1263.1z M586,1263.1h-2v-1h2V1263.1z M583,1263.1h-2v-1h2V1263.1z M580,1263.1
+		h-2v-1h2V1263.1z M577,1263.1h-2v-1h2V1263.1z M574,1263.1h-2v-1h2V1263.1z M571,1263.1h-2v-1h2V1263.1z M568,1263.1h-2v-1h2
+		V1263.1z M565,1263.1h-2v-1h2V1263.1z M562,1263.1h-2v-1h2V1263.1z M559,1263.1h-2v-1h2V1263.1z M556,1263.1h-2v-1h2V1263.1z
+		 M553,1263.1h-2v-1h2V1263.1z"/>
+</g>
+<path fill="#989898" d="M606.1,1269.2c-4.4,4.3-10.8,7.8-18.1,9.8c-4.1,1.1-8.1,1.6-12,1.6c-10.4,0-18.2-4-19.8-10.2
+	c-1.1-4.3,0.7-9.1,5.1-13.5c3.7-3.7,9-6.8,15-8.8c0,0.3,0.1,0.7,0.2,1c-5.8,2-10.9,5-14.5,8.5c-4.2,4.2-5.9,8.6-4.9,12.6
+	c1.5,5.7,8.9,9.5,18.8,9.5c3.8,0,7.8-0.5,11.7-1.6c7.1-1.9,13.4-5.3,17.7-9.5c4.2-4.2,5.9-8.6,4.9-12.6c-1.5-5.8-8.9-9.5-18.8-9.5
+	c-0.1,0-0.2,0-0.2,0c0-0.3,0-0.7-0.1-1c0.1,0,0.2,0,0.4,0c10.4,0,18.2,4,19.8,10.2C612.4,1260,610.5,1264.8,606.1,1269.2z"/>
+<g>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#989898" d="M591.1,1246.5c0-0.3,0-0.7-0.1-1c-0.7-3.4-3.7-6-7.3-6
+		c-4.1,0-7.5,3.4-7.5,7.5c0,0.4,0,0.7,0.1,1.1c0,0.3,0.1,0.7,0.2,1c0.9,3.1,3.8,5.4,7.2,5.4c4.1,0,7.5-3.4,7.5-7.5
+		C591.2,1246.8,591.2,1246.6,591.1,1246.5z M583.7,1253.5c-3,0-5.5-2-6.2-4.7c-0.1-0.3-0.2-0.7-0.2-1c0-0.2,0-0.5,0-0.8
+		c0-3.6,2.9-6.5,6.5-6.5c3.1,0,5.7,2.2,6.3,5c0.1,0.3,0.1,0.7,0.1,1c0,0.1,0,0.3,0,0.5C590.2,1250.6,587.3,1253.5,583.7,1253.5z"/>
+</g>
+<g>
+	
+		<radialGradient id="SVGID_1_" cx="583.522" cy="1235.9821" r="6.9062" gradientTransform="matrix(1 0 0 0.9637 0 72.0182)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#1D1D1B;stop-opacity:0"/>
+	</radialGradient>
+	<ellipse fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_1_)" cx="583.5" cy="1263.1" rx="6.9" ry="7.3"/>
+</g>
+<g>
+	
+		<image overflow="visible" opacity="0.75" width="65" height="65" xlink:href="data:image/png;base64,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
+LL2X/wUYAGfBwGd12ij7AAAAAElFTkSuQmCC" transform="matrix(1 0 0 1 550.6743 1230.9795)">
+	</image>
+	<g>
+		<g>
+			<circle fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="583.5" cy="1263.1" r="2"/>
+		</g>
+	</g>
+</g>
+<rect x="583.2" y="1230.4" transform="matrix(0.2456 0.9694 -0.9694 0.2456 1664.5122 386.9246)" fill="#FFFFFF" width="1" height="65"/>
 </svg>
