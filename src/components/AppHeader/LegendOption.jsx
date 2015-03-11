@@ -4,6 +4,7 @@ var React = require('react')
 
 require('components/AppHeader/LegendOption.scss')
 
+var datautil = require('util/datautil')
 var LegendIcon = require('components/AppHeader/LegendIcon')
 
 var LegendOption = React.createClass({
@@ -21,7 +22,12 @@ var LegendOption = React.createClass({
         onClick={this.onOptionClick}
       >
         <LegendIcon icon={this.props.viewName + '_' + this.props.attributeName} />
-        <div className={'AppHeader--legendlabel' + (!this.props.label ? ' AppHeader--legendlabel__invisible' : '')} >{this.props.label}</div>
+        <div className='AppHeader--legenddisplayname' dangerouslySetInnerHTML={{ __html: this.props.displayName }}></div>
+        {!this.props.label ?
+          <div className='AppHeader--legendlabel AppHeader--legendlabel__invisible' />
+        :
+          <div className='AppHeader--legendlabel' >{datautil.formatLegendData(this.props.label, this.props.attributeName)}</div>
+        }
       </div>
     )
   }

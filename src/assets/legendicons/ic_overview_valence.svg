@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="70px" height="73px" viewBox="0 0 70 73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<svg width="36px" height="70px" viewBox="0 0 36 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
-    <title>Valence</title>
+    <title>ic_overview_valence</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
@@ -15,23 +15,17 @@
         </filter>
     </defs>
     <g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="05_Overview-Legend" sketch:type="MSArtboardGroup" transform="translate(-478.000000, -106.000000)">
-            <g id="Legend" sketch:type="MSLayerGroup" transform="translate(0.000000, 56.000000)">
-                <g id="Keys" transform="translate(72.000000, 45.000000)">
-                    <g id="Valence" transform="translate(405.000000, 4.000000)">
-                        <g id="Key" sketch:type="MSShapeGroup">
-                            <circle id="Sun" fill="#FFFFFF" filter="url(#filter-1)" cx="33" cy="25" r="2"></circle>
-                            <g id="Angle" transform="translate(35.152344, 21.972656) rotate(-270.000000) translate(-35.152344, -21.972656) translate(14.152344, -13.027344)">
-                                <path d="M24.5,1.03170076 C19.3221582,0.847813216 15.1031997,1.50257056 13.5,2" id="Amount" stroke="#FFFFFF" stroke-width="3" transform="translate(19.000000, 1.500000) rotate(-1.000000) translate(-19.000000, -1.500000) "></path>
-                                <path d="M16,6 L31.728266,68.0372602" stroke="#FFFFFF" stroke-linecap="square"></path>
-                                <path d="M23.5273437,5.15234375 L23.5273437,69.1523438" id="Reference-Line" stroke="#FFFFFF" stroke-linecap="square" stroke-dasharray="1,2" opacity="0.5"></path>
-                                <ellipse id="Orbit" stroke="#999999" cx="24" cy="37" rx="28" ry="16"></ellipse>
-                                <circle id="Path" stroke="#999999" fill="#22222D" cx="7.92640765" cy="37" r="7.5"></circle>
-                            </g>
-                        </g>
-                        <text id="Valence:" opacity="0.5" sketch:type="MSTextLayer" font-family="Gotham" font-size="14" font-weight="313" sketch:alignment="middle" fill="#FFFFFF">
-                            <tspan x="5.759" y="73">Valence</tspan>
-                        </text>
+        <g id="Icons" sketch:type="MSArtboardGroup" transform="translate(-299.000000, -29.000000)">
+            <g id="ic_overview_valence" sketch:type="MSLayerGroup" transform="translate(285.000000, 30.000000)">
+                <g id="Key" sketch:type="MSShapeGroup">
+                    <circle id="Sun" fill="#FFFFFF" filter="url(#filter-1)" cx="32" cy="37" r="4"></circle>
+                    <g id="Planet" transform="translate(0.000000, 14.000000)" stroke="#FFFFFF" opacity="0.5">
+                        <ellipse id="Oval-56" transform="translate(32.000000, 23.000000) rotate(-14.000000) translate(-32.000000, -23.000000) " cx="32" cy="23" rx="28" ry="16"></ellipse>
+                    </g>
+                    <g id="Amount-+-Angle-+-Reference-Line" transform="translate(22.000000, 0.000000)" stroke="#FFFFFF">
+                        <path d="M11.5,1.03170076 C6.32215818,0.847813216 2.10319973,1.50257056 0.5,2" id="Amount" stroke-width="3" transform="translate(6.000000, 1.500000) rotate(-1.000000) translate(-6.000000, -1.500000) "></path>
+                        <path d="M2,6 L16.6223723,63.6752653" id="Angle" stroke-linecap="square"></path>
+                        <path d="M11,5 L11,69" id="Reference-Line" stroke-linecap="square" stroke-dasharray="1,2"></path>
                     </g>
                 </g>
             </g>

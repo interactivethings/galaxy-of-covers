@@ -159,6 +159,34 @@ var DataUtil = {
       tempoRange: tempo,
       genres: ["Rock / Pop", "Soul / Funk / Disco", "Jazz / Blues", "Country / Folk", "Instrumental", "Classical", "Electronic / Dance", "Reggae", "Hip-Hop / R&B", "Other"]
     }
+  },
+
+  formatLegendData(n, type) {
+    switch (type) {
+      case 'popularity':
+        return Math.round(n) + ' / 100'
+      case 'tempo':
+        return Math.round(n) + ' BPM'
+      case 'valence':
+        if (n < 0.2) return 'gloomy'
+        if (n < 0.4) return 'downbeat'
+        if (n < 0.6) return 'neutral'
+        if (n < 0.8) return 'upbeat'
+        if (n <= 1) return 'euphoric'
+        break
+      case 'energy':
+        if (n < 0.2) return 'very low'
+        if (n < 0.4) return 'low'
+        if (n < 0.6) return 'medium'
+        if (n < 0.8) return 'high'
+        if (n <= 1) return 'very high'
+        break
+      case 'speechiness':
+        if (n < 0.33) return 'low'
+        if (n < 0.66) return 'medium'
+        if (n <= 1) return 'high'
+        break
+    }
   }
 
 }

@@ -4,18 +4,26 @@
 .AppHeader--legendoption {
   cursor: pointer;
   display: inline-block;
-  margin: 30px 20px 26px;
+  margin: 20px 20px 26px;
+  width: 20%;
+  max-width: 200px;
 
   &.AppHeader--legendoption__inactive {
     opacity: 0.2;
   }
 }
 
+.AppHeader--legenddisplayname {
+  @include half-opaque-white;
+  font-size: 14px;
+  font-weight: 300;
+}
+
 .AppHeader--legendlabel {
   color: white;
   font-size: 14px;
   font-weight: 500;
-  margin-top: 0.1em;
+  margin-top: 8px;
 }
 
 .AppHeader--legendlabel__invisible {
@@ -23,5 +31,5 @@
 }
 
 .AppHeader__legendicon svg {
-  height: 85px;
+  min-height: 70px;
 }
