@@ -35,7 +35,7 @@ var Layout = {
       , tlBase: height * (height > 1000 ? 4 / 5 : height > 500 ? 15 / 16 : 19 / 20)
       , tlLRPad: 100
       }
-      lyt.tlHeader = lyt.tlHighline + height * (height > 1000 ? 1 / 6 : 1 / 30)
+      lyt.tlHeader = lyt.tlHighline + height * (height > 1000 ? 1 / 9 : 1 / 30)
       lyt.tlTop = lyt.tlHighline + (lyt.tlBase - lyt.tlHighline) * (height > 1000 ? 1 / 5 : height > 500 ? 1 / 6 : 1 / 8)
     } else {
       lyt =
