@@ -62,8 +62,13 @@ var MainView = React.createClass({
           GalaxyView.render(node, data, state, dimensions)
           window.scrollTo(0, oldScrollPos)
         })
-      } else {
+      } else if (GalaxyView.isActive(node)) {
         GalaxyView.render(node, data, state, dimensions)
+      } else {
+        // in transition between views, do weird hacks
+        DetailView.deRender(node, function() {})
+        GalaxyView.render(node, data, state, dimensions)
+        window.scrollTo(0, oldScrollPos)
       }
     } else if (state.get('inDetail')) {
       var detailData = state.get('detailSongData')
@@ -75,7 +80,10 @@ var MainView = React.createClass({
         DetailView.transitionIn(node, detailData, state, dimensions, function() {
           DetailView.render(node, detailData, state, dimensions)
         })
+      } else if (DetailView.isActive(node)) {
+        DetailView.render(node, detailData, state, dimensions)
       } else {
+        // in transition, do some weird hack to make sure view is correct
         DetailView.render(node, detailData, state, dimensions)
       }
     }

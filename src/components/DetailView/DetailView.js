@@ -143,6 +143,7 @@ var DetailView = {
     detailEnergyTails.transition('SongSystem-render')
       .duration(200)
       .attr('points', EnergyTails.ExtendedPoints)
+      .style('opacity', 1)
 
     detailEnergyTails.enter().append('polygon')
       .attr('class', 'SongTimeline--energytail')
@@ -151,6 +152,7 @@ var DetailView = {
       .delay(200)
       .duration(800)
       .attr('points', EnergyTails.ExtendedPoints)
+      .style('opacity', 1)
 
     detailEnergyTails.attr('id', (d) => 'tlenergytail-' + d.versionId)
 
@@ -170,6 +172,7 @@ var DetailView = {
     detailPlanets.transition('SongSystem-render')
       .duration(200)
       .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineCY))
+      .style('opacity', 1)
 
     detailPlanets.enter().append('g')
       .attr('class', 'SongTimeline--planet')
@@ -179,6 +182,7 @@ var DetailView = {
       .transition('SongSystem-render')
       .duration(200)
       .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(1)')
+      .style('opacity', 1)
       .transition('SongSystem-render')
       .duration(800)
       .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineCY))
@@ -217,21 +221,39 @@ var DetailView = {
     d3Node.classed('MainView__detail', false)
 
     // cancel any incoming transition, if applicable
-    d3Node.selectAll('.SongSystem--planet').interrupt()
+    d3Node.selectAll('.SongSystem--planet').interrupt().transition()
 
-    d3Node.selectAll('.SongDetailStar, .SongTimelineAxis')
+    var axisMarks = d3Node.selectAll('.SongDetailStar, .SongTimelineAxis')
+
+    axisMarks
+      .interrupt('SongSystem-render')
+      .transition('SongSystem-render') // cancels current and scheduled transitions
+
+    axisMarks
       .transition('SongSystem-derender')
       .duration(500)
       .style('opacity', 0)
       .remove()
 
-    var trailT0 = d3Node.selectAll('.SongTimeline--energytail')
+    var energyTails = d3Node.selectAll('.SongTimeline--energytail')
+
+    energyTails
+      .interrupt('SongSystem-render')
+      .transition('SongSystem-render') // cancels current and scheduled transitions
+
+    var trailT0 = energyTails
       .transition('SongSystem-derender')
       .duration(500)
       .attr('points', EnergyTails.BaselinePoints)
       .remove()
 
-    var t0 = d3Node.selectAll('.SongTimeline--planet')
+    var timelinePlanets = d3Node.selectAll('.SongTimeline--planet')
+
+    timelinePlanets
+      .interrupt('SongSystem-render')
+      .transition('SongSystem-render') // cancels current and scheduled transitions
+
+    var t0 = timelinePlanets
       .transition('SongSystem-derender')
       .duration(500)
       .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY))
