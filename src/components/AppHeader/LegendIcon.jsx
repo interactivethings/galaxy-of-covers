@@ -2,6 +2,8 @@
 
 var React = require('react')
 
+require('components/AppHeader/LegendIcon.scss')
+
 var iconNames =
   [ 'detail_energy'
   , 'detail_popularity'
@@ -28,9 +30,7 @@ var Icon = React.createClass({
 
   render() {
     return (
-      <div
-        className={'AppHeader__legendicon LegendIcon--' + this.props.icon}
-        dangerouslySetInnerHTML={{ __html: icons[this.props.icon] }} />
+      <div className={'AppHeader__legendicon LegendIcon--' + this.props.icon} dangerouslySetInnerHTML={{ __html: icons[this.props.icon] }} />
     )
   }
 })
