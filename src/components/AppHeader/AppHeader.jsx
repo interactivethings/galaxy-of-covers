@@ -58,7 +58,7 @@ var AppHeader = React.createClass({
             {inDetail ? (
               <div className="AppHeader--backarrow icon-arrow-back" />
             ) : ('')}
-            <h1 className="AppHeader--title" >A Galaxy of Covers</h1>
+            <h1 className="AppHeader--title" >Galaxy of Covers</h1>
           </div>
           {!shareOpen ? (
             <div className="AppHeader--menu" >
