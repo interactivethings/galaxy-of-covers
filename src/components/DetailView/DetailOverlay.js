@@ -10,6 +10,8 @@ var DEG_TO_RAD = Math.PI / 180
 var DetailOverlay = {
 
   render(selection, xRange, yOffset) {
+    var datum = selection.datum()
+
     var defs = svgutil.acquire(selection, 'DetailOverlay__defs', 'defs')
 
     var gradient = svgutil.acquire(defs, 'DetailOverlay__gradient', 'linearGradient')
@@ -21,12 +23,15 @@ var DetailOverlay = {
       .attr('gradientUnits', 'userSpaceOnUse')
 
     svgutil.acquire(gradient, 'DetailOverlay__stop DetailOverlay__stop--stop1', 'stop')
+      .datum(datum)
       .attr('offset', (d) => Math.round(d.timelineCX / (xRange[1] - xRange[0]) * 100) - 80 + '%')
 
     svgutil.acquire(gradient, 'DetailOverlay__stop DetailOverlay__stop--stop2', 'stop')
+      .datum(datum)
       .attr('offset', (d) => Math.round(d.timelineCX / (xRange[1] - xRange[0]) * 100) + '%')
 
     svgutil.acquire(gradient, 'DetailOverlay__stop DetailOverlay__stop--stop3', 'stop')
+      .datum(datum)
       .attr('offset', (d) => Math.round(d.timelineCX / (xRange[1] - xRange[0]) * 100) + 80 + '%')
 
     var overlay = svgutil.acquire(selection, 'DetailOverlay__shadow', 'rect')
