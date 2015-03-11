@@ -2,23 +2,33 @@
 <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 68.7 57" enable-background="new 0 0 68.7 57" xml:space="preserve">
-<path opacity="4.000000e-02" fill="#FFFFFF" d="M28.5,56C13.3,56,1,43.7,1,28.5S13.3,1,28.5,1S56,13.3,56,28.5S43.7,56,28.5,56z
-	 M28.5,57C44.2,57,57,44.2,57,28.5S44.2,0,28.5,0S0,12.8,0,28.5S12.8,57,28.5,57z"/>
-<radialGradient id="SVGID_1_" cx="47.3801" cy="45.3469" r="51.9778" fx="96.9398" fy="61.0163" gradientTransform="matrix(0.9509 0.3096 -0.1517 0.4659 9.2059 9.5512)" gradientUnits="userSpaceOnUse">
-	<stop  offset="0" style="stop-color:#FFFFFF"/>
-	<stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
-</radialGradient>
-<path fill="url(#SVGID_1_)" d="M28.5,56C13.3,56,1,43.7,1,28.5S13.3,1,28.5,1S56,13.3,56,28.5S43.7,56,28.5,56z M28.5,57
-	C44.2,57,57,44.2,57,28.5S44.2,0,28.5,0S0,12.8,0,28.5S12.8,57,28.5,57z"/>
-<circle fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="56.6" cy="28.7" r="12"/>
+	 viewBox="0 0 100 86" enable-background="new 0 0 100 86" xml:space="preserve">
 <g>
+	<path opacity="4.000000e-02" fill="#FFFFFF" d="M42.9,71.9c-15.2,0-27.5-12.3-27.5-27.5s12.3-27.5,27.5-27.5s27.5,12.3,27.5,27.5
+		S58.1,71.9,42.9,71.9z M42.9,72.9c15.7,0,28.5-12.8,28.5-28.5S58.7,15.9,42.9,15.9S14.4,28.6,14.4,44.4S27.2,72.9,42.9,72.9z"/>
 	
-		<radialGradient id="SVGID_2_" cx="28.5" cy="-7.1465" r="6.9062" gradientTransform="matrix(1 0 0 0.9637 0 35.3868)" gradientUnits="userSpaceOnUse">
+		<radialGradient id="SVGID_1_" cx="61.8238" cy="61.2117" r="51.9778" fx="111.3835" fy="76.8811" gradientTransform="matrix(0.9509 0.3096 -0.1517 0.4659 12.3218 13.5529)" gradientUnits="userSpaceOnUse">
 		<stop  offset="0" style="stop-color:#FFFFFF"/>
 		<stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
 	</radialGradient>
-	<ellipse fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_2_)" cx="28.5" cy="28.5" rx="6.9" ry="7.3"/>
+	<path fill="url(#SVGID_1_)" d="M42.9,71.9c-15.2,0-27.5-12.3-27.5-27.5s12.3-27.5,27.5-27.5s27.5,12.3,27.5,27.5
+		S58.1,71.9,42.9,71.9z M42.9,72.9c15.7,0,28.5-12.8,28.5-28.5S58.7,15.9,42.9,15.9S14.4,28.6,14.4,44.4S27.2,72.9,42.9,72.9z"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="64.1682" y1="64.6918" x2="18.0023" y2="38.0379">
+		<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0.7"/>
+		<stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
+	</linearGradient>
+	<path opacity="0.6" fill="url(#SVGID_2_)" d="M71.5,44.4c0,15.7-12.8,28.5-28.5,28.5c-15.7,0-28.5-12.8-28.5-28.5
+		c0-0.1,0-0.2,0-0.3h1c0,0.1,0,0.2,0,0.3c0,15.2,12.3,27.5,27.5,27.5c15.2,0,27.5-12.3,27.5-27.5c0-0.1,0-0.2,0-0.3h1
+		C71.5,44.2,71.5,44.3,71.5,44.4z"/>
+	<circle fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="71" cy="44.5" r="12"/>
+	<g>
+		
+			<radialGradient id="SVGID_3_" cx="42.9437" cy="8.6901" r="6.9062" gradientTransform="matrix(1 0 0 0.9637 0 35.9906)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#FFFFFF"/>
+			<stop  offset="1" style="stop-color:#1E1E1C;stop-opacity:0"/>
+		</radialGradient>
+		<ellipse fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_3_)" cx="42.9" cy="44.4" rx="6.9" ry="7.3"/>
+	</g>
+	<circle fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="42.9" cy="44.4" r="2"/>
 </g>
-<circle fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="28.5" cy="28.5" r="2"/>
 </svg>
