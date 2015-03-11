@@ -61,7 +61,7 @@ var DetailOverlay = {
 
     audioElement
       .attr('autoplay', true)
-      .attr('src', (d) => { console.log(d.spotify.preview); return d.spotify.preview + '.mp3'; })
+      .attr('src', (d) => d.spotify.preview + '.mp3')
       .attr('volume', 1)
 
     var energyUse = svgutil.acquire(marksContainer, 'DetailOverlay--energyuse', 'use')
