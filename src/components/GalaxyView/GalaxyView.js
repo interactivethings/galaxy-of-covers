@@ -121,6 +121,12 @@ var GalaxyView = {
     var systems = viewWrapper.selectAll('.SongSystem')
       .data(data, (d) => d.songId)
 
+    if (state.get('hoveredSystemId')) {
+      systems.attr('opacity', (d) => d.systemIsHovered ? 1 : 0.8)
+    } else {
+      systems.attr('opacity', 0.8)
+    }
+
     var enterSystems = systems.enter()
       .append('g')
       .attr('class', 'SongSystem')
