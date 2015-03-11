@@ -4,7 +4,7 @@
 .AppHeader--legendoption {
   cursor: pointer;
   display: inline-block;
-  margin: 30px 20px 50px;
+  margin: 30px 20px 26px;
 
   &.AppHeader--legendoption__inactive {
     opacity: 0.2;
@@ -12,10 +12,14 @@
 }
 
 .AppHeader--legendlabel {
-  @include half-opaque-white;
-  font-size: 18px;
-  font-weight: 300;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
   margin-top: 0.1em;
+}
+
+.AppHeader--legendlabel__invisible {
+  height: 17px;
 }
 
 .AppHeader__legendicon svg {

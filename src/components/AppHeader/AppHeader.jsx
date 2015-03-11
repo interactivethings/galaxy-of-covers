@@ -87,7 +87,7 @@ var AppHeader = React.createClass({
             </div>
           )}
         </div>
-        <Legend isOpen={legendOpen} inDetail={inDetail} highlighted={highlightedAttribute} onClick={this.attributeLegendClick} />
+        <Legend isOpen={legendOpen} inDetail={inDetail} highlighted={highlightedAttribute} onClick={this.attributeLegendClick} state={this.props.dynamicState} />
         <GenreHeader
           isVisible={!aboutOpen}
           genreCount={this.props.genreCount}
