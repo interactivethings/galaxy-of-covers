@@ -11,6 +11,18 @@ var ViewActions = require('actions/ViewActions')
 
 var GenreHeader = React.createClass({
 
+  getInitialState() {
+    return {
+      hoveredGenre: null
+    }
+  },
+
+  onGenreHover(genre) {
+    this.setState({
+      hoveredGenre: genre
+    })
+  },
+
   onGenreClick(genre) {
     ViewActions.registerGenreClick(genre)
   },
@@ -65,7 +77,7 @@ var GenreHeader = React.createClass({
     ,   cumulative = 0
 
     return (
-      <svg className="GenreHeader" width={this.props.headerWidth} height={20} >
+      <svg className="GenreHeader" width={this.props.headerWidth} height={48} >
         <g transform={this.props.transform} >
           {this.props.genreList.map((genre) => {
             var n = genreCount[genre] || 0
@@ -76,12 +88,15 @@ var GenreHeader = React.createClass({
               <ProportionalListing
                 key={'genrelisting-'+genre}
                 onGenreClick={this.onGenreClick}
+                onGenreHover={this.onGenreHover}
                 genre={genre}
                 x={x}
                 opacity={!filteredGenre || filteredGenre === genre ? 1 : 0.2}
                 width={xScale(n)}
                 height={20}
-                color={colorScale(genre)} />
+                color={colorScale(genre)}
+                genreLabel={this.state.hoveredGenre === genre ? this.state.hoveredGenre : null}
+                genrePercent={this.state.hoveredGenre === genre ? n / sum : null} />
             )
           })}
         </g>
@@ -126,8 +141,8 @@ var PercentListing = React.createClass({
           width={this.props.totalWidth}
           height={this.props.height}
           fill='transparent' />
-        <text className='GenreHeader__percentlabel' dy={16} dx={this.props.totalWidth / 2} >{DataUtil.formatPercent(this.props.value)}</text>
-        <text className='GenreHeader__genrelabel' fill={this.props.color} dy={40} dx={this.props.totalWidth / 2} >{this.props.genre}</text>
+        <text className='GenreHeader__percentlabel' y={16} x={this.props.totalWidth / 2} >{DataUtil.formatPercent(this.props.value)}</text>
+        <text className='GenreHeader__genrelabel' fill={this.props.color} y={40} x={this.props.totalWidth / 2} >{this.props.genre}</text>
       </g>
     )
   }
@@ -138,25 +153,54 @@ var ProportionalListing = React.createClass({
 
   propTypes: {
     onGenreClick: React.PropTypes.func,
+    onGenreHover: React.PropTypes.func,
     genre: React.PropTypes.string,
     x: React.PropTypes.number,
     opacity: React.PropTypes.number,
     width: React.PropTypes.number,
     height: React.PropTypes.number,
-    color: React.PropTypes.string
+    color: React.PropTypes.string,
+    genreLabel: React.PropTypes.string,
+    genrePercent: React.PropTypes.number
   },
 
   onClick() {
     this.props.onGenreClick(this.props.genre)
   },
 
+  onMouseEnter() {
+    this.props.onGenreHover(this.props.genre)
+  },
+
+  onMouseLeave() {
+    this.props.onGenreHover(null)
+  },
+
+  componentDidUpdate() {
+    var label = this.refs.genrelabel
+    if (label) {
+      var bbox = this.getDOMNode().getBBox()
+      var labelBbox = label.getDOMNode().getBBox()
+      var labelRight = this.props.x + labelBbox.x + labelBbox.width
+      if (labelRight > window.innerWidth) {
+        this.refs.genrelabel.getDOMNode().setAttribute('x', this.props.width / 2 - (labelRight - window.innerWidth))
+      }
+    }
+  },
+
   render() {
     return (
-      <g transform={svgutil.translateString(this.props.x, 0)} onClick={this.onClick} fillOpacity={this.props.opacity} >
+      <g transform={svgutil.translateString(this.props.x, 0)} onClick={this.onClick} fillOpacity={this.props.opacity} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} >
         <rect
           width={this.props.width}
           height={this.props.height}
           fill={this.props.color} />
+        {this.props.genreLabel && this.props.genrePercent !== null ?
+          [
+            <text className='GenreHeader__percentlabel' x={this.props.width / 2} y={14} >{DataUtil.formatPercent(this.props.genrePercent)}</text>,
+            <text className='GenreHeader__genrelabel' ref='genrelabel' fill={this.props.color} x={this.props.width / 2} y={36} >{this.props.genreLabel}</text>
+          ]
+        : null}
       </g>
     )
   }
