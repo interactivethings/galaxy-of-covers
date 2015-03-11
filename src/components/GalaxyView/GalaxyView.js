@@ -151,12 +151,12 @@ var GalaxyView = {
     backgrounds.enter()
       .append('use')
       .attr('class', 'SongSystem--background')
-
-    backgrounds
-      .attr('transform', (d) => svgutil.getTranslateAndRotate(d.galaxyX, d.galaxyY, -20))
       .attr('xlink:href', '#galaxyNoBackgroudCircle')
 
     backgrounds.exit().remove()
+
+    backgrounds
+      .attr('transform', (d) => svgutil.getTranslateAndRotate(d.galaxyX, d.galaxyY, -20))
 
     var stars = systems.selectAll('.SongSystem--glowingstar')
       .data((d) => [d])
@@ -165,6 +165,8 @@ var GalaxyView = {
       .append('circle')
       .attr('class', 'SongSystem--glowingstar')
       .attr('r', 5)
+
+    stars.exit().remove()
 
     stars
       .attr('transform', (d) => svgutil.translateString(d.galaxyX, d.galaxyY))
@@ -186,8 +188,7 @@ var GalaxyView = {
     var roundPlanets = systems.selectAll('.SongSystem--planet.SongSystem--planet__round')
       .data((d) => d.versionsFilteredIn.filter((datum) => datum.isCircle), (d) => d.versionId)
 
-    roundPlanets.exit()
-      .remove()
+    roundPlanets.exit().remove()
 
     roundPlanets.enter()
       .append('circle')
@@ -200,8 +201,7 @@ var GalaxyView = {
     var pointyPlanets = systems.selectAll('.SongSystem--planet.SongSystem--planet__pointy')
       .data((d) => d.versionsFilteredIn.filter((datum) => !datum.isCircle), (d) => d.versionId)
 
-    pointyPlanets.exit()
-      .remove()
+    pointyPlanets.exit().remove()
 
     pointyPlanets.enter()
       .append('polygon')
@@ -214,6 +214,8 @@ var GalaxyView = {
     // song label is above the rest of the system
     var labels = systems.selectAll('.SongSystem--songtitle')
       .data((d) => [d])
+
+    labels.exit().remove()
 
     labels.enter()
       .append('text')
