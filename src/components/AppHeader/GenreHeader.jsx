@@ -65,7 +65,7 @@ var GenreHeader = React.createClass({
     ,   cumulative = 0
 
     return (
-      <svg className="GenreHeader" width={this.props.headerWidth} height={12} >
+      <svg className="GenreHeader" width={this.props.headerWidth} height={20} >
         <g transform={this.props.transform} >
           {this.props.genreList.map((genre) => {
             var n = genreCount[genre] || 0
@@ -80,7 +80,7 @@ var GenreHeader = React.createClass({
                 x={x}
                 opacity={!filteredGenre || filteredGenre === genre ? 1 : 0.2}
                 width={xScale(n)}
-                height={12}
+                height={20}
                 color={colorScale(genre)} />
             )
           })}

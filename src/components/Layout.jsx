@@ -23,25 +23,25 @@ var Layout = {
     var state = SongStore.getState()
     ,   {width, height} = this.getWindowDimensions()
     ,   lyt
+    ,   closedLegendHeight = 58 + 20
+    ,   openLegendHeight = 180
 
     if (state.get('inDetail')) {
       lyt =
-      { headerHeight: 60
+      { headerHeight: closedLegendHeight
       , headerWidth: width
-      , legendHeight: 175
       , bodyHeight: height
       , bodyWidth: width
-      , tlHighline: state.get('legendOpen') ? 60 + 200 : 60
+      , tlHighline: state.get('legendOpen') ? closedLegendHeight + openLegendHeight : closedLegendHeight
       , tlBase: height * (height > 1000 ? 7 / 8 : height > 500 ? 15 / 16 : 19 / 20)
       , tlLRPad: 100
       }
-      lyt.tlHeader = lyt.tlHighline + height * (height > 1000 ? 1 / 12 : 1 / 30)
+      lyt.tlHeader = lyt.tlHighline + height * (height > 1000 ? 1 / 12 : 1 / 16)
       lyt.tlTop = lyt.tlHighline + (lyt.tlBase - lyt.tlHighline) * (height > 1000 ? 1 / 5 : height > 500 ? 1 / 6 : 1 / 8)
     } else {
       lyt =
-      { headerHeight: 60
+      { headerHeight: closedLegendHeight
       , headerWidth: width
-      , legendHeight: 175
       , bodyWidth: width
       }
     }
