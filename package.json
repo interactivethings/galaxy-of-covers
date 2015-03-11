@@ -30,6 +30,7 @@
     "p5": "^0.3.14",
     "promise": "^6.0.1",
     "queue-async": "^1.0.7",
+    "raf": "^2.0.4",
     "raw-loader": "^0.5.1",
     "react": "^0.12.2",
     "react-responsive": "0.0.1",

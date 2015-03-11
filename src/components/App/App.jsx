@@ -55,7 +55,7 @@ var App = React.createClass({
     SongStore.onChange(this.handleChange)
     LoadActions.initialLoad()
 
-    window.addEventListener('scroll', DataUtil.throttle(this.setViewportScroll, 400))
+    window.addEventListener('scroll', DataUtil.throttle(this.setViewportScroll))
     window.addEventListener('resize', this.onWindowResize);
   },
 
