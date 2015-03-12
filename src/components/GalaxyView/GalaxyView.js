@@ -130,12 +130,9 @@ var GalaxyView = {
     var enterSystems = systems.enter()
       .append('g')
       .attr('class', 'SongSystem')
-      .attr('opacity', 0)
-      .transition()
-      .attr('opacity', 1)
+      .attr('opacity', 0.8)
 
     systems.exit()
-      .transition()
       .attr('opacity', 0)
       .remove()
 
