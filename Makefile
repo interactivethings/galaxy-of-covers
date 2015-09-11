@@ -24,6 +24,9 @@ deploy: build
 clean:
 	rm -rf build
 
+clobber: clean
+	rm -rf node_modules
+
 # Dependencies
 
 install: node_modules
