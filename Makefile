@@ -47,9 +47,6 @@ server: install
 
 build: clean install
 	NODE_ENV=$(NODE_ENV) $$(npm bin)/webpack --colors --progress
-	cp index.html build/index.html
-	mkdir -p build/data/out
-	cp data/out/songinfo-production.json build/data/out/songinfo-production.json
 
 deploy: build
 	rsync -avz build/ --exclude=.DS_Store interact@interactivethings.com:/home/interact/www/lab.interactivethings.com/galaxy-of-covers

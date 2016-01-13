@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var App = require('components/App/App')
+import 'file?name=[path][name].[ext]!../data/out/songinfo-production.json';
 
+var App = require('components/App/App');
 
 ReactDOM.render(<App />, document.getElementById('main'));
 
