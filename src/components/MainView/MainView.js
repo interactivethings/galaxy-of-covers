@@ -93,7 +93,7 @@ var MainView = React.createClass({
 
   render() {
     return (
-      <svg className="MainView" key={"dontreplace"} />
+      <svg className="MainView" key="dontreplace" />
     )
   }
 
