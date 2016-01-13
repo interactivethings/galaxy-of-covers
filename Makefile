@@ -43,7 +43,7 @@ update: install
 	@echo "No environment update needed"
 
 server: install
-	NODE_ENV=$(NODE_ENV) $$(npm bin)/nodemon -q -i src -i data -i prototypes script/server.js
+	NODE_ENV=$(NODE_ENV) $$(npm bin)/nodemon -q -i src -i data -i prototypes -i build script/server.js
 
 build: clean install
 	NODE_ENV=$(NODE_ENV) $$(npm bin)/webpack --colors --progress
