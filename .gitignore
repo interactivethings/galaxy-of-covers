@@ -1,10 +1,10 @@
-*node_modules*
-*build-tmp*
-build/
+.DS_Store
+node_modules
+npm-debug.log
+build
+dist
 *__pycache__*
 data/cached
 data/shs-scrape-cache
 data/shs-search-cache
-.idea
-**/.DS_Store
 data/out/*

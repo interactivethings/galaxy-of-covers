@@ -1,83 +1,120 @@
-var path = require('path'),
-    webpack = require('webpack'),
-    bourbon = require('node-bourbon');
+var resolveHere = require('path').resolve.bind(null, __dirname);
+var assignDeep = require('assign-deep');
+var values = require('object-values');
+var path = require('path');
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var autoprefixer = require('autoprefixer');
+var packageJson = require('./package.json');
 
-var BUILD = process.env.NODE_ENV === 'production';
+var env = process.env.NODE_ENV || 'development';
 
-var moduleDirectories = [
-    'node_modules',
-    'bower_components',
-    'node_modules/catalyst/src',
-    'node_modules/gsap/src/minified',
-    'src'
-  ];
+var loaders = {
+  common: {
+    js: {test: /\.js$/, include: [resolveHere('src')], loader: 'babel'},
+    css: {test: /\.css$/, loader: 'style!css!postcss'},
 
-var sassDirectories = moduleDirectories.map(resolvePath).concat(bourbon.includePaths);
+    // Images
+    png: {test: /\.png$/, loader: 'url?limit=8192&mimetype=image/png'},
+    gif: {test: /\.gif$/, loader: 'url?limit=8192&mimetype=image/gif'},
+    jpg: {test: /\.jpe?g$/, loader: 'file'},
+    svg: {test: /\.svg$/, loader: 'url?limit=8192&mimetype=image/svg+xml'},
 
-// Define free variables. Useful for having development builds with debug logging or adding global constants.
-var definePlugin = new webpack.DefinePlugin({
-  __DEV__: !BUILD,
-  'process.env': Object.keys(process.env).reduce(function(o, k) {
-     o[k] = JSON.stringify(process.env[k]);
-     return o;
-   }, {})
-});
+    // Fonts
+    woff2: {test: /\.woff2$/, loader: 'url?limit=8192&mimetype=application/font-woff2'},
+    woff: {test: /\.woff$/, loader: 'url?limit=8192&mimetype=application/font-woff'},
+    ttf: {test: /\.ttf$/, loader: 'file'},
+    eot: {test: /\.eot$/, loader: 'file'},
 
-var providePlugin = new webpack.ProvidePlugin({
-  reqwest: "reqwest"
-});
-
-module.exports = {
-  entry: {
-    main: resolvePath('src/main')
+    // Other
+    json: {test: /\.json$/, loader: 'json'},
+    html: {test: /\.html$/, loader: 'file?name=[name].[ext]'}
   },
-  output: {
-    path: resolvePath('build'),
-    filename: '[name].js',
-    pathinfo: BUILD ? false : true
+
+  development: {
   },
-  module: {
-    loaders: [
-      {test: /\.jsx?$/, loader: 'jsx?harmony'},
-      {test: /\.json?$/, loader: 'json'},
-      {test: /\.scss$/, loader: 'style!css!sass?' + querySerializeArray(sassDirectories, 'includePaths[]=')},
-      {test: /\.css$/, loader: 'style!css'},
-      {test: /\.html$/, loader: 'file?name=[name].[ext]'},
-      {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}, // inline base64 URLs for <=8k images, direct URLs for the rest
-      // For icon fonts
-      {test: /assets\/icomoon\/.*\.(eot|woff|ttf|svg)$/, loader: 'file-loader'},
-      // For icon svgs
-      {test: /assets\/legendicons\/.*\.svg/, loader: 'raw'},
-      // Enable for CoffeeScript support
-      // { test: /\.coffee$/, loader: 'coffee' },
-      // { test: /\.cjsx$/, loader: 'coffee!cjsx' },
-    ],
-    postLoaders: [
-      // Enable for jshint support
-      // {test: /\.jsx?$/, loader: 'jshint-loader', exclude: /node_modules/}
-    ],
-    noParse: [
-      /\.min\.js$/
+
+  production: {
+    css: {
+      loader: ExtractTextPlugin.extract('style', 'css!postcss')
+    }
+  }
+}
+
+var webpackConfig = {
+  common: {
+    output: {
+      path: resolveHere('build'),
+      filename: '[name].[hash].js'
+    },
+    resolve: {
+      root: resolveHere('src')
+    },
+    module: {
+      loaders: values(assignDeep(loaders.common, loaders[env])),
+      noParse: [
+        /\.min\.js$/
+      ]
+    },
+    postcss: [
+      autoprefixer({ browsers: ['last 2 versions'] })
     ]
   },
-  resolve: {
-    alias: {
-      'd3': 'd3/d3',
-      'tweenmax': 'gsap/src/minified/TweenMax.min',
-      'tweenlite': 'gsap/src/minified/TweenLite.min'
+
+  development: {
+    entry: {
+      app: [
+        'webpack-hot-middleware/client?noInfo=true&reload=true',
+        resolveHere('src/index')
+      ]
     },
-    modulesDirectories: moduleDirectories,
-    extensions: ['', '.js', '.jsx', '.json', '.css', '.scss', '.coffee', '.cjsx']
+    output: {
+      pathinfo: true
+    },
+    devtool: '#eval-source-map',
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.DefinePlugin({
+        '__DEV__': JSON.stringify(true),
+        'process.env.NODE_ENV': JSON.stringify('development')
+      }),
+      new HtmlWebpackPlugin({
+        title: packageJson.name,
+        template: 'src/index.html',
+        inject: 'body',
+        description: packageJson.description,
+        version: packageJson.version
+      })
+    ]
   },
-  plugins: [
-    definePlugin
-  ]
+
+  production: {
+    entry: {
+      app: resolveHere('src/index')
+    },
+    plugins: [
+      new webpack.DefinePlugin({
+        '__DEV__': JSON.stringify(false),
+        'process.env.NODE_ENV': JSON.stringify('production')
+      }),
+      new HtmlWebpackPlugin({
+        title: packageJson.name,
+        template: 'src/index.html',
+        inject: 'body',
+        description: packageJson.description,
+        version: packageJson.version
+      }),
+      new ExtractTextPlugin('style.[contenthash].css', {allChunks: true}),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false
+        }
+      })
+    ]
+  }
 };
 
-function resolvePath(p) {
-  return path.resolve(__dirname, p);
-}
-
-function querySerializeArray(arr, sep) {
-  return sep + arr.join('&' + sep);
-}
+module.exports = assignDeep(webpackConfig.common, webpackConfig[env]);
