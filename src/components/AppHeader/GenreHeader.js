@@ -1,7 +1,8 @@
 'use strict';
 
-var React = require('react')
-,   d3 = require('d3')
+import React from 'react';
+import ReactDOM from 'react-dom';
+import d3 from 'd3';
 
 require('components/AppHeader/GenreHeader.scss')
 
@@ -179,11 +180,11 @@ var ProportionalListing = React.createClass({
   componentDidUpdate() {
     var label = this.refs.genrelabel
     if (label) {
-      var bbox = this.getDOMNode().getBBox()
-      var labelBbox = label.getDOMNode().getBBox()
+      var bbox = ReactDOM.findDOMNode(this).getBBox()
+      var labelBbox = ReactDOM.findDOMNode(label).getBBox()
       var labelRight = this.props.x + labelBbox.x + labelBbox.width
       if (labelRight > window.innerWidth) {
-        this.refs.genrelabel.getDOMNode().setAttribute('x', this.props.width / 2 - (labelRight - window.innerWidth))
+        ReactDOM.findDOMNode(this.refs.genrelabel).setAttribute('x', this.props.width / 2 - (labelRight - window.innerWidth))
       }
     }
   },

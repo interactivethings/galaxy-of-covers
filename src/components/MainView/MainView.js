@@ -1,6 +1,7 @@
 'use strict';
 
-var React = require('react')
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 var ViewFilters = require('util/ViewFilters')
 ,   GalaxyView = require('components/GalaxyView/GalaxyView')
@@ -11,7 +12,7 @@ var ViewFilters = require('util/ViewFilters')
 var MainView = React.createClass({
 
   componentDidMount() {
-    var node = this.getDOMNode()
+    var node = ReactDOM.findDOMNode(this)
     ViewFilters.renderFilters(node)
 
     var d3Node = d3.select(node)
@@ -32,7 +33,7 @@ var MainView = React.createClass({
   componentDidUpdate() {
     var data = this.props.displayObjects
     ,   state = this.props.dynamicState
-    ,   node = this.getDOMNode()
+    ,   node = ReactDOM.findDOMNode(this)
     ,   genreFilter = state.get('filteredGenre')
 
     if (state.get('inGalaxy')) {
