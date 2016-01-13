@@ -3,7 +3,7 @@ var d3 = require('d3')
 var svgutil = require('util/svgutil')
 var ViewActions = require('actions/ViewActions')
 
-require('components/DetailView/DetailOverlay.scss')
+require('components/DetailView/DetailOverlay.css')
 
 var DEG_TO_RAD = Math.PI / 180
 

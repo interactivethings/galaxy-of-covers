@@ -1,6 +1,12 @@
-@import "bourbon";
-
-@include font-face('icomoon', 'fonts/icomoon');
+@font-face {
+ font-family: "icomoon";
+ font-style: normal;
+ font-weight: 400;
+ src: url("/assets/icomoon/fonts/icomoon.eot?#") format("eot"),
+      url("/assets/icomoon/fonts/icomoon.woff2") format("woff2"),
+      url("/assets/icomoon/fonts/icomoon.woff")  format("woff"),
+      url("/assets/icomoon/fonts/icomoon.ttf")   format("truetype");
+}
 
 [class^="icon-"], [class*=" icon-"] {
   font-family: 'icomoon';

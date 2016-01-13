@@ -1,5 +1,4 @@
-@import "bourbon";
-@import "../Constants";
+@value c-header-bg from '../Constants.css';
 
 .AppHeader {
   font-size: 24px;
@@ -7,15 +6,15 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: $z-header;
+  z-index: z-header from '../Constants.css';
 }
 
 .AppHeader--navigation {
-  background-color: $c-header-bg;
+  background-color: c-header-bg;
   padding: 0.62em 0;
   position: relative;
-  @include user-select(none);
-  z-index: $z-nav;
+  user-select: none;
+  z-index: z-nav from '../Constants.css';
 }
 
 .AppHeader--back {
@@ -25,7 +24,7 @@
 }
 
 .AppHeader--backarrow {
-  @include half-opaque-white;
+  composes: half-opaque-white from '../Constants.css';
   display: inline-block;
   vertical-align: middle;
   margin-right: 0.8em;
@@ -50,7 +49,7 @@
 }
 
 .AppHeader--menuoption {
-  @include half-opaque-white;
+  composes: half-opaque-white from '../Constants.css';
   cursor: pointer;
   display: inline-block;
   font-size: 0.8em;
@@ -77,7 +76,7 @@
 }
 
 .AppHeader-shareicon {
-  @include half-opaque-white;
+  composes: half-opaque-white from '../Constants.css';
   display: inline-block;
   margin-left: 1em;
 }

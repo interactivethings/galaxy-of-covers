@@ -3,7 +3,7 @@
 var d3 = require('d3')
 ,   Vec2 = require('svec2')
 
-require('components/DetailView/DetailView.scss')
+require('components/DetailView/DetailView.css')
 
 var ViewActions = require('actions/ViewActions')
 ,   DataUtil = require('util/datautil')

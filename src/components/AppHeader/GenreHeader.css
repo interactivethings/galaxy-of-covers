@@ -1,4 +1,4 @@
-@import "components/Constants";
+@value c-header-bg from '../Constants.css';
 
 .GenreHeader {
   display: block;
@@ -6,7 +6,7 @@
 }
 
 .GenreHeader__bgrect {
-  fill: $c-header-bg;
+  fill: c-header-bg;
 }
 
 .GenreHeader__percentlabel {

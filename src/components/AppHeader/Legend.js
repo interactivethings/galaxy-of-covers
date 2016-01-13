@@ -2,7 +2,7 @@
 
 var React = require('react')
 
-require('components/AppHeader/Legend.scss')
+require('components/AppHeader/Legend.css')
 
 var LegendOption = require('components/AppHeader/LegendOption')
 

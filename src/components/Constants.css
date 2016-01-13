@@ -1,11 +1,11 @@
-$c-header-bg: #22222D;
-$c-app-bg: #282836;
+@value c-header-bg #22222D;
+@value c-app-bg #282836;
 
-@mixin half-opaque-white {
+.half-opaque-white {
   color: #fff;
   fill: #fff;
   opacity: 0.5;
 }
 
-$z-header: 1;
-$z-nav: 2;
+@value z-header 1;
+@value z-nav 2;

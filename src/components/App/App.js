@@ -3,8 +3,8 @@
 var React = require('react')
 ,   Immutable = require('Immutable')
 
-require('assets/icomoon/style.scss')
-require('components/App/App.scss')
+require('assets/icomoon/style.css')
+require('components/App/App.css')
 
 var LoadActions = require('actions/LoadActions')
 ,   SongStore = require('stores/SongStore')

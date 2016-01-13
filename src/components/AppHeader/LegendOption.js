@@ -2,7 +2,7 @@
 
 var React = require('react')
 
-require('components/AppHeader/LegendOption.scss')
+require('components/AppHeader/LegendOption.css')
 
 var datautil = require('util/datautil')
 var LegendIcon = require('components/AppHeader/LegendIcon')

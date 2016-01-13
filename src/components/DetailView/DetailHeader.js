@@ -2,7 +2,7 @@
 
 var React = require('react')
 
-require('components/DetailView/DetailHeader.scss')
+require('components/DetailView/DetailHeader.css')
 
 var DetailHeader = React.createClass({
 

@@ -1,4 +1,4 @@
-@import "components/Constants";
+@value c-app-bg from '../Constants.css';
 
 .DetailOverlay__stop {
   stop-color: rgb(255, 255, 255);
@@ -17,7 +17,7 @@
 }
 
 .DetailOverlay__shadow {
-  fill: $c-app-bg;
+  fill: c-app-bg;
   opacity: 0.8;
 }
 

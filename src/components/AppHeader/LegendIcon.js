@@ -2,7 +2,7 @@
 
 var React = require('react')
 
-require('components/AppHeader/LegendIcon.scss')
+require('components/AppHeader/LegendIcon.css');
 
 var iconNames =
   [ 'detail_energy'
@@ -19,7 +19,7 @@ var iconNames =
 ,   icons = {}
 
 iconNames.forEach(icon =>
-  icons[icon] = require('assets/legendicons/ic_'+icon+'.svg')
+  icons[icon] = require('!raw!assets/legendicons/ic_'+icon+'.svg')
 )
 
 var Icon = React.createClass({

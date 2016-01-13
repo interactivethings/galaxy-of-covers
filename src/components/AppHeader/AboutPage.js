@@ -2,7 +2,7 @@
 
 var React = require('react')
 
-require('components/AppHeader/AboutPage.scss')
+require('components/AppHeader/AboutPage.css')
 
 var ComponentName = React.createClass({
 

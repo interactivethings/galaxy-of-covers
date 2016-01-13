@@ -2,7 +2,7 @@
 
 var React = require('react')
 
-require('components/AppHeader/AppHeader.scss')
+require('components/AppHeader/AppHeader.css')
 
 var ViewActions = require('actions/ViewActions')
 ,   Legend = require('components/AppHeader/Legend')

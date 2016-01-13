@@ -1,8 +1,7 @@
-@import "bourbon";
-@import "../Constants";
+@value c-app-bg from '../Constants.css';
 
 body {
-  background-color: $c-app-bg;
+  background-color: c-app-bg;
   font-family: "proxima-nova", sans-serif;
   font-weight: 400;
   margin: 0;
@@ -10,7 +9,7 @@ body {
 }
 
 #main {
-  background-color: $c-app-bg;
+  background-color: c-app-bg;
 }
 
 .AppBox {

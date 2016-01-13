@@ -2,7 +2,7 @@
 
 var d3 = require('d3')
 
-require('components/GalaxyView/GalaxyView.scss')
+require('components/GalaxyView/GalaxyView.css')
 
 var Constants = require('Constants')
 ,   svgutil = require('util/svgutil')

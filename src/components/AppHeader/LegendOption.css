@@ -1,6 +1,3 @@
-@import "bourbon";
-@import "../Constants";
-
 .AppHeader--legendoption {
   cursor: pointer;
   display: inline-block;
@@ -14,7 +11,7 @@
 }
 
 .AppHeader--legenddisplayname {
-  @include half-opaque-white;
+  composes: half-opaque-white from '../Constants.css';
   font-size: 14px;
   font-weight: 300;
 }

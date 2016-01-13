@@ -5,7 +5,6 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var autoprefixer = require('autoprefixer');
 var packageJson = require('./package.json');
 
 var env = process.env.NODE_ENV || 'development';
@@ -13,7 +12,7 @@ var env = process.env.NODE_ENV || 'development';
 var loaders = {
   common: {
     js: {test: /\.js$/, include: [resolveHere('src')], loader: 'babel'},
-    css: {test: /\.css$/, loader: 'style!css!postcss'},
+    css: {test: /\.css$/, loader: 'style!css?modules!postcss'},
 
     // Images
     png: {test: /\.png$/, loader: 'url?limit=8192&mimetype=image/png'},
@@ -33,11 +32,16 @@ var loaders = {
   },
 
   development: {
+    css: {
+      // loader: 'style!css?modules&localIdentName=[name]-[local]-[hash:base64:5]!postcss'
+      loader: 'style!css?modules&localIdentName=[local]!postcss'
+    }
   },
 
   production: {
     css: {
-      loader: ExtractTextPlugin.extract('style', 'css!postcss')
+      // loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]-[local]-[hash:base64:5]!postcss')
+      loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[local]!postcss')
     }
   }
 }
@@ -58,7 +62,10 @@ var webpackConfig = {
       ]
     },
     postcss: [
-      autoprefixer({ browsers: ['last 2 versions'] })
+      require('postcss-import'),
+      require('postcss-simple-vars'),
+      require('postcss-nested'),
+      require('autoprefixer')({ browsers: ['last 2 versions'] })
     ]
   },
 

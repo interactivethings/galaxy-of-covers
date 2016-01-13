@@ -1,4 +1,4 @@
-@import "components/Constants";
+@value c-app-bg from '../Constants.css';
 
 .DetailView {
   display: block;
@@ -15,7 +15,7 @@
 
 .SongTimelineAxis--line, .SongTimelineAxis--line__axistick {
   stroke: white;
-  fill: $c-app-bg;
+  fill: c-app-bg;
 }
 
 .SongTimelineAxis__firsttick {

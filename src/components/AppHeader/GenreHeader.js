@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import d3 from 'd3';
 
-require('components/AppHeader/GenreHeader.scss')
+require('components/AppHeader/GenreHeader.css')
 
 var ViewActions = require('actions/ViewActions')
 ,   svgutil = require('util/svgutil')
