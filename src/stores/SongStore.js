@@ -20,7 +20,7 @@ setStateObj({
   detailSongData: {},
   scales: null,
   allGenresCount: {},
-  displayObjects: {},
+  displayObjects: [],
   hoveredSystemId: null,
   inGalaxy: true,
   inDetail: false,
