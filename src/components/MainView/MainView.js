@@ -37,9 +37,9 @@ var MainView = React.createClass({
     ,   genreFilter = state.get('filteredGenre')
 
     if (state.get('inGalaxy')) {
-      var dimensions = GalaxyView.applyHexLayout(data) // this mutates data using the layout
-
       if (!data.length) return true
+
+      var dimensions = GalaxyView.applyHexLayout(data) // this mutates data using the layout
 
       var hoveredId = state.get('hoveredSystemId')
       ,   systemMinY = this.props.scrollY - 2 * Constants.SYSTEM_BACKGROUND_RADIUS
