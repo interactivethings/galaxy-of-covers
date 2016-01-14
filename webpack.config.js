@@ -55,6 +55,7 @@ var webpackConfig = {
     resolve: {
       root: resolveHere('src')
     },
+    publicPath: '/',
     module: {
       loaders: values(assignDeep(loaders.common, loaders[env])),
       noParse: [
