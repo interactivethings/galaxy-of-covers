@@ -138,7 +138,6 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
         loadSongs()
         break
       case 'SONGS_LOADED':
-console.log('songs loaded', action.data);
         prepareLoadedData(action.data)
         break
       // view actions
