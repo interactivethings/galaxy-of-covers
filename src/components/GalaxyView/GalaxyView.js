@@ -1,96 +1,109 @@
-'use strict';
+import d3 from 'd3';
 
-var d3 = require('d3')
+import css from 'components/GalaxyView/GalaxyView.css';
 
-require('components/GalaxyView/GalaxyView.css')
+import Constants from 'Constants';
+import svgutil from 'util/svgutil';
+import ViewActions from 'actions/ViewActions';
+import AnimationUtil from 'util/AnimationUtil';
 
-var Constants = require('Constants')
-,   svgutil = require('util/svgutil')
-,   ViewActions = require('actions/ViewActions')
-,   AnimationUtil = require('util/AnimationUtil')
-
-var ROOT_THREE = Math.sqrt(3)
+var ROOT_THREE = Math.sqrt(3);
 
 var GalaxyView = {
 
-  numRows(numSystems) {
-    var n = 2 * Math.ceil(numSystems / 3)
-    if (numSystems % 3 !== 0) n--
-    return n
+  constructColumnLayout(shortRad, numGalaxies, width) {
+    let mid = width / 2;
+
+    return {
+      positions: d3.range(numGalaxies).map((i) => {
+        return {
+          x: mid,
+          y: (2 * i + 1) * shortRad
+        };
+      }),
+      width: width,
+      height: 2 * shortRad * numGalaxies
+    };
   },
 
-  getGalaxyGroupDimensions(systemRadius, numSystems) {
-    var width = window.innerWidth
-    ,   height = 2 * systemRadius + this.numRows(numSystems) * (width / 4 * Math.tan(Math.PI / 3))
-    return {width, height}
-  },
+  constructGridLayout(shortRad, numGalaxies, width, numColumns) {
+    let longRad = shortRad * 2 / ROOT_THREE;
+    let midPoint = width / 2;
 
-  makeHexGrid(length, maxCols) {
     var grid = []
     ,   column = 0
-    ,   r = 0
+    ,   row = 0
     ,   shortRowBit = 0 // start with a long row
-    for (var i = 0; i < length; ++i) {
-      grid.push({
-        q: column - ((r / 2) | 0) // (x | 0) is a simple Math.floor
-      , r: r
-      })
 
-      column++
-      if (!shortRowBit) {
-        if (column == maxCols) {
-          column = 0
-          r++
-          shortRowBit = 1
+    let longLeft = -(numColumns - 1);
+    let shortLeft = -(numColumns - 2);
+
+    for (var i = 0; i < numGalaxies; ++i) {
+      let dx = shortRowBit ? shortLeft + 2 * column : longLeft + 2 * column;
+      grid.push({
+        x: midPoint + dx * shortRad,
+        y: (1 + (3 / 2) * row) * longRad
+      });
+
+      column++;
+      if (shortRowBit) {
+        if (column === numColumns - 1) {
+          column = 0;
+          row++;
+          shortRowBit = 0;
         }
       } else {
-        if (column == maxCols - 1) {
-          column = 0
-          r++
-          shortRowBit = 0
+        if (column === numColumns) {
+          column = 0;
+          row++;
+          shortRowBit = 1;
         }
       }
     }
-    return grid
-  },
 
-  gridToLayout(grid) {
-    return grid.map((hex) => {
-      return {
-        dx: ROOT_THREE * (hex.q + hex.r / 2)
-      , dy: 3 / 2 * hex.r
-      }
-    })
+    let numRows = row - (column === 0 ? 1 : 0);
+
+    return {
+      positions: grid,
+      width: width,
+      height: (2 + (3 / 2) * numRows) * longRad
+    };
   },
 
   applyHexLayout(data) {
-    if (!data.length) return {}
+    let width = window.innerWidth;
 
-    var width = window.innerWidth
-    ,   systemRadius = Constants.SYSTEM_RADIUS
-    ,   hexRadius = ((systemRadius / ROOT_THREE) * 2) + Constants.SYSTEM_PADDING
-    ,   hexWidth = hexRadius / 2 * ROOT_THREE * 2
-    ,   numSystemsWidest = Math.floor(width / hexWidth)
-    ,   hexLayout = this.gridToLayout(this.makeHexGrid(data.length, numSystemsWidest))
-    ,   leftOffset = ((((width / hexWidth) % 1) / 2) * hexWidth) + (hexWidth / 2)
-    ,   topOffset = hexRadius
-    data.forEach(function(songData, i) {
-      var hex = hexLayout[i]
-      ,   sx = leftOffset + hexRadius * hex.dx
-      ,   sy = topOffset + hexRadius * hex.dy
+    if (data.length === 0) {
+      return {
+        layoutWidth: width,
+        layoutHeight: window.innerHeight
+      };
+    }
 
-      songData.galaxyX = sx
-      songData.galaxyY = sy
+    let hexShortRad = Constants.SYSTEM_RADIUS + Constants.SYSTEM_PADDING;
+    let numHexColumns = Math.floor(width / (2 * hexShortRad));
+
+    let layout;
+    if (numHexColumns < 2) {
+      layout = this.constructColumnLayout(hexShortRad, data.length, width, numHexColumns);
+    } else {
+      layout = this.constructGridLayout(hexShortRad, data.length, width, numHexColumns);
+    }
+
+    data.forEach((songData, i) => {
+      let {x, y} = layout.positions[i];
+      songData.galaxyX = x;
+      songData.galaxyY = y;
       songData.versions.forEach((v) => {
-        v.galaxyX = sx
-        v.galaxyY = sy
-      })
-    })
+        v.galaxyX = x;
+        v.galaxyY = y;
+      });
+    });
 
     return {
-      layoutWidth: width
-    , layoutHeight: topOffset + hexRadius * hexLayout[hexLayout.length - 1].dy + hexRadius
-    }
+      layoutWidth: layout.width,
+      layoutHeight: layout.height
+    };
   },
 
   isActive(node) {
