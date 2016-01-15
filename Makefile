@@ -5,6 +5,8 @@ PATH := node_modules/.bin:$(PATH)
 PYTHON = python3
 PIP = pip3
 
+TOUCH := /usr/bin/touch
+
 env ?= development
 
 ifeq ($(env),production)
@@ -31,7 +33,7 @@ install: Makefile node_modules pythonsetup
 
 node_modules: package.json
 	npm install
-	touch $@
+	$(TOUCH) $@
 
 pythonsetup:
 	@$(PIP) install requests beautifulsoup4
