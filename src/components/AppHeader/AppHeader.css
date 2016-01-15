@@ -1,4 +1,5 @@
 @value c-header-bg from '../Constants.css';
+@value z-header, z-nav from '../Constants.css';
 
 .AppHeader {
   font-size: 24px;
@@ -6,7 +7,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: z-header from '../Constants.css';
+  z-index: z-header;
 }
 
 .AppHeader--navigation {
@@ -14,7 +15,7 @@
   padding: 0.62em 0;
   position: relative;
   user-select: none;
-  z-index: z-nav from '../Constants.css';
+  z-index: z-nav;
 }
 
 .AppHeader--back {
