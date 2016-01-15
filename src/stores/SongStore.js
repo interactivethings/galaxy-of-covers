@@ -132,7 +132,9 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
       audioRef.play();      
     }
 
-    setState('detailOverlay', data)
+    if (data !== state.get('detailOverlay')) {
+      setState('detailOverlay', data)
+    }
   },
 
   hideDetailOverlay() {

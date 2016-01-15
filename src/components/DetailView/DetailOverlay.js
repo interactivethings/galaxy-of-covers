@@ -12,6 +12,11 @@ var DetailOverlay = {
   render(selection, xRange, yOffset) {
     var datum = selection.datum()
 
+    selection
+      .attr('opacity', 0)
+      .transition()
+      .attr('opacity', 1);
+
     var defs = svgutil.acquire(selection, 'DetailOverlay__defs', 'defs')
 
     var gradient = svgutil.acquire(defs, 'DetailOverlay__gradient', 'linearGradient')

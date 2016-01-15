@@ -103,8 +103,6 @@ var DetailView = {
   },
 
   render(node, data, state, dimensions) {
-    console.log('render detail view');
-
     var d3Node = d3.select(node)
 
     d3Node
@@ -177,8 +175,6 @@ var DetailView = {
 
     detailPlanets.enter().append('g')
       .attr('class', 'SongTimeline--planet')
-      .on('mouseenter', this.onPlanetMouseEnter)
-      .on('mouseleave', this.onPlanetMouseLeave)
       .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(0)')
       .transition('SongSystem-render')
       .duration(200)
@@ -186,16 +182,19 @@ var DetailView = {
       .style('opacity', 1)
       .transition('SongSystem-render')
       .duration(800)
-      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineCY))
+      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineCY));
 
     detailPlanets.attr('id', (d) => 'tlplanetgroup-' + d.versionId)
+      .on('mouseenter', this.onPlanetMouseEnter.bind(this, state))
+      .on('mouseleave', this.onPlanetMouseLeave);
 
     // render the shapes
-    detailPlanets.call(DetailShapes)
+    detailPlanets.call(DetailShapes);
 
     // detail overlay
     var detailData = state.get('detailOverlay'),
-        detailLayer = svgutil.acquire(viewWrapper, 'SongTimeline--detaillayer', 'g')
+        detailLayer = svgutil.acquire(viewWrapper, 'SongTimeline--detaillayer', 'g');
+
     if (detailData) {
       detailLayer.datum(detailData)
         .call(DetailOverlay.render, dimensions.timelineXScale.range(), dimensions.yOffset)
@@ -210,17 +209,17 @@ var DetailView = {
     viewWrapper.call(Axis, dimensions.baselineY, dimensions.timelineXScale.domain(), dimensions.timelineXScale.range(), data.versionsFilteredIn.map((d) => dimensions.timelineXScale(d.parsedDate)))
   },
 
-  onPlanetMouseEnter(d) {
-    ViewActions.hoverOnDetailVersion(d)
+  onPlanetMouseEnter(state, d) {
+    if (d !== state.get('detailOverlay')) {
+      ViewActions.hoverOnDetailVersion(d)
+    }
   },
 
-  onPlanetMouseLeave() {
+  onPlanetMouseLeave(d) {
     // pass
   },
 
   deRender(node, callback) {
-    console.log('remove detail view');
-
     var d3Node = d3.select(node)
 
     var dimensions = d3Node.datum()
