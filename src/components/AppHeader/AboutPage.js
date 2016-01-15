@@ -1,14 +1,21 @@
 'use strict';
 
-var React = require('react')
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 require('components/AppHeader/AboutPage.css')
 
 var ComponentName = React.createClass({
 
   render() {
+    const style = {
+      transform: this.props.isOpen ? 'translateY(0%)' : 'translateY(-100%)',
+      top: this.props.isOpen ? '100%' : '0',
+      maxHeight: window.innerHeight - this.props.layout.titleHeight
+    };
+
     return (
-      <div className={'AboutPage' + (this.props.isOpen ? '' : ' AboutPage--closed')} style={{ maxHeight: this.props.maxHeight }}>
+      <div className={'AboutPage' + (this.props.isOpen ? '' : ' AboutPage--closed')} style={style}>
         <div className='AboutPage__wrapper'>
           <h2>Galaxy of Covers</h2>
           <h3>Honoring the evolution of the 50 most popular cover songs of all time.</h3>

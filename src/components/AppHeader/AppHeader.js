@@ -75,7 +75,8 @@ var AppHeader = React.createClass({
           scales={this.props.scales} />
         <AboutPage
           isOpen={aboutOpen}
-          maxHeight={window.innerHeight - this.props.layout.headerHeight} />
+          layout={this.props.layout}
+        />
       </div>
     )
   }

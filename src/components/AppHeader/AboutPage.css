@@ -3,31 +3,13 @@
 .AboutPage {
   background-color: c-app-bg;
   box-sizing: border-box;
-  padding: 60px 0 60px 0;
-  position: absolute;
-  transition: top 0.2s linear;
-  top: 60px;
-  width: 100%;
-}
-
-.AboutPage--closed {
-  padding: 0;
-  top: -1000px;
-
-  .AboutPage__wrapper {
-    visibility: hidden;
-  }
-}
-
-.AboutPage__wrapper {
-  width: 80%;
-  margin: auto;
-  max-width: 700px;
-}
-
-.AboutPage {
   color: #F1F1F1;
   font-weight: 300;
+  overflow: auto;
+  padding: 60px 0 60px 0;
+  position: absolute;
+  transition: transform 0.2s linear, top 0.2s linear;
+  width: 100%;
 
   h2 {
     font-size: 28px;
@@ -63,4 +45,18 @@
 
     }
   }
+}
+
+.AboutPage--closed {
+  padding: 0;
+
+  .AboutPage__wrapper {
+    visibility: hidden;
+  }
+}
+
+.AboutPage__wrapper {
+  width: 80%;
+  margin: auto;
+  max-width: 700px;
 }
