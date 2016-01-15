@@ -10,7 +10,7 @@
   }
 }
 
-.AppHeader--legenddisplayname {
+.legenddisplayname {
   composes: half-opaque-white from '../Constants.css';
   font-size: 14px;
   font-weight: 300;

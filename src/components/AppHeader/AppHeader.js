@@ -2,7 +2,7 @@
 
 var React = require('react')
 
-require('components/AppHeader/AppHeader.css')
+import css from 'components/AppHeader/AppHeader.css';
 
 var ViewActions = require('actions/ViewActions')
 ,   Legend = require('components/AppHeader/Legend')
@@ -47,22 +47,22 @@ var AppHeader = React.createClass({
         <div className="AppHeader--navigation">
           <div className="AppHeader--back" onClick={this.navigateBack} >
             {inDetail ? (
-              <div className="AppHeader--backarrow icon-arrow-back" />
+              <div className={`${css.appheaderbackarrow} icon-arrow-back`} />
             ) : ('')}
             <h1 className="AppHeader--title" >Galaxy of Covers</h1>
           </div>
           <div className="AppHeader--menu" >
-            <div className={"AppHeader--menuoption " + (legendOpen ? 'AppHeader--menuoption__active' : '')} onClick={this.toggleLegend} >
+            <div className={`${css.appheadermenuoption} ` + (legendOpen ? 'AppHeader--menuoption__active' : '')} onClick={this.toggleLegend} >
               <h2 className="AppHeader--navlabel">Legend</h2>
               <span className={"AppHeader-icon " + (legendOpen ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
             </div>
-            <div className={"AppHeader--menuoption " + (aboutOpen ? 'AppHeader--menuoption__active' : '')} onClick={this.toggleAbout} >
+            <div className={`${css.appheadermenuoption} ` + (aboutOpen ? 'AppHeader--menuoption__active' : '')} onClick={this.toggleAbout} >
               <h2 className="AppHeader--navlabel">About</h2>
               <span className={"AppHeader-icon " + (aboutOpen ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
             </div>
-            {/*<div className="AppHeader-icon AppHeader-shareicon icon-twitter" />
-            <div className="AppHeader-icon AppHeader-shareicon icon-facebook" />
-            <div className="AppHeader-icon AppHeader-shareicon icon-pinterest" />*/}
+            {/*<div className={`AppHeader-icon ${css.appheadershareicon} icon-twitter`} />
+            <div className={`AppHeader-icon ${css.appheadershareicon} icon-facebook`} />
+            <div className={`AppHeader-icon ${css.appheadershareicon} icon-pinterest`} />*/}
           </div>
         </div>
         <Legend isOpen={legendOpen} inDetail={inDetail} highlighted={highlightedAttribute} onClick={this.attributeLegendClick} state={this.props.dynamicState} />

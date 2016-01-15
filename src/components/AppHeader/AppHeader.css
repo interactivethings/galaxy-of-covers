@@ -23,7 +23,7 @@
   padding-left: 1em;
 }
 
-.AppHeader--backarrow {
+.appheaderbackarrow {
   composes: half-opaque-white from '../Constants.css';
   display: inline-block;
   vertical-align: middle;
@@ -48,7 +48,7 @@
   position: relative;
 }
 
-.AppHeader--menuoption {
+.appheadermenuoption {
   composes: half-opaque-white from '../Constants.css';
   cursor: pointer;
   display: inline-block;
@@ -75,7 +75,7 @@
   vertical-align: middle;
 }
 
-.AppHeader-shareicon {
+.appheadershareicon {
   composes: half-opaque-white from '../Constants.css';
   display: inline-block;
   margin-left: 1em;
