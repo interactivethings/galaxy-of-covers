@@ -104,6 +104,7 @@ var DetailView = {
 
   render(node, data, state, dimensions) {
     console.log('render detail view');
+
     var d3Node = d3.select(node)
 
     d3Node
@@ -213,7 +214,13 @@ var DetailView = {
     ViewActions.hoverOnDetailVersion(d)
   },
 
+  onPlanetMouseLeave() {
+    // pass
+  },
+
   deRender(node, callback) {
+    console.log('remove detail view');
+
     var d3Node = d3.select(node)
 
     var dimensions = d3Node.datum()

@@ -57,17 +57,6 @@ var DetailOverlay = {
       .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineCY))
       .on('mouseleave', () => ViewActions.hoverOffDetailVersion())
 
-/*    var audioElement = svgutil.acquire(marksContainer, 'DetailOverlay--sound', 'audio')
-
-    audioElement
-      .attr('autoplay', true)
-      .attr('src', (d) => d.spotify.preview + '.mp3')
-      .attr('volume', 1)*/
-
-    var audioObj = new Audio(datum.spotify.preview);
-
-    audioObj.play();
-
     var energyUse = svgutil.acquire(marksContainer, 'DetailOverlay--energyuse', 'use')
 
     energyUse

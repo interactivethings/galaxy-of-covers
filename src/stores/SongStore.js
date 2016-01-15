@@ -14,6 +14,8 @@ var setStateObj = (obj) => { for (var key in obj) setState(key, obj[key]) }
 
 var state = Immutable.Map()
 
+var audioRef = new Audio();
+
 // properties should all be mutable objects
 setStateObj({
   songs: [],
@@ -122,10 +124,20 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
   },
 
   showDetailOverlay(data) {
+    if (data.spotify && data.spotify.preview && data.spotify.preview !== audioRef.src) {
+      audioRef.pause();
+      audioRef = new Audio(data.spotify.preview);
+      audioRef.setAttribute('volume', 1);
+      audioRef.play();      
+    }
+
     setState('detailOverlay', data)
   },
 
   hideDetailOverlay() {
+    audioRef.pause();
+    audioRef = new Audio();
+
     setState('detailOverlay', null)
   },
 
