@@ -198,8 +198,8 @@ var ProportionalListing = React.createClass({
           fill={this.props.color} />
         {this.props.genreLabel && this.props.genrePercent !== null ?
           [
-            <text className='GenreHeader__percentlabel' x={this.props.width / 2} y={14} >{DataUtil.formatPercent(this.props.genrePercent)}</text>,
-            <text className='GenreHeader__genrelabel' ref='genrelabel' fill={this.props.color} x={this.props.width / 2} y={36} >{this.props.genreLabel}</text>
+            <text key='percent' className='GenreHeader__percentlabel' x={this.props.width / 2} y={14} >{DataUtil.formatPercent(this.props.genrePercent)}</text>,
+            <text key='genre' className='GenreHeader__genrelabel' ref='genrelabel' fill={this.props.color} x={this.props.width / 2} y={36} >{this.props.genreLabel}</text>
           ]
         : null}
       </g>
