@@ -17,9 +17,9 @@ var DetailOverlay = {
       .transition()
       .attr('opacity', 1);
 
-    var defs = svgutil.acquire(selection, 'DetailOverlay__defs', 'defs')
+    var defs = svgutil.acquire(selection, 'DetailDefs', 'defs');
 
-    var gradient = svgutil.acquire(defs, 'DetailOverlay__gradient', 'linearGradient')
+    var gradient = svgutil.acquire(defs, 'DetailOverlay__linegradient', 'linearGradient')
       .attr('id', 'detail-overlay-line-gradient')
       .attr('x1', '0%')
       .attr('x2', '100%')

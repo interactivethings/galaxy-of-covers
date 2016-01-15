@@ -1,7 +1,25 @@
-var svgutil = require('util/svgutil')
+import d3 from 'd3';
+
+import svgutil from 'util/svgutil';
 
 function Axis(selection, yPosition, xDomain, xRange, ticks) {
   var axis = selection.selectAll('.SongTimelineAxis')
+
+  var defs = svgutil.acquire(selection, 'DetailDefs', 'defs')
+
+  var gradient = svgutil.acquire(defs, 'DetailAxis__axisgradient', 'linearGradient')
+    .attr('id', 'detail-view-axis-gradient')
+    .attr('x1', '0%').attr('x2', '100%')
+    .attr('y1', '0%').attr('y2', '0%')
+    .attr('gradientUnits', 'userSpaceOnUse');
+
+  svgutil.acquire(gradient, 'DetailAxis__axisstop1', 'stop')
+    .attr('stop-color', '#fff')
+    .attr('offset', '0%');
+
+  svgutil.acquire(gradient, 'DetailAxis__axisstop2', 'stop')
+    .attr('stop-color', '#666666')
+    .attr('offset', '100%');
 
   if (axis.empty()) {
     axis = selection.append('g')
@@ -24,6 +42,7 @@ function Axis(selection, yPosition, xDomain, xRange, ticks) {
   axisLine
     .attr('x1', xRange[0])
     .attr('x2', xRange[1])
+    .attr('stroke', 'url(#detail-view-axis-gradient)');
 
   var axisLabels = axis.selectAll('.SongTimelineAxis--label')
     .data(xDomain)
@@ -39,17 +58,22 @@ function Axis(selection, yPosition, xDomain, xRange, ticks) {
     .text((d) => d.getFullYear())
 
   var axisTicks = axis.selectAll('.SongTimelineAxis--line__axistick')
-    .data(ticks)
+    .data(ticks);
 
   axisTicks.enter().append('circle')
-    .attr('class', 'SongTimelineAxis--line__axistick')
+    .attr('class', 'SongTimelineAxis--line__axistick');
 
-  axisTicks.exit().remove()
+  axisTicks.exit().remove();
+
+  let tickColorScale = d3.scale.linear().domain(xRange).range(['#ffffff', '#666666']);
 
   axisTicks
     .attr('cx', (d) => d)
     .attr('cy', 0)
     .attr('r', 3.5)
+    .attr('stroke', (d) => {
+      return tickColorScale(d);
+    })
 
   var firstTick = svgutil.acquire(axis, 'SongTimelineAxis__firsttick', 'circle')
 
