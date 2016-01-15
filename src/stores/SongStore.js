@@ -31,7 +31,8 @@ setStateObj({
   highlightedAttribute: null,
   filteredGenre: null,
   genreList: [],
-  detailOverlay: null
+  detailOverlay: null,
+  muted: true
 })
 
 var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
@@ -124,7 +125,7 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
   },
 
   showDetailOverlay(data) {
-    if (data.spotify && data.spotify.preview && data.spotify.preview !== audioRef.src) {
+    if (!state.get('muted') && data.spotify && data.spotify.preview && data.spotify.preview !== audioRef.src) {
       audioRef.pause();
       audioRef = new Audio(data.spotify.preview);
       audioRef.setAttribute('volume', 1);
