@@ -25,19 +25,19 @@ var DetailOverlay = {
       .attr('x2', '100%')
       .attr('y1', '0%')
       .attr('y2', '0%')
-      .attr('gradientUnits', 'userSpaceOnUse')
+      .attr('gradientUnits', 'userSpaceOnUse');
 
     svgutil.acquire(gradient, 'DetailOverlay__stop DetailOverlay__stop--stop1', 'stop')
       .datum(datum)
-      .attr('offset', (d) => Math.round(d.timelineCX / (xRange[1] - xRange[0]) * 100) - 80 + '%')
+      .attr('offset', (d) => Math.round(d.timelineCX / (xRange[1] - xRange[0]) * 100) - 80 + '%');
 
     svgutil.acquire(gradient, 'DetailOverlay__stop DetailOverlay__stop--stop2', 'stop')
       .datum(datum)
-      .attr('offset', (d) => Math.round(d.timelineCX / (xRange[1] - xRange[0]) * 100) + '%')
+      .attr('offset', (d) => Math.round(d.timelineCX / (xRange[1] - xRange[0]) * 100) + '%');
 
     svgutil.acquire(gradient, 'DetailOverlay__stop DetailOverlay__stop--stop3', 'stop')
       .datum(datum)
-      .attr('offset', (d) => Math.round(d.timelineCX / (xRange[1] - xRange[0]) * 100) + 80 + '%')
+      .attr('offset', (d) => Math.round(d.timelineCX / (xRange[1] - xRange[0]) * 100) + 80 + '%');
 
     var overlay = svgutil.acquire(selection, 'DetailOverlay__shadow', 'rect')
 
