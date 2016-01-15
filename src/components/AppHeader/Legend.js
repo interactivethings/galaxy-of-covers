@@ -17,11 +17,11 @@ var basePairs =
 var Legend = React.createClass({
 
   render() {
-    var {isOpen, inDetail, highlighted, onClick} = this.props
+    const {isOpen, inDetail, highlighted, onClick} = this.props
 
-    var pairs = basePairs
-    ,   detailData = this.props.state.get('detailOverlay')
-    if (detailData) {
+    let pairs = basePairs;
+    let detailData;
+    if (this.props.state.get('inDetail') && (detailData = this.props.state.get('detailOverlay'))) {
       pairs = pairs.map((p) => {
         return p.concat(detailData)
       })
@@ -33,7 +33,11 @@ var Legend = React.createClass({
         pairs.map((pair) => {
           var optionName = pair[0]
           var legendLabel = false
-          if (detailData) legendLabel = pair[1].split('.').reduce((m, k) => m[k] ? m[k] : m, detailData)
+
+          if (detailData) {
+            legendLabel = pair[1].split('.').reduce((m, k) => m[k] ? m[k] : m, detailData);
+          }
+
           return (
             <LegendOption
               key={'legendoption-'+optionName}
