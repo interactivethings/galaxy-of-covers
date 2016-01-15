@@ -77,6 +77,11 @@
 
 .appheadershareicon {
   composes: half-opaque-white from '../Constants.css';
+  cursor: pointer;
   display: inline-block;
   margin-left: 1em;
+
+  &:hover {
+    opacity: 1;
+  }
 }

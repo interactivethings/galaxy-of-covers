@@ -60,9 +60,9 @@ var AppHeader = React.createClass({
               <h2 className="AppHeader--navlabel">About</h2>
               <span className={"AppHeader-icon " + (aboutOpen ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
             </div>
-            {/*<div className={`AppHeader-icon ${css.appheadershareicon} icon-twitter`} />
-            <div className={`AppHeader-icon ${css.appheadershareicon} icon-facebook`} />
-            <div className={`AppHeader-icon ${css.appheadershareicon} icon-pinterest`} />*/}
+            <a><div className={`AppHeader-icon ${css.appheadershareicon} icon-twitter`} /></a>
+            <a><div className={`AppHeader-icon ${css.appheadershareicon} icon-facebook`} /></a>
+            <a><div className={`AppHeader-icon ${css.appheadershareicon} icon-pinterest`} /></a>
           </div>
         </div>
         <Legend isOpen={legendOpen} inDetail={inDetail} highlighted={highlightedAttribute} onClick={this.attributeLegendClick} state={this.props.dynamicState} />
