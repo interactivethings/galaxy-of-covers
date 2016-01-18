@@ -3,6 +3,9 @@
 var React = require('react')
 
 import css from 'components/AppHeader/AppHeader.css';
+import shareImage from '!file!assets/share_img.png';
+
+console.log(shareImage);
 
 var ViewActions = require('actions/ViewActions')
 ,   Legend = require('components/AppHeader/Legend')
@@ -60,9 +63,29 @@ var AppHeader = React.createClass({
               <h2 className="AppHeader--navlabel">About</h2>
               <span className={"AppHeader-icon " + (aboutOpen ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
             </div>
-            <a><div className={`AppHeader-icon ${css.appheadershareicon} icon-twitter`} /></a>
-            <a><div className={`AppHeader-icon ${css.appheadershareicon} icon-facebook`} /></a>
-            <a><div className={`AppHeader-icon ${css.appheadershareicon} icon-pinterest`} /></a>
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('Galaxy of Covers – Honoring the evolution of the 50 most popular cover songs of all time.')}&url=${encodeURIComponent('https://lab.interactivethings.com/song-covers')}&via=${'ixt'}`}
+              target='_blank'
+            >
+              <div className={`AppHeader-icon ${css.appheadershareicon} icon-twitter`} />
+            </a>
+            <a
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://lab.interactivethings.com/song-covers')}`}
+              target='_blank'
+            >
+              <div className={`AppHeader-icon ${css.appheadershareicon} icon-facebook`} />
+            </a>
+            <a
+              href='https://www.pinterest.com/pin/create/button/'
+              target='_blank'
+              data-pin-do='buttonPin'
+              data-pin-custom='true'
+              data-pin-description='Galaxy of Covers – Honoring the evolution of the 50 most popular cover songs of all time.'
+              data-pin-media={shareImage}
+              data-pin-url='https://lab.interactivethings.com/song-covers'
+            >
+              <div className={`AppHeader-icon ${css.appheadershareicon} icon-pinterest`} />
+            </a>
           </div>
         </div>
         <Legend isOpen={legendOpen} inDetail={inDetail} highlighted={highlightedAttribute} onClick={this.attributeLegendClick} state={this.props.dynamicState} />
