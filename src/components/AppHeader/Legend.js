@@ -21,7 +21,7 @@ var Legend = React.createClass({
 
     let pairs = basePairs;
     let detailData;
-    if (this.props.state.get('inDetail') && (detailData = this.props.state.get('detailOverlay'))) {
+    if ((detailData = this.props.state.get('detailOverlay')) || (detailData = this.props.state.get('hoveredGalaxySong'))) {
       pairs = pairs.map((p) => {
         return p.concat(detailData)
       })
