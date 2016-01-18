@@ -43,6 +43,11 @@ var AppHeader = React.createClass({
     ,   aboutOpen = dynamicState.get('aboutOpen')
     ,   highlightedAttribute = dynamicState.get('highlightedAttribute')
 
+    let detailData, detailGenre;
+    if ((detailData = dynamicState.get('detailOverlay')) || (detailData = dynamicState.get('hoveredGalaxySong'))) {
+      detailGenre = detailData.genreName;
+    }
+
     return (
       <div className="AppHeader" >
         <div className="AppHeader--navigation">
@@ -92,6 +97,7 @@ var AppHeader = React.createClass({
         <GenreHeader
           isVisible={!aboutOpen}
           genreCount={this.props.genreCount}
+          detailGenre={detailGenre}
           genreList={this.props.genreList}
           headerWidth={this.props.layout.headerWidth}
           dynamicState={this.props.dynamicState}

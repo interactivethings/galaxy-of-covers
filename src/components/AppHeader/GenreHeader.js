@@ -47,6 +47,8 @@ var GenreHeader = React.createClass({
     ,   sum = d3.sum(Object.keys(genreCount), (k) => genreCount[k])
     ,   xScale = d3.scale.linear().domain([0, sum]).range([0, individualWidth])
 
+    let revealedGenre = this.props.detailGenre || this.state.hoveredGenre;
+
     return (
       <svg className="GenreHeader" width={this.props.headerWidth} height={48} >
         <rect className='GenreHeader__bgrect' height={24} width={this.props.headerWidth} />
@@ -63,7 +65,7 @@ var GenreHeader = React.createClass({
                 height={24}
                 color={colorScale(genre)}
                 barWidth={xScale(n)}
-                opacity={!filteredGenre || filteredGenre === genre ? 1 : 0.2}
+                opacity={revealedGenre && revealedGenre !== genre ? 0.2 : filteredGenre && filteredGenre !== genre ? 0.2 : 1}
                 value={n / sum} />
             )
           })}
@@ -76,6 +78,8 @@ var GenreHeader = React.createClass({
     var sum = d3.sum(Object.keys(genreCount), (k) => genreCount[k])
     ,   xScale = d3.scale.linear().domain([0, sum]).range([0, this.props.headerWidth])
     ,   cumulative = 0
+
+    let revealedGenre = this.props.detailGenre || this.state.hoveredGenre;
 
     return (
       <svg className="GenreHeader" width={this.props.headerWidth} height={48} >
@@ -96,8 +100,8 @@ var GenreHeader = React.createClass({
                 width={xScale(n)}
                 height={20}
                 color={colorScale(genre)}
-                genreLabel={this.state.hoveredGenre === genre ? this.state.hoveredGenre : null}
-                genrePercent={this.state.hoveredGenre === genre ? n / sum : null} />
+                genreLabel={revealedGenre === genre ? revealedGenre : null}
+                genrePercent={revealedGenre === genre ? n / sum : null} />
             )
           })}
         </g>
