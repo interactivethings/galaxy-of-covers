@@ -15,6 +15,7 @@ var DetailOverlay = {
     selection
       .attr('opacity', 0)
       .transition()
+      .duration(100)
       .attr('opacity', 1);
 
     var defs = svgutil.acquire(selection, 'DetailDefs', 'defs');
