@@ -79,8 +79,6 @@ var GenreHeader = React.createClass({
     ,   xScale = d3.scale.linear().domain([0, sum]).range([0, this.props.headerWidth])
     ,   cumulative = 0
 
-    let revealedGenre = this.props.detailGenre || this.state.hoveredGenre;
-
     return (
       <svg className="GenreHeader" width={this.props.headerWidth} height={48} >
         <g transform={this.props.transform} >
@@ -89,6 +87,11 @@ var GenreHeader = React.createClass({
             ,   p = n / sum
             ,   x = xScale(cumulative)
             cumulative += n
+
+            let showLabel = (this.state.hoveredGenre == genre) ||
+                            (this.props.detailGenre == genre) ||
+                            (filteredGenre == genre);
+
             return (
               <ProportionalListing
                 key={'genrelisting-'+genre}
@@ -96,12 +99,12 @@ var GenreHeader = React.createClass({
                 onGenreHover={this.onGenreHover}
                 genre={genre}
                 x={x}
-                opacity={!filteredGenre || filteredGenre === genre ? 1 : 0.2}
+                opacity={showLabel || !filteredGenre ? 1 : 0.2}
                 width={xScale(n)}
                 height={20}
                 color={colorScale(genre)}
-                genreLabel={revealedGenre === genre ? revealedGenre : null}
-                genrePercent={revealedGenre === genre ? n / sum : null} />
+                genreLabel={showLabel ? genre : null}
+                genrePercent={showLabel ? n / sum : null} />
             )
           })}
         </g>
