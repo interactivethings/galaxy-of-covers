@@ -13,16 +13,17 @@ var GalaxyView = {
 
   constructColumnLayout(shortRad, numGalaxies, width) {
     let mid = width / 2;
+    let systemRad = shortRad - Constants.SYSTEM_PADDING;
 
     return {
       positions: d3.range(numGalaxies).map((i) => {
         return {
           x: mid,
-          y: (2 * i + 1) * shortRad
+          y: (2 * i + 1) * systemRad
         };
       }),
       width: width,
-      height: 2 * shortRad * numGalaxies
+      height: 2 * systemRad * numGalaxies
     };
   },
 
