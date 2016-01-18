@@ -71,7 +71,7 @@ var GalaxyView = {
     };
   },
 
-  applyHexLayout(data) {
+  applyHexLayout(data, state, uiLayout) {
     let width = window.innerWidth;
 
     if (data.length === 0) {
@@ -103,7 +103,7 @@ var GalaxyView = {
 
     return {
       layoutWidth: layout.width,
-      layoutHeight: layout.height
+      layoutHeight: layout.height + uiLayout.headerHeight
     };
   },
 
@@ -111,7 +111,7 @@ var GalaxyView = {
     return d3.select(node).classed('MainView__galaxy')
   },
 
-  render(node, data, state, dimensions) {
+  render(node, data, state, dimensions, layout) {
     var d3Node = d3.select(node)
 
     d3Node
@@ -130,7 +130,7 @@ var GalaxyView = {
         .attr('class', 'ViewWrapper')
     }
 
-    viewWrapper.attr('transform', 'translate(0,0)')
+    viewWrapper.attr('transform', `translate(0, ${layout.headerHeight})`)
 
     var systems = viewWrapper.selectAll('.SongSystem')
       .data(data, (d) => d.songId)

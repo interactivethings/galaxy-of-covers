@@ -39,7 +39,7 @@ var MainView = React.createClass({
     if (state.get('inGalaxy')) {
       if (!data.length) return true
 
-      var dimensions = GalaxyView.applyHexLayout(data) // this mutates data using the layout
+      var dimensions = GalaxyView.applyHexLayout(data, state, this.props.layout) // this mutates data using the layout
 
       var hoveredId = state.get('hoveredSystemId')
       ,   systemMinY = this.props.scrollY - 2 * Constants.SYSTEM_BACKGROUND_RADIUS
@@ -60,15 +60,15 @@ var MainView = React.createClass({
       if (DetailView.isActive(node)) {
         var oldScrollPos = this.props.scrollY
         DetailView.deRender(node, function() {
-          GalaxyView.render(node, data, state, dimensions)
+          GalaxyView.render(node, data, state, dimensions, this.props.layout);
           window.scrollTo(0, oldScrollPos)
         })
       } else if (GalaxyView.isActive(node)) {
-        GalaxyView.render(node, data, state, dimensions)
+        GalaxyView.render(node, data, state, dimensions, this.props.layout);
       } else {
         // in transition between views, do weird hacks
         DetailView.deRender(node, function() {})
-        GalaxyView.render(node, data, state, dimensions)
+        GalaxyView.render(node, data, state, dimensions, this.props.layout);
         window.scrollTo(0, oldScrollPos)
       }
     } else if (state.get('inDetail')) {
