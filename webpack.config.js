@@ -55,7 +55,6 @@ var webpackConfig = {
     resolve: {
       root: resolveHere('src')
     },
-    publicPath: '/',
     module: {
       loaders: values(assignDeep(loaders.common, loaders[env])),
       noParse: [
@@ -78,6 +77,7 @@ var webpackConfig = {
     output: {
       pathinfo: true
     },
+    publicPath: '/',
     devtool: '#eval-source-map',
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
@@ -99,6 +99,7 @@ var webpackConfig = {
     entry: {
       app: resolveHere('src/index')
     },
+    publicPath: 'https://lab.interactivethings.com/galaxy-of-covers/',
     plugins: [
       new webpack.DefinePlugin({
         '__DEV__': JSON.stringify(false),

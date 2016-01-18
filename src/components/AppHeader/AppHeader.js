@@ -3,9 +3,7 @@
 var React = require('react')
 
 import css from 'components/AppHeader/AppHeader.css';
-import shareImage from '!file!assets/share_img.png';
-
-console.log(shareImage);
+import shareImage from '!file?name=[name].[ext]!assets/share_img.png';
 
 var ViewActions = require('actions/ViewActions')
 ,   Legend = require('components/AppHeader/Legend')
@@ -64,25 +62,27 @@ var AppHeader = React.createClass({
               <span className={"AppHeader-icon " + (aboutOpen ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
             </div>
             <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('Galaxy of Covers – Honoring the evolution of the 50 most popular cover songs of all time.')}&url=${encodeURIComponent('https://lab.interactivethings.com/song-covers')}&via=${'ixt'}`}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('Galaxy of Covers – Honoring the evolution of the 50 most popular cover songs of all time.')}&url=${encodeURIComponent('https://lab.interactivethings.com/galaxy-of-covers')}&via=${'ixt'}`}
               target='_blank'
             >
               <div className={`AppHeader-icon ${css.appheadershareicon} icon-twitter`} />
             </a>
             <a
-              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://lab.interactivethings.com/song-covers')}`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://lab.interactivethings.com/galaxy-of-covers')}`}
               target='_blank'
             >
               <div className={`AppHeader-icon ${css.appheadershareicon} icon-facebook`} />
             </a>
             <a
-              href='https://www.pinterest.com/pin/create/button/'
-              target='_blank'
-              data-pin-do='buttonPin'
-              data-pin-custom='true'
-              data-pin-description='Galaxy of Covers – Honoring the evolution of the 50 most popular cover songs of all time.'
-              data-pin-media={shareImage}
-              data-pin-url='https://lab.interactivethings.com/song-covers'
+              onClick={() => {
+                if (typeof PinUtils !== 'undefined' && typeof PinUtils.pinOne === 'function') {                
+                  PinUtils.pinOne({
+                    media: location.href + shareImage,
+                    url: 'https://lab.interactivethings.com/galaxy-of-covers',
+                    description: 'Galaxy of Covers – Honoring the evolution of the 50 most popular cover songs of all time.'
+                  });
+                }
+              }}
             >
               <div className={`AppHeader-icon ${css.appheadershareicon} icon-pinterest`} />
             </a>
