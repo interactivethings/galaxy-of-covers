@@ -82,7 +82,13 @@ var GalaxyView = {
     }
 
     let hexShortRad = Constants.SYSTEM_RADIUS + Constants.SYSTEM_PADDING;
-    let numHexColumns = Math.floor(width / (2 * hexShortRad));
+    let hexColumnsUnrounded = width / (2 * hexShortRad);
+    let numHexColumns = Math.floor(hexColumnsUnrounded);
+
+    // if (hexColumnsUnrounded < 1) {
+      // hexShortRad *= hexColumnsUnrounded;
+      // numHexColumns = 1;
+    // }
 
     let layout;
     if (numHexColumns < 2) {
