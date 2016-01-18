@@ -24,6 +24,8 @@ setStateObj({
   allGenresCount: {},
   displayObjects: [],
   hoveredSystemId: null,
+  hoveredGalaxySong: null,
+  hoveredGalaxySongNode: null,
   inGalaxy: true,
   inDetail: false,
   legendOpen: false,
@@ -89,6 +91,13 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
 
   setHoveredSystem(id) {
     setState('hoveredSystemId', id)
+  },
+
+  setHoveredGalaxySong(datum, node) {
+    setStateObj({
+      hoveredGalaxySong: datum,
+      hoveredGalaxySongNode: node
+    });
   },
 
   showDetail(songId) {
@@ -168,6 +177,12 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
       case 'HOVER_OFF_SYSTEM':
         this.setHoveredSystem(null)
         break
+      case 'HOVER_GALAXY_SONG':
+        this.setHoveredGalaxySong(action.datum, action.node);
+        break;
+      case 'HOVER_OFF_GALAXY_SONG':
+        this.setHoveredGalaxySong(null, null);
+        break;
       case 'LEGEND_SHOW':
         this.navMenuToggle('legendOpen', true)
         break

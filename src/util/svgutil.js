@@ -37,6 +37,11 @@ var SvgUtil = {
     return 'translate(' + x + ',' + y + ') rotate(' + rot + ')'
   },
 
+  parseTranslate(transform) {
+    let [_, x, y] = transform.match(/translate\(([0-9]*\.?[0-9]*),? ?([0-9]*\.?[0-9]*)\)/);
+    return { x, y };
+  },
+
   joinPolygonPoints(pts) {
     return pts.join(' ')
   },

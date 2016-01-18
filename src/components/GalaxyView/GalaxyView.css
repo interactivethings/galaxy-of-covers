@@ -37,3 +37,19 @@
   stroke: #aaa;
   stroke-width: 0.5;
 }
+
+.SystemDetailText {
+  fill: #fff;
+  stroke: none;
+  text-anchor: middle;
+}
+
+.SystemDetailTitle {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.SystemDetailArtist {
+  font-size: 14px;
+  font-weight: 200;
+}

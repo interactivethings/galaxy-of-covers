@@ -209,6 +209,8 @@ var GalaxyView = {
     roundPlanets.enter()
       .append('circle')
       .attr('class', 'SongSystem--planet SongSystem--planet__round')
+      .on('mouseover', function(d) { ViewActions.onGalaxySongOver(this, d); })
+      .on('mouseout', function() { ViewActions.onGalaxySongOut(); });
 
     roundPlanets
       .attr('r', (d) => d.galaxyPlanetRadius)
@@ -222,10 +224,51 @@ var GalaxyView = {
     pointyPlanets.enter()
       .append('polygon')
       .attr('class', 'SongSystem--planet SongSystem--planet__pointy')
+      .on('mouseover', function(d) { ViewActions.onGalaxySongOver(this, d); })
+      .on('mouseout', function() { ViewActions.onGalaxySongOut(); });
 
     pointyPlanets
       .attr('points', (d) => svgutil.getPolygonPoints(0, 0, d.galaxyPlanetRadius, d.numSides))
       .attr('fill', (d) => d.genreColor)
+
+    var songDetailData = state.get('hoveredGalaxySong') ? [state.get('hoveredGalaxySong')] : [];
+    var songDetailNode = state.get('hoveredGalaxySongNode');
+
+    var songDetailLabel = systems.selectAll('.' + css.SystemDetailText)
+      .data(songDetailData);
+
+    songDetailLabel.exit().remove();
+
+    songDetailLabel.enter()
+      .append('g')
+      .attr('class', css.SystemDetailText);
+
+    songDetailLabel
+      .attr('transform', (d) => {
+        let {x, y} = svgutil.parseTranslate(songDetailNode.getAttribute('transform'));
+        return svgutil.translateString(x, y - 40);
+      });
+
+    var songDetailTitle = songDetailLabel.selectAll('.' + css.SystemDetailTitle)
+      .data((d) => [d]);
+
+    songDetailTitle.enter()
+      .append('text')
+      .attr('class', css.SystemDetailTitle)
+
+    songDetailTitle
+      .text((d) => d.versionTitle);
+
+    var songDetailArtist = songDetailLabel.selectAll('.' + css.SystemDetailArtist)
+      .data((d) => [d]);
+
+    songDetailArtist.enter()
+      .append('text')
+      .attr('class', css.SystemDetailArtist);
+
+    songDetailArtist
+      .text((d) => d.versionPerformer)
+      .attr('dy', 20);
 
     // song label is above the rest of the system
     var labels = systems.selectAll('.SongSystem--songtitle')

@@ -24,6 +24,20 @@ var ViewActions = {
     })
   },
 
+  onGalaxySongOver(node, datum) {
+    Dispatcher.handleViewAction({
+      type: 'HOVER_GALAXY_SONG',
+      datum: datum,
+      node: node
+    })
+  },
+
+  onGalaxySongOut() {
+    Dispatcher.handleViewAction({
+      type: 'HOVER_OFF_GALAXY_SONG'
+    })
+  },
+
   navToGalaxy() {
     Dispatcher.handleViewAction({
       type: 'SHOW_GALAXY'
