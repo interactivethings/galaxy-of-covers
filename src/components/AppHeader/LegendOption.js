@@ -28,6 +28,10 @@ var LegendOption = React.createClass({
         :
           <div className='AppHeader--legendlabel' >{datautil.formatLegendData(this.props.label, this.props.attributeName)}</div>
         }
+        <div className={css.HeaderLegendTooltip}>
+          <div className={css.HeaderLegendTip}></div>
+          <div className={css.HeaderLegendBody}>{this.props.tooltip}</div>
+        </div>
       </div>
     )
   }

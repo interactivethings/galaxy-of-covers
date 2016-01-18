@@ -7,11 +7,11 @@ require('components/AppHeader/Legend.css')
 var LegendOption = require('components/AppHeader/LegendOption')
 
 var basePairs =
-[ ['popularity', 'spotify.popularity', 'Popularity']
-, ['tempo', 'echonest.tempo', 'Tempo']
-, ['valence', 'echonest.valence', 'Valence']
-, ['energy', 'echonest.energy', 'Energy']
-, ['speechiness', 'echonest.speechiness', '&ndash; Speechiness +']
+[ ['popularity', 'spotify.popularity', 'Popularity', 'A measure of the popularity of the song.']
+, ['tempo', 'echonest.tempo', 'Tempo', 'The speed of the song.']
+, ['valence', 'echonest.valence', 'Valence', 'A measure of the attitude of the song - high valence means a positive attitude, and low means a more negative one.']
+, ['energy', 'echonest.energy', 'Energy', 'A measure of the energy and force of the music.']
+, ['speechiness', 'echonest.speechiness', '&ndash; Speechiness +', 'A measure of how close the song is to ordinary speech.']
 ]
 
 var Legend = React.createClass({
@@ -20,12 +20,7 @@ var Legend = React.createClass({
     const {isOpen, inDetail, highlighted, onClick} = this.props
 
     let pairs = basePairs;
-    let detailData;
-    if ((detailData = this.props.state.get('detailOverlay')) || (detailData = this.props.state.get('hoveredGalaxySong'))) {
-      pairs = pairs.map((p) => {
-        return p.concat(detailData)
-      })
-    }
+    let detailData = this.props.state.get('detailOverlay') || this.props.state.get('hoveredGalaxySong');
 
     return (
       <div className={"AppHeader--legend " + (this.props.isOpen ? 'AppHeader--legend__open' : '')}>
@@ -46,7 +41,9 @@ var Legend = React.createClass({
               isInactive={highlighted && highlighted !== optionName}
               displayName={pair[2]}
               label={legendLabel}
-              clickFunction={onClick} />
+              clickFunction={onClick}
+              tooltip={pair[3]}
+            />
           )
         })
       }
