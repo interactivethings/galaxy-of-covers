@@ -59,15 +59,15 @@ var MainView = React.createClass({
 
       if (DetailView.isActive(node)) {
         var oldScrollPos = this.props.scrollY
-        DetailView.deRender(node, function() {
+        DetailView.deRender(node, () => {
           GalaxyView.render(node, data, state, dimensions, this.props.layout);
           window.scrollTo(0, oldScrollPos)
-        })
+        });
       } else if (GalaxyView.isActive(node)) {
         GalaxyView.render(node, data, state, dimensions, this.props.layout);
       } else {
         // in transition between views, do weird hacks
-        DetailView.deRender(node, function() {})
+        DetailView.deRender(node, () => {})
         GalaxyView.render(node, data, state, dimensions, this.props.layout);
         window.scrollTo(0, oldScrollPos)
       }
@@ -78,9 +78,9 @@ var MainView = React.createClass({
       detailData.versionsFilteredIn = detailData.versions.filter((versionData) => !genreFilter || genreFilter === versionData.genreName)
 
       if (GalaxyView.isActive(node)) {
-        DetailView.transitionIn(node, detailData, state, dimensions, function() {
+        DetailView.transitionIn(node, detailData, state, dimensions, () => {
           DetailView.render(node, detailData, state, dimensions)
-        })
+        });
       } else if (DetailView.isActive(node)) {
         DetailView.render(node, detailData, state, dimensions)
       } else {
