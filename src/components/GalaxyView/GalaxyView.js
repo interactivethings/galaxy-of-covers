@@ -241,7 +241,7 @@ var GalaxyView = {
     var songDetailData = state.get('hoveredGalaxySong') ? [state.get('hoveredGalaxySong')] : [];
     var songDetailNode = state.get('hoveredGalaxySongNode');
 
-    var songDetailLabel = systems.selectAll('.' + css.SystemDetailText)
+    var songDetailLabel = viewWrapper.selectAll('.' + css.SystemDetailText)
       .data(songDetailData);
 
     songDetailLabel.exit().remove();
