@@ -20,16 +20,17 @@ var DetailView = {
     var highlineY = yOffset + layout.tlHighline
     ,   baselineY = yOffset + layout.tlBase
     ,   timelineTop = yOffset + layout.tlTop
-    ,   energyRange = [0, 1] // DataUtil.getMinMax(datum.versions, (item) => item.energy || 0)
-    ,   timelineYScale = d3.scale.linear().domain(energyRange).range([baselineY, timelineTop])
-    ,   timeRange = DataUtil.getMinMax(datum.versions, (item) => item.parsedDate)
-    ,   timelineXRange = [100, window.innerWidth - 100]
-    ,   timelineXScale = d3.time.scale().domain(timeRange).range(timelineXRange)
+    ,   energyDomain = [0, 1] // DataUtil.getMinMax(datum.versions, (item) => item.energy || 0)
+    ,   timelineYScale = d3.scale.linear().domain(energyDomain).range([baselineY, timelineTop])
+    ,   timeDomain = DataUtil.getMinMax(datum.versions, (item) => item.parsedDate)
+    ,   timelineXScale = d3.time.scale().domain(timeDomain).range([layout.tlSidePad, window.innerWidth - layout.tlSidePad]);
 
     datum.versions.forEach((versionData) => {
-      versionData.timelineCX = timelineXScale(versionData.parsedDate)
-      versionData.timelineCY = timelineYScale(versionData.energy)
-      versionData.timelineBaseY = baselineY
+      versionData.timelineCX = timelineXScale(versionData.parsedDate);
+      versionData.timelineCY = timelineYScale(versionData.energy);
+      versionData.timelineBaseY = baselineY;
+      versionData.timelineBaseX = timelineXScale(versionData.parsedDate);
+
       if (versionData.isCircle) {
         versionData.tailpt1 = [-versionData.timelinePlanetRadius, 0]
         versionData.tailpt2 = [versionData.timelinePlanetRadius, 0]
@@ -45,7 +46,7 @@ var DetailView = {
         versionData.tailpt1 = polyPoints[0]
         versionData.tailpt2 = polyPoints[Math.ceil(polyPoints.length / 2)]
       }
-    })
+    });
 
     return {
       yOffset: yOffset
@@ -93,12 +94,13 @@ var DetailView = {
       .transition()
       .delay(300)
       .duration(800)
-      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY))
+      .attr('transform', (d) => svgutil.translateString(d.timelineBaseX, d.timelineBaseY))
 
     var it1 = it0.transition()
       .duration(200)
-      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(0)')
-      .each('end', DataUtil.before(2, function() {
+      .attr('transform', (d) => svgutil.translateString(d.timelineBaseX, d.timelineBaseY) + ' scale(0)')
+      .each('end', DataUtil.once(function() {
+        // This function can only be called once
         callback()
       }))
       .remove()
@@ -138,13 +140,15 @@ var DetailView = {
       .transition('SongSystem-render')
       .duration(500)
       .attr('points', EnergyTails.BaselinePoints)
+      .transition('SongSystem--render')
+      .duration(200)
       .style('opacity', 0)
-      .remove()
+      .remove();
 
     detailEnergyTails.transition('SongSystem-render')
       .duration(200)
       .attr('points', EnergyTails.ExtendedPoints)
-      .style('opacity', 1)
+      .style('opacity', 1);
 
     detailEnergyTails.enter().append('polygon')
       .attr('class', 'SongTimeline--energytail')
@@ -166,21 +170,24 @@ var DetailView = {
     detailPlanets.exit()
       .transition('SongSystem-render')
       .duration(500)
-      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY))
+      .attr('transform', (d) => svgutil.translateString(d.timelineBaseX, d.timelineBaseY))
+      .transition('SongSystem-render')
+      .duration(200)
+      .attr('transform', (d) => svgutil.translateString(d.timelineBaseX, d.timelineBaseY) + 'scale(0)')
       .style('opacity', 0)
-      .remove()
+      .remove();
 
     detailPlanets.transition('SongSystem-render')
       .duration(200)
       .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineCY))
-      .style('opacity', 1)
+      .style('opacity', 1);
 
     detailPlanets.enter().append('g')
       .attr('class', 'SongTimeline--planet')
-      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(0)')
+      .attr('transform', (d) => svgutil.translateString(d.timelineBaseX, d.timelineBaseY) + ' scale(0)')
       .transition('SongSystem-render')
       .duration(200)
-      .attr('transform', (d) => svgutil.translateString(d.timelineCX, d.timelineBaseY) + ' scale(1)')
+      .attr('transform', (d) => svgutil.translateString(d.timelineBaseX, d.timelineBaseY) + ' scale(1)')
       .style('opacity', 1)
       .transition('SongSystem-render')
       .duration(800)
@@ -270,9 +277,10 @@ var DetailView = {
       .duration(200)
       .style('opacity', 0)
       .remove()
-      .each('end', DataUtil.before(2, function() {
-        callback()
-      }))
+      .each('end', DataUtil.once(function() {
+        // This function can only be called once
+        callback();
+      }));
   }
 
 }
