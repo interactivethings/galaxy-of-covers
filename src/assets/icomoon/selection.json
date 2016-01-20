@@ -4,6 +4,30 @@
 		{
 			"icon": {
 				"paths": [
+					"M512.051 399.36c-62.208 0-112.691 50.432-112.691 112.64s50.483 112.64 112.691 112.64c62.208 0 112.589-50.432 112.589-112.64s-50.381-112.64-112.589-112.64zM512.051 266.24c62.208 0 112.589-50.483 112.589-112.64s-50.381-112.64-112.589-112.64c-62.208 0-112.691 50.432-112.691 112.64s50.483 112.64 112.691 112.64zM512.051 757.76c-62.208 0-112.691 50.432-112.691 112.64s50.483 112.64 112.691 112.64c62.208 0 112.589-50.432 112.589-112.64s-50.381-112.64-112.589-112.64z"
+				],
+				"attrs": [],
+				"isMulticolor": false,
+				"tags": [
+					"dots-three-vertical"
+				],
+				"grid": 0
+			},
+			"attrs": [],
+			"properties": {
+				"order": 1,
+				"id": 0,
+				"prevSize": 20,
+				"name": "dots-three-vertical",
+				"code": 59648
+			},
+			"setIdx": 0,
+			"setId": 3,
+			"iconIdx": 0
+		},
+		{
+			"icon": {
+				"paths": [
 					"M925.714 233.143q-38.286 56-92.571 95.429 0.571 8 0.571 24 0 74.286-21.714 148.286t-66 142-105.429 120.286-147.429 83.429-184.571 31.143q-154.857 0-283.429-82.857 20 2.286 44.571 2.286 128.571 0 229.143-78.857-60-1.143-107.429-36.857t-65.143-91.143q18.857 2.857 34.857 2.857 24.571 0 48.571-6.286-64-13.143-106-63.714t-42-117.429v-2.286q38.857 21.714 83.429 23.429-37.714-25.143-60-65.714t-22.286-88q0-50.286 25.143-93.143 69.143 85.143 168.286 136.286t212.286 56.857q-4.571-21.714-4.571-42.286 0-76.571 54-130.571t130.571-54q80 0 134.857 58.286 62.286-12 117.143-44.571-21.143 65.714-81.143 101.714 53.143-5.714 106.286-28.571z"
 				],
 				"width": 951,
@@ -18,13 +42,14 @@
 			"attrs": [],
 			"properties": {
 				"id": 144,
-				"order": 17,
+				"order": 5,
 				"prevSize": 28,
 				"code": 61593,
 				"name": "twitter"
 			},
-			"setIdx": 0,
-			"iconIdx": 144
+			"setIdx": 2,
+			"setId": 1,
+			"iconIdx": 0
 		},
 		{
 			"icon": {
@@ -43,13 +68,14 @@
 			"attrs": [],
 			"properties": {
 				"id": 145,
-				"order": 18,
+				"order": 6,
 				"prevSize": 28,
 				"code": 61594,
 				"name": "facebook"
 			},
-			"setIdx": 0,
-			"iconIdx": 145
+			"setIdx": 2,
+			"setId": 1,
+			"iconIdx": 1
 		},
 		{
 			"icon": {
@@ -67,13 +93,14 @@
 			"attrs": [],
 			"properties": {
 				"id": 185,
-				"order": 16,
+				"order": 4,
 				"prevSize": 28,
 				"code": 61650,
 				"name": "pinterest"
 			},
-			"setIdx": 0,
-			"iconIdx": 185
+			"setIdx": 2,
+			"setId": 1,
+			"iconIdx": 2
 		},
 		{
 			"icon": {
@@ -90,13 +117,14 @@
 			"attrs": [],
 			"properties": {
 				"id": 253,
-				"order": 22,
+				"order": 7,
 				"prevSize": 24,
 				"code": 58880,
 				"name": "add"
 			},
-			"setIdx": 1,
-			"iconIdx": 253
+			"setIdx": 2,
+			"setId": 1,
+			"iconIdx": 3
 		},
 		{
 			"icon": {
@@ -113,13 +141,14 @@
 			"attrs": [],
 			"properties": {
 				"id": 449,
-				"order": 11,
+				"order": 2,
 				"prevSize": 24,
 				"code": 58881,
 				"name": "keyboard-arrow-down"
 			},
-			"setIdx": 1,
-			"iconIdx": 449
+			"setIdx": 2,
+			"setId": 1,
+			"iconIdx": 4
 		},
 		{
 			"icon": {
@@ -136,13 +165,14 @@
 			"attrs": [],
 			"properties": {
 				"id": 452,
-				"order": 12,
+				"order": 3,
 				"prevSize": 24,
 				"code": 58882,
 				"name": "keyboard-arrow-up"
 			},
-			"setIdx": 1,
-			"iconIdx": 452
+			"setIdx": 2,
+			"setId": 1,
+			"iconIdx": 5
 		},
 		{
 			"icon": {
@@ -159,13 +189,14 @@
 			"attrs": [],
 			"properties": {
 				"id": 672,
-				"order": 10,
+				"order": 1,
 				"prevSize": 24,
 				"code": 58883,
 				"name": "arrow-back"
 			},
-			"setIdx": 1,
-			"iconIdx": 672
+			"setIdx": 2,
+			"setId": 1,
+			"iconIdx": 6
 		},
 		{
 			"icon": {
@@ -182,13 +213,14 @@
 			"attrs": [],
 			"properties": {
 				"id": 681,
-				"order": 23,
+				"order": 8,
 				"prevSize": 24,
 				"code": 58884,
 				"name": "close"
 			},
-			"setIdx": 1,
-			"iconIdx": 681
+			"setIdx": 2,
+			"setId": 1,
+			"iconIdx": 7
 		}
 	],
 	"height": 1024,
@@ -209,14 +241,16 @@
 				"emSize": 1024,
 				"baseline": 6.25,
 				"whitespace": 50
-			}
+			},
+			"embed": false
 		},
 		"imagePref": {
 			"prefix": "icon-",
 			"png": true,
 			"useClassSelector": true,
 			"color": 4473924,
-			"bgColor": 16777215
+			"bgColor": 16777215,
+			"classSelector": ".icon"
 		},
 		"historySize": 100,
 		"showCodes": true,
