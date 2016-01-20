@@ -44,6 +44,12 @@ var ViewActions = {
     })
   },
 
+  toggleShareExpand() {
+    Dispatcher.handleViewAction({
+      type: 'TOGGLE_SHARE_EXPAND'
+    })
+  },
+
   showLegend() {
     Dispatcher.handleViewAction({
       type: 'LEGEND_SHOW'

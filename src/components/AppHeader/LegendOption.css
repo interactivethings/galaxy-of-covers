@@ -13,6 +13,15 @@
   }
 }
 
+@media (--narrow-view) {
+  .AppHeader--legendoption {
+    display: block;
+    width: inherit;
+    margin: auto;
+    padding: 10px 0px 10px;
+  }
+}
+
 .legenddisplayname {
   composes: half-opaque-white from '../Constants.css';
   font-size: 14px;

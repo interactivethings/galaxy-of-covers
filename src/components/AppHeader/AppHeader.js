@@ -6,6 +6,7 @@ import css from 'components/AppHeader/AppHeader.css';
 import shareImage from '!file?name=[name].[ext]!assets/share_img.png';
 
 var ViewActions = require('actions/ViewActions')
+,   HeaderMenu = require('components/AppHeader/HeaderMenu')
 ,   Legend = require('components/AppHeader/Legend')
 ,   GenreHeader = require('components/AppHeader/GenreHeader')
 ,   AboutPage = require('components/AppHeader/AboutPage')
@@ -36,12 +37,18 @@ var AppHeader = React.createClass({
     ViewActions.highlightAttribute(attributeName)
   },
 
+  expandShare() {
+    ViewActions.toggleShareExpand();
+  },
+
   render() {
     var dynamicState = this.props.dynamicState
     ,   inDetail = dynamicState.get('inDetail')
     ,   legendOpen = dynamicState.get('legendOpen')
     ,   aboutOpen = dynamicState.get('aboutOpen')
     ,   highlightedAttribute = dynamicState.get('highlightedAttribute')
+    ,   aboutShareOpen = dynamicState.get('aboutShareOpen');
+
 
     let detailData, detailGenre;
     if ((detailData = dynamicState.get('detailOverlay')) || (detailData = dynamicState.get('hoveredGalaxySong'))) {
@@ -49,51 +56,34 @@ var AppHeader = React.createClass({
     }
 
     return (
-      <div className="AppHeader" >
-        <div className="AppHeader--navigation">
-          <div className="AppHeader--back" onClick={this.navigateBack} >
-            {inDetail ? (
+      <div className='AppHeader' >
+        <div className='AppHeader--navigation'>
+          <div className='AppHeader--back' onClick={this.navigateBack} >
+            {inDetail && 
               <div className={`${css.appheaderbackarrow} icon-arrow-back`} />
-            ) : ('')}
-            <h1 className="AppHeader--title" >Galaxy of Covers</h1>
+            }
+            <h1 className='AppHeader--title' >Galaxy of Covers</h1>
           </div>
-          <div className="AppHeader--menu" >
-            <div className={`${css.appheadermenuoption} ` + (legendOpen ? 'AppHeader--menuoption__active' : '')} onClick={this.toggleLegend} >
-              <h2 className="AppHeader--navlabel">Legend</h2>
-              <span className={"AppHeader-icon " + (legendOpen ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
-            </div>
-            <div className={`${css.appheadermenuoption} ` + (aboutOpen ? 'AppHeader--menuoption__active' : '')} onClick={this.toggleAbout} >
-              <h2 className="AppHeader--navlabel">About</h2>
-              <span className={"AppHeader-icon " + (aboutOpen ? "icon-keyboard-arrow-up" : "icon-keyboard-arrow-down")} />
-            </div>
-            <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('Galaxy of Covers – Honoring the evolution of the 50 most popular cover songs of all time.')}&url=${encodeURIComponent('https://lab.interactivethings.com/galaxy-of-covers')}&via=${'ixt'}`}
-              target='_blank'
-            >
-              <div className={`AppHeader-icon ${css.appheadershareicon} icon-twitter`} />
-            </a>
-            <a
-              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://lab.interactivethings.com/galaxy-of-covers')}`}
-              target='_blank'
-            >
-              <div className={`AppHeader-icon ${css.appheadershareicon} icon-facebook`} />
-            </a>
-            <a
-              onClick={() => {
-                if (typeof PinUtils !== 'undefined' && typeof PinUtils.pinOne === 'function') {                
-                  PinUtils.pinOne({
-                    media: location.href + shareImage,
-                    url: 'https://lab.interactivethings.com/galaxy-of-covers',
-                    description: 'Galaxy of Covers – Honoring the evolution of the 50 most popular cover songs of all time.'
-                  });
-                }
-              }}
-            >
-              <div className={`AppHeader-icon ${css.appheadershareicon} icon-pinterest`} />
-            </a>
-          </div>
+          {this.props.layout.stackedHeader &&
+            <div className={`${css.AppHeaderAboutShareIcon} ${aboutShareOpen ? 'icon-close' : 'icon-dots-three-vertical'}`} onClick={this.expandShare}></div>
+          }
+          <HeaderMenu
+            legendOpen={legendOpen}
+            toggleLegend={this.toggleLegend}
+            aboutOpen={aboutOpen}
+            toggleAbout={this.toggleAbout}
+            isStacked={this.props.layout.stackedHeader}
+            aboutShareOpen={aboutShareOpen}
+          />
         </div>
-        <Legend isOpen={legendOpen} inDetail={inDetail} highlighted={highlightedAttribute} onClick={this.attributeLegendClick} state={this.props.dynamicState} />
+        <Legend
+          isOpen={legendOpen}
+          inDetail={inDetail}
+          highlighted={highlightedAttribute}
+          onClick={this.attributeLegendClick}
+          state={this.props.dynamicState}
+          layout={this.props.layout}
+        />
         <GenreHeader
           isVisible={!aboutOpen}
           genreCount={this.props.genreCount}

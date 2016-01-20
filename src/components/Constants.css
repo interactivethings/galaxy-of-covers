@@ -7,6 +7,16 @@
   opacity: 0.5;
 }
 
+.AppHeaderIcon {
+  composes: half-opaque-white;
+  line-height: 1.2em;
+  vertical-align: middle;
+}
+
 @value z-header 1;
 @value z-nav 2;
 @value z-about 3;
+
+@value bp-stacked 850px;
+
+@custom-media --narrow-view (max-width: 850px);

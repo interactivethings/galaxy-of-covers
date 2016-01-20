@@ -14,11 +14,12 @@ var LegendOption = React.createClass({
   },
 
   render() {
-    var { isInactive, viewName, iconName, optionLabel, ...other } = this.props
+    let { isInactive, viewName, iconName, optionLabel, ...other } = this.props;
+
     return (
       <div
         {...other}
-        className={"AppHeader--legendoption " + (isInactive ? 'AppHeader--legendoption__inactive' : '')}
+        className={`AppHeader--legendoption ${isInactive ? 'AppHeader--legendoption__inactive' : ''}`}
         onClick={this.onOptionClick}
       >
         <LegendIcon icon={this.props.viewName + '_' + this.props.attributeName} />

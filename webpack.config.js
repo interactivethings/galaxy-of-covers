@@ -33,7 +33,7 @@ var loaders = {
 
   development: {
     css: {
-      // loader: 'style!css?modules&localIdentName=[name]-[local]-[hash:base64:5]!postcss'
+      // loader: 'style!css?modules&localIdentName=[name]-[local]-[hash:base64:5]!postcss' // For hashed names. DON'T USE, because many CSS classes are included in JS as plain text
       loader: 'style!css?modules&localIdentName=[local]!postcss'
     }
   },
@@ -62,7 +62,13 @@ var webpackConfig = {
       ]
     },
     postcss: [
-      require('postcss-nested'),
+      require('postcss-nested')(),
+      require('postcss-custom-media')({
+        extensions: {
+          '--narrow-view': '(max-width: 850px)'
+        }
+      }),
+      require('postcss-clearfix')(),
       require('autoprefixer')({ browsers: ['last 2 versions'] })
     ]
   },

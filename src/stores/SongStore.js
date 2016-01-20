@@ -30,6 +30,7 @@ setStateObj({
   inDetail: false,
   legendOpen: false,
   aboutOpen: false,
+  aboutShareOpen: false,
   highlightedAttribute: null,
   filteredGenre: null,
   genreList: [],
@@ -128,6 +129,15 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
     setStateObj(optionProps)
   },
 
+  aboutShareToggle() {
+    console.log(state.get('aboutShareOpen'));
+    setStateObj({
+      aboutShareOpen: !state.get('aboutShareOpen'),
+      legendOpen: false,
+      aboutOpen: false
+    });
+  },
+
   toggleFilteredGenre(genre) {
     if (state.get('filteredGenre') === genre) genre = null
     setState('filteredGenre', genre)
@@ -194,6 +204,9 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
         break
       case 'ABOUT_SHOW':
         this.navMenuToggle('aboutOpen', true)
+        break
+      case 'TOGGLE_SHARE_EXPAND':
+        this.aboutShareToggle();
         break
       case 'ATTRIBUTE_HIGHLIGHT':
         break // TODO: This line deactivates the effect of clicking on a legend item

@@ -19,7 +19,7 @@ var Layout = {
     return supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop
   },
 
-  getLayout() {
+  getLayout(windowSize) {
     var state = SongStore.getState()
     ,   {width, height} = this.getWindowDimensions()
     ,   lyt = {}
@@ -27,6 +27,8 @@ var Layout = {
     ,   legendBarHeight = 20
     ,   closedLegendHeight = titleHeight + legendBarHeight
     ,   openLegendHeight = 180
+    // Breakpoint defined here
+    ,   stackedHeader = windowSize[0] < 850
 
     if (state.get('inDetail')) {
       lyt =
@@ -39,6 +41,7 @@ var Layout = {
       , tlHighline: state.get('legendOpen') ? closedLegendHeight + openLegendHeight : closedLegendHeight
       , tlBase: height * (height > 1000 ? 7 / 8 : height > 500 ? 15 / 16 : 19 / 20)
       , tlLRPad: 100
+      , stackedHeader: stackedHeader
       }
       lyt.tlHeader = lyt.tlHighline + height * (height > 1000 ? 1 / 12 : 1 / 16)
       lyt.tlTop = lyt.tlHighline + (lyt.tlBase - lyt.tlHighline) * (height > 1000 ? 1 / 5 : height > 500 ? 1 / 6 : 1 / 8)
@@ -49,6 +52,7 @@ var Layout = {
       , legendBarHeight: legendBarHeight
       , headerWidth: width
       , bodyWidth: width
+      , stackedHeader: stackedHeader
       }
     }
 

@@ -1,0 +1,43 @@
+.DropdownToggle {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-left: 1em;
+}
+
+@media (--narrow-view) {
+  .DropdownToggle {
+    border-top: 1px solid #979797;
+    display: block;
+    text-align: center;
+    padding: 1em 0em;
+    margin-left: 0;
+
+    &:last-child {
+      border-bottom: 1px solid #979797;
+    }
+  }
+}
+
+.DropdownToggleLabel {
+  composes: half-opaque-white from '../Constants.css';
+  color: #fff;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 22px;
+  margin: 0;
+  vertical-align: middle;
+
+  .MenuOptionActive & {
+    opacity: 1;
+  }
+}
+
+.DropdownToggleIcon {
+  composes: AppHeaderIcon from '../Constants.css';
+
+  .MenuOptionActive & {
+    opacity: 1;
+  }
+}

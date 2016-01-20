@@ -2,6 +2,7 @@
 @value z-header, z-nav from '../Constants.css';
 
 .AppHeader {
+  box-sizing: border-box;
   font-size: 24px;
   left: 0;
   position: fixed;
@@ -12,22 +13,36 @@
 
 .AppHeader--navigation {
   background-color: c-header-bg;
+  clear: fix;
   padding: 0.62em 0;
   position: relative;
   user-select: none;
   z-index: z-nav;
 }
 
+@media (--narrow-view) {
+  .AppHeader--navigation {
+    padding-bottom: 0;
+  }
+}
+
 .AppHeader--back {
+  display: inline-block;
+  float: left;
   cursor: pointer;
   display: inline-block;
-  padding-left: 1em;
+  margin: 0em 1em;
+}
+
+@media (--narrow-view) {
+  .AppHeader--back {
+    float: none;
+  }
 }
 
 .appheaderbackarrow {
-  composes: half-opaque-white from '../Constants.css';
+  composes: AppHeaderIcon from '../Constants.css';
   display: inline-block;
-  vertical-align: middle;
   margin-right: 0.8em;
 }
 
@@ -42,47 +57,11 @@
   vertical-align: middle;
 }
 
-.AppHeader--menu {
+.AppHeaderAboutShareIcon {
+  color: white;
   display: inline-block;
   float: right;
-  padding-right: 0.7em;
-  position: relative;
-}
-
-.appheadermenuoption {
-  composes: half-opaque-white from '../Constants.css';
-  cursor: pointer;
-  display: inline-block;
-  font-size: 0.8em;
-  margin-left: 1em;
-
-  &.AppHeader--menuoption__active {
-    opacity: 1;
-  }
-}
-
-.AppHeader--navlabel {
-  color: #fff;
-  display: inline-block;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 22px;
-  margin: 0;
-  vertical-align: middle;
-}
-
-.AppHeader-icon {
   line-height: 1.2em;
+  margin: 0em 1em;
   vertical-align: middle;
-}
-
-.appheadershareicon {
-  composes: half-opaque-white from '../Constants.css';
-  cursor: pointer;
-  display: inline-block;
-  margin-left: 1em;
-
-  &:hover {
-    opacity: 1;
-  }
 }

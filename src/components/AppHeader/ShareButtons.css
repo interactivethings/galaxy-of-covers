@@ -1,0 +1,18 @@
+.headerShareButton {
+  box-sizing: border-box;
+  composes: AppHeaderIcon from '../Constants.css';
+  cursor: pointer;
+  display: inline-block;
+  padding-left: 1em;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+@media (--narrow-view) {
+  .headerShareButton {
+    text-align: center;
+    width: 33%;
+  }
+}

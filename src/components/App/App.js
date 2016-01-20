@@ -27,8 +27,13 @@ var App = React.createClass({
   getInitialState() {
     return {
       appState: SongStore.getState(),
-      scrollY: window.pageYOffset
+      scrollY: window.pageYOffset,
+      windowSize: this.getWindowSize()
     }
+  },
+
+  getWindowSize() {
+    return [window.innerWidth, window.innerHeight];
   },
 
   handleChange() {
@@ -47,7 +52,7 @@ var App = React.createClass({
 
   onWindowResize() {
     this.setState({
-      windowSize: [window.innerWidth, window.innerHeight]
+      windowSize: this.getWindowSize()
     })
   },
 
@@ -71,11 +76,11 @@ var App = React.createClass({
     ,   scrollY = this.state.scrollY
     ,   genreCount = SongStore.getGenreCount()
     ,   genreList = SongStore.getGenreList()
-    ,   componentLayout = Layout.getLayout()
+    ,   componentLayout = Layout.getLayout(this.state.windowSize)
 
     return (
       <div className="AppBox">
-        <AppHeader genreCount={genreCount} genreList={genreList} scales={galaxyScales} dynamicState={state} layout={componentLayout} />
+        <AppHeader genreCount={genreCount} genreList={genreList} scales={galaxyScales} dynamicState={state} layout={componentLayout} windowSize={this.state.windowSize} />
         {state.get('inDetail') ? <DetailHeader songData={detailData} state={state} layout={componentLayout} /> : null}
         <MainView displayObjects={displayObjects} dynamicState={state} scrollY={scrollY} layout={componentLayout} />
       </div>

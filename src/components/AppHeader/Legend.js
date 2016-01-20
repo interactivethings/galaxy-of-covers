@@ -17,13 +17,13 @@ var basePairs =
 var Legend = React.createClass({
 
   render() {
-    const {isOpen, inDetail, highlighted, onClick} = this.props
+    const {isOpen, inDetail, highlighted, onClick, layout} = this.props
 
     let pairs = basePairs;
     let detailData = this.props.state.get('detailOverlay') || this.props.state.get('hoveredGalaxySong');
 
     return (
-      <div className={"AppHeader--legend " + (this.props.isOpen ? 'AppHeader--legend__open' : '')}>
+      <div className={"AppHeader--legend " + (this.props.isOpen ? 'AppHeader--legend__open' : '')} style={{ maxHeight: window.innerHeight - layout.titleHeight }}>
       {
         pairs.map((pair) => {
           var optionName = pair[0]
