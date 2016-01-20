@@ -23,17 +23,18 @@ var Layout = {
     var state = SongStore.getState()
     ,   {width, height} = this.getWindowDimensions()
     ,   lyt = {}
-    ,   titleHeight = 58
-    ,   legendBarHeight = 20
-    ,   closedLegendHeight = titleHeight + legendBarHeight
-    ,   openLegendHeight = 180
     // Breakpoint defined here
     ,   stackedHeader = windowSize[0] < 850
+    ,   titleHeight = 58
+    ,   menuHeight = stackedHeader ? (state.get('aboutShareOpen') ? 205 : 128) : titleHeight
+    ,   legendBarHeight = 20
+    ,   closedLegendHeight = menuHeight + legendBarHeight
+    ,   openLegendHeight = 180
 
     if (state.get('inDetail')) {
       lyt =
       { headerHeight: closedLegendHeight
-      , titleHeight: titleHeight
+      , titleHeight: menuHeight
       , legendBarHeight: legendBarHeight
       , headerWidth: width
       , bodyHeight: height
@@ -48,7 +49,7 @@ var Layout = {
     } else {
       lyt =
       { headerHeight: closedLegendHeight
-      , titleHeight: titleHeight
+      , titleHeight: menuHeight
       , legendBarHeight: legendBarHeight
       , headerWidth: width
       , bodyWidth: width

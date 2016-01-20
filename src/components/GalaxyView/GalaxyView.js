@@ -99,6 +99,10 @@ var GalaxyView = {
 
     data.forEach((songData, i) => {
       let {x, y} = layout.positions[i];
+
+      // Adjust for the presence of the header
+      y += uiLayout.headerHeight;
+
       songData.galaxyX = x;
       songData.galaxyY = y;
       songData.versions.forEach((v) => {
@@ -136,7 +140,8 @@ var GalaxyView = {
         .attr('class', 'ViewWrapper')
     }
 
-    viewWrapper.attr('transform', `translate(0, ${layout.headerHeight})`)
+    // DO NOT TRANSLATE THE VIEW WRAPPER - YOU WILL BREAK THE ANIMATION INTO THE DETAIL VIEW
+    viewWrapper.attr('transform', `translate(0, 0)`)
 
     var systems = viewWrapper.selectAll('.SongSystem')
       .data(data, (d) => d.songId)

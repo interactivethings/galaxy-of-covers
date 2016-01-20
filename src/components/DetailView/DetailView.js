@@ -72,7 +72,9 @@ var DetailView = {
       .on('mouseleave', null)
       .on('click', null)
 
-    systems.filter((d) => d.songId !== data.songId)
+    var excludedSystems = systems.filter((d) => d.songId !== data.songId);
+
+    excludedSystems
       .transition()
       .duration(300)
       .style('opacity', 0)
