@@ -17,44 +17,19 @@ var ViewActions = require('actions/ViewActions')
 var DetailView = {
 
   applyDetailLayout(datum, state, layout, yOffset) {
-    let timelineDim;
-    let timelineYScale;
-    let timelineXScale;
-    let energyDomain = [0, 1]; // DataUtil.getMinMax(datum.versions, (item) => item.energy || 0)
-    let timeDomain = DataUtil.getMinMax(datum.versions, (item) => item.parsedDate);
-
-    if (layout.stackedHeader) {
-      timelineDim = {
-        x0: layout.tlSidePad,
-        x1: window.innerWidth - layout.tlSidePad,
-        y0: yOffset + layout.tlTop,
-        y1: yOffset + 1000
-      };
-      timelineXScale = d3.scale.linear().domain(energyDomain).range([timelineDim.x0, timelineDim.x1]);
-      timelineYScale = d3.time.scale().domain(timeDomain).range([timelineDim.y0, timelineDim.y1]);
-    } else {
-      timelineDim = {
-        x0: layout.tlSidePad,
-        x1: window.innerWidth - layout.tlSidePad,
-        y0: yOffset + layout.tlTop,
-        y1: yOffset + layout.tlBase
-      };
-      timelineXScale = d3.time.scale().domain(timeDomain).range([timelineDim.x0, timelineDim.x1]);
-      timelineYScale = d3.scale.linear().domain(energyDomain).range([timelineDim.y1, timelineDim.y0]);
-    }
+    var highlineY = yOffset + layout.tlHighline
+    ,   baselineY = yOffset + layout.tlBase
+    ,   timelineTop = yOffset + layout.tlTop
+    ,   energyDomain = [0, 1] // DataUtil.getMinMax(datum.versions, (item) => item.energy || 0)
+    ,   timelineYScale = d3.scale.linear().domain(energyDomain).range([baselineY, timelineTop])
+    ,   timeDomain = DataUtil.getMinMax(datum.versions, (item) => item.parsedDate)
+    ,   timelineXScale = d3.time.scale().domain(timeDomain).range([layout.tlSidePad, window.innerWidth - layout.tlSidePad]);
 
     datum.versions.forEach((versionData) => {
-      if (layout.stackedHeader) {
-        versionData.timelineCX = timelineXScale(versionData.energy);
-        versionData.timelineCY = timelineYScale(versionData.parsedDate);
-        versionData.timelineBaseY = timelineYScale(versionData.parsedDate);
-        versionData.timelineBaseX = timelineDim.x0;
-      } else {      
-        versionData.timelineCX = timelineXScale(versionData.parsedDate);
-        versionData.timelineCY = timelineYScale(versionData.energy);
-        versionData.timelineBaseY = timelineDim.y1;
-        versionData.timelineBaseX = timelineXScale(versionData.parsedDate);
-      }
+      versionData.timelineCX = timelineXScale(versionData.parsedDate);
+      versionData.timelineCY = timelineYScale(versionData.energy);
+      versionData.timelineBaseY = baselineY;
+      versionData.timelineBaseX = timelineXScale(versionData.parsedDate);
 
       if (versionData.isCircle) {
         versionData.tailpt1 = [-versionData.timelinePlanetRadius, 0]
@@ -75,11 +50,10 @@ var DetailView = {
 
     return {
       yOffset: yOffset
-    , baselineY: timelineDim.y1
+    , baselineY: baselineY
     , timelineXScale: timelineXScale
-    , timelineYScale: timelineYScale
     , layoutWidth: layout.bodyWidth
-    , layoutHeight: Math.max(layout.bodyHeight, timelineDim.y1 + 100)
+    , layoutHeight: layout.bodyHeight
     }
   },
 
@@ -132,7 +106,7 @@ var DetailView = {
       .remove()
   },
 
-  render(node, data, state, dimensions, layout) {
+  render(node, data, state, dimensions) {
     var d3Node = d3.select(node)
 
     d3Node
@@ -241,8 +215,7 @@ var DetailView = {
     viewWrapper.call(AxisStar, dimensions.baselineY)
 
     // axis
-    let timeScale = layout.stackedHeader ? dimensions.timelineYScale : dimensions.timelineXScale;
-    viewWrapper.call(Axis, dimensions.baselineY, timeScale.domain(), timeScale.range(), data.versionsFilteredIn.map((d) => timeScale(d.parsedDate)))
+    viewWrapper.call(Axis, dimensions.baselineY, dimensions.timelineXScale.domain(), dimensions.timelineXScale.range(), data.versionsFilteredIn.map((d) => dimensions.timelineXScale(d.parsedDate)))
   },
 
   onPlanetMouseEnter(state, d) {
