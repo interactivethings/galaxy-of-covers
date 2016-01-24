@@ -24,9 +24,9 @@ var Layout = {
     ,   {width, height} = this.getWindowDimensions()
     ,   lyt = {}
     // Breakpoint defined here
-    ,   narrowScreen = windowSize[0] < 850
+    ,   stackedHeader = windowSize[0] < 850
     ,   titleHeight = 58
-    ,   menuHeight = narrowScreen ? (state.get('aboutShareOpen') ? 205 : 128) : titleHeight
+    ,   menuHeight = stackedHeader ? (state.get('aboutShareOpen') ? 205 : 128) : titleHeight
     ,   legendBarHeight = 20
     ,   closedLegendHeight = menuHeight + legendBarHeight
     ,   openLegendHeight = 180
@@ -39,10 +39,10 @@ var Layout = {
       , headerWidth: width
       , bodyHeight: height
       , bodyWidth: width
-      , tlHighline: state.get('legendOpen') ? (closedLegendHeight + openLegendHeight) : closedLegendHeight
+      , tlHighline: state.get('legendOpen') ? closedLegendHeight + openLegendHeight : closedLegendHeight
       , tlBase: height * (height > 1000 ? 7 / 8 : height > 500 ? 15 / 16 : 19 / 20)
-      , tlSidePad: 100
-      , stackedHeader: narrowScreen
+      , tlLRPad: 100
+      , stackedHeader: stackedHeader
       }
       lyt.tlHeader = lyt.tlHighline + height * (height > 1000 ? 1 / 12 : 1 / 16)
       lyt.tlTop = lyt.tlHighline + (lyt.tlBase - lyt.tlHighline) * (height > 1000 ? 1 / 5 : height > 500 ? 1 / 6 : 1 / 8)
@@ -53,7 +53,7 @@ var Layout = {
       , legendBarHeight: legendBarHeight
       , headerWidth: width
       , bodyWidth: width
-      , stackedHeader: narrowScreen
+      , stackedHeader: stackedHeader
       }
     }
 

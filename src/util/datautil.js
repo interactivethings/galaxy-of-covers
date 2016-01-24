@@ -96,19 +96,6 @@ var DataUtil = {
     };
   },
 
-  once(func) {
-    var fired = false;
-    var memo = null;
-    return function() {
-      if (!fired) {
-        memo = func.apply(this, arguments);
-        func = null;
-        fired = true;
-      }
-      return memo;
-    };
-  },
-
   parseDate: parseDate,
 
   makeScaleSet(bounds) {

@@ -1,31 +1,30 @@
 module.exports = {
 
   BaselinePoints(d) {
-    var baseX = d.timelineBaseX
+    var x = d.timelineCX
     ,   baseY = d.timelineBaseY
     ,   p1 = d.tailpt1
     ,   p2 = d.tailpt2
     ,   pts = [
-      [baseX, baseY],
-      [baseX + p1[0], baseY + p1[1]],
-      [baseX + p2[0], baseY + p2[1]],
-      [baseX, baseY]
+      [x, baseY],
+      [x + p1[0], baseY + p1[1]],
+      [x + p2[0], baseY + p2[1]],
+      [x, baseY]
     ]
     return pts.join(' ')
   },
 
   ExtendedPoints(d) {
-    var baseX = d.timelineBaseX
-    ,   x = d.timelineCX
+    var x = d.timelineCX
     ,   baseY = d.timelineBaseY
     ,   y = d.timelineCY
     ,   p1 = d.tailpt1
     ,   p2 = d.tailpt2
     ,   pts = [
-          [baseX, baseY],
+          [x, baseY],
           [x + p1[0], y + p1[1]],
           [x + p2[0], y + p2[1]],
-          [baseX, baseY]
+          [x, baseY]
         ]
     return pts.join(' ')
   }
