@@ -1,6 +1,6 @@
 {
-  "name": "1408-data-visualization-reference",
-  "version": "0.0.1",
+  "name": "Galaxy of Covers",
+  "version": "1.0.1",
   "description": "Blue sky vis project prototype",
   "private": true,
   "main": "index.html",
