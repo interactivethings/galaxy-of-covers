@@ -79,13 +79,13 @@ var MainView = React.createClass({
 
       if (GalaxyView.isActive(node)) {
         DetailView.transitionIn(node, detailData, state, dimensions, () => {
-          DetailView.render(node, detailData, state, dimensions)
+          DetailView.render(node, detailData, state, dimensions, this.props.layout)
         });
       } else if (DetailView.isActive(node)) {
-        DetailView.render(node, detailData, state, dimensions)
+        DetailView.render(node, detailData, state, dimensions, this.props.layout)
       } else {
         // in transition, do some weird hack to make sure view is correct
-        DetailView.render(node, detailData, state, dimensions)
+        DetailView.render(node, detailData, state, dimensions, this.props.layout)
       }
     }
 
