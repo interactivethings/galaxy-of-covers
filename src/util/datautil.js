@@ -102,19 +102,19 @@ var DataUtil = {
     var orbitRadius = d3.time.scale().domain([new Date(1929, 1, 1), new Date()]).range([4, Constants.SYSTEM_RADIUS])
     ,   planetRadius = d3.scale.linear().domain([0, 100]).range([3, 18])
     ,   planetColor = d3.scale.ordinal().domain(bounds.genres).range(['#FE839F', '#E493CB', '#B0ABE9', '#67BFEC', '#0ACED4', '#37D5A9', '#7ED679', '#BDD053', '#F8C24B', '#FB826F'])
-    // rotation ranges from 270 to 450 degrees
+        // rotation ranges from 270 to 450 degrees
     ,   rotation = d3.scale.linear().domain([0, 1]).range([0, -90])
     ,   timelineRotation = d3.scale.linear().domain([0, 1]).range([0, -90])
-    // rotation ranges from 0 to 360 degrees
-  //  ,   rotation = d3.scale.linear().domain([0, 1]).range([0, 360])
-    ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5 / 1600, 2.5 / 1600]) // time-based animation speed
-//    ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5 / 8, 2.5 / 8]) // frame-based animation speed
+        // rotation ranges from 0 to 360 degrees
+//  ,   rotation = d3.scale.linear().domain([0, 1]).range([0, 360])
+    ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5 / 3200, 2.5 / 3200]) // time-based animation speed
+//  ,   speed = d3.scale.linear().domain(bounds.energyRange).range([0.5 / 8, 2.5 / 8]) // frame-based animation speed
     ,   timelinePlanetRadius = d3.scale.linear().domain([0, 100]).range([3, 50])
     ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([-1, 8, 7, 6, 5, 4, 3]) // reverse scale
-//    ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([9])
+//  ,   edgesScale = d3.scale.quantize().domain(bounds.speechinessRange).range([9])
     ,   blinkScale = function(bpm) { return bpm * 2 * Math.PI / 60000 } // time-based animation speed (blink rate is equal to BPM)
-//    ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2 / 600, 14 / 600]) // time-based animation speed (old parameters)
-//    ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2 / 8, 14 / 8]) // frame-based animation speed
+//  ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2 / 600, 14 / 600]) // time-based animation speed (old parameters)
+//  ,   blinkScale = d3.scale.linear().domain(bounds.tempoRange).range([2 / 8, 14 / 8]) // frame-based animation speed
 
     return {
       getOrbitRadiusScale: () => orbitRadius,
