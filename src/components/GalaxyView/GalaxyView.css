@@ -34,8 +34,8 @@
 
 .SongSystem--orbit {
   fill: none;
-  stroke: #aaa;
-  stroke-width: 0.5;
+  stroke: #fff;
+  stroke-width: .1;
 }
 
 .SystemDetailText {
