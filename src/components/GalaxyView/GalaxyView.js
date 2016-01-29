@@ -147,15 +147,14 @@ var GalaxyView = {
       .data(data, (d) => d.songId)
 
     if (state.get('hoveredSystemId')) {
-      systems.attr('opacity', (d) => d.systemIsHovered ? 1 : 0.8)
+      systems.attr('class', (d) => d.systemIsHovered ? 'SongSystem SongSystem__hovered' : 'SongSystem')
     } else {
-      systems.attr('opacity', 0.8)
+      systems.attr('class', 'SongSystem')
     }
 
     var enterSystems = systems.enter()
       .append('g')
       .attr('class', 'SongSystem')
-      .attr('opacity', 0.8)
 
     systems.exit()
       .attr('opacity', 0)

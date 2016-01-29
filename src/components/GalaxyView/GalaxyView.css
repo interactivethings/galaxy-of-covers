@@ -4,6 +4,11 @@
 
 .SongSystem {
   cursor: pointer;
+  opacity: 0.8;
+}
+
+.SongSystem__hovered {
+  opacity: 1;
 }
 
 .SongSystem--background__transparent {
