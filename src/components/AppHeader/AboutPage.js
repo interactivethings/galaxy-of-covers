@@ -38,10 +38,10 @@ var ComponentName = React.createClass({
           </ul>
 
           <h4>Technology</h4>
-          <p>The visualization is hand crafted with standard web technologies HTML, CSS, JavaScript using open source software including Bourbon, Catalyst, D3, React, among others. Please refer to our <a href="https://github.com/interactivethings/galaxy-of-covers">Github repository</a> for more details.</p>
+          <p>The visualization is hand crafted with standard web technologies HTML, CSS, JavaScript using open source software including D3, React, Webpack among others. Please refer to our <a href="https://github.com/interactivethings/galaxy-of-covers">Github repository</a> for more details.</p>
 
           <h4>Credits</h4>
-          <p>Galaxy of Covers has been created by Interactive Things, a User Experience and Data Visualization studio based in Zürich, Switzerland. Research, concept, design, and development was done by Tania Boa, Ilya Boyandin, Mark Hintz, Jan Wächter, and Benjamin Wiederkehr.</p>
+          <p>Galaxy of Covers has been created by <a href="https://www.interactivethings.com/">Interactive Things</a>, a digital product design studio based in Zürich, Switzerland. Research, concept, design, and development was done by Tania Boa, Ilya Boyandin, Mark Hintz, Jan Wächter, and Benjamin Wiederkehr.</p>
         </div>
       </div>
     )
