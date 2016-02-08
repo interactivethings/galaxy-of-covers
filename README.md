@@ -28,7 +28,7 @@ The dataset that drives this application is retrieved from the following sources
 
 ### Technology
 
-The visualization is hand crafted with standard web technologies HTML, CSS, JavaScript using open source software including D3, React, Webpack among others. Please refer to our [https://github.com/interactivethings/galaxy-of-covers](Github repository) for more details.
+The visualization is hand crafted with standard web technologies HTML, CSS, JavaScript using open source software including D3, React, Webpack among others. Please refer to our [GitHub repository](https://github.com/interactivethings/galaxy-of-covers) for more details.
 
 
 ### Credits
