@@ -1,0 +1,5 @@
+.DS_Store
+
+# Don't delete these on the destination
+.htaccess
+Robots.txt

@@ -51,7 +51,7 @@ build: clean install
 	NODE_ENV=$(NODE_ENV) $$(npm bin)/webpack --colors --progress
 
 deploy: build
-	rsync -avz build/ --exclude=.DS_Store interact@interactivethings.com:/home/interact/www/lab.interactivethings.com/galaxy-of-covers
+	rsync -avz --delete --exclude-from=.rsyncexclude interact@interactivethings.com:/home/interact/www/lab.interactivethings.com/galaxy-of-covers
 
 clean:
 	rm -rf build
