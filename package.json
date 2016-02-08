@@ -1,8 +1,9 @@
 {
   "name": "galaxy-of-covers",
   "version": "1.0.2",
-  "description": "Blue sky vis project prototype",
+  "description": "Honoring the evolution of the 50 most popular cover songs of all time.",
   "private": true,
+  "license": "BSD-3-Clause",
   "main": "index.html",
   "dependencies": {
     "cheerio": "^0.18.0",
@@ -79,5 +80,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "repository": "https://bitbucket.org/interactivethings/l1408-data-visualization-reference"
+  "repository": "https://github.com/interactivethings/galaxy-of-covers"
 }

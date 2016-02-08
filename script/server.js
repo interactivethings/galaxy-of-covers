@@ -63,7 +63,7 @@ function server(options, config) {
     if (err) { throw err };
     console.log(clc.erase.screen);
     console.log(clc.red(banner));
-    console.log(clc.red('> > > >  Starterkit dev server running at ' + clc.underline('http://' + options.host + ':' + options.port) + '  < < < <') + '\n');
+    console.log(clc.red('> > > >  Galaxy of Covers dev server running at ' + clc.underline('http://' + options.host + ':' + options.port) + '  < < < <') + '\n');
   });
 };
 
