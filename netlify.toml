@@ -1,0 +1,6 @@
+[build]
+  command = "make build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "10.5.0"
