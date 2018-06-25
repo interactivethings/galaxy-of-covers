@@ -47,7 +47,7 @@ update: install
 server: install
 	NODE_ENV=$(NODE_ENV) $$(npm bin)/nodemon -q -i src -i data -i prototypes -i build script/server.js
 
-build: clean install
+build: clean node_modules
 	NODE_ENV=$(NODE_ENV) $$(npm bin)/webpack --colors --progress
 
 deploy: build
