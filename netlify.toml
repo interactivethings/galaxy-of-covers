@@ -1,5 +1,5 @@
 [build]
-  command = "make build"
+  command = "make build env=production"
   publish = "build"
 
 [build.environment]
