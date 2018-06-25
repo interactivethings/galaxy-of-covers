@@ -20,19 +20,19 @@ var HeaderMenu = React.createClass({
           <DropdownToggle open={aboutOpen} onClick={toggleAbout} >About</DropdownToggle>
         }
         {/* Share Stuff */}
-        {(!isStacked || aboutShareOpen) && 
+        {(!isStacked || aboutShareOpen) &&
           <div className={`${css.appheadersharediv}`}>
             <TwitterShare
               text={'Galaxy of Covers – Honoring the evolution of the 50 most popular cover songs of all time.'}
-              url={'https://lab.interactivethings.com/galaxy-of-covers'}
+              url={'https://galaxy-of-covers.interactivethings.io'}
               via={'ixt'}
             />
             <FacebookShare
-              url={'https://lab.interactivethings.com/galaxy-of-covers'}
+              url={'https://galaxy-of-covers.interactivethings.io'}
             />
             <PinterestShare
               media={location.href + shareImage}
-              url={'https://lab.interactivethings.com/galaxy-of-covers'}
+              url={'https://galaxy-of-covers.interactivethings.io'}
               description={'Galaxy of Covers – Honoring the evolution of the 50 most popular cover songs of all time.'}
             />
           </div>

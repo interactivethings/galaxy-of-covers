@@ -115,7 +115,7 @@ var webpackConfig = {
     entry: {
       app: resolveHere("src/index")
     },
-    publicPath: "https://lab.interactivethings.com/galaxy-of-covers/",
+    publicPath: "https://galaxy-of-covers.interactivethings.io/",
     plugins: [
       new webpack.DefinePlugin({
         __DEV__: JSON.stringify(false),
