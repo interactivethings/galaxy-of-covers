@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react')
-,   Immutable = require('Immutable')
+,   Immutable = require('immutable')
 
 require('assets/icomoon/style.css')
 require('components/App/App.css')

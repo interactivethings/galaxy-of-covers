@@ -4,7 +4,7 @@ var AppDispatcher = require('dispatcher/AppDispatcher')
 ,   reqwest = require('reqwest')
 ,   {EventEmitter} = require('events')
 ,   LoadActions = require('actions/LoadActions')
-,   Immutable = require('Immutable')
+,   Immutable = require('immutable')
 
 var Constants = require('Constants')
 ,   DataUtil = require('util/datautil')
@@ -148,7 +148,7 @@ var SongStore = DataUtil.extend({}, EventEmitter.prototype, {
       audioRef.pause();
       audioRef = new Audio(data.spotify.preview);
       audioRef.setAttribute('volume', 1);
-      audioRef.play();      
+      audioRef.play();
     }
 
     if (data !== state.get('detailOverlay')) {
