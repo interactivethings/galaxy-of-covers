@@ -9,8 +9,7 @@ let
 
   nodejs = pkgs.nodejs-10_x;
 
-in pkgs.stdenv.mkDerivation {
-  name = "galaxy-of-covers";
+in pkgs.mkShell {
   buildInputs = [
     nodejs
   ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.darwin.apple_sdk.frameworks.CoreServices ];
