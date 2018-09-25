@@ -7,7 +7,7 @@ require('components/DetailView/DetailHeader.css')
 var DetailHeader = React.createClass({
 
   getSongInfoString(songInfo) {
-    var timeDifference = (new Date()).getFullYear() - songInfo.versions[0].songYear
+    var timeDifference = (new Date()).getFullYear() - d3.min(songInfo.versions, function(d) { return d.songYear })
     return songInfo.versions.length + ' covers / ' + timeDifference + ' years old'
   },
 
