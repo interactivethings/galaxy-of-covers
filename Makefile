@@ -50,9 +50,6 @@ server: install
 build: clean node_modules
 	NODE_ENV=$(NODE_ENV) $$(npm bin)/webpack --colors --progress
 
-deploy: build
-	rsync -avz --delete --exclude-from=.rsyncexclude ./build/ interact@interactivethings.com:/home/interact/www/lab.interactivethings.com/galaxy-of-covers
-
 clean:
 	rm -rf build
 
