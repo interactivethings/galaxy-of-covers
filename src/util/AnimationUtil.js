@@ -11,8 +11,9 @@ function planetPosition(planet, t) {
   ,   py = sin(ang) * planet.orbitRadiusY
   ,   rc = planet.orbitRotationOffsetCos
   ,   rs = planet.orbitRotationOffsetSin
-  ,   pos = [planet.galaxyX + rc * px - rs * py, planet.galaxyY + rs * px + rc * py]
-  return 'translate(' + pos.join(',') + ')'
+  ,   x  = planet.galaxyX + rc * px - rs * py
+  ,   y  = planet.galaxyY + rs * px + rc * py
+  return 'translate(' + x + ',' + y + ')'
 }
 
 function planetOpacity(blinkSpeed, t) {
