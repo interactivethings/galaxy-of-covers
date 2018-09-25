@@ -12,6 +12,10 @@ let
 in pkgs.mkShell {
   buildInputs = [
     nodejs
+    pkgs.python3
+    pkgs.python3Packages.pip
+    pkgs.python3Packages.requests
+    pkgs.python3Packages.beautifulsoup4
   ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.darwin.apple_sdk.frameworks.CoreServices ];
 }
 
